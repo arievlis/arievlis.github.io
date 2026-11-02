@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arquivo de estudos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Alegreya:ital,wght@0,400;1,400&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<style>
+/* Mesma identidade da página das Parashiot: Alegreya + Frank Ruhl, azul profundo */
+:root{--bg:#f7f8fb;--ink:#1a2238;--muted:#5c6680;--rule:#d9dee9;--accent:#1f4e8c;--band:#e9eef7;
+--f-he:"Frank Ruhl Libre","Times New Roman",serif;--f-body:"Alegreya",Georgia,serif;--f-ui:"Alegreya Sans","Segoe UI",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#10141f;--ink:#e6e9f2;--muted:#9aa4bd;--rule:#2a3145;--accent:#8fb4ee;--band:#1d2538;color-scheme:dark}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:40px 64px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 32px;padding-bottom:20px;border-bottom:2px solid var(--ink)}
+h1{font-family:var(--f-ui);font-weight:700;font-size:2.2rem;line-height:1.1;margin:0}
+h1 span{display:block;font-weight:500;font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.he{font-family:var(--f-he);direction:rtl;color:var(--accent)}
+.he-title{font-size:2.4rem;line-height:1}
+h2{font-family:var(--f-ui);font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:40px 0 0}
+ul{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--rule)}
+li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 20px;align-items:center;padding:16px 14px;border-bottom:1px solid var(--rule);position:relative}
+li:hover,li:focus-within{background:var(--band)}
+li > a.main{position:absolute;inset:0}
+li > a.main:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.n{font-family:var(--f-ui);font-weight:700;font-size:1.15rem}
+.r{font-family:var(--f-ui);font-size:.9rem;color:var(--muted)}
+li .he{font-size:1.7rem;grid-row:span 2}
+.r a{position:relative;z-index:1;color:var(--accent)}
+.soon .n,.soon .he{opacity:.45}
+footer{color:var(--muted);font-family:var(--f-ui);font-size:.9rem;max-width:65ch;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Arquivo de estudos<span>Torá · Cabalá · traduções anotadas para o português</span></h1><div class="he he-title">בֵּית מִדְרָשׁ</div></header>
+
+<h2>Torá</h2>
+<ul>
+<li><a class="main" href="/parashat/" aria-label="Parashat"></a><span class="n">Parashat</span><span class="he">פָּרָשַׁת הַשָּׁבוּעַ</span><span class="r">Porção semanal · hebraico, português, inglês e transliteração, com áudio</span></li>
+</ul>
+
+<h2>Baal HaSulam</h2>
+<ul>
+<li><a class="main" href="portao-das-intencoes/" aria-label="Portão das Intenções"></a><span class="n">Portão das Intenções</span><span class="he">בֵּית שַׁעַר הַכַּוָּנוֹת</span><span class="r"><i>Beit Sha'ar HaKavanot</i> · caps. 1–2, com o comentário <i>Or Pashut</i> · <a href="portao-das-intencoes/beit-shaar-hakavanot-caps-1-2.pdf">PDF</a></span></li>
+<li><a class="main" href="tes/parte-1/" aria-label="Talmud Eser HaSefirot, Parte 1"></a><span class="n">Talmud Eser HaSefirot · Parte 1</span><span class="he">תַּלְמוּד עֶשֶׂר הַסְּפִירוֹת</span><span class="r"><i>Tzimtzum ve-Kav</i> · texto, <i>Or Pnimi</i>, <i>Histaklut Pnimit</i> e perguntas e respostas · <a href="tes/parte-1/tes-parte-1.pdf">PDF</a></span></li>
+</ul>
+
+<footer>Traduções feitas diretamente do hebraico, a partir de textos em domínio público, com notas e esquemas próprios. O arquivo cresce à medida que novos textos são traduzidos.</footer>
+</div>
+</body>
+</html>

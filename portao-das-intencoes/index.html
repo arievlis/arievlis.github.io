@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beit Sha'ar HaKavanot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral+SC:wght@500;600&display=swap">
+<style>/* Layout: folhas A4 empilhadas; cada item = coluna de número | texto | margem de notas (como a folha de estudo com glosas laterais) */
+:root{
+  --paper:#fbfaf6; --desk:#e9e7e0; --ink:#1f2130; --muted:#5c5f70; --rule:#d6d3c8;
+  --techelet:#284a86; --gold:#8a6a22; --panel:#f1efe7; --v-in:#dfe6f3; --v-out:#f3eadb;
+  --f-body:"Spectral", Georgia, "Times New Roman", serif;
+  --f-sc:"Spectral SC", "Spectral", Georgia, serif;
+  --f-he:"Frank Ruhl Libre", "David", "Times New Roman", serif;
+  --s-0:.82rem; --s-1:.95rem; --s-2:1.06rem; --s-3:1.3rem; --s-4:1.9rem; --s-5:2.8rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}
+
+body{background:var(--desk); color:var(--ink); font-family:var(--f-body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); padding-block:24px}
+.book{display:flex; flex-direction:column; gap:28px; align-items:center}
+.sheet{background:var(--paper); width:100%; max-width:210mm; padding:18mm 16mm; box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06); min-width:0}
+p{margin:0 0 .75em}
+i,em{font-style:italic}
+a{color:var(--techelet)}
+a:focus-visible{outline:2px solid var(--techelet); outline-offset:2px}
+h1,h2,h3{text-wrap:balance; font-weight:500; margin:0}
+
+/* Capa */
+.cover{display:flex; flex-direction:column; gap:18px; padding-block:26mm}
+.eyebrow{font-family:var(--f-sc); letter-spacing:.06em; color:var(--muted); font-size:var(--s-1); margin:0}
+h1{display:flex; flex-direction:column; gap:6px}
+.h1he{font-family:var(--f-he); font-size:var(--s-5); color:var(--techelet); line-height:1.15; font-weight:500}
+.h1pt{font-size:var(--s-4); font-style:italic; font-weight:400}
+.lead{font-size:var(--s-2); color:var(--muted); margin:0}
+.toc{display:flex; flex-wrap:wrap; gap:8px 22px; border-block:1px solid var(--rule); padding-block:12px; font-family:var(--f-sc); letter-spacing:.04em}
+.toc a{text-decoration:none}
+.howto{font-size:var(--s-1); max-width:62ch; margin:0}
+
+h2.plain{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.05em; color:var(--techelet); margin-bottom:14px}
+#apres p, #apres li{max-width:68ch; font-size:var(--s-1)}
+
+/* Cabeçalho de capítulo */
+.ch-head{display:grid; grid-template-columns:1fr auto; align-items:end; gap:4px 16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:26px}
+.ch-head h2{font-family:var(--f-sc); font-size:var(--s-4); letter-spacing:.04em; grid-column:1; grid-row:1}
+.ch-sub{grid-column:1; margin:0; font-style:italic; color:var(--muted)}
+.ch-he{grid-column:2; grid-row:1 / span 2; font-family:var(--f-he); font-size:var(--s-5); color:var(--gold); line-height:1}
+
+/* Item */
+.item{display:grid; grid-template-columns:4.2rem minmax(0,1fr) 13.5rem; gap:0 18px; padding-block:18px; border-top:1px solid var(--rule)}
+.item:first-of-type{border-top:0}
+.num{display:flex; flex-direction:column; align-items:flex-start; gap:2px; position:sticky; top:12px; align-self:start}
+.num .he{font-family:var(--f-he); font-size:var(--s-3); color:var(--gold); direction:rtl}
+.num .pt{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.08em; color:var(--muted)}
+.src-new{color:var(--techelet); font-size:var(--s-1)}
+.main{min-width:0; display:flex; flex-direction:column; gap:14px}
+.lbl{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.12em; color:var(--techelet); margin-bottom:6px}
+
+.ari{background:var(--panel); padding:14px 16px 10px; border-radius:2px}
+.pair{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:18px}
+.pt-text p{font-size:var(--s-2); line-height:1.58; font-weight:500}
+.pt-text em{font-weight:500}
+.he-text{font-family:var(--f-he); font-size:1.04rem; line-height:1.75; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:14px}
+.he-text p{margin:0 0 .6em}
+.srcref{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.05em; color:var(--muted); margin:6px 0 0}
+
+.op p{font-size:var(--s-1); line-height:1.66; text-align:justify; hyphens:auto; max-width:70ch}
+.op p + p{text-indent:1.4em}
+.dibur{font-family:var(--f-sc); font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.dibur::after{content:" —"; color:var(--muted)}
+.op em{font-style:italic}
+
+sup.nref{font-size:.68em; line-height:0}
+sup.nref a{text-decoration:none; font-family:var(--f-sc); color:var(--gold); padding:0 1px}
+
+/* Notas laterais */
+.notes{min-width:0; display:flex; flex-direction:column; gap:10px; font-size:var(--s-0); line-height:1.5; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:12px; align-self:start}
+.notes:empty{border:0}
+.note b{font-family:var(--f-sc); color:var(--gold); margin-inline-end:4px}
+.note:target{background:var(--panel); outline:1px solid var(--gold); outline-offset:3px}
+.note strong{color:var(--ink); font-weight:600}
+
+/* Tabelas */
+.tw{overflow-x:auto; max-width:100%}
+table{border-collapse:collapse; width:100%; font-size:var(--s-0); font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:6px 8px; border-bottom:1px solid var(--rule); vertical-align:top}
+th{font-family:var(--f-sc); font-weight:600; letter-spacing:.05em; color:var(--techelet); border-bottom:1.5px solid var(--ink)}
+table.lv td,table.lv th{text-align:center}
+table.lv td:first-child,table.lv th:first-child{text-align:left}
+table.lv td em{display:inline-block; background:var(--v-in); padding:1px 6px; border-radius:2px}
+
+/* Figuras */
+.fig{margin:6px 0 0; border:1px solid var(--rule); padding:12px 14px}
+.fig figcaption{font-size:var(--s-1); margin-bottom:8px}
+.fig figcaption .lbl{display:inline; margin-inline-end:8px}
+.figcap{font-size:var(--s-0); color:var(--muted); font-style:italic; margin:8px 0 0}
+.grid5 td{white-space:nowrap}
+.bar{display:inline-block; height:8px; width:calc(var(--w) * .7); max-width:70px; background:var(--techelet); margin-inline-end:8px; vertical-align:middle; opacity:.75}
+.fig svg{width:100%; min-width:520px; height:auto; display:block}
+.fig svg .v-in{fill:var(--v-in); stroke:var(--techelet); stroke-width:1}
+.fig svg .v-out{fill:var(--v-out); stroke:var(--gold); stroke-width:1; stroke-dasharray:4 3}
+.fig svg .t-h{fill:var(--ink); font:600 14px var(--f-sc); letter-spacing:.04em}
+.fig svg .t-v{fill:var(--ink); font:600 13px var(--f-body)}
+.fig svg .t-l{fill:var(--muted); font:italic 12px var(--f-body)}
+.fig svg .t-s{fill:var(--muted); font:12px var(--f-body)}
+.fig svg.yod{min-width:0; max-width:620px}
+.fig svg .yod-body{fill:var(--techelet)}
+.fig svg .yod-kotz{fill:var(--gold)}
+.fig svg .ring{fill:none; stroke:var(--gold); stroke-width:1; stroke-dasharray:3 3}
+.fig svg .lead{stroke:var(--gold); stroke-width:1}
+.fig svg .lead2{stroke:var(--muted); stroke-width:1}
+.fig svg .t-k{fill:var(--gold); font:600 14px var(--f-sc); letter-spacing:.03em}
+.fig svg .t-he{fill:var(--techelet); font:500 40px var(--f-he)}
+.fig svg .cut{stroke:var(--techelet); stroke-width:2}
+
+/* Tela estreita */
+@media (max-width:760px){
+  .sheet{padding:22px 18px}
+  .item{grid-template-columns:minmax(0,1fr); gap:10px}
+  .num{position:static; flex-direction:row; align-items:baseline; gap:10px}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .he-text{border-inline-start:0; padding-inline-start:0; border-top:1px solid var(--rule); padding-top:10px}
+  .notes{border-inline-start:2px solid var(--rule)}
+  .ch-he{font-size:var(--s-4)}
+  .h1he{font-size:2.2rem}
+}
+
+/* Impressão / PDF */
+@page{size:A4; margin:16mm 14mm 18mm}
+@media print{
+  :root{--paper:#fff; --desk:#fff; --ink:#111; --muted:#444; --panel:#f3f2ee}
+  body{padding:0; background:#fff; font-size:10.5pt}
+  .book{gap:0}
+  .sheet{box-shadow:none; padding:0; max-width:none; break-before:page}
+  .sheet:first-child{break-before:auto}
+  .num{position:static; flex-direction:column; align-items:flex-start; gap:2px}
+  .item{grid-template-columns:3.6rem minmax(0,1fr) 11.5rem; break-inside:auto}
+  .ari,.fig,.note,tr{break-inside:avoid}
+  .toc{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<style>body{margin:0}@media print{.site-nav{display:none}}</style>
+</head>
+<body>
+<nav class="site-nav" style="max-width:210mm;margin:0 auto 12px;font-family:'Spectral SC',Georgia,serif;letter-spacing:.05em"><a href="../" style="color:inherit;text-decoration:none">← Arquivo · início</a></nav>
+<main class="book">
+<div class="sheet cover">
+  <p class="eyebrow">Baal HaSulam · comentário <i>Or Pashut</i> sobre o <i>Etz Chaim</i> do ARI</p>
+  <h1><span lang="he" dir="rtl" class="h1he">בית שער הכוונות</span><span class="h1pt">Beit Sha'ar HaKavanot</span></h1>
+  <p class="lead">Capítulos 1 e 2, itens 1 a 24 — tradução integral do hebraico, com notas</p>
+  <nav class="toc"><a href="#apres">Apresentação</a><a href="#cap1">Capítulo 1 · itens 1–15</a><a href="#cap2">Capítulo 2 · itens 16–24</a><a href="#gloss">Glossário</a></nav>
+  <p class="howto"><b>Como ler.</b> Cada item traz, em destaque, o texto do ARI em português, com o hebraico ao lado. Abaixo vem o <i>Or Pashut</i>; as palavras do ARI que ele comenta abrem o parágrafo em versalete. As notas ficam na margem, ao lado do item. O sinal ✱ marca os itens que abrem nova passagem-fonte.</p>
+</div>
+<div class="sheet" id="apres"><h2 class="plain">Apresentação e convenções</h2><p>Tradução integral dos capítulos 1 e 2 (itens 1–24), feita diretamente do original hebraico. Ela não deriva da versão inglesa <em>The Gatehouse of Intentions</em>. O texto-base é o da biblioteca digital Kabbalah Media (<a href="https://kabbalahmedia.info/he/sources/Nw0ew8p4">fonte</a>). O texto do ARI vem do <em>Etz Chaim</em> (sécs. XVI–XVII), e o comentário <em>Or Pashut</em> é de Baal HaSulam (†1954); ambos estão em domínio público.</p>
+<p><strong>Diagramação.</strong> Cada item tem duas camadas:</p>
+<ul>
+<li><strong>Texto do ARI</strong> (em negrito), com a referência ao <em>Etz Chaim</em> logo abaixo. O asterisco (*) do original marca os itens que abrem uma nova passagem-fonte.</li>
+<li><strong>Or Pashut</strong> (<em>Luz Simples</em>), o comentário de Baal HaSulam, em texto corrido. Ele abre com o <em>dibur ha-matchil</em> (as palavras do ARI que comenta) em itálico.</li>
+</ul>
+<p><strong>Termos.</strong> Os termos técnicos consolidados ficam em hebraico transliterado e em itálico, com a glosa portuguesa entre colchetes na primeira ocorrência: <em>Ma'atzil</em> [Emanador]. Quando há equivalente português consagrado (luz, vaso, raiz), uso o português e indico o termo hebraico. As siglas do original são desdobradas na primeira ocorrência e depois mantidas. O glossário no fim reúne todos os termos.</p>
+<p><strong>Transliteração.</strong> Uso <em>ch</em> para ח e כ sem dagesh (<em>Chochmá</em>, <em>Malchut</em>) e <em>tz</em> para צ. O acento marca a tônica oxítona (<em>Biná</em>, <em>Neshamá</em>, <em>Yechidá</em>). Mantive as grafias já correntes em português, como <em>Partzuf</em> e <em>Zeir Anpin</em>.</p>
+<p><strong>Notas.</strong> Os números entre colchetes, como <sup class="nref"><a href="#n1" id="r1">1</a></sup>, remetem às notas do tradutor ao fim de cada capítulo. Elas tratam de escolhas de tradução, variantes de leitura e fontes citadas. Acréscimos meus no corpo do texto vão entre colchetes.</p>
+<div class="tw"><table class="abbr">
+<thead>
+<tr>
+<th>Sigla</th>
+<th>Desdobramento</th>
+<th>Sentido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HaVaYaH (הוי"ה)</td>
+<td>Yod-Hei-Vav-Hei</td>
+<td>o Tetragrama, lido pelas letras</td>
+</tr>
+<tr>
+<td>ChuB TuM (חו"ב תו"מ)</td>
+<td>Chochmá, Biná, Tiferet, Malchut</td>
+<td>as quatro fases</td>
+</tr>
+<tr>
+<td>KaChaB TuM (כח"ב תו"מ)</td>
+<td>Keter + as quatro acima</td>
+<td>as cinco fases</td>
+</tr>
+<tr>
+<td>ChaGaT NHY (חג"ת נה"י)</td>
+<td>Chessed, Guevurá, Tiferet, Netzach, Hod, Yessod</td>
+<td>as seis do corpo</td>
+</tr>
+<tr>
+<td>TaNTA (טנת"א)</td>
+<td>Te'amim, Nekudot, Tagin, Otiot</td>
+<td>acentos, vogais, coroas, letras</td>
+</tr>
+<tr>
+<td>ABYA (אבי"ע)</td>
+<td>Atzilut, Beriá, Yetzirá, Assiá</td>
+<td>os quatro mundos</td>
+</tr>
+<tr>
+<td>A"K (א"ק)</td>
+<td>Adam Kadmon</td>
+<td>o Homem Primordial</td>
+</tr>
+<tr>
+<td>NaRaNChaY (נרנח"י)</td>
+<td>Nefesh, Ruach, Neshamá, Chayá, Yechidá</td>
+<td>as cinco luzes</td>
+</tr>
+<tr>
+<td>NaRaN (נר"ן)</td>
+<td>Nefesh, Ruach, Neshamá</td>
+<td>as três luzes inferiores</td>
+</tr>
+<tr>
+<td>GaR (ג"ר)</td>
+<td>Guimel Rishonot</td>
+<td>as três [sefirot] primeiras</td>
+</tr>
+<tr>
+<td>ZA (ז"א)</td>
+<td>Zeir Anpin</td>
+<td>o "Rosto Menor"</td>
+</tr>
+<tr>
+<td>ZoN (זו"ן)</td>
+<td>Zeir Anpin e Nukvá</td>
+<td>o par masculino e feminino</td>
+</tr>
+<tr>
+<td>AA (א"א)</td>
+<td>Arich Anpin</td>
+<td>o "Rosto Longo"</td>
+</tr>
+<tr>
+<td>AVI (או"א)</td>
+<td>Abba ve-Ima</td>
+<td>Pai e Mãe</td>
+</tr>
+<tr>
+<td>OP / OM (או"פ / או"מ)</td>
+<td>Or Penimi / Or Makif</td>
+<td>luz interior / luz envolvente</td>
+</tr>
+<tr>
+<td>OCh (או"ח)</td>
+<td>Or Chozer</td>
+<td>luz refletida</td>
+</tr>
+<tr>
+<td>ETz"Ch (ע"ח)</td>
+<td>Etz Chaim</td>
+<td><em>Árvore da Vida</em>, do R. Chaim Vital</td>
+</tr>
+<tr>
+<td>TES (תע"ס)</td>
+<td>Talmud Eser HaSefirot</td>
+<td>obra de Baal HaSulam</td>
+</tr>
+</tbody>
+</table></div></div>
+<div class="sheet"><section class="chapter" id="cap1"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">פרק א׳</span><h2>Capítulo 1</h2><p class="ch-sub">Os cinco aspectos de toda a realidade</p></header><article class="item" id="i1">
+<div class="num"><span class="he">אות א'</span><span class="pt">Item 1</span><span class=src-new title="Abre nova passagem-fonte">✱</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Eis que há um <em>Ma'atzil</em> [Emanador] e um <em>Ne'etzal</em> [emanado]. O emanado contém quatro <em>yesodot</em> [elementos]: fogo, ar, água e terra <sup class="nref"><a href="#n1" id="r1">1</a></sup>. São as quatro letras de <em>HaVaYaH</em>; são <em>Chochmá</em> e <em>Biná</em>, <em>Tiferet</em> e <em>Malchut</em>; são <em>TaNTA</em>; e são eles mesmos <em>ABYA</em>. São as quatro <em>bechinot</em> [fases] <sup class="nref"><a href="#n2" id="r2">2</a></sup> que há no homem: primeira, o homem interior, que é a espiritualidade, chamada <em>NaRaNChaY</em>; segunda, o corpo; terceira, as vestes sobre o corpo; quarta, a casa onde moram o homem, seu corpo e sua veste.</p></div><div class="he-text" lang="he" dir="rtl"><p>הנה יש מאציל ונאצל, והנאצל יש בו ד&#x27; יסודות: אש, רוח, מים, עפר, והם ד&#x27; אותיות הוי&quot;ה, והם חו&quot;ב תו&quot;מ, והנה הם טנת&quot;א, והם הם אבי&quot;ע שהם הם ד&#x27; בחי&#x27; שבאדם: א&#x27; אדם הפנימי שהוא הרוחניות הנקרא נרנח&quot;י, ב&#x27; הוא הגוף, ג&#x27; הוא המלבושים שע&quot;ג הגוף, ד&#x27; הוא הבית שיושב בתוכו האדם וגופו ומלבושו.</p></div></div>
+<p class="srcref">Etz Chaim, Parte II, Portão 42, cap. 1.</p>
+</section>
+<section class="op"><div class="lbl">Or Pashut</div><p><span class="dibur">Eis que há um Emanador e um emanado, e o emanado contém quatro elementos etc.</span> Aqui o ARI nos ensina uma grande regra, que abrange toda a sabedoria. Ela permite compreender como o todo inteiro, até os menores detalhes, é semelhante a si mesmo. Toda a realidade, superiores e inferiores juntos, compõe-se de apenas cinco fases: <em>Keter</em>, <em>Chochmá</em>, <em>Biná</em>, <em>Tiferet</em> e <em>Malchut</em>. Elas recebem o nome de cinco mundos: <em>Adam Kadmon</em>, <em>Atzilut</em>, <em>Beriá</em>, <em>Yetzirá</em> e <em>Assiá</em>. <em>Adam Kadmon</em> é <em>Keter</em>, isto é, a raiz de tudo e o Emanador. O mundo de <em>Atzilut</em> é <em>Chochmá</em>, o de <em>Beriá</em> é <em>Biná</em>, o de <em>Yetzirá</em> é <em>Tiferet</em>, e o de <em>Assiá</em> é <em>Malchut</em>.</p>
+<p>Correspondem às quatro letras do Nome <em>HaVaYaH</em>: o <em>Yod</em> é <em>Chochmá</em>; o primeiro <em>Hei</em> é <em>Biná</em>; o <em>Vav</em> é <em>Tiferet</em>; o <em>Hei</em> de baixo (<em>Hei tata'á</em>) é <em>Malchut</em>. Também se chamam <em>Te'amim</em>, <em>Nekudot</em>, <em>Tagin</em> e <em>Otiot</em> [acentos, vogais, coroas e letras] <sup class="nref"><a href="#n3" id="r3">3</a></sup>. Assim, todos os mundos estão contidos num único Nome <em>HaVaYaH</em>, isto é, <em>Chochmá</em> e <em>Biná</em>, <em>Tiferet</em> e <em>Malchut</em>. E o <em>kotzo shel Yod</em> [a ponta do Yod] <sup class="nref"><a href="#n4" id="r4">4</a></sup> é a fase do Emanador, isto é, o mundo de <em>Adam Kadmon</em>. Do mesmo modo, não há detalhe mínimo em toda a realidade que não tenha estas cinco fases.</p>
+<p>A razão disso é que nada é emanado ou criado senão por meio da <em>sefirá</em> de <em>Malchut</em>. E <em>Malchut</em> inclui necessariamente as quatro fases acima dela, que a precedem, pois ela é a mais baixa das cinco. Por isso, as primeiras dez <em>sefirot</em> surgidas após o <em>Tzimtzum Rishon</em> [primeira contração] passaram a se chamar "mundo de <em>Adam Kadmon</em>" ou <em>Kav Ein Sof Baruch Hu</em> [a Linha do Infinito, bendito seja] <sup class="nref"><a href="#n5" id="r5">5</a></sup>. Essa linha começa junto ao <em>Ein Sof</em> e termina no ponto deste mundo. Ela surgiu por um <em>zivug</em> [acoplamento] na <em>sefirá</em> de <em>Malchut</em> e, portanto, contém necessariamente essas cinco fases. Da mesma forma, os quatro mundos <em>ABYA</em> e todos os seus detalhes também surgem por <em>zivug</em> na <em>sefirá</em> de <em>Malchut</em>. Logo, também neles há necessariamente essas mesmas cinco fases.</p>
+<p>É preciso saber que as dez <em>sefirot</em> <em>KaChaB ChaGaT NHYM</em> são apenas cinco fases, a saber <em>KaChaB TuM</em>. O ARI o diz no <em>Etz Chaim</em>, Portão 47, cap. 1, e Portão 11, cap. 5. Contamos dez <em>sefirot</em> porque só <em>Tiferet</em> tem em si seis <em>sefirot</em>, <em>ChaGaT NHY</em>. E <em>Tiferet</em> contém seis em razão da <em>hitkalelut</em> [inclusão mútua] <sup class="nref"><a href="#n6" id="r6">6</a></sup> das <em>sefirot</em> umas nas outras: cada uma é composta de todas. Assim, há cinco fases em <em>Keter</em>, cinco em <em>Chochmá</em>, cinco em <em>Biná</em>, cinco em <em>Zeir Anpin</em> e cinco em <em>Malchut</em>.</p>
+<p>Porém, a inclusão de <em>GaR</em> em <em>Tiferet</em> não é completa. A <em>sefirá</em> de <em>Tiferet</em> é <em>Or Chassadim</em> [luz de misericórdias] e tem a fase de <em>gufa</em> [o corpo] <sup class="nref"><a href="#n7" id="r7">7</a></sup>. Como poderia ela conter em si as três fases <em>KaChaB</em>, que são essencialmente <em>Or Chochmá</em> [luz de sabedoria]? Por isso, o que se discerne nela é a inclusão de <em>KaChaB</em> rebaixados de seu grau e transformados em três <em>Chassadim</em>. Daí seu nome mudar para <em>ChaGaT</em>, e as cinco fases nela chamarem-se <em>ChaGaT NH</em>. Isso indica que <em>KaChaB</em>, incluídos em <em>Tiferet</em>, tornaram-se nela fase de <em>Chassadim</em>, sem <em>Chochmá</em>. <em>Netzach</em> é a fase da própria <em>Tiferet</em>, e <em>Hod</em> é a inclusão de <em>Malchut</em> nela. Para indicar isso, chamam-se também "cinco <em>Chassadim</em>".</p>
+<p>Também em <em>Malchut</em> a inclusão de <em>KaChaB</em> não é completa. Também nela chamam-se <em>ChaGaT</em>, como em <em>Zeir Anpin</em>, e as cinco fases <em>ChaGaT NH</em> chamam-se nela "cinco <em>Guevurot</em>", pois todas são fase de <em>Guevurot</em>. Quanto à <em>sefirá</em> de <em>Yessod</em>, ela é a inclusão dos cinco <em>Chassadim</em> de <em>Tiferet</em>, e não uma fase nova por si. É o que diz o ARI no <em>Etz Chaim</em>, <em>Sha'ar Derush HaNekudot</em>, cap. 5.</p>
+<p>Assim, estas dez <em>sefirot</em> não são nem mais nem menos que cinco fases, cada uma composta de todas. Mas há diferença quanto à inclusão. Só <em>GaR</em> são compostas das cinco fases de modo completo; por isso se discerne em cada uma delas <em>KaChaB TuM</em> completos. Já <em>Tiferet</em>, onde <em>KaChaB</em> se tornaram <em>Chassadim</em>, embora inclua <em>KaChaB</em>, é carente delas, pois nela se tornaram <em>ChaGaT</em>. Para indicar isso, <em>Tiferet</em> é discernida como seis <em>sefirot</em>, <em>ChaGaT NHY</em>, a fim de sublinhar a falta de <em>KaChaB</em> nela.</p>
+<p>Resulta que cada uma das <em>KaChaB</em> é composta de dez <em>sefirot</em> reais: as três fases <em>KaChaB</em>, as seis <em>sefirot</em> de <em>Zeir Anpin</em> e <em>Malchut</em>. Isso porque a novidade surgida em <em>Zeir Anpin</em>, onde as cinco fases se tornaram cinco <em>Chassadim</em>, está incluída também em cada uma das <em>KaChaB</em>. <em>Zeir Anpin</em>, porém, tem apenas as seis <em>sefirot</em> <em>ChaGaT NHY</em>. Não tem as três fases <em>KaChaB</em>, apenas os três <em>Chassadim</em> chamados <em>ChaGaT</em>, como dito. Portanto, estas <em>ChaGaT NHY</em>, incluídas só em <em>Tiferet</em>, não indicam superioridade sobre <em>GaR</em>. Ao contrário, indicam a falta de <em>GaR</em> nela. Isso está explícito no <em>Etz Chaim</em>, Portão 11, cap. 5, e em todos os lugares citados. Veja-se o <em>Talmud Eser HaSefirot</em>, Parte 5, onde isto é bem explicado. Lembra-te destas coisas, pois sem elas não há compreensão alguma das palavras do ARI.</p>
+<p>O ARI conta apenas quatro fases, <em>ChuB TuM</em>, e não cinco, <em>KaChaB TuM</em>. É que <em>Keter</em> é discernido como raiz das quatro fases e não é contado com elas, como se diz aqui no item 9. A explicação destas quatro fases está bem exposta no <em>Talmud Eser HaSefirot</em>, Parte 3, caps. 1 e 2 (ver o <em>Or Pnimi</em> ali), e também no <em>Or Pnimi</em> da Parte 1, p. 5, no trecho que começa "<em>ve-ta'am</em>". [Isto é, a nota 50 do <em>Or Pnimi</em> ao item 3 do cap. 1: <em>"Ve-ta'am ha-hechrach shel dalet madregot"</em>, "E a razão da necessidade das quatro gradações".] Examine-se bem cada um desses lugares, pois o conhecimento destas quatro fases é a raiz de toda a sabedoria.</p></section>
+<figure class="fig">
+<figcaption><span class="lbl">Esquema 1</span> A ponta do Yod (item 1 e nota 4)</figcaption>
+<div class="tw"><svg class="yod" viewBox="0 0 600 350" role="img" aria-label="A ponta do Yod e o Nome HaVaYaH na vertical"><text x="10" y="22" class="t-h">A · A letra Yod e sua ponta</text><g transform="translate(20,60) scale(1.2)"><path class="yod-body" d="M40 70 C40 58 51 52 68 52 L140 52 C156 52 162 61 160 74 L153 118 C151 128 139 129 138 119 L135 90 L62 90 C47 90 40 82 40 70 Z"/><path class="yod-kotz" d="M48 58 L42 32 C41 27 47 25 50 29 L64 54 Z"/><circle cx="48" cy="40" r="18" class="ring"/></g><line x1="96" y1="96" x2="128" y2="62" class="lead"/><text x="132" y="52" class="t-k">Kotzo shel Yod</text><text x="132" y="68" class="t-s">a ponta · Keter · Adam Kadmon</text><text x="132" y="83" class="t-s">raiz e Emanador</text><line x1="104" y1="172" x2="104" y2="232" class="lead2"/><text x="112" y="232" class="t-v">Yod</text><text x="112" y="248" class="t-s">o ponto · Chochmá · Atzilut</text><text x="10" y="296" class="t-s">O Yod é a menor letra, quase um ponto.</text><text x="10" y="312" class="t-s">A ponta acima dele indica o que antecede</text><text x="10" y="328" class="t-s">até o ponto: a raiz de todas as fases.</text><line x1="318" y1="36" x2="318" y2="334" class="lead2" stroke-dasharray="2 4"/><text x="335" y="22" class="t-h">B · HaVaYaH na vertical</text><path class="yod-kotz" d="M351 82 l-3 -14 c-1 -4 4 -5 6 -2 l7 15 Z"/><line x1="367" y1="66" x2="397" y2="66" class="lead"/><text x="403" y="62" class="t-k">ponta</text><text x="403" y="77" class="t-s">Keter · Adam Kadmon · raiz</text><text x="357" y="124" class="t-he" text-anchor="middle">י</text><line x1="379" y1="112" x2="397" y2="112" class="lead2"/><text x="403" y="108" class="t-v">Chochmá</text><text x="403" y="124" class="t-s">Atzilut · alma</text><text x="357" y="180" class="t-he" text-anchor="middle">ה</text><line x1="379" y1="168" x2="397" y2="168" class="lead2"/><text x="403" y="164" class="t-v">Biná</text><text x="403" y="180" class="t-s">Beriá · corpo</text><text x="357" y="236" class="t-he" text-anchor="middle">ו</text><line x1="379" y1="224" x2="397" y2="224" class="lead2"/><text x="403" y="220" class="t-v">Tiferet</text><text x="403" y="236" class="t-s">Yetzirá · veste</text><text x="357" y="292" class="t-he" text-anchor="middle">ה</text><line x1="379" y1="280" x2="397" y2="280" class="lead2"/><text x="403" y="276" class="t-v">Malchut</text><text x="403" y="292" class="t-s">Assiá · casa</text></svg></div>
+<p class="figcap">Lido de cima para baixo, o Nome contém os cinco mundos: a ponta do Yod é Adam Kadmon, e as quatro letras são ABYA. É o que o item 12 resume: “tudo o que foi emanado é um só HaVaYaH, composto de cinco fases”.</p>
+</figure><figure class="fig">
+<figcaption><span class="lbl">Esquema 2</span> As cinco fases e seus registros (itens 1, 9 e 12)</figcaption>
+<div class="tw"><table class="grid5">
+<thead><tr><th>Fase</th><th>Mundo</th><th>Letra</th><th>No homem</th><th>Tela (<i>aviut</i>)</th><th>Estatura</th></tr></thead>
+<tbody>
+<tr><td><b>Keter</b></td><td>Adam Kadmon</td><td>ponta do Yod</td><td>raiz</td><td>fase 4</td><td><span class="bar" style="--w:100%"></span>Keter</td></tr>
+<tr><td><b>Chochmá</b></td><td>Atzilut</td><td>Yod</td><td>alma</td><td>fase 3</td><td><span class="bar" style="--w:80%"></span>Chochmá</td></tr>
+<tr><td><b>Biná</b></td><td>Beriá</td><td>Hei</td><td>corpo</td><td>fase 2</td><td><span class="bar" style="--w:60%"></span>Biná</td></tr>
+<tr><td><b>Tiferet / ZA</b></td><td>Yetzirá</td><td>Vav</td><td>veste</td><td>fase 1</td><td><span class="bar" style="--w:40%"></span>Zeir Anpin</td></tr>
+<tr><td><b>Malchut</b></td><td>Assiá</td><td>Hei</td><td>casa / palácio</td><td>raiz</td><td><span class="bar" style="--w:20%"></span>Malchut</td></tr>
+</tbody></table></div>
+<p class="figcap">A luz é a mesma em todos os mundos; muda apenas a espessura da tela, e com ela a estatura alcançada (item 12, Or Pashut).</p>
+</figure>
+</div>
+<aside class="notes"><div class="note" id="n1"><b>1</b> <strong>Fogo, ar, água, terra.</strong> O hebraico diz <em>esh, ruach, mayim, afar</em>. <em>Ruach</em> é literalmente "vento" e <em>afar</em> é "pó". Usei os nomes clássicos dos quatro elementos em português. <em>Ruach</em> reaparece adiante como nome de uma luz da alma; são homônimos, mas não há relação direta.</div><div class="note" id="n2"><b>2</b> <strong><em>Bechiná</em> (pl. <em>bechinot</em>).</strong> Literalmente "exame" ou "discernimento"; tecnicamente, uma fase ou aspecto distinguível. Traduzo por "fase". O verbo correlato, <em>nivchan</em>, vai como "é discernido".</div><div class="note" id="n3"><b>3</b> <strong><em>TaNTA</em>.</strong> São os quatro componentes da escrita da Torá: <em>te'amim</em> (sinais de cantilação), <em>nekudot</em> (sinais vocálicos), <em>tagin</em> (coroinhas sobre certas letras) e <em>otiot</em> (letras). A ordem corresponde a <em>ChuB TuM</em>.</div><div class="note" id="n4"><b>4</b> <strong><em>Kotzo shel Yod</em>.</strong> O pequeno traço superior da letra <em>Yod</em>. Como o <em>Yod</em> já é a menor letra, o traço que o encima representa o que está acima de toda letra, isto é, a raiz (<em>Keter</em>, <em>Adam Kadmon</em>).</div><div class="note" id="n5"><b>5</b> <strong><em>Ein Sof Baruch Hu</em>.</strong> O original abrevia א"ס ב"ה. <em>Baruch Hu</em> é a eulógia "bendito seja". Mantive-a uma vez por fidelidade e omiti-a adiante.</div><div class="note" id="n6"><b>6</b> <strong><em>Hitkalelut</em>.</strong> "Inclusão" ou "incorporação" mútua: cada <em>sefirá</em> contém em si todas as outras. É o princípio que permite a estrutura fractal descrita neste capítulo.</div><div class="note" id="n7"><b>7</b> <strong><em>Gufa</em>.</strong> Aramaico, "o corpo". Na terminologia de Baal HaSulam, <em>guf</em> (corpo) se opõe a <em>rosh</em> (cabeça). <em>Chassadim</em> é a luz que se expande no corpo; <em>Chochmá</em> é a luz própria da cabeça.</div></aside>
+</article>
+<article class="item" id="i2">
+<div class="num"><span class="he">אות ב'</span><span class="pt">Item 2</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Todas estas fases são compostas de quatro fases, que são estas. A primeira fase, a da espiritualidade, é <em>Neshamá le-Neshamá</em> [Alma da alma] e <em>NaRaN</em> <sup class="nref"><a href="#n8" id="r8">8</a></sup>. A segunda fase, o corpo, é: os ossos, com a medula dentro deles; os tendões; a carne; e a pele. Como está escrito: "De pele e carne me vestiste, e de ossos e tendões me teceste" — <em>"Or uvassar talbisheni, uva'atzamot veguidim tessochecheni"</em> (Jó 10:11) <sup class="nref"><a href="#n9" id="r9">9</a></sup>.</p></div><div class="he-text" lang="he" dir="rtl"><p>וכל בחינות אלו כלולות מד&#x27; בחינות, ואלו הם: בחי&#x27; א&#x27; של הרוחניות היא נשמה לנשמה ונר&quot;ן. בחי&#x27; הב&#x27; שהוא הגוף, הוא העצמות, שבהם המוח מבפנים, והגידין, והבשר, ועור. וכמש&quot;ה עור ובשר תלבישני ועצמות וגידין תסוככני.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"><div class="note" id="n8"><b>8</b> <strong><em>Neshamá le-Neshamá</em>.</strong> Expressão zoharíca para o nível interior à própria <em>Neshamá</em>. Aqui ela designa sumariamente <em>Chayá</em> e <em>Yechidá</em>, ao lado de <em>NaRaN</em>.</div><div class="note" id="n9"><b>9</b> <strong>Jó 10:11.</strong> Na tradição luriânica, os quatro componentes do corpo (ossos, tendões, carne e pele) correspondem a <em>ChuB TuM</em>. A pele é a mais externa e equivale a <em>Malchut</em>.</div></aside>
+</article>
+<article class="item" id="i3">
+<div class="num"><span class="he">אות ג'</span><span class="pt">Item 3</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>A terceira fase são as vestes. Sabe-se que são as vestes obrigatórias do <em>kohen hedyot</em> [sacerdote comum]: túnica, calções, turbante e cinto <sup class="nref"><a href="#n10" id="r10">10</a></sup>. As quatro [adicionais] do <em>Kohen Gadol</em> [Sumo Sacerdote] são vestes mais elevadas que estas, como se diz no Zohar: umas são vestes do Nome <em>ADoNaY</em>, as outras são vestes do Nome <em>HaVaYaH</em>. Em essência, porém, são apenas quatro fases. A quarta fase é a casa: há casa, pátio, campo e deserto <sup class="nref"><a href="#n11" id="r11">11</a></sup>. Em todas estas quatro fases particulares há uma fase geral que abrange todas. Ela é <em>memutza'at</em> [intermediária] entre uma fase e outra e abrange ambas.</p></div><div class="he-text" lang="he" dir="rtl"><p>בחי&#x27; ג&#x27; שהם הלבושים, הנה הם נודעים שהם לבושים המוכרחים אל כהן הדיוט: כתונת, ומכנסים, מצנפת, ואבנט, כי אותן הד&#x27; דכ&quot;ג הם לבושים היותר עליונים מאלו, כנזכר בזוהר, שאלו הם לבושים שם אדנ&quot;י, ואלו הם לבושי שם הוי&quot;ה, אבל עיקרם אינם אלא ד&#x27; בחי&#x27;. בחי&#x27; הד&#x27; והוא הבית, יש בית, וחצר, ושדה, ומדבר. אמנם בכל אלו הד&#x27; בחי&#x27; הפרטיות, יש בחינה א&#x27; כוללת כולם, והיא ממוצעת בין בחי&#x27; ובחי&#x27; הכוללת שתיהן.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"><div class="note" id="n10"><b>10</b> <strong>Vestes sacerdotais (Êxodo 28).</strong> O <em>kohen hedyot</em> usa quatro vestes: <em>ketonet</em>, <em>michnassayim</em>, cobertura de cabeça e <em>avnet</em>. O texto diz <em>mitznefet</em> para o sacerdote comum, mas na Torá a sua cobertura é a <em>migba'at</em> (Êxodo 28:40); a <em>mitznefet</em> é do Sumo Sacerdote. "As quatro do <em>Kohen Gadol</em>" são as quatro adicionais de ouro: <em>choshen</em> (peitoral), <em>efod</em>, <em>me'il</em> (manto) e <em>tzitz</em> (diadema). Quanto aos Nomes, leio que as vestes brancas se associam a <em>ADoNaY</em> (<em>Malchut</em>) e as de ouro a <em>HaVaYaH</em> (<em>Zeir Anpin</em>). O original diz apenas "estas… e estas…", e a atribuição é interpretativa.</div><div class="note" id="n11"><b>11</b> <strong><em>Bayit, chatzer, sadeh, midbar</em>.</strong> São círculos concêntricos, do mais íntimo ao mais externo, novamente em correspondência com as quatro fases.</div></aside>
+</article>
+<article class="item" id="i4">
+<div class="num"><span class="he">אות ד'</span><span class="pt">Item 4</span><span class=src-new title="Abre nova passagem-fonte">✱</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Explicamos que todos os emanados são uma só fase, que abrange os quatro elementos, isto é, as quatro letras <em>YHVH</em>, isto é, os quatro mundos <em>ABYA</em>. Explicamos também que eles têm uma quinta fase superior, intermediária entre eles e o <em>Ein Sof</em>. Agora explicaremos cada mundo em geral. Depois, com a ajuda de Deus, voltaremos a eles para explicá-los todos juntos, numa só visão de conjunto.</p></div><div class="he-text" lang="he" dir="rtl"><p>ואחר שבארנו כי כל הנאצלים כולם בחי&#x27; א&#x27; הכוללת כל ד&#x27; יסודות, שהם ד&#x27; אותיות יהו&quot;ה, שהם ד&#x27; עולמות אבי&quot;ע. ושיש להם בחי&#x27; עליונה חמישית אמצעי בינם לבין א&quot;ס. נבאר עתה כל עולם ועולם בכללות, ואח&quot;כ נחזור בהם בע&quot;ה לבאר יחד כולם בכללות א&#x27;.</p></div></div>
+<p class="srcref">Etz Chaim, Parte II, Portão 42, cap. 2.</p>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i5">
+<div class="num"><span class="he">אות ה'</span><span class="pt">Item 5</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Tudo o que foi criado em todos os mundos se resume a quatro fases, que são <em>HaVaYaH</em>, como dito: a fase espiritual chamada <em>Neshamá</em>; a fase dos membros do corpo; a fase das vestes; e a fase da casa.</p></div><div class="he-text" lang="he" dir="rtl"><p>והנה כל מה שנברא בעולמות כולם, אינם רק ד&#x27; בחינות, שהם הוי&quot;ה כנ&quot;ל, והם: בחי&#x27; רוחני הנקרא נשמה, ובחי&#x27; איברי הגוף, ובחי&#x27; המלבושים ובחינת הבית.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i6">
+<div class="num"><span class="he">אות ו'</span><span class="pt">Item 6</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Falaremos do mundo de <em>Atzilut</em>, e dele se entenderá todo o resto. A interioridade de todo <em>Atzilut</em> é a espiritualidade chamada <em>Neshamá</em>. Ela está vestida nos membros do corpo, chamados <em>kelim</em> [vasos], que são as dez <em>sefirot</em> chamadas cabeça, braços e corpo.</p></div><div class="he-text" lang="he" dir="rtl"><p>ונדבר בעולם האצילות, ומשם יובנו כל השאר. כי הנה פנימית כל האצילות הוא הרוחניות הנקרא נשמה, והיא מלובשת תוך איברי הגוף הנקרא כלים, שהם הי&quot;ס הנקרא ראש וזרועות וגוף.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i7">
+<div class="num"><span class="he">אות ז'</span><span class="pt">Item 7</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Voltemos ao corpo. Esta fase são as dez <em>sefirot</em>, dez <em>midot</em> [medidas], porque nelas há limite e medida. É o que se diz nos <em>Pirkei HaHeichalot</em>, no <em>Shi'ur Komá</em>: duzentas e trinta e seis mil miríades de parasangas etc. <sup class="nref"><a href="#n12" id="r12">12</a></sup> Este corpo está vestido nas vestes de <em>Atzilut</em>. Como disseram nossos sábios, de abençoada memória: "Com dez vestes se vestiu o Santo, bendito seja" <sup class="nref"><a href="#n13" id="r13">13</a></sup>. Uma delas é a veste de majestade, como está escrito: "O Senhor reina, vestiu-se de majestade" — <em>"HaShem malach, gue'ut lavesh"</em> (Sl 93:1) etc. Este é o segredo do que se diz nos <em>Pirkei HaHeichalot</em>: o nome do <em>chaluk</em> [manto] do Criador, bendito seja, é <em>Zehari'el</em> etc. Mas na <em>Neshamá</em> que está dentro não há medida alguma. Ainda assim, em relação ao <em>Ein Sof</em>, podemos chamar também a <em>Neshamá</em> de "medidas" e "<em>sefirot</em>".</p></div><div class="he-text" lang="he" dir="rtl"><p>ונחזור לענין הגוף. כי זה הבחי&#x27; הוא י&quot;ס, עשר מדות, כי יש בהם גבול ומדה. כמ&quot;ש בפרקי ההיכלות בשיעור קומה, שהוא רל&quot;ו אלפים רבבות פרסאות כו&#x27;. וגוף הזה מלובש תוך לבושי דאצילות, וכמו שארז&quot;ל, בי&#x27; לבושים נתלבש הקב&quot;ה, לבוש של גאוה שנאמר ה&#x27; מלך גאות לבש וכו&#x27;. וז&quot;ס הנזכר בפרקי היכלות, כי שם החלוק של הבורא יתברך נקרא זהריא&quot;ל כו&#x27;. אך בנשמה שבפנים אין מדה כלל, אמנם בערך הא&quot;ס נוכל לכנותם בשם מדות וספירות גם אל הנשמה.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"><div class="note" id="n12"><b>12</b> <strong><em>Shi'ur Komá</em>.</strong> Texto da literatura dos <em>Heichalot</em> que atribui "medidas" ao corpo divino. O número (רל"ו = 236) tem <em>gematria</em> igual a <em>ve-rav ko'ach</em> ("e grande em força", Salmo 147:5). O ARI o cita só para mostrar que o corpo, diferentemente da alma, tem limite.</div><div class="note" id="n13"><b>13</b> <strong>"Dez vestes".</strong> Tradição midráshica que enumera dez vestes atribuídas a Deus na Bíblia, a partir de versículos como o Salmo 93:1. Uma das fontes é a <em>Pessikta de-Rav Kahana</em>. <em>Zehari'el</em> (de <em>zohar</em>, "esplendor") é o nome do manto divino nos <em>Pirkei HaHeichalot</em>.</div></aside>
+</article>
+<article class="item" id="i8">
+<div class="num"><span class="he">אות ח'</span><span class="pt">Item 8</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Estas vestes estão dentro da fase das casas, que são os sete <em>Heichalot</em> [palácios] de <em>Atzilut</em>. Estes são a fase do próprio mundo: os céus, a terra e o ar entre eles, pois tudo isto é fase das casas. Chamam-se "mundo de <em>Atzilut</em>". Nele habita o <em>Adam ha-Elyon</em> [Homem Superior], que é <em>Neshamá</em>, corpo e <em>levushei Malchut</em> [vestes reais] <sup class="nref"><a href="#n14" id="r14">14</a></sup>, posto no palácio do Rei Supremo, que é o conjunto do mundo de <em>Atzilut</em>.</p></div><div class="he-text" lang="he" dir="rtl"><p>והנה המלבושים האלה הם בתוך בחי&#x27; הבתים, שהם ז&#x27; היכלות דאצילות, שהם בחינת העולם בעצמו, שהם השמים והארץ והאויר שביניהן, כי כל זה בחי&#x27; הבתים. והם נקראים עולם אצילות, אשר בתוכו יושב האדם העליון, שהוא נשמה, וגוף, ולבושי מלכות, נתונים בהיכל מלך עליון שהוא כללות עולם האצילות.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"><div class="note" id="n14"><b>14</b> <strong><em>Levushei Malchut</em>.</strong> Há um duplo sentido: "vestes reais" e "vestes de <em>Malchut</em>". Mantive "reais" no corpo do texto por causa da imagem do "palácio do Rei".</div></aside>
+</article>
+<article class="item" id="i9">
+<div class="num"><span class="he">אות ט'</span><span class="pt">Item 9</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Estas quatro fases são a fase das dez <em>sefirot</em> que começam em <em>Chochmá</em>, como dito, e nelas há as quatro fases mencionadas. Há ainda a fase de <em>Keter</em>, a quinta fase, raiz de todas, e nela também está a raiz das quatro fases. Assim, a fase da luz e da <em>Neshamá</em> em <em>Keter</em> é raiz das dez <em>sefirot</em> das almas de <em>Atzilut</em>, que começam em <em>Chochmá</em>. A fase do corpo em <em>Keter</em> é raiz das dez <em>sefirot</em> dos corpos. A fase das vestes em <em>Keter</em> é raiz das dez <em>sefirot</em> das vestes. E a fase do <em>heichal</em> [palácio] em <em>Keter</em> é raiz das dez <em>sefirot</em> dos <em>heichalot</em> — todas nas dez <em>sefirot</em> de <em>Atzilut</em>, que começam em <em>Chochmá</em>.</p></div><div class="he-text" lang="he" dir="rtl"><p>ואלו הד&#x27; בחי&#x27; הם בחי&#x27; הי&quot;ס המתחילין מחכמה כנ&quot;ל, ויש בהם ד&#x27; בחי&#x27; כנ&quot;ל. ועוד יש בחי&#x27; הכתר, שהוא בחי&#x27; הה&#x27; הנ&quot;ל, שורש לכולם, ויש בה ג&quot;כ שורש ד&#x27; בחי&#x27; הנ&quot;ל. ונמצא שבחי&#x27; האור והנשמה שבכתר שורש לי&quot;ס הנשמות דאצילות המתחילין מחכמה כנ&quot;ל. ובחי&#x27; הגוף שבכתר הוא שורש לי&quot;ס הגופות שבי&quot;ס דאצילות המתחילים מחכמה כנ&quot;ל. ובחי&#x27; הלבושים שבכתר הוא שורש לי&quot;ס הלבושים שבי&quot;ס דאצילות המתחילים מחכמה כנ&quot;ל. ובחי&#x27; היכל שבכתר, שורש לי&quot;ס ההיכלות שבי&quot;ס האצילות המתחיל מחכמה כנ&quot;ל.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i10">
+<div class="num"><span class="he">אות י'</span><span class="pt">Item 10</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Depois foi criado o mundo de <em>Beriá</em>, exatamente do mesmo modo. Através do <em>masach</em> [tela] <sup class="nref"><a href="#n15" id="r15">15</a></sup>, que é o <em>karka</em> [chão] do palácio de <em>Atzilut</em>, a luz brilhou para baixo. Lá ficou gravado o <em>chotam</em> [selo, impressão] de tudo o que havia no mundo de <em>Atzilut</em>, e isso se chama mundo de <em>Beriá</em>. É assim porque ele é <em>or shel toledá</em> [luz derivada, "luz de geração"], e não a própria luz superior. Mas, sendo o selo de <em>Atzilut</em>, deve haver nele todas as fases que há em <em>Atzilut</em>.</p></div><div class="he-text" lang="he" dir="rtl"><p>אח&quot;כ נברא עולם הבריאה ע&quot;ד הנ&quot;ל ממש, כי דרך המסך שהוא קרקע ההיכל דאצילות, האיר למטה, ונחתם שם חותם כל מה שהיה בעולם האצילות, ונקרא עולם הבריאה, יען הוא אור של תולדה ואינו אור עצמו העליון, ואמנם כיון שהוא חותם האצילות, צריך שיהיו בו כל הבחי&#x27; אשר באצילות.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"><div class="note" id="n15"><b>15</b> <strong><em>Masach</em>.</strong> Literalmente "cortina" ou "anteparo". A tradição de Baal HaSulam o traduz por "tela" (<em>screen</em>): a força de recusa que repele a luz e gera a luz refletida. Aqui o ARI o identifica com o "chão" do palácio de <em>Atzilut</em>. A imagem do selo (<em>chotam</em>) e de sua impressão explica por que <em>Beriá</em> reproduz <em>Atzilut</em> em grau inferior.</div></aside>
+</article>
+<article class="item" id="i11">
+<div class="num"><span class="he">אות י"א</span><span class="pt">Item 11</span><span class=src-new title="Abre nova passagem-fonte">✱</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>A regra intermediária, a mais breve de todas, é esta <sup class="nref"><a href="#n16" id="r16">16</a></sup>. Cada uma das dez <em>sefirot</em> de <em>Atzilut</em>, e também <em>Keter</em>, contém: raiz, <em>Neshamá</em>, corpo, veste e palácio. Assim também em <em>BYA</em>, e assim também em <em>Adam Kadmon</em>, raiz de todo <em>ABYA</em>.</p></div><div class="he-text" lang="he" dir="rtl"><p>ואמנם הכלל הבינוני הקצר מכולם הוא זה, כי כל הי&quot;ס דאצילות וכתר ג&quot;כ, יש בכ&quot;א מהם : שורש, נשמה, גוף, לבוש, היכל. וכעד&quot;ז בי&quot;ע, וכעד&quot;ז א&quot;ק שהוא שורש לכל אבי&quot;ע.</p></div></div>
+<p class="srcref">Etz Chaim, Portão 42, fim do cap. 2.</p>
+</section>
+
+</div>
+<aside class="notes"><div class="note" id="n16"><b>16</b> <strong>"Regra intermediária, a mais breve".</strong> <em>Ha-klal ha-beinoni ha-katzar mi-kulam</em>: um resumo de médio alcance, entre a visão geral do item 1 e o detalhamento dos itens 13–15.</div></aside>
+</article>
+<article class="item" id="i12">
+<div class="num"><span class="he">אות י"ב</span><span class="pt">Item 12</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Resulta que tudo o que foi emanado é um só <em>HaVaYaH</em>, composto de cinco fases: a ponta do <em>Yod</em> em <em>Adam Kadmon</em>; o <em>Yod</em> em <em>Atzilut</em>; o <em>Hei</em> em <em>Beriá</em>; o <em>Vav</em> em <em>Yetzirá</em>; o <em>Hei</em> em <em>Assiá</em>. E cada uma destas fases é composta das cinco.</p></div><div class="he-text" lang="he" dir="rtl"><p>נמצא כי כל מה שנאצל הוא הוי&quot;ה א&#x27; כלולה מה&#x27; בחינות שהוא: קוץ של י&#x27; בא&quot;ק, י&#x27; באצילות, ה&#x27; בבריאה, ו&#x27; ביצירה, ה&#x27; בעשיה. וכל בחינה מאלו כלולה מכל הה&#x27;.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Or Pashut</div><p><span class="dibur">Tudo o que foi emanado é um só HaVaYaH, composto de cinco fases… e cada uma destas fases é composta das cinco.</span> Estas cinco fases estão na própria Luz Superior, e, do lado dela, não há diferença alguma entre um mundo e outro, entre um grau e outro. Todas as diferenças entre mundos e graus estão apenas nos <em>masachim</em> [telas] do vaso de <em>Malchut</em>. Sobre eles se faz o <em>zivug de-haka'á</em> [acoplamento por choque], que eleva <em>or chozer</em> [luz refletida], a qual reveste a Luz Superior. É o que escreve o ARI no <em>Etz Chaim</em>, Portão 47, cap. 1; veja-se bem ali.</p>
+<p>Nesta tela há quatro fases de <em>aviut</em> [espessura] <sup class="nref"><a href="#n17" id="r17">17</a></sup>. A tela mais espessa, por seu <em>zivug</em> com a Luz Superior, revela a <em>komá</em> [estatura] mais alta. A <em>aviut</em> de fase 4 produz uma estatura completa de luz refletida, até <em>Keter</em>. A de fase 3 chega só até <em>Chochmá</em>; a de fase 2, até <em>Biná</em>; a de fase 1, só até <em>Zeir Anpin</em>. E se na tela há apenas a fase-raiz da <em>aviut</em>, ela produz somente a estatura de <em>Malchut</em>. É o que diz o <em>Etz Chaim</em>, Portão 47, caps. 1 e 2. Isto foi bem explicado no início da Parte 5 do <em>Talmud Eser HaSefirot</em>, e também na <em>Histaklut Penimit</em> da Parte 2, com suas razões e fundamentos; aqui não é o lugar de alongar.</p>
+<p>Nisto estão todas as diferenças entre estes cinco mundos, <em>Adam Kadmon</em> e <em>ABYA</em>. Em <em>Adam Kadmon</em> atua a tela de fase 4; por isso a luz refletida atrai ali a estatura de <em>Keter</em>, e ele é discernido como o <em>Keter</em> de todos os mundos. No mundo de <em>Atzilut</em> atua a tela de fase 3; a luz refletida atrai ali a estatura de <em>Chochmá</em>, e por isso <em>Atzilut</em> é discernido como a <em>Chochmá</em> dos mundos. No mundo de <em>Beriá</em> atua a tela de fase 2, que atrai só a estatura de <em>Biná</em>; por isso ele é a <em>Biná</em> dos mundos. No mundo de <em>Yetzirá</em> atua a tela de fase 1, que atrai só a estatura de <em>Zeir Anpin</em>; por isso ele é o <em>Zeir Anpin</em> dos mundos, isto é, <em>Tiferet</em>. E a tela mais tênue de todas está no mundo de <em>Assiá</em>; por isso ali há apenas a estatura de <em>Malchut</em>. Contudo, as quatro fases de <em>or yashar</em> [luz direta] existem todas igualmente, mesmo em <em>Assiá</em>. A diferença é que em <em>Assiá</em> elas têm só a estatura de <em>Malchut</em>, em <em>Yetzirá</em> as quatro fases têm só a estatura de <em>Zeir Anpin</em>, e assim por diante.</p>
+<p>Não se objete o seguinte. Em <em>Adam Kadmon</em> há cinco <em>partzufim</em>, que são cinco estaturas, uma abaixo da outra, e o mesmo em <em>Atzilut</em>, onde se chamam <em>Arich Anpin</em>, <em>Abba ve-Ima</em> e <em>ZoN</em>. Em que, então, o <em>ZoN</em> de <em>Adam Kadmon</em> difere do <em>ZoN</em> de <em>Atzilut</em> e do <em>ZoN</em> dos mundos em geral, que são <em>Yetzirá</em> e <em>Assiá</em>? A questão é que cada mundo é discernido sobretudo pela fase mais alta que há nele. O <em>partzuf Galgaltá</em> de <em>Adam Kadmon</em>, o mais alto dele, tem a estatura de <em>Keter</em>; logo, todos os demais <em>partzufim</em> são discernidos como graus de <em>Keter</em>. Em <em>Atzilut</em>, o <em>partzuf</em> superior, chamado <em>Arich Anpin</em>, tem a estatura de <em>Chochmá</em>; logo, todos os seus <em>partzufim</em> são graus de <em>Chochmá</em>. Em <em>Beriá</em>, o <em>partzuf</em> superior tem a estatura de <em>Biná</em>, e todos são graus de <em>Biná</em>. Em <em>Yetzirá</em>, o <em>partzuf</em> superior tem só a estatura de <em>Zeir Anpin</em>, e todos os seus graus são graus de <em>Zeir Anpin</em>. E em <em>Assiá</em> contam como graus de <em>Malchut</em>. Esta é a regra: todos os graus que há em qualquer mundo são atribuídos ao <em>partzuf</em> superior dele e contados como seus ramos, pois a estatura dele brilha em todos os seus ramos.</p></section>
+
+</div>
+<aside class="notes"><div class="note" id="n17"><b>17</b> <strong><em>Aviut</em>.</strong> "Espessura", isto é, a medida do desejo de receber no vaso. Quanto maior a <em>aviut</em> da tela, maior a luz refletida e mais alta a estatura (<em>komá</em>) revelada. É a regra central de Baal HaSulam: a diferença entre os mundos não está na luz, que é uma só, mas nos vasos.</div></aside>
+</article>
+<article class="item" id="i13">
+<div class="num"><span class="he">אות י"ג</span><span class="pt">Item 13</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>A ponta do <em>Yod</em> em <em>Adam Kadmon</em> tem um <em>HaVaYaH</em> de outras cinco fases, que são as cinco fases do próprio <em>Adam Kadmon</em>: <em>Adam Kadmon</em> e o <em>ABYA</em> que há nele, isto é, raiz, <em>Neshamá</em>, corpo, veste e palácio. Da mesma forma, o <em>Yod</em> de <em>Atzilut</em> tem um <em>HaVaYaH</em> que abrange todas as cinco fases, e assim também as demais letras em <em>BYA</em>. São, pois, cinco letras, cada uma composta de todas: vinte e cinco fases.</p></div><div class="he-text" lang="he" dir="rtl"><p>כי קוץ של י&#x27; שבא&quot;ק, יש בה הוי&quot;ה א&#x27; של ה&#x27; בחינות אחרות, שהם ה&#x27; בחינות הנ&quot;ל בא&quot;ק עצמו, שהם א&quot;ק ואבי&quot;ע שבו, שהם ה&#x27; בחי&#x27;, שהם: שורש ונשמה וגוף ולבוש והיכל. וכן היו&quot;ד דאצילות, יש בה הוי&quot;ה אחת הכוללת כל הה&#x27; בחי&#x27; הנ&quot;ל, וכן עד&quot;ז שאר אותיות בבי&quot;ע. באופן שהם ה&#x27; אותיות כלולים כל האחד מכולם שהם כ&quot;ה בחינות.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i14">
+<div class="num"><span class="he">אות י"ד</span><span class="pt">Item 14</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Depois, do mesmo modo, há outra totalização, em que cada uma delas é composta de todas as vinte e cinco fases. O <em>Yod</em> de <em>Atzilut</em> tem um <em>HaVaYaH</em> composto das cinco fases, e cada uma das cinco é composta de cinco: dez <em>sefirot</em> de raiz, dez de <em>Neshamá</em>, dez de corpo, dez de veste e dez de palácio. Assim também na ponta do <em>Yod</em> em <em>Adam Kadmon</em>, no <em>Yod</em> em <em>Atzilut</em>, na letra <em>Hei</em> em <em>Beriá</em>, na letra <em>Vav</em> em <em>Yetzirá</em> etc.</p></div><div class="he-text" lang="he" dir="rtl"><p>ואח&quot;כ עד&quot;ז הנ&quot;ל יש כללות אחר, שכל א&#x27; מהם כלולה מן כל הכ&quot;ה בחינות. והוא, כי י&#x27; דאצילות יש בה הוי&quot;ה א&#x27; כלולה מכל ה&#x27; בחינות, וכל בחינה מה&#x27; כלולה מה&#x27;, שהם: י&quot;ס שורש, וי&quot;ס נשמה, וי&quot;ס גוף, וי&quot;ס לבוש, וי&quot;ס היכל. וכעד&quot;ז בקוץ של י&#x27; בא&quot;ק, י&#x27; באצילות, ובאות ה&#x27; בבריאה, ובאות ו&#x27; ביצירה, וכו&#x27;.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i15">
+<div class="num"><span class="he">אות ט"ו</span><span class="pt">Item 15</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Em resumo: <em>Adam Kadmon</em> é a ponta do <em>Yod</em>. Nele há um <em>HaVaYaH</em> que abrange cinco fases: raiz, <em>Neshamá</em>, corpo, veste e palácio. Cada uma destas é composta de cinco: dez <em>sefirot</em> de raiz, dez de <em>Neshamá</em>, dez de corpo, dez de veste e dez de palácio. E cada uma destas dez <em>sefirot</em> está incluída nos cinco <em>partzufim</em>, que são a raiz e <em>ABYA</em>.</p></div><div class="he-text" lang="he" dir="rtl"><p>נמצא, כי בקיצור הוא זה. כי הא&quot;ק הוא קוץ הי&#x27;, ויש בו הוי&quot;ה א&#x27; כוללת ה&#x27; בחי&#x27;: שורש, ונשמה, וגוף, ולבוש, והיכל. וכל בחי&#x27; מאלו כלולה מה&#x27; שהם: י&quot;ס שורש, וי&quot;ס נשמה, וי&quot;ס גוף, וי&quot;ס לבוש, וי&quot;ס היכל. וכל ספירה מאלו העשר ספירות נכללו בה&#x27; פרצופים, שהם השורש ואבי&quot;ע.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article></section></div>
+<div class="sheet"><section class="chapter" id="cap2"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">פרק ב׳</span><h2>Capítulo 2</h2><p class="ch-sub">O segundo tzimtzum, os envolventes e as klipot</p></header><article class="item" id="i16">
+<div class="num"><span class="he">אות ט"ז</span><span class="pt">Item 16</span><span class=src-new title="Abre nova passagem-fonte">✱</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Agora falaremos do que são as fases de cada um destes mundos. Sabe que a raiz, as almas e os corpos são uma só fase, sem separação entre eles. Já as vestes e os palácios são duas fases separadas das três fases mencionadas.</p></div><div class="he-text" lang="he" dir="rtl"><p>ועתה נדבר בבחי&#x27; כל עולם מאלו מה ענינם. דע, כי השורש והנשמות והגופים הם בחי&#x27; א&#x27; שאין פירוד ביניהן, אך הלבושים והיכלות הם ב&#x27; בחינות נפרדות מג&#x27; בחינות הנ&quot;ל.</p></div></div>
+<p class="srcref">Etz Chaim, Parte II, Portão 42, cap. 3.</p>
+</section>
+<section class="op"><div class="lbl">Or Pashut</div><p><span class="dibur">A raiz, as almas e os corpos são uma só fase, sem separação entre eles; já as vestes e os palácios são duas fases separadas etc.</span> Para entender estas coisas, é preciso conhecer o segredo do <em>shituf midat ha-rachamim ba-din</em> [a associação da qualidade da misericórdia com o julgamento] <sup class="nref"><a href="#n18" id="r18">18</a></sup>. Ele se deu no <em>Tzimtzum Sheni</em> [segunda contração] de <em>Adam Kadmon</em>, no segredo do versículo "No dia em que o Senhor Deus fez a terra e os céus" — <em>"Beyom assot HaShem Elohim eretz veshamayim"</em> (Gênesis 2:4). Ali Ele associou a qualidade da misericórdia ao julgamento, como escreve o ARI no <em>Etz Chaim</em>, Portão 3, cap. 2. É também o que disseram nossos sábios (<em>Bereshit Rabá</em> 12): "No princípio, subiu ao pensamento [divino] criar o mundo com a qualidade do julgamento. Viu que o mundo não subsistiria; antepôs a qualidade da misericórdia e associou-a à qualidade do julgamento."</p>
+<p>Explicação: <em>Malchut</em> chama-se <em>midat ha-din</em> [qualidade do julgamento], e <em>Biná</em> chama-se <em>midat ha-rachamim</em> [qualidade da misericórdia]. Para adoçar (<em>le-metek</em>) a qualidade do julgamento em <em>Malchut</em>, Ele associou e uniu <em>Malchut</em> a <em>Biná</em>, no segredo do versículo "E foram ambas" — <em>"Vatelachna shetehem"</em> (Rute 1:19) <sup class="nref"><a href="#n19" id="r19">19</a></sup>. Uniu o <em>Hei</em> de baixo, que é <em>Malchut</em>, ao primeiro <em>Hei</em>, que é <em>Biná</em>, e o <em>Hei</em> de baixo foi adoçado pelo primeiro.</p>
+<p>O início desta correção deu-se quando os <em>Nekudim</em> saíram da luz dos <em>Einaim</em> [olhos]. Pela expansão de <em>SaG</em> até o <em>Siyum Raglin</em> [o término dos pés] do <em>partzuf</em> interior de <em>Adam Kadmon</em>, chamado <em>Galgaltá</em> (como diz o <em>Etz Chaim</em>, Portão de <em>TaNTA</em>, cap. 1 <sup class="nref"><a href="#n20" id="r20">20</a></sup>), <em>SaG</em>, que é a estatura de <em>Biná</em>, misturou-se e uniu-se à <em>Malchut</em> que está em <em>TaNHY</em> do <em>Adam Kadmon</em> interior. Os dois <em>Hei</em> uniram-se um ao outro em todos os graus, até que o <em>Hei</em> de baixo subiu ao lugar dos <em>Nikvei Einaim</em> [as aberturas dos olhos] <sup class="nref"><a href="#n21" id="r21">21</a></sup>.</p>
+<p>Os <em>Einaim</em> são <em>Chochmá</em>, e <em>Nikvei Einaim</em> significa a <em>Nukvá</em> [o feminino] de <em>Chochmá</em>. Resulta que os olhos têm a fase do último <em>Hei</em> e a do primeiro <em>Hei</em>, no segredo de "Eu durmo, eu sou a segunda" — <em>"Ani yeshená, ani sheniá"</em> <sup class="nref"><a href="#n22" id="r22">22</a></sup>. É o que escreve o ARI no <em>Etz Chaim</em>, Portão 8, cap. 1, e isto foi explicado em toda a sua extensão no <em>Talmud Eser HaSefirot</em>, Parte 6. Assim, a qualidade da misericórdia, que é <em>Biná</em>, associou-se à qualidade do julgamento, que é <em>Malchut</em>.</p>
+<p>Porém, esta associação, embora seja uma elevação muito valiosa para <em>Malchut</em>, causou uma nova contração nos mundos. O <em>Tzimtzum Rishon</em> atingiu apenas a <em>sefirá</em> de <em>Malchut</em>; todas as nove <em>sefirot</em> primeiras estavam livres de qualquer contração. Agora, porém, <em>Malchut</em> subiu e uniu-se a <em>Biná</em>, e com isso elevou também sua contração até <em>Biná</em>, chamada <em>Nikvei Einaim</em>. Cada grau passou então a terminar na <em>sefirá</em> de <em>Biná</em>, como antes terminava no lugar de <em>Malchut</em>. E, como o <em>siyum</em> [término] de cada grau se fez no lugar de <em>Biná</em>, as duas <em>sefirot</em> <em>Zeir Anpin</em> e <em>Malchut</em> separaram-se e saíram de cada grau. Em cada grau restaram apenas as três <em>sefirot</em> <em>KaChaB</em>.</p>
+<p>É isto que ele diz: "Sabe que a raiz, as almas e os corpos são uma só fase, sem separação entre eles; já as vestes e os palácios são duas fases separadas das três fases mencionadas." A raiz, a alma e o corpo são as três <em>sefirot</em> <em>Keter</em>, <em>Chochmá</em> e <em>Biná</em>, como dito no item 1. Elas permaneceram em cada grau também depois do <em>Tzimtzum Sheni</em> e, por isso, estão unidas no grau. Já as vestes e os palácios, que são <em>Zeir Anpin</em> e <em>Malchut</em>, separaram-se de cada grau no <em>Tzimtzum Sheni</em>, porque o grau passou a terminar em <em>Biná</em>. Por isso separaram-se e tornaram-se <em>makifin</em> [envolventes] em torno do grau <sup class="nref"><a href="#n23" id="r23">23</a></sup>. Tudo aquilo que o grau não consegue receber agora, mas só mais tarde, é discernido como tendo se tornado envolvente. Por isso, <em>Zeir Anpin</em> e <em>Malchut</em>, que se separaram de cada grau, estão destinados a voltar e a unir-se a ele no futuro, no <em>Gmar HaTikun</em> [consumação da correção], e por isso são discernidos como tendo se tornado envolventes.</p>
+<p>É o que escreve o ARI (<em>Etz Chaim</em>, Portão 6, cap. 2): "Porém, do mundo dos <em>Nekudim</em> para baixo, que é o mundo de <em>Atzilut</em>, houve uma carência: não se revelaram neles, em todos os seus detalhes, mais do que cinco luzes interiores e duas luzes envolventes, que são o envolvente de <em>Chayá</em> e o envolvente de <em>Yechidá</em>." Nos <em>partzufim</em> de <em>Adam Kadmon</em>, anteriores ao mundo dos <em>Nekudim</em>, havia cinco fases interiores <em>KaChaB ZoN</em> e, diante delas, cinco fases <em>KaChaB ZoN</em> de luzes envolventes. Pois não há luz sem interior e envolvente, como se sabe: cada luz interior tem um envolvente próprio. Mas no mundo dos <em>Nekudim</em>, quando o lugar da contração subiu até a <em>sefirá</em> de <em>Biná</em>, surgiu uma carência também nas próprias luzes interiores. As duas <em>sefirot</em> interiores, <em>ZoN</em>, separaram-se do grau e tornaram-se envolventes. No grau restaram apenas os três vasos <em>KaChaB</em>, nos quais se vestem as três luzes interiores <em>NaRaN</em>. <em>Chayá</em> e <em>Yechidá</em> não têm vasos correspondentes no <em>partzuf</em> e ficam fora, no segredo do envolvente, como diz o <em>Etz Chaim</em>, Portão 40, <em>derush</em> 12.</p>
+<p>Não se objete: "Então deveriam ter ficado no <em>partzuf</em> as três grandes luzes, <em>Neshamá</em>, <em>Chayá</em> e <em>Yechidá</em>, e só <em>Ruach</em> e <em>Nefesh</em> deveriam ter se tornado envolventes. Afinal, as luzes <em>Neshamá</em>, <em>Chayá</em> e <em>Yechidá</em> sempre se vestem nos vasos de <em>Keter</em>, <em>Chochmá</em> e <em>Biná</em>, e <em>Nefesh</em> e <em>Ruach</em> nos vasos de <em>Zeir Anpin</em> e <em>Malchut</em>. Por que ele diz que <em>NaRaN</em> permaneceram no <em>partzuf</em> e que <em>Yechidá</em> e <em>Chayá</em> não têm vasos?"</p>
+<p>De fato, é preciso lembrar aqui a regra que o ARI nos estabeleceu (<em>Etz Chaim</em>, Portão 23, cap. 6) <sup class="nref"><a href="#n24" id="r24">24</a></sup>. Nos vasos, os superiores crescem primeiro; nas luzes é o inverso. Na entrada das luzes nos vasos, as luzes inferiores entram primeiro:</p>
+<div class="tw"><table class="lv">
+<thead>
+<tr>
+<th>Luz que chega</th>
+<th><em>Keter</em></th>
+<th><em>Chochmá</em></th>
+<th><em>Biná</em></th>
+<th><em>Zeir Anpin</em></th>
+<th><em>Malchut</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>só <em>Nefesh</em></td>
+<td><em>Nefesh</em></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>+ <em>Ruach</em></td>
+<td><em>Ruach</em></td>
+<td><em>Nefesh</em></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>+ <em>Neshamá</em></td>
+<td><em>Neshamá</em></td>
+<td><em>Ruach</em></td>
+<td><em>Nefesh</em></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>+ <em>Chayá</em></td>
+<td><em>Chayá</em></td>
+<td><em>Neshamá</em></td>
+<td><em>Ruach</em></td>
+<td><em>Nefesh</em></td>
+<td>—</td>
+</tr>
+<tr>
+<td>+ <em>Yechidá</em></td>
+<td><em>Yechidá</em></td>
+<td><em>Chayá</em></td>
+<td><em>Neshamá</em></td>
+<td><em>Ruach</em></td>
+<td><em>Nefesh</em></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(Tabela do tradutor: resume o que o original diz em prosa. Quando há só a luz de </em>Nefesh<em>, ela se veste no vaso de </em>Keter<em>. Vindo </em>Ruach<em>, </em>Nefesh<em> desce ao vaso de </em>Chochmá<em> e </em>Ruach<em> se veste em </em>Keter<em>, e assim por diante. Vindo </em>Yechidá<em>, </em>Nefesh<em> desce ao seu lugar, o vaso de </em>Malchut<em>.)</em></p>
+<p>Veja-se bem ali. Enquanto não entraram no <em>partzuf</em> todas as cinco luzes <em>NaRaNChaY</em>, as luzes não estão vestidas nos vasos que lhes correspondem, e há até uma relação inversa entre eles. Quando falta <em>Yechidá</em>, as quatro luzes <em>NaRaNCh</em> não se vestem em <em>ChuB TuM</em> deixando vazio o vaso de <em>Keter</em>. É exatamente o contrário: o vaso de <em>Malchut</em> fica vazio de toda luz, porque as quatro luzes se vestem nos vasos <em>KaChaB</em> e <em>Zeir Anpin</em>. E quando há apenas três luzes, <em>NaRaN</em>, elas não se vestem nos vasos <em>Biná</em>, <em>Zeir Anpin</em> e <em>Malchut</em>, deixando vazios <em>Keter</em> e <em>Chochmá</em>. Vestem-se em <em>KaChaB</em>, e os dois vasos inferiores é que ficam vazios. Há sempre, portanto, uma relação inversa entre vasos e luzes. Lembra-te disto sempre, pois sem esta regra não há compreensão alguma dos escritos do ARI.</p>
+<p>Com isso se entende bem o seguinte. Do mundo dos <em>Nekudim</em> em diante, fez-se um novo lugar de contração no vaso de <em>Biná</em>, e os dois vasos <em>Zeir Anpin</em> e <em>Malchut</em> separaram-se de cada grau e tornaram-se envolventes. Logo, só podem vestir-se em cada grau as três luzes <em>NaRaN</em>: <em>Neshamá</em> no vaso de <em>Keter</em>, <em>Ruach</em> no de <em>Chochmá</em> e <em>Nefesh</em> no de <em>Biná</em>. As duas luzes <em>Yechidá</em> e <em>Chayá</em> não têm vasos onde se vestir (como diz o ARI no <em>Etz Chaim</em>, Portão 40). Só no <em>Gmar HaTikun</em> os dois vasos <em>Zeir Anpin</em> e <em>Malchut</em> voltarão e se unirão ao grau, como eram no <em>Tzimtzum Rishon</em>. Então <em>Nefesh</em> descerá ao vaso de <em>Malchut</em>, <em>Ruach</em> ao de <em>Zeir Anpin</em> e <em>Neshamá</em> ao de <em>Biná</em>. Assim se abrirá lugar para as duas luzes <em>Chayá</em> e <em>Yechidá</em>, que poderão vestir-se nos vasos de <em>Keter</em> e <em>Chochmá</em>.</p>
+<p>A falta dos vasos <em>Zeir Anpin</em> e <em>Malchut</em> oculta, portanto, as luzes <em>Chayá</em> e <em>Yechidá</em>, que não têm lugar onde se vestir. Por isso os vasos <em>Zeir Anpin</em> e <em>Malchut</em> são discernidos como tendo se tornado envolventes de <em>Chayá</em> e <em>Yechidá</em>. Quer dizer: <em>Chayá</em> e <em>Yechidá</em> só podem voltar ao grau por meio deles. Com o retorno do vaso de <em>Zeir Anpin</em>, abre-se lugar para a luz de <em>Chayá</em> vestir-se no grau; com o retorno do vaso de <em>Malchut</em>, abre-se lugar também para a luz de <em>Yechidá</em>.</p>
+<p>Por isso diz o ARI (<em>Etz Chaim</em>, Portão 6): "Dos <em>Nekudim</em> em diante ocultaram-se os cinco envolventes de cada <em>partzuf</em>, e há agora apenas dois envolventes, <em>Chayá</em> e <em>Yechidá</em>; e também eles não são envolventes por sua própria fase." Antes do <em>Tzimtzum Sheni</em> de <em>Adam Kadmon</em>, que se deu nos <em>Nekudim</em>, as cinco luzes interiores <em>NaRaNChaY</em> vestiam-se em seus vasos como devido. Havia diante delas cinco luzes envolventes, e cada envolvente era de sua própria fase: ao interior de <em>Yechidá</em> correspondia a luz envolvente de <em>Yechidá</em>, ao interior de <em>Chayá</em> a luz envolvente de <em>Chayá</em>, e assim por diante. Mas depois do <em>Tzimtzum Sheni</em> dos <em>Nekudim</em>, as duas luzes <em>Yechidá</em> e <em>Chayá</em> ocultaram-se de cada grau. Já não há cinco envolventes diante de cinco interiores completos, pois os próprios interiores ainda carecem de <em>Chayá</em> e <em>Yechidá</em>. <em>Chayá</em> e <em>Yechidá</em> contam agora como envolventes dos <em>NaRaN</em> que ficaram no grau. Quando se completarem e entrarem como interiores, isto é, quando os dois vasos <em>Zeir Anpin</em> e <em>Malchut</em> se unirem de novo ao grau e todos os cinco interiores se completarem, voltarão também os cinco envolventes anteriores.</p>
+<p>Há, portanto, agora duas carências. A primeira: faltaram e ocultaram-se os cinco envolventes anteriores, por causa da carência surgida nas próprias luzes interiores. A segunda: mesmo os dois envolventes que restaram, <em>Chayá</em> e <em>Yechidá</em>, não são envolventes de sua própria fase. No <em>partzuf</em> não há interiores de <em>Chayá</em> e <em>Yechidá</em> aos quais esses envolventes se refiram; eles iluminam os <em>NaRaN</em>, que não são de sua fase. E isso porque, na verdade, são interiores: tornaram-se envolventes apenas pela separação dos dois vasos <em>Zeir Anpin</em> e <em>Malchut</em>. É o que diz ali: "Mas os outros três interiores não têm envolventes da fase de <em>NaRaN</em>, só da fase de <em>Yechidá</em> e <em>Chayá</em>, que envolvem todos, e não de sua própria fase", como explicado.</p>
+<p>Não se objete: por que no <em>Etz Chaim</em>, Portão 40, o ARI diz que há três interiores e dois envolventes, e no Portão 6, cap. 2, diz que há cinco interiores e dois envolventes? Na verdade, há dois vasos, <em>Zeir Anpin</em> e <em>Malchut</em>, em cada grau também depois do <em>Tzimtzum Sheni</em>. Só que não são de sua própria fase: são da fase da expansão de <em>Biná</em>, pois o próprio vaso de <em>Biná</em> se expandiu também em <em>Zeir Anpin</em> e <em>Malchut</em>. Como esses <em>Zeir Anpin</em> e <em>Malchut</em> não são originários, mas vêm de <em>Biná</em>, ainda agora não se contam mais que três vasos <em>KaChaB</em> em cada grau. Mas essa expansão do vaso de <em>Biná</em> em <em>Zeir Anpin</em> e <em>Malchut</em> faz com que as duas luzes <em>Chayá</em> e <em>Yechidá</em> possam vestir-se no <em>partzuf</em>. Só que não têm um vaso próprio e vestem-se dentro da luz de <em>Neshamá</em>. Por isso estas luzes de <em>Chayá</em> e <em>Yechidá</em> não têm a plenitude que tinham quando dispunham de vasos próprios.</p>
+<p>Assim, em relação aos graus de <em>Adam Kadmon</em>, quando havia cinco vasos no <em>partzuf</em>, as luzes <em>Chayá</em> e <em>Yechidá</em> faltam por completo, depois de se separarem e se tornarem envolventes de veste e palácio. É o que diz no Portão 40, <em>derush</em> 12: no <em>partzuf</em> só restaram três luzes interiores, <em>NaRaN</em>. Mas em relação aos próprios graus do <em>Tzimtzum Sheni</em>, é possível haver também neles cinco interiores <em>NaRaNChaY</em>, por força dos dois vasos novos de <em>ZoN</em> que se expandem a partir de <em>Biná</em>. Neles, <em>Chayá</em> e <em>Yechidá</em> vestem-se dentro da luz de <em>Neshamá</em>, como se sabe.</p></section>
+
+</div>
+<aside class="notes"><div class="note" id="n18"><b>18</b> <strong><em>Shituf midat ha-rachamim ba-din</em>.</strong> Os nomes divinos do versículo são lidos como as duas qualidades: <em>HaShem</em> (<em>HaVaYaH</em>) é a misericórdia e <em>Elohim</em> é o julgamento. Em Gênesis 1 aparece só <em>Elohim</em>; em Gênesis 2:4 os dois aparecem juntos pela primeira vez. A citação do Midrash (<em>Bereshit Rabá</em> 12:15) é a mesma que Rashi traz em Gênesis 1:1.</div><div class="note" id="n19"><b>19</b> <strong>"E foram ambas" (Rute 1:19).</strong> No contexto bíblico são Noemi e Rute. O Zohar lê o versículo como a união das duas <em>Hei</em>: <em>Malchut</em> (Rute) segue <em>Biná</em> (Noemi). "Adoçar" (<em>mitik</em>, <em>hamtaká</em>) é o termo técnico para a mitigação do julgamento pela misericórdia.</div><div class="note" id="n20"><b>20</b> <strong>Referência.</strong> O original traz "שער טנת"א מ"ב פ"א", que leio como "Portão de <em>TaNTA</em>, cap. 1". A numeração "42" que acompanha a referência é ambígua no texto-base e deve ser conferida numa edição impressa.</div><div class="note" id="n21"><b>21</b> <strong><em>Nikvei Einaim</em>.</strong> Literalmente "os orifícios dos olhos". <em>Nekev</em> (orifício) e <em>nekevá</em> (feminino) têm a mesma raiz, e Baal HaSulam explora isso: "a <em>Nukvá</em> de <em>Chochmá</em>". É o ponto onde passa a terminar o grau no <em>Tzimtzum Sheni</em>: entre <em>Chochmá</em> e <em>Biná</em> da cabeça, e não mais embaixo, em <em>Malchut</em>.</div><div class="note" id="n22"><b>22</b> <strong>"Ani yeshená, ani sheniá".</strong> Releitura zoharíca de Cântico dos Cânticos 5:2, <em>"Ani yeshená velibi er"</em> ("Eu durmo, mas meu coração vela"). A palavra <em>yeshená</em> (ישנה, "durmo") é lida como <em>sheniá</em> (שניה, "segunda"), pela troca de letras. A <em>Malchut</em> que subiu à <em>Biná</em> é "a segunda", o segundo <em>Hei</em> fundido ao primeiro.</div><div class="note" id="n23"><b>23</b> <strong><em>Makif</em> (pl. <em>makifin</em>).</strong> "Envolvente", "circundante". A definição funcional que Baal HaSulam dá aqui é preciosa: envolvente é tudo o que o grau ainda não pode receber, mas receberá depois. O envolvente é, portanto, a luz <em>futura</em> do grau, e não algo exterior a ele.</div><div class="note" id="n24"><b>24</b> <strong><em>Erech hafuch</em>.</strong> A "relação inversa" entre vasos e luzes. A tabela não está no original: é uma diagramação do tradutor para o parágrafo em prosa, sem acréscimo de conteúdo. A conclusão é que, faltando os vasos inferiores, faltam as luzes superiores.</div></aside>
+</article>
+<article class="item" id="i17">
+<div class="num"><span class="he">אות י"ז</span><span class="pt">Item 17</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Entre estes dois, isto é, entre os corpos e as vestes, fica a morada das <em>klipot</em> [cascas], e elas se apegam justamente ao <em>achor</em> [dorso] da luz do corpo <sup class="nref"><a href="#n25" id="r25">25</a></sup>. A razão é esta. As três fases da interioridade têm em si luz interior, e a parte mais inferior da luz interior sai até dentro da pele e ali termina. A luz envolvente é o inverso: a luz mais externa é a maior, como se sabe. Resulta que a luz envolvente da veste mais interior, colada ao corpo, é a menor luz envolvente de todas.</p></div><div class="he-text" lang="he" dir="rtl"><p>ובין ב&#x27; אלו, שהם בין הגופים ובין הלבושים, שם הם מדור הקליפות, והם ממש נדבקים באחור אור הגוף. וטעם הדבר מפני שג&#x27; בחי&#x27; הפנימיות יש בתוכם או&quot;פ, והיותר גרוע באו&quot;פ יוצא בתוך העור, ושם מסתיים. ואור המקיף הוא להיפך, כי אור היותר חיצון הוא גדול יותר, כנודע. נמצא כי אור מקיף שבלבוש היותר פנימי הנדבק אל הגוף, הוא אור המקיף היותר קטן שיש בכולם.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Or Pashut</div><p><span class="dibur">A luz envolvente que está na veste etc. é a menor luz envolvente etc.</span> Isto já foi explicado no comentário anterior. O vaso de <em>Zeir Anpin</em>, separado por força do <em>Tzimtzum Sheni</em>, tornou-se o envolvente de <em>Chayá</em> e chama-se "veste". O vaso de <em>Malchut</em>, separado do grau, tornou-se o envolvente da luz de <em>Yechidá</em>. Isso se deve à relação inversa entre os vasos e a investidura das luzes; veja-se bem ali. Por isso o envolvente da veste é menor que o envolvente do palácio: o envolvente da veste é <em>Chayá</em>, e o envolvente do palácio é <em>Yechidá</em>.</p></section>
+
+</div>
+<aside class="notes"><div class="note" id="n25"><b>25</b> <strong><em>Achor</em>.</strong> "Dorso", "parte de trás". As <em>klipot</em> não têm acesso ao <em>panim</em> (face) e prendem-se ao dorso, que é a fronteira onde a luz interior se esgota e a envolvente ainda não chega.</div></aside>
+</article>
+<article class="item" id="i18">
+<div class="num"><span class="he">אות י"ח</span><span class="pt">Item 18</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Por isso a morada das <em>klipot</em> fica ali, no meio, num lugar onde não há nem luz interior nem luz envolvente, isto é, entre o interior e o envolvente. Ali se chama <em>mekom ha-choshech</em> [o lugar da escuridão]. E assim é em cada mundo, quanto às <em>klipot</em> daquele mundo.</p></div><div class="he-text" lang="he" dir="rtl"><p>לכן הקליפות מדורם שם באמצע, במקום שאין שם לא או&quot;פ ולא או&quot;מ, והוא באמצע בין הפנימי למקיף, ושם נקרא מקום החשך. והענין הזה בכל עולם ועולם בבחי&#x27; הקליפות אשר בעולם ההוא.</p></div></div>
+</section>
+<figure class="fig">
+<figcaption><span class="lbl">Esquema 3</span> O grau antes e depois do Tzimtzum Sheni (itens 16–18)</figcaption>
+<div class="tw"><svg viewBox="0 0 640 360" role="img" aria-label="O grau antes e depois do Tzimtzum Sheni"><text x="115.0" y="22" class="t-h" text-anchor="middle">Tzimtzum Rishon (AK)</text><rect x="40" y="40" width="150" height="44" rx="3" class="v-in"/><text x="50" y="58" class="t-v">Keter</text><text x="50" y="75" class="t-l">luz Yechidá</text><rect x="40" y="92" width="150" height="44" rx="3" class="v-in"/><text x="50" y="110" class="t-v">Chochmá</text><text x="50" y="127" class="t-l">luz Chayá</text><rect x="40" y="144" width="150" height="44" rx="3" class="v-in"/><text x="50" y="162" class="t-v">Biná</text><text x="50" y="179" class="t-l">luz Neshamá</text><rect x="40" y="196" width="150" height="44" rx="3" class="v-in"/><text x="50" y="214" class="t-v">Zeir Anpin</text><text x="50" y="231" class="t-l">luz Ruach</text><rect x="40" y="248" width="150" height="44" rx="3" class="v-in"/><text x="50" y="266" class="t-v">Malchut</text><text x="50" y="283" class="t-l">luz Nefesh</text><text x="405.0" y="22" class="t-h" text-anchor="middle">Tzimtzum Sheni (Nekudim)</text><rect x="330" y="40" width="150" height="44" rx="3" class="v-in"/><text x="340" y="58" class="t-v">Keter</text><text x="340" y="75" class="t-l">luz Neshamá</text><rect x="330" y="92" width="150" height="44" rx="3" class="v-in"/><text x="340" y="110" class="t-v">Chochmá</text><text x="340" y="127" class="t-l">luz Ruach</text><rect x="330" y="144" width="150" height="44" rx="3" class="v-in"/><text x="340" y="162" class="t-v">Biná</text><text x="340" y="179" class="t-l">luz Nefesh</text><rect x="330" y="196" width="150" height="44" rx="3" class="v-out"/><text x="340" y="214" class="t-v">Zeir Anpin</text><text x="340" y="231" class="t-l">veste · envolve Chayá</text><rect x="330" y="248" width="150" height="44" rx="3" class="v-out"/><text x="340" y="266" class="t-v">Malchut</text><text x="340" y="283" class="t-l">palácio · envolve Yechidá</text><line x1="316" y1="192" x2="494" y2="192" class="cut"/><text x="498" y="196" class="t-s">siyum em Biná</text><text x="40" y="330" class="t-s">Vasos interiores</text><rect x="150" y="320" width="18" height="12" class="v-in"/><text x="190" y="330" class="t-s">Separados, tornam-se envolventes (makifin)</text><rect x="468" y="320" width="18" height="12" class="v-out"/></svg></div>
+<p class="figcap">Com o término do grau elevado a Biná, Zeir Anpin e Malchut saem e tornam-se veste e palácio. Pela relação inversa, Chayá e Yechidá ficam sem vaso e passam a envolver; entre o corpo e a veste fica o “lugar da escuridão”, morada das klipot.</p>
+</figure>
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i19">
+<div class="num"><span class="he">אות י"ט</span><span class="pt">Item 19</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Tendo explicado a coisa em detalhe, falemos em geral. Sabe-se que na interioridade de <em>Adam Kadmon</em> está o <em>Ein Sof</em>, vestido na raiz das almas das dez <em>sefirot</em> que há nele. Estas se vestem na fase das almas de todas as suas dez <em>sefirot</em>, e estas, por sua vez, nas dez <em>sefirot</em> da fase do corpo de <em>Adam Kadmon</em>.</p></div><div class="he-text" lang="he" dir="rtl"><p>ואמנם אחר שבארנו הדבר בפרטות, נדבר בכללות. והוא, כי הנה נודע שבפנימיות הא&quot;ק הוא הא&quot;ס המתלבש בשורש הנשמות של י&quot;ס שבו, ואלו מתלבשין בבחי&#x27; הנשמות של כל הי&quot;ס שבו, ואלו מתלבשין בי&quot;ס של בחי&#x27; הגוף של א&quot;ק.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i20">
+<div class="num"><span class="he">אות כ'</span><span class="pt">Item 20</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Seria de esperar que as dez <em>sefirot</em> dos corpos se vestissem nas dez <em>sefirot</em> das vestes. Mas não é assim, pela razão mencionada. São as três fases de <em>Atik</em> de <em>Atzilut</em> que envolvem estas três fases de <em>Adam Kadmon</em>. Como? As dez <em>sefirot</em> dos corpos de <em>Adam Kadmon</em> vestem-se dentro das dez <em>sefirot</em> das raízes das almas das dez <em>sefirot</em> de <em>Atik</em> de <em>Atzilut</em>. Estas vestem-se nas dez <em>sefirot</em> da fase das almas de <em>Atik</em> de <em>Atzilut</em>, e estas nas dez <em>sefirot</em> dos corpos de <em>Atik</em> de <em>Atzilut</em>.</p></div><div class="he-text" lang="he" dir="rtl"><p>ומהראוי היה שהי&quot;ס של הגופים יתלבשו בי&quot;ס דלבושים, ואמנם אינו כן לסבה הנ&quot;ל, אמנם ג&#x27; בחי&#x27; עתיק דאצילות מסבבות אל ג&#x27; בחינות אלו דא&quot;ק, כיצד, הרי שהי&quot;ס דגופות דא&quot;ק מתלבשים תוך י&quot;ס השרשים של הנשמות י&quot;ס דעתיק דאצילות, ואלו מתלבשים בי&quot;ס של בחי&#x27; נשמות דעתיק דאצילות, ואלו מתלבשים בי&quot;ס דגופות דעתיק דאצילות.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i21">
+<div class="num"><span class="he">אות כ"א</span><span class="pt">Item 21</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Do mesmo modo, as fases das raízes, dos corpos e das almas de <em>Arich Anpin</em> revestem os corpos de <em>Atik</em>. Do mesmo modo, as três fases de <em>Abba</em> revestem <em>Arich Anpin</em>; as três fases de <em>Ima</em>, <em>Abba</em>; as três fases de <em>Zeir Anpin</em>, <em>Ima</em>; e as três fases da <em>Nukvá</em>, <em>Zeir Anpin</em>. Estão assim completas todas as fases dos corpos, até a <em>Nukvá</em> de <em>Zeir Anpin</em>. E aqui, no dorso dos corpos da <em>Nukvá</em>, apegam-se todas as <em>klipot</em> de <em>Atzilut</em>, das dez <em>sefirot</em> que há nelas, do modo descrito acima.</p></div><div class="he-text" lang="he" dir="rtl"><p>וכעד&quot;ז בחי&#x27; השרשים וגופים ונשמות דא&quot;א מלבישין לגופות דעתיק. וכעד&quot;ז ג&#x27; בחי&#x27; דאבא מלבישין לא&quot;א. וכן ג&#x27; בחינות דאמא לאבא, וג&#x27; בחי&#x27; דז&quot;א לאמא, וג&#x27; בחי&#x27; נוקבא לז&quot;א. והרי עתה נשלמו כל בחי&#x27; הגופות עד נוקבא דז&quot;א. והנה כאן באחורים דגופות הנוקבא נדבקים כל הקליפות דאצילות די&quot;ס שבהם, ואלו הם ע&quot;ד הנ&quot;ל.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i22">
+<div class="num"><span class="he">אות כ"ב</span><span class="pt">Item 22</span><span class=src-new title="Abre nova passagem-fonte">✱</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Para isso, precisamos explicar-te o que são as vestes e os palácios. Sabe que as vestes são a fase dos vasos da luz envolvente, e entre cada veste e outra há uma luz envolvente. Estas são as luzes envolventes do <em>yosher</em> [retidão, a Linha] sobre todo <em>Atzilut</em> <sup class="nref"><a href="#n26" id="r26">26</a></sup>. Como se diz em outro lugar, há três fases de vasos envolventes, e sobre eles os envolventes de <em>NaRaN</em>, como dito acima.</p></div><div class="he-text" lang="he" dir="rtl"><p>ולזה צריך שנודיעך ענין הלבושים והיכלות מה עניינם. דע כי הלבושים הם בחי&#x27; הכלים אל או&quot;מ, ובין כל לבוש ולבוש יש או&quot;מ א&#x27;, ואלו הם בחינות אורות דמקיפים דיושר על כל האצילות. כנזכר במ&quot;א, שיש ג&#x27; בחי&#x27; כלים המקיפים, ועליהם מקיפין (האורות) דנר&quot;ן וכנ&quot;ל.</p></div></div>
+<p class="srcref">Etz Chaim, Parte II, Portão 42, cap. 3.</p>
+</section>
+<section class="op"><div class="lbl">Or Pashut</div><p><span class="dibur">Há três fases de vasos envolventes, e sobre eles os envolventes de NaRaN.</span> Há edições em que está escrito "e sobre eles envolvem as luzes de <em>NaRaN</em>". Mas a palavra "luzes" é <em>ta'ut sofer</em> [erro de copista] <sup class="nref"><a href="#n27" id="r27">27</a></sup>. A fase dos vasos envolventes do <em>yosher</em>, que são as vestes, são vasos de <em>Zeir Anpin</em>, como dito acima. E a luz envolvente que está sobre esses vasos envolventes é o envolvente de <em>Chayá</em>, e não luzes de <em>NaRaN</em>. É o que escreve o ARI no <em>Etz Chaim</em>, Portão 6, cap. 2, já citado: "Não há envolventes da fase de <em>NaRaN</em>, só da fase de <em>Yechidá</em> e <em>Chayá</em>, que envolvem todos, e não de sua própria fase." Não há, portanto, nenhuma luz envolvente da fase de <em>NaRaN</em>.</p>
+<p>Já em outras edições lê-se "e sobre eles os envolventes de <em>NaRaN</em>", sem a palavra "luzes", e essa é a leitura verdadeira. Significa o seguinte. Assim como há três vasos interiores, externo, médio e interno, nos quais se vestem as três luzes interiores <em>NaRaN</em>, assim também na fase das vestes há três fases de vasos envolventes, interno, médio e externo. Em torno deles giram as luzes envolventes que iluminam os <em>NaRaN</em> interiores, como diz o <em>Etz Chaim</em>, Portão 40, <em>derush</em> 13. Embora esta luz envolvente seja a luz envolvente de <em>Chayá</em>, ela ilumina os <em>NaRaN</em> interiores, ainda que não seja de sua própria fase, como nas palavras do ARI acima. Por isso é discernida como "envolventes de <em>NaRaN</em>". Entende.</p></section>
+
+</div>
+<aside class="notes"><div class="note" id="n26"><b>26</b> <strong><em>Yosher</em> e <em>iguilim</em>.</strong> "Retidão" (a Linha, <em>Kav</em>) e "círculos": os dois modos de iluminação depois do <em>Tzimtzum</em>. Aqui as vestes são envolventes "de <em>yosher</em>" e os palácios são os "círculos".</div><div class="note" id="n27"><b>27</b> <strong><em>Ta'ut sofer</em>.</strong> O original abrevia ט"ס. É uma das raras intervenções filológicas de Baal HaSulam no texto do <em>Etz Chaim</em>: ele escolhe entre variantes de edições pela coerência doutrinária. Neste item, ele recusa "luzes de <em>NaRaN</em>" porque não existe envolvente próprio de <em>NaRaN</em>.</div></aside>
+</article>
+<article class="item" id="i23">
+<div class="num"><span class="he">אות כ"ג</span><span class="pt">Item 23</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Esses vasos envolventes são as vestes. E os palácios são os <em>iguilim</em> [círculos], como se diz em toda parte: eles giram em torno das luzes envolventes, que são as vestes, como dito. São a fase dos <em>reki'im</em> [firmamentos] que se arredondam, e são a fase dos palácios daquele mundo.</p></div><div class="he-text" lang="he" dir="rtl"><p>ואותן הכלים דמקיפין הם הלבושים. וכן ההיכלות, הם העגולים, כנזכר בכל מקום שהם סובבים על אורות המקיף שהם הלבושים כנזכר, והם בחינת הרקיעים המתעגלים, שהם בחי&#x27; ההיכלות של עולם ההוא.</p></div></div>
+</section>
+
+</div>
+<aside class="notes"></aside>
+</article>
+<article class="item" id="i24">
+<div class="num"><span class="he">אות כ"ד</span><span class="pt">Item 24</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">ARI</div>
+<div class="pair"><div class="pt-text"><p>Por isso estes círculos giram em torno de todas as fases, pois são como casas onde o homem mora. Sobre eles há a iluminação de envolventes muito grandes, que não podem entrar em limite e medida. Nem mesmo dentro das casas e dos palácios, que são vasos imensamente grandes, conseguem contrair-se; muito menos em vasos pequenos, semelhantes a corpos. Portanto, não te admires de que as luzes envolventes estejam nos círculos e nas vestes. Ao contrário: por sua grandeza, não se vestem no corpo, mas só num lugar muito, muito amplo. Quanto mais amplo o lugar, maior a luz envolvente, e a coisa é compreensível.</p></div><div class="he-text" lang="he" dir="rtl"><p>ולכן אלו העגולים הם סובבים על כל הבחי&#x27;, כי הם דמיון בתים שבתוכם דר האדם, ועליהם הוא הארת המקיפים גדולים מאד, שא&quot;א להם להכנס תוך גבול ומדה. כי אפילו בתוך הבתים והיכלות, שהם כלים גדולים במאד מאד, אינם יכולים להתצמצם שם, ומכ&quot;ש בכלים קטנים דמיון גופים. ולכן אל תתמה אם אורות המקיפים הם בעיגולים ובלבושים, כי אדרבא לרוב גודלם אינם מתלבשין בגוף, אלא במקום רחב מאד מאד, וכל מה שהמקום רחב יש אור יותר גדול מקיף, והדבר מובן.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Or Pashut</div><p><span class="dibur">Como casas onde o homem mora, e sobre eles há a iluminação de envolventes muito grandes.</span> Já foi explicado que a fase dos palácios e das casas é a luz envolvente de <em>Yechidá</em>. Por isso ele diz que sobre eles a iluminação dos envolventes é muito grande, pois a luz de <em>Yechidá</em> é a maior de todas as luzes.</p>
+<p><span class="dibur">Quanto mais amplo o lugar, maior a luz envolvente.</span> Quer dizer: o espaço amplo do lugar indica o afastamento da luz envolvente em relação ao homem que mora dentro dele, isto é, em relação aos seus vasos interiores. A luz envolvente das vestes é envolvente apenas da fase de <em>Chayá</em>, menor que a luz de <em>Yechidá</em>. Por isso não há tanto afastamento e espaço entre as vestes e o corpo do homem, pois ela está perto de iluminar os vasos interiores. Já as casas e os palácios são envolventes da luz de <em>Yechidá</em>, que é muito grande. Os vasos interiores estão muito longe de receber essa luz envolvente, por ser grande demais. Por isso há grande distância entre o homem e seus vasos interiores, de um lado, e as paredes das casas e dos palácios, que são os vasos envolventes, do outro <sup class="nref"><a href="#n28" id="r28">28</a></sup>.</p></section>
+
+</div>
+<aside class="notes"><div class="note" id="n28"><b>28</b> <strong>Distância e grandeza.</strong> O espaço vazio entre o homem e as paredes da casa mede o grau de inacessibilidade da luz. A imagem física (veste justa, casa ampla) traduz uma relação de capacidade: quanto maior a luz, mais distante o vaso que a retém.</div></aside>
+</article></section></div>
+<div class="sheet" id="gloss"><h2 class="plain">Glossário</h2><p>Os termos estão em ordem alfabética da transliteração, com a grafia hebraica e a solução adotada nesta tradução.</p>
+<div class="tw"><table class="gloss">
+<thead>
+<tr>
+<th>Transliteração</th>
+<th>Hebraico</th>
+<th>Tradução adotada</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Achor</em></td>
+<td>אחור</td>
+<td>dorso</td>
+<td>oposto a <em>panim</em> (face); onde se prendem as <em>klipot</em></td>
+</tr>
+<tr>
+<td><em>Adam Kadmon</em></td>
+<td>אדם קדמון</td>
+<td>Homem Primordial</td>
+<td>o primeiro mundo, raiz de <em>ABYA</em>; = <em>Keter</em></td>
+</tr>
+<tr>
+<td><em>Atzilut, Beriá, Yetzirá, Assiá</em></td>
+<td>אצילות, בריאה, יצירה, עשיה</td>
+<td>Emanação, Criação, Formação, Ação</td>
+<td>mantidos em hebraico</td>
+</tr>
+<tr>
+<td><em>Aviut</em></td>
+<td>עביות</td>
+<td>espessura</td>
+<td>grau do desejo no vaso; define a estatura</td>
+</tr>
+<tr>
+<td><em>Bayit / Heichal</em></td>
+<td>בית / היכל</td>
+<td>casa / palácio</td>
+<td>quarta fase; envolvente de <em>Yechidá</em></td>
+</tr>
+<tr>
+<td><em>Bechiná</em></td>
+<td>בחינה</td>
+<td>fase</td>
+<td>também "aspecto", "discernimento"</td>
+</tr>
+<tr>
+<td><em>Chassadim</em></td>
+<td>חסדים</td>
+<td>misericórdias</td>
+<td>a luz do corpo</td>
+</tr>
+<tr>
+<td><em>Chotam</em></td>
+<td>חותם</td>
+<td>selo, impressão</td>
+<td><em>Beriá</em> como selo de <em>Atzilut</em></td>
+</tr>
+<tr>
+<td><em>Ein Sof</em></td>
+<td>אין סוף</td>
+<td>Infinito</td>
+<td>mantido em hebraico</td>
+</tr>
+<tr>
+<td><em>Einaim / Nikvei Einaim</em></td>
+<td>עינים / נקבי עינים</td>
+<td>olhos / aberturas dos olhos</td>
+<td>o novo término do grau no <em>Tzimtzum Sheni</em></td>
+</tr>
+<tr>
+<td><em>Erech hafuch</em></td>
+<td>ערך הפוך</td>
+<td>relação inversa</td>
+<td>entre luzes e vasos</td>
+</tr>
+<tr>
+<td><em>Gmar HaTikun</em></td>
+<td>גמר התיקון</td>
+<td>consumação da correção</td>
+<td>quando <em>ZoN</em> voltam a cada grau</td>
+</tr>
+<tr>
+<td><em>Guf</em></td>
+<td>גוף</td>
+<td>corpo</td>
+<td>segunda fase; oposto a <em>rosh</em></td>
+</tr>
+<tr>
+<td><em>Guevurot</em></td>
+<td>גבורות</td>
+<td>rigores</td>
+<td>as cinco fases em <em>Malchut</em></td>
+</tr>
+<tr>
+<td><em>Hitkalelut</em></td>
+<td>התכללות</td>
+<td>inclusão mútua</td>
+<td>cada <em>sefirá</em> contém todas</td>
+</tr>
+<tr>
+<td><em>Iguilim / Yosher</em></td>
+<td>עיגולים / יושר</td>
+<td>círculos / retidão</td>
+<td>os dois modos de iluminação</td>
+</tr>
+<tr>
+<td><em>Kelim</em></td>
+<td>כלים</td>
+<td>vasos</td>
+<td></td>
+</tr>
+<tr>
+<td><em>Klipot</em></td>
+<td>קליפות</td>
+<td>cascas</td>
+<td>forças da impureza</td>
+</tr>
+<tr>
+<td><em>Komá</em></td>
+<td>קומה</td>
+<td>estatura</td>
+<td>o nível alcançado pelo <em>zivug</em></td>
+</tr>
+<tr>
+<td><em>Levush</em></td>
+<td>לבוש</td>
+<td>veste</td>
+<td>terceira fase; envolvente de <em>Chayá</em></td>
+</tr>
+<tr>
+<td><em>Ma'atzil / Ne'etzal</em></td>
+<td>מאציל / נאצל</td>
+<td>Emanador / emanado</td>
+<td></td>
+</tr>
+<tr>
+<td><em>Makif / Or Makif</em></td>
+<td>מקיף / אור מקיף</td>
+<td>envolvente / luz envolvente</td>
+<td>o que o grau receberá no futuro</td>
+</tr>
+<tr>
+<td><em>Masach</em></td>
+<td>מסך</td>
+<td>tela</td>
+<td>força que repele a luz e gera <em>or chozer</em></td>
+</tr>
+<tr>
+<td><em>Midat ha-din / ha-rachamim</em></td>
+<td>מדת הדין / הרחמים</td>
+<td>qualidade do julgamento / da misericórdia</td>
+<td><em>Malchut</em> / <em>Biná</em></td>
+</tr>
+<tr>
+<td><em>NaRaNChaY</em></td>
+<td>נרנח"י</td>
+<td>as cinco luzes</td>
+<td><em>Nefesh, Ruach, Neshamá, Chayá, Yechidá</em></td>
+</tr>
+<tr>
+<td><em>Nekudim</em></td>
+<td>נקודים</td>
+<td>(mundo dos) Pontos</td>
+<td>onde se dá o <em>Tzimtzum Sheni</em></td>
+</tr>
+<tr>
+<td><em>Or Chozer / Or Yashar</em></td>
+<td>אור חוזר / אור ישר</td>
+<td>luz refletida / luz direta</td>
+<td></td>
+</tr>
+<tr>
+<td><em>Or Penimi</em></td>
+<td>אור פנימי</td>
+<td>luz interior</td>
+<td></td>
+</tr>
+<tr>
+<td><em>Partzuf</em> (pl. <em>partzufim</em>)</td>
+<td>פרצוף</td>
+<td>"rosto", configuração</td>
+<td>mantido em hebraico</td>
+</tr>
+<tr>
+<td><em>Sefirá</em> (pl. <em>sefirot</em>)</td>
+<td>ספירה</td>
+<td>—</td>
+<td>mantido em hebraico</td>
+</tr>
+<tr>
+<td><em>Shituf</em></td>
+<td>שיתוף</td>
+<td>associação</td>
+<td>de <em>Malchut</em> com <em>Biná</em></td>
+</tr>
+<tr>
+<td><em>Siyum</em></td>
+<td>סיום</td>
+<td>término</td>
+<td>limite inferior do grau</td>
+</tr>
+<tr>
+<td><em>Ta'ut sofer</em></td>
+<td>טעות סופר</td>
+<td>erro de copista</td>
+<td></td>
+</tr>
+<tr>
+<td><em>Tzimtzum Rishon / Sheni</em></td>
+<td>צמצום ראשון / שני</td>
+<td>primeira / segunda contração</td>
+<td></td>
+</tr>
+<tr>
+<td><em>Zivug (de-haka'á)</em></td>
+<td>זיווג דהכאה</td>
+<td>acoplamento (por choque)</td>
+<td>encontro da luz com a tela</td>
+</tr>
+</tbody>
+</table></div></div>
+</main>
+
+</body>
+</html>
