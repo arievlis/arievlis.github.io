@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pri Chacham · Sichot 2 e 26–40</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral+SC:wght@500;600&display=swap">
+<style>/* Layout: folhas A4 empilhadas; cada item = coluna de número | texto | margem de notas (como a folha de estudo com glosas laterais) */
+:root{
+  --paper:#fbfaf6; --desk:#e9e7e0; --ink:#1f2130; --muted:#5c5f70; --rule:#d6d3c8;
+  --techelet:#284a86; --gold:#8a6a22; --panel:#f1efe7; --v-in:#dfe6f3; --v-out:#f3eadb;
+  --f-body:"Spectral", Georgia, "Times New Roman", serif;
+  --f-sc:"Spectral SC", "Spectral", Georgia, serif;
+  --f-he:"Frank Ruhl Libre", "David", "Times New Roman", serif;
+  --s-0:.82rem; --s-1:.95rem; --s-2:1.06rem; --s-3:1.3rem; --s-4:1.9rem; --s-5:2.8rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}
+
+body{background:var(--desk); color:var(--ink); font-family:var(--f-body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); padding-block:24px}
+.book{display:flex; flex-direction:column; gap:28px; align-items:center}
+.sheet{background:var(--paper); width:100%; max-width:210mm; padding:18mm 16mm; box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06); min-width:0}
+p{margin:0 0 .75em}
+i,em{font-style:italic}
+a{color:var(--techelet)}
+a:focus-visible{outline:2px solid var(--techelet); outline-offset:2px}
+h1,h2,h3{text-wrap:balance; font-weight:500; margin:0}
+
+/* Capa */
+.cover{display:flex; flex-direction:column; gap:18px; padding-block:26mm}
+.eyebrow{font-family:var(--f-sc); letter-spacing:.06em; color:var(--muted); font-size:var(--s-1); margin:0}
+h1{display:flex; flex-direction:column; gap:6px}
+.h1he{font-family:var(--f-he); font-size:var(--s-5); color:var(--techelet); line-height:1.15; font-weight:500}
+.h1pt{font-size:var(--s-4); font-style:italic; font-weight:400}
+.lead{font-size:var(--s-2); color:var(--muted); margin:0}
+.toc{display:flex; flex-wrap:wrap; gap:8px 22px; border-block:1px solid var(--rule); padding-block:12px; font-family:var(--f-sc); letter-spacing:.04em}
+.toc a{text-decoration:none}
+.howto{font-size:var(--s-1); max-width:62ch; margin:0}
+
+h2.plain{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.05em; color:var(--techelet); margin-bottom:14px}
+#apres p, #apres li{max-width:68ch; font-size:var(--s-1)}
+
+/* Cabeçalho de capítulo */
+.ch-head{display:grid; grid-template-columns:1fr auto; align-items:end; gap:4px 16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:26px}
+.ch-head h2{font-family:var(--f-sc); font-size:var(--s-4); letter-spacing:.04em; grid-column:1; grid-row:1}
+.ch-sub{grid-column:1; margin:0; font-style:italic; color:var(--muted)}
+.ch-he{grid-column:2; grid-row:1 / span 2; font-family:var(--f-he); font-size:var(--s-5); color:var(--gold); line-height:1}
+
+/* Item */
+.item{display:grid; grid-template-columns:4.2rem minmax(0,1fr) 13.5rem; gap:0 18px; padding-block:18px; border-top:1px solid var(--rule)}
+.item:first-of-type{border-top:0}
+.num{display:flex; flex-direction:column; align-items:flex-start; gap:2px; position:sticky; top:12px; align-self:start}
+.num .he{font-family:var(--f-he); font-size:var(--s-3); color:var(--gold); direction:rtl}
+.num .pt{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.08em; color:var(--muted)}
+.src-new{color:var(--techelet); font-size:var(--s-1)}
+.main{min-width:0; display:flex; flex-direction:column; gap:14px}
+.lbl{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.12em; color:var(--techelet); margin-bottom:6px}
+
+.ari{background:var(--panel); padding:14px 16px 10px; border-radius:2px}
+.pair{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:18px}
+.pt-text p{font-size:var(--s-2); line-height:1.58; font-weight:500}
+.pt-text em{font-weight:500}
+.he-text{font-family:var(--f-he); font-size:1.04rem; line-height:1.75; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:14px}
+.he-text p{margin:0 0 .6em}
+.srcref{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.05em; color:var(--muted); margin:6px 0 0}
+
+.op p{font-size:var(--s-1); line-height:1.66; text-align:justify; hyphens:auto; max-width:70ch}
+.op p + p{text-indent:1.4em}
+.dibur{font-family:var(--f-sc); font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.dibur::after{content:" —"; color:var(--muted)}
+.op em{font-style:italic}
+
+sup.nref{font-size:.68em; line-height:0}
+sup.nref a{text-decoration:none; font-family:var(--f-sc); color:var(--gold); padding:0 1px}
+
+/* Notas laterais */
+.notes{min-width:0; display:flex; flex-direction:column; gap:10px; font-size:var(--s-0); line-height:1.5; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:12px; align-self:start}
+.notes:empty{border:0}
+.note b{font-family:var(--f-sc); color:var(--gold); margin-inline-end:4px}
+.note:target{background:var(--panel); outline:1px solid var(--gold); outline-offset:3px}
+.note strong{color:var(--ink); font-weight:600}
+
+/* Tabelas */
+.tw{overflow-x:auto; max-width:100%}
+table{border-collapse:collapse; width:100%; font-size:var(--s-0); font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:6px 8px; border-bottom:1px solid var(--rule); vertical-align:top}
+th{font-family:var(--f-sc); font-weight:600; letter-spacing:.05em; color:var(--techelet); border-bottom:1.5px solid var(--ink)}
+table.lv td,table.lv th{text-align:center}
+table.lv td:first-child,table.lv th:first-child{text-align:left}
+table.lv td em{display:inline-block; background:var(--v-in); padding:1px 6px; border-radius:2px}
+
+/* Figuras */
+.fig{margin:6px 0 0; border:1px solid var(--rule); padding:12px 14px}
+.fig figcaption{font-size:var(--s-1); margin-bottom:8px}
+.fig figcaption .lbl{display:inline; margin-inline-end:8px}
+.figcap{font-size:var(--s-0); color:var(--muted); font-style:italic; margin:8px 0 0}
+.grid5 td{white-space:nowrap}
+.bar{display:inline-block; height:8px; width:calc(var(--w) * .7); max-width:70px; background:var(--techelet); margin-inline-end:8px; vertical-align:middle; opacity:.75}
+.fig svg{width:100%; min-width:520px; height:auto; display:block}
+.fig svg .v-in{fill:var(--v-in); stroke:var(--techelet); stroke-width:1}
+.fig svg .v-out{fill:var(--v-out); stroke:var(--gold); stroke-width:1; stroke-dasharray:4 3}
+.fig svg .t-h{fill:var(--ink); font:600 14px var(--f-sc); letter-spacing:.04em}
+.fig svg .t-v{fill:var(--ink); font:600 13px var(--f-body)}
+.fig svg .t-l{fill:var(--muted); font:italic 12px var(--f-body)}
+.fig svg .t-s{fill:var(--muted); font:12px var(--f-body)}
+.fig svg.yod{min-width:0; max-width:620px}
+.fig svg .yod-body{fill:var(--techelet)}
+.fig svg .yod-kotz{fill:var(--gold)}
+.fig svg .ring{fill:none; stroke:var(--gold); stroke-width:1; stroke-dasharray:3 3}
+.fig svg .lead{stroke:var(--gold); stroke-width:1}
+.fig svg .lead2{stroke:var(--muted); stroke-width:1}
+.fig svg .t-k{fill:var(--gold); font:600 14px var(--f-sc); letter-spacing:.03em}
+.fig svg .t-he{fill:var(--techelet); font:500 40px var(--f-he)}
+.fig svg .cut{stroke:var(--techelet); stroke-width:2}
+
+/* Tela estreita */
+@media (max-width:760px){
+  .sheet{padding:22px 18px}
+  .item{grid-template-columns:minmax(0,1fr); gap:10px}
+  .num{position:static; flex-direction:row; align-items:baseline; gap:10px}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .he-text{border-inline-start:0; padding-inline-start:0; border-top:1px solid var(--rule); padding-top:10px}
+  .notes{border-inline-start:2px solid var(--rule)}
+  .ch-he{font-size:var(--s-4)}
+  .h1he{font-size:2.2rem}
+}
+
+/* Impressão / PDF */
+@page{size:A4; margin:16mm 14mm 18mm}
+@media print{
+  :root{--paper:#fff; --desk:#fff; --ink:#111; --muted:#444; --panel:#f3f2ee}
+  body{padding:0; background:#fff; font-size:10.5pt}
+  .book{gap:0}
+  .sheet{box-shadow:none; padding:0; max-width:none; break-before:page}
+  .sheet:first-child{break-before:auto}
+  .num{position:static; flex-direction:column; align-items:flex-start; gap:2px}
+  .item{grid-template-columns:3.6rem minmax(0,1fr) 11.5rem; break-inside:auto}
+  .ari,.fig,.note,tr{break-inside:avoid}
+  .toc{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+.subt{display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 16px; margin:0; font-style:italic; color:var(--muted); font-size:var(--s-1)}
+.he-s{font-family:var(--f-he); font-style:normal; color:var(--gold)}
+.srcline{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.05em; color:var(--muted); margin:-12px 0 8px}
+sup.op-m{font-family:var(--f-he); font-size:.72em; line-height:0; color:var(--gold); font-weight:700; padding:0 1px}
+sup.op-m a{color:inherit; text-decoration:none}
+.opl{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+.opl li{display:grid; grid-template-columns:1.8rem minmax(0,1fr); gap:10px; align-items:start}
+.op-b{font-family:var(--f-he); font-weight:700; font-size:1.05rem; color:var(--gold); text-decoration:none; text-align:center; border:1px solid var(--rule); border-radius:2px; line-height:1.6}
+.opl li:target .op-c{background:var(--panel); outline:1px solid var(--gold); outline-offset:4px}
+.op-c p{margin:0 0 .55em}
+.op-c p + p{text-indent:1.4em}
+.op .dibur{display:inline}
+.cont{font-style:italic; color:var(--muted)}
+.key{margin:4px 0 0; border:1px solid var(--rule); padding:12px 14px}
+.key figcaption{font-size:var(--s-1); margin-bottom:8px}
+.key figcaption .lbl{display:inline; margin-inline-end:8px}
+.keyt td.c{font-family:var(--f-he); color:var(--gold); text-align:center; white-space:nowrap}
+.fig svg{min-width:0}
+.colophon{font-size:var(--s-0); color:var(--muted); border-top:1px solid var(--rule); padding-top:10px; margin-top:18px}
+
+.hp p{font-size:var(--s-1); line-height:1.68; text-align:justify; hyphens:auto; max-width:70ch; margin:0 0 .7em}
+.hp p + p{text-indent:1.4em}
+.hp-t{font-style:normal; color:var(--techelet); font-family:var(--f-sc); letter-spacing:.02em; margin-bottom:8px}
+.hp-ch{font-family:var(--f-sc); font-size:var(--s-3); color:var(--ink); margin:26px 0 4px; display:flex; gap:12px; align-items:baseline; border-bottom:1px solid var(--rule); padding-bottom:6px}
+.hp-lead{max-width:70ch; margin:8px 0 6px 5.6rem}
+.hp-lead p{font-size:var(--s-1); line-height:1.66}
+.hp-quote{font-style:italic; color:var(--muted)}
+.dh{font-family:var(--f-sc); font-weight:600; color:var(--techelet)}
+.qa-list{display:flex; flex-direction:column}
+.qa-row{display:grid; grid-template-columns:2.4rem minmax(0,15rem) minmax(0,1fr); gap:4px 16px; padding:9px 0; border-bottom:1px solid var(--rule); font-size:var(--s-1); line-height:1.55}
+.qa-n{font-family:var(--f-sc); color:var(--gold); font-variant-numeric:tabular-nums}
+.qa-t b{font-weight:600}
+.qa-t i{color:var(--muted)}
+.qa-t .he-s{display:block}
+.qa-q{font-style:italic}
+.qa-ref{font-family:var(--f-sc); font-size:var(--s-0); color:var(--techelet); white-space:nowrap; margin-inline-start:4px}
+.qa-ref::before{content:"→ "}
+.qa-note{font-size:var(--s-0); color:var(--muted); margin:10px 0 0; max-width:70ch}
+.qa-notes{margin-top:22px; border-top:1px solid var(--rule); padding-top:10px; display:flex; flex-direction:column; gap:8px; font-size:var(--s-0); color:var(--muted)}
+.qa-notes .note b{font-family:var(--f-sc); color:var(--gold); margin-inline-end:4px}
+.qa-end{text-align:center; font-family:var(--f-sc); color:var(--muted); margin-top:20px}
+@media (max-width:760px){ .qa-row{grid-template-columns:2rem minmax(0,1fr)} .qa-a{grid-column:2} .hp-lead{margin-left:0} }
+@media print{ .qa-row{break-inside:avoid} .hp-ch{break-after:avoid} }
+
+
+/* Estudo comentado: passos do argumento, citações e blocos de comentário */
+.lead-p{font-size:var(--s-2); color:var(--muted); max-width:68ch; margin:0 0 18px}
+.lead-p b{font-family:var(--f-sc); font-weight:600; color:var(--techelet); letter-spacing:.03em}
+.block{margin:22px 0 0}
+.prose + .tw, .tw + .prose{margin-top:14px}
+.tw + .prose p{margin-top:14px}
+.block > .lbl{border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:12px}
+.prose p, .prose li{font-size:var(--s-1); line-height:1.66; max-width:72ch}
+.prose ul,.prose ol{padding-inline-start:1.3em; margin:0 0 .8em}
+.prose li{margin-bottom:.45em}
+.prose li strong, .prose p strong{font-weight:600}
+.step{display:grid; grid-template-columns:3.2rem minmax(0,1fr); gap:0 16px; padding-block:12px; border-top:1px solid var(--rule)}
+.step:first-of-type{border-top:0}
+.step .sn{font-family:var(--f-sc); font-size:var(--s-3); color:var(--gold); line-height:1.2; font-variant-numeric:tabular-nums}
+.step .sb{min-width:0; display:flex; flex-direction:column; gap:10px}
+.step .sb p{font-size:var(--s-1); line-height:1.66; text-align:justify; hyphens:auto; max-width:72ch; margin:0}
+.step .st{font-family:var(--f-sc); font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.step ul{margin:0; padding-inline-start:1.2em; font-size:var(--s-1)}
+.quote{background:var(--panel); padding:12px 16px; border-radius:2px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:center; margin:0}
+.quote .q-pt{font-size:var(--s-2); font-style:italic; line-height:1.5; margin:0}
+.quote .q-he{font-family:var(--f-he); font-size:1.12rem; line-height:1.7; color:var(--techelet); margin:0; border-left:1px solid var(--rule); padding-left:14px}
+.subhead{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:4px 16px; margin:30px 0 12px; border-bottom:1.5px solid var(--ink); padding-bottom:6px}
+.subhead h3{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.03em; margin:0}
+.subhead .he{font-family:var(--f-he); font-size:var(--s-3); color:var(--gold)}
+td.he,th.he{font-family:var(--f-he); font-size:1.02rem; color:var(--techelet); white-space:nowrap}
+td.num{font-family:var(--f-sc); color:var(--gold); white-space:nowrap}
+.sheet h3.blockh{font-family:var(--f-sc); font-size:var(--s-2); letter-spacing:.04em; color:var(--techelet); margin:26px 0 10px}
+.colophon{font-size:var(--s-0); color:var(--muted); border-top:1px solid var(--rule); padding-top:10px; margin-top:18px}
+@media (max-width:760px){
+  .quote{grid-template-columns:minmax(0,1fr)}
+  .quote .q-he{border-left:0; padding-left:0; border-top:1px solid var(--rule); padding-top:8px}
+  .step{grid-template-columns:2.2rem minmax(0,1fr); gap:0 10px}
+  td.he{white-space:normal}
+}
+@media print{.quote,.step{break-inside:avoid} .subhead{break-after:avoid}}
+</style>
+</head>
+<body>
+<nav class="site-nav" style="max-width:210mm;margin:0 auto 12px;font-family:'Spectral SC',Georgia,serif;letter-spacing:.05em"><a href="../../" style="color:inherit;text-decoration:none">← Arquivo · início</a></nav>
+<main class="book">
+<div class="sheet cover">
+  <p class="eyebrow">Baal HaSulam · <i>Pri Chacham</i> · Sichot</p>
+  <h1><span lang="he" dir="rtl" class="h1he">פרי חכם · שיחות</span><span class="h1pt">O intelecto do agente e o Tzimtzum</span></h1>
+  <p class="lead">Sichot 2 e 26 a 40 — estudo comentado, na ordem do argumento do autor</p>
+  <nav class="toc"><a href="#mapa">Mapa do bloco</a><a href="#s2">Sichot 2</a><a href="#s26">Sichot 26</a><a href="#s27">Sichot 27</a><a href="#s28">Sichot 28</a><a href="#s29">Sichot 29</a><a href="#s30">Sichot 30</a><a href="#s31-33">Sichot 31–33</a><a href="#s34-35">Sichot 34–35</a><a href="#s36-37">Sichot 36–37</a><a href="#s38-39">Sichot 38–39</a><a href="#s40">Sichot 40</a><a href="#sintese">Síntese e questões abertas</a><a href="#excurso">Excurso: o &quot;intelecto ativo&quot;</a></nav>
+  <p class="howto"><b>Como ler.</b> Cada texto abre com o seu lugar no bloco. Segue o argumento em passos numerados, na ordem do autor; as passagens-chave aparecem em painel, com a tradução à esquerda e o hebraico à direita. Fecham cada texto o comentário e as questões abertas.</p>
+  <p class="howto"><b>Escopo.</b> Não é tradução integral: o argumento vem em paráfrase comentada, com citações breves do original. O texto-base é o da biblioteca digital Kabbalah Media (<a href="https://kabbalahmedia.info/he/sources/TZywesWn">fonte</a>). Para o conjunto do volume, veja o <a href="../">sumário do <i>Pri Chacham</i></a>. Versão para impressão: <a href="pri-chacham-sichot-2-26-40.pdf">PDF</a>.</p>
+</div>
+<div class="sheet"><section class="chapter" id="mapa"><header class="ch-head"><h2>Mapa do bloco</h2></header>
+<div class="prose"><p>Os dez textos são notas do <em>Pri Chacham</em> (Sichot 26–35) que formam uma unidade: o 26 diz como Deus é conhecido, os textos 27 a 30 dizem por que a luz infinita se retirou, e os textos 31 a 35 dizem o que a criatura faz no espaço que sobrou. Este estudo segue a ordem do autor dentro de cada texto. As passagens-chave aparecem em hebraico, curtas, com tradução; o resto é paráfrase e comentário.</p></div>
+<div class="prose"><p>O texto 2 entra como prólogo: é a primeira formulação do "intelecto do agente" e da unidade que se revela pelo oposto, duas ideias que o bloco do Tzimtzum pressupõe.</p></div>
+<div class="prose"><div class="tw"><table>
+<thead>
+<tr>
+<th>Texto</th>
+<th>Pergunta que responde</th>
+<th>Resposta em uma linha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>26 Sefirot</td>
+<td>Como se conhece Deus?</td>
+<td>Pelas Suas ações, como se conhece a mente de alguém pelos seus gestos</td>
+</tr>
+<tr>
+<td>27 Primeira restrição (1)</td>
+<td>O que a retirada da luz revela?</td>
+<td>Uma raiz já plantada na criatura, e com ela o mal em detalhe</td>
+</tr>
+<tr>
+<td>28 Primeira restrição (2)</td>
+<td>O que mudou de fato?</td>
+<td>Nada na essência: a luz passou de ampla a restrita, e a falta virou mérito</td>
+</tr>
+<tr>
+<td>29 Três visões</td>
+<td>Como descrever o Tzimtzum com precisão?</td>
+<td>Um ponto só; um lugar deixado por Ele; raiz do julgamento e de uma luz nova</td>
+</tr>
+<tr>
+<td>30 Os dois fins</td>
+<td>Por que a plenitude inicial não bastava?</td>
+<td>Plenitude sem necessidade não sustenta; é preciso aprender a receber</td>
+</tr>
+<tr>
+<td>31 O segredo</td>
+<td>Como o Tzimtzum se repete no estudo?</td>
+<td>O livro do mestre é vestígio que desperta a linha no leitor</td>
+</tr>
+<tr>
+<td>32 O propósito</td>
+<td>Para que serve a restrição?</td>
+<td>Para revelar Nomes e dar à criatura o trabalho de compor</td>
+</tr>
+<tr>
+<td>33 O tzitz</td>
+<td>Onde se vê o "agente limitado"?</td>
+<td>Na placa do Sumo Sacerdote, selo que fecha e abre</td>
+</tr>
+<tr>
+<td>34 A causa</td>
+<td>Por que a luz não ficava?</td>
+<td>Faltava um recipiente permanente, que o Tzimtzum cria</td>
+</tr>
+<tr>
+<td>35 O espaço vazio</td>
+<td>O que é o lugar das criaturas?</td>
+<td>Malchut, onde tudo está enraizado e os ramos ainda se revelam</td>
+</tr>
+</tbody>
+</table></div></div>
+<div class="prose"><p><strong>Continuação (36–40).</strong> Depois da teoria, o autor passa à prática e à experiência:</p></div>
+<div class="prose"><div class="tw"><table>
+<thead>
+<tr>
+<th>Texto</th>
+<th>Pergunta que responde</th>
+<th>Resposta em uma linha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>36 Aderir a Ele</td>
+<td>Por que estudar as sefirot é aderir?</td>
+<td>Quem pensa o pensamento contido na obra se une a quem a fez</td>
+</tr>
+<tr>
+<td>37 Letras finais</td>
+<td>Por que não repreender?</td>
+<td>Corrigir o mal de perto contamina; o justo corrige pela própria luz, à distância</td>
+</tr>
+<tr>
+<td>38 "Nogá será como a luz"</td>
+<td>Onde está o erro, e qual a saída?</td>
+<td>Serviço sem intenção pura; a mitzvá no corpo leva de volta ao Sinai</td>
+</tr>
+<tr>
+<td>39 Sete muralhas</td>
+<td>Como se volta depois da queda?</td>
+<td>Entre a saudade e a porta fechada, esperando que Deus a abra</td>
+</tr>
+<tr>
+<td>40 Ordem da correção</td>
+<td>Por que o ocultamento?</td>
+<td>Sem ele, a criação ficaria só em potência</td>
+</tr>
+</tbody>
+</table></div></div>
+<section class="block prose"><div class="lbl">Glossário</div><div class="tw"><table>
+<thead>
+<tr>
+<th>Termo</th>
+<th>Sentido nestes textos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ein Sof (אין סוף)</td>
+<td>O Infinito, anterior a toda distinção</td>
+</tr>
+<tr>
+<td>Tzimtzum (צמצום)</td>
+<td>Restrição: a retirada da luz ilimitada de um "ponto"</td>
+</tr>
+<tr>
+<td>Or makif / chut ha-makif (חוט המקיף)</td>
+<td>Luz ou fio circundante, a plenitude que envolve o ponto</td>
+</tr>
+<tr>
+<td>Kav (קו)</td>
+<td>Linha de luz que entra no espaço de forma gradual e medida</td>
+</tr>
+<tr>
+<td>Reshimu (רשימו)</td>
+<td>Vestígio, a pequena marca deixada pela luz que se retirou</td>
+</tr>
+<tr>
+<td>Chalal panui (חלל פנוי)</td>
+<td>O espaço vazio, lugar das criaturas</td>
+</tr>
+<tr>
+<td>Ko'ach ha-po'el ba-nif'al (כח הפועל בנפעל)</td>
+<td>A força do agente presente no que ele produz</td>
+</tr>
+<tr>
+<td>Po'el mugbal (פועל מוגבל)</td>
+<td>O agente limitado, pelo qual o ilimitado age</td>
+</tr>
+<tr>
+<td>Derech ha-shlilá (דרך השלילה)</td>
+<td>A via da negação: o limite contido no ilimitado só como "não-ser"</td>
+</tr>
+<tr>
+<td>Kisse din / kisse rachamim</td>
+<td>Trono do juízo e trono da misericórdia: recompensa e punição</td>
+</tr>
+</tbody>
+</table></div><p>Abreviações frequentes: <em>ודו"ק</em> ("examina bem e entenderás") e <em>והבן</em> ("e compreende") marcam o ponto em que o autor deixa a dedução ao leitor; <em>כנ"ל</em> remete ao que foi dito antes.</p></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s2"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">שכל הפועל</span><h2>O intelecto do agente</h2><p class="ch-sub">Prólogo · Sichot 2</p></header>
+<p class="lead-p"><strong>Lugar no volume.</strong> É o segundo texto das Sichot e funciona como base dos textos 26 e 36: introduz a ideia de que se conhece alguém, e Deus, pelo intelecto contido nas ações. Na segunda metade, o autor dá um passo que o bloco do Tzimtzum vai pressupor: a unidade de Deus só se revela por meio do seu oposto.</p>
+<section class="block prose"><div class="lbl">O argumento, na ordem do autor</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Como se conhece um amigo.</span>  O conhecimento começa pelo corpo do outro; só quando a convivência se aprofunda aparecem sua mente e seu juízo. Quando o amigo some, some apenas dos olhos físicos:</p><figure class="quote"><p class="q-pt">dos olhos espirituais, que aderem justamente à sua mente, nada se oculta</p><p class="q-he" dir="rtl" lang="he">מעיני הרוחניים - שמתדבק דוקא בשכלו - הרי לא נעלם מהם כלום</p></figure><p>A mente dele permanece na memória sem mudança. Até a imagem do corpo, que agora também é espiritual, não se perde.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">O corpo como passagem.</span>  A mente de alguém só é captada vendo seu corpo. Mas, uma vez que a mente foi conhecida por inteiro junto com o corpo, "a ação está completa", e pode-se aderir a ela para sempre.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">"O geral antes do particular."</span>  O autor aplica a analogia a uma ordem maior. No "geral" foi dado um reconhecimento final, que não pertence a este mundo, para que se captasse o agente junto com o seu intelecto. As duas coisas são necessárias: o intelecto sem o agente seria um conhecimento incompleto. Mas, uma vez captados juntos, a presença contínua do agente não acrescenta nada, nem ao próprio intelecto. E vem a frase mais surpreendente do texto:</p><figure class="quote"><p class="q-pt">não é digno permanecer com ele à toa</p><p class="q-he" dir="rtl" lang="he">אינו מהכבוד שישאר עמו לבטלה</p></figure><p>O motivo é que o desejo de adesão não se dirige ao agente em si, mas ao seu intelecto: espiritual com espiritual, "espécie com espécie". Sentidos físicos diante de um intelecto espiritual são "espécie com outra espécie". Na ordem geral, a presença do agente foi só um meio, para revelar o intelecto e fazer a ação aderir a ele "estatura com estatura".</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">A virada: o que é "unidade".</span>  "Para entender, é preciso alongar um pouco." O autor volta ao termo <em>yichud</em>, unidade, e o define pela via da negação: a palavra nega que qualquer força esteja separada de Deus.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">Um atributo que precisa do oposto.</span>  Os outros Nomes não funcionam assim. "Sábio" e "bondoso" nomeiam algo que existe por si; não é preciso tolice para conhecer a sabedoria, nem maldade para conhecer a bondade. Já a unidade cresce justamente com a existência do contrário:</p><figure class="quote"><p class="q-pt">quanto mais se fortalece o oposto, mais engrandece Sua imensa unidade</p><p class="q-he" dir="rtl" lang="he">עד כמה שמתחזק ההפכי מגדיל ומפאר יחודו העצום</p></figure><p>Sem oposição, a unidade nem seria conhecida. Tudo seria como a sombra que segue um homem, ou o servo que anda atrás do senhor. Por isso o autor decide investigar a natureza dos <em>mordei or</em>, os "rebeldes contra a luz" (Jó 24:13).</p></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">As "sete abominações" dos idólatras.</span>  A expressão vem de Pr 26:25. O texto que chegou até nós descreve cinco posições:</p><div class="tw"><table>
+<thead>
+<tr>
+<th>Posição</th>
+<th>O que afirma</th>
+<th>Base que o autor lhe atribui</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Abandono</td>
+<td>Deus criou, afastou-Se e não olha; o governo foi entregue a ministros e astros, que por isso são cultuados</td>
+<td>A grandeza de Deus tornaria indigno ocupar-Se dos baixos</td>
+</tr>
+<tr>
+<td>2. Natureza e sorte</td>
+<td>Nada há acima da natureza; tudo depende do signo astral ou do esforço de cada um, e às vezes do "signo do dia ou da hora"</td>
+<td>O esforço ajuda e a preguiça prejudica</td>
+</tr>
+<tr>
+<td>3. Rejeição de Israel</td>
+<td>Deus escolheu Israel, que pecou; por isso o rejeitou para sempre e o trocou por outra nação</td>
+<td>O longo exílio seria a prova</td>
+</tr>
+<tr>
+<td>4. Manipulação</td>
+<td>Conhecem o Senhor e se rebelam de propósito: como Ele entregou as leis e os Nomes da criação, a força ficou impressa neles, e qualquer um pode atrair fluxo por meio de um anjo</td>
+<td>É o pecado das gerações da Torre e do Dilúvio, e dos que diziam a Jeremias: "eu a cercarei de fogo, eu a cercarei de água"</td>
+</tr>
+<tr>
+<td>5. Dois poderes</td>
+<td>Há um criador bom e um mau, porque se veem ações opostas</td>
+<td>Não se concebe composição em Deus</td>
+</tr>
+</tbody>
+</table></div><p>Contra a quinta posição, o autor cita Is 45:7: <em>yotzer or u-vore choshech, ose shalom u-vore ra</em> (יוֹצֵר אוֹר וּבוֹרֵא חֹשֶׁךְ עֹשֶׂה שָׁלוֹם וּבוֹרֵא רָע), "formo a luz e crio as trevas, faço a paz e crio o mal".</p></div></div><div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">Conclusão: uma condução ambígua de propósito.</span>  O verso mostra que Deus conduz o mundo de modo "duvidoso" (<em>hanhagá mesupeket</em>) e deixou espaço para todos esses erros:</p><figure class="quote"><p class="q-pt">pois a partir deles se conhecerá a força da imensa unidade por toda a criação</p><p class="q-he" dir="rtl" lang="he">כי מתוכן יִוָדַע כח היחוד העצום לכל היצור</p></figure><p>Todos esses pensamentos acabarão engolidos na raiz da unidade: <em>ve-od me'at ve-ein rasha</em> (וְעוֹד מְעַט וְאֵין רָשָׁע), "mais um pouco e não haverá ímpio" (Sl 37:10). O texto termina em lacunas.</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Duas metades, um só tema.</strong> A primeira metade diz que Deus é conhecido pelo intelecto contido nas Suas ações. A segunda diz qual é o traço central desse intelecto: a unidade, que só se mostra vencendo o oposto. Logo, os erros e a aparente ambiguidade do mundo fazem parte das próprias ações pelas quais Ele é conhecido.</li>
+<li><strong>A semente do Tzimtzum.</strong> O 27 dirá que a retirada da luz faz surgir o "outro lado" para que a correção aconteça falta por falta. O 2 já dá a razão teológica: sem oposto não há unidade conhecida. Sl 37:10 volta no 29, no mesmo sentido.</li>
+<li><strong>Uma tipologia dos erros.</strong> Nenhuma das cinco posições é sobre matéria ou imagem. São cinco maneiras de conceber a relação de Deus com o mundo: ausência, autonomia da natureza, rejeição, manipulação e dualismo. A quarta coincide exatamente com a geração do Dilúvio do 30 e com o "deus possuído": conhecer os Nomes e tratá-los como mecanismo à disposição.</li>
+<li><strong>A terceira posição.</strong> O autor classifica entre os erros a ideia de que Israel foi rejeitado e substituído por outra nação. É a forma, no seu vocabulário, de responder à teologia da substituição.</li>
+<li><strong>"Não é digno ficar à toa."</strong> O item 3 dá uma regra para a presença visível: ela é necessária uma vez, para que se conheça o agente por inteiro, e depois a adesão passa ao intelecto. O texto não diz a que revelação se refere com "o geral". A leitura mais provável é a revelação coletiva, como a do Sinai, que precede o trabalho individual; mas é interpretação.</li>
+</ul></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li>O título promete "sete abominações", mas o texto conserva cinco posições. Ou o manuscrito está incompleto, ou o número vem só do verso de Provérbios.</li>
+<li>O que é exatamente "o reconhecimento final que não pertence a este mundo" dado "no geral"? A resposta decide se o item 3 fala do Sinai, do Templo ou da revelação inicial da criação.</li>
+<li>A tese de que "o desejo de adesão não se dirige ao agente, mas ao intelecto" parece contrastar com textos posteriores sobre amor e presença (Sichot 83, 146). Vale lê-los juntos.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s26"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">ספירות</span><h2>Sefirot</h2><p class="ch-sub">Sichot 26</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> É a porta de entrada. Antes de falar da restrição, o autor fixa a epistemologia: o que se pode conhecer de Deus e como. Tudo o que vem depois pressupõe essa resposta.</p>
+<section class="block prose"><div class="lbl">O argumento, na ordem do autor</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Definição.</span>  As sefirot são "Atzilut", e o autor as define como a parte que o Infinito concedeu para ser alcançado. Daí a primeira consequência: sendo divindade, não ocupam lugar, e não há por que imaginá-las acima do firmamento.</p><figure class="quote"><p class="q-pt">pois está contigo, sob o teto da tua casa e no teu coração</p><p class="q-he" dir="rtl" lang="he">כי הוא נמצא עמך תחת גג ביתך ובלבך</p></figure><p>A frase desloca o problema: a distância de Atzilut não é espacial, é de percepção.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">A analogia do conhecido.</span>  Para mostrar como se percebe o espiritual, o autor usa a experiência comum de reconhecer alguém. O que conhecemos de uma pessoa é a mente e o caráter, não os membros, que são iguais em todos. Mas só chegamos à mente observando, com constância, como os membros agem. O princípio que sustenta a analogia é:</p><figure class="quote"><p class="q-pt">a força do agente está no que é feito</p><p class="q-he" dir="rtl" lang="he">כח הפועל בנפעל</p></figure><p>Os membros não têm força própria; a mente age neles. Por isso observá-los revela quem age.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Aplicação a Deus.</span>  Quem compreendeu de verdade a providência individual vê o mundo inteiro como corpo e Deus como alma. A prova é negativa: sem o fluxo constante, tudo cairia num instante, como o corpo quando a alma sai. Basta olhar os acontecimentos para "ver divindade". O autor restringe logo: esse reconhecimento é para quem cumpre a Torá e suas condições. E dá nome ao modelo: "linha e ponto" (קו ונקודה).</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">O ponto não está vazio.</span>  Aqui está o centro do texto:</p><figure class="quote"><p class="q-pt">este ponto não está vago e vazio, pois já está cheio de todo bem</p><p class="q-he" dir="rtl" lang="he">נקודה זו אינה פנויה וחללה, כי כבר מלאה כל טוב</p></figure><p>O ponto já tem tudo; o que falta é que isso se esclareça aos sentidos humanos ao longo do tempo. O instrumento desse esclarecimento é a linha (<em>kav</em>), que o autor liga a <em>kivui</em>, esperança, em <em>kavo kiviti</em> (קַוֹּה קִוִּיתִי), "esperei com esperança" (Sl 40:2).</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">Os raios do sol e o lugar da fé.</span>  A linha se comporta como os raios do sol: só os aproveita quem está onde eles chegam, e ninguém leva a luz consigo para um lugar escuro. O encontro da linha com o mundo se dá na fé, com o jogo entre <em>Amaná</em> e <em>emuná</em> em <em>tashuri me-rosh Amaná</em> (תָּשׁוּרִי מֵרֹאשׁ אֲמָנָה), "contempla do alto do Amaná" (Ct 4:8).</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Epistemologia das obras.</strong> O texto aplica às sefirot o princípio que Baal HaSulam desenvolve em outros lugares: não se conhece a essência, só as ações. A <em>Introdução ao Livro do Zohar</em> abre com o mesmo verso de 1Cr 28:9 ("conhece o Deus de teu pai"). Aqui a ideia ganha uma imagem concreta, o reconhecimento de uma pessoa.</li>
+<li><strong>Inversão do Tzimtzum.</strong> No <em>Etz Chaim</em>, o ponto do Tzimtzum é descrito como espaço vazio. O autor corrige: o ponto está cheio, e o "vazio" é só a falta de percepção. Isso prepara o 27 e o 35, onde o vazio será lido como lugar de raízes.</li>
+<li><strong>Fé como lugar, não como conteúdo.</strong> A fé não é tratada como crença em proposições, mas como o lugar onde se fica para receber a luz. Quem sai desse lugar não leva nada consigo.</li>
+</ul></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li>A palavra isolada ao fim do primeiro parágrafo ("os ignorantes") parece uma nota marginal. Pode indicar a quem o autor dirigia a crítica de "elevar Atzilut acima do firmamento".</li>
+<li>A restrição "só para quem cumpre a Torá e suas condições" não é explicada aqui. As "condições" (תנאיה) parecem remeter à intenção, tema de Sichot 4 e 30.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s27"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">צמצום א&#x27; -</span><h2>1 – Primeira restrição (1)</h2><p class="ch-sub">Sichot 27</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> Primeiro dos quatro textos sobre a causa do Tzimtzum. Responde ao que o 26 deixou em aberto: se o ponto já está cheio, por que a luz precisou se retirar?</p>
+<section class="block prose"><div class="lbl">O argumento, na ordem do autor</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">A cena inicial.</span>  O autor parte da imagem clássica do ponto no meio do Infinito, cercado por um "fio circundante" que repara toda falta. Depois vem a retirada, e o que ela mostra é decisivo:</p><figure class="quote"><p class="q-pt">e revela-se o que já estava enraizado naquela restrição</p><p class="q-he" dir="rtl" lang="he">ומתגלה שמכבר הושרש באותו הצמצום</p></figure><p>A retirada não cria algo do nada; ela expõe uma raiz anterior, que também sustenta tudo o que existiu e existirá.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Raiz e retirada.</span>  No lugar do Tzimtzum há, portanto, dois elementos, e o segundo serve ao primeiro: a retirada existe para revelar a raiz. Quem cumpre a Torá recebe a plenitude do fluxo, que vem do "circundante".</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Da potência ao ato.</span>  Sob a luz circundante, a perfeição "engolia" todas as faltas do mundo, mas só em princípio. Com a retirada surge algo novo: uma criatura que se levanta e acusa, o "outro lado". O que estava perdido e esquecido volta à tona, e o autor cita <em>ra'iti resha'im kvurim va-va'u</em> (רָאִיתִי רְשָׁעִים קְבֻרִים וָבָאוּ), "vi ímpios sepultados que voltavam" (Ec 8:10). O objetivo é que cada falta seja conhecida em detalhe e corrigida de fato.</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">O tachash.</span>  Uma digressão midráshica: o <em>tachash</em>, animal de um só chifre e muitas cores que só apareceu na época de Moisés (Shabat 28a–b), e cuja pele cobria o Tabernáculo. O autor o liga, por jogo de raízes, à pressa e à precipitação, sem desenvolver.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">O homem que se despiu deste mundo.</span>  A parte mais enigmática. Descreve alguém que, por aderir ao intelecto circundante, perdeu todo apoio neste mundo, como Adão. Via-se acima de todas as gerações, "único". Ainda assim:</p><figure class="quote"><p class="q-pt">e não cortou este fio</p><p class="q-he" dir="rtl" lang="he">ולא פסק את החוט הזה</p></figure><p>A compaixão divina lhe deu fé e manteve o vínculo. Enquanto estava nessa altura, podia enfrentar os ímpios, como um "justo completo". Ao voltar a este mundo e apoiar-se na coletividade de Israel, isso lhe é negado: <em>al titchar ba-mere'im</em> (אַל תִּתְחַר בַּמְּרֵעִים), "não te inflames contra os malfeitores" (Sl 37:1).</p></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">Fecho.</span>  Uma nota sobre amonitas e moabitas, proibidos de entrar na congregação, enquanto as mulheres desses povos são permitidas, porque são "solo do mundo" e não agem.</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Revelar, não criar.</strong> O ponto forte do texto é a tese de que a restrição é revelação. Isso inverte uma leitura comum do Tzimtzum como afastamento de Deus. Aqui o afastamento da luz é o que permite ver a raiz.</li>
+<li><strong>O mal como produto do método.</strong> O "outro lado" não é um acidente: surge porque a correção precisa passar por cada falta em particular. É a mesma lógica do Talmud Eser Sefirot, onde a quebra e o mal existem para que a correção seja feita pelos de baixo.</li>
+<li><strong>O item 5 parece pessoal.</strong> O tom e o detalhe (o homem que vê "até a geração do conhecimento") sugerem experiência própria, mas o texto não diz isso. O manuscrito tem lacunas justamente nesse trecho.</li>
+</ul></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li>O que liga o <em>tachash</em> ao argumento? Talvez a ideia de algo que aparece uma só vez e logo se oculta, como a luz circundante.</li>
+<li>A frase sobre amonitas, moabitas e suas mulheres não se conecta com clareza ao resto. Pode ser uma nota solta que o editor juntou ao texto.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s28"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">צמצום א&#x27; -</span><h2>2 – Primeira restrição (2)</h2><p class="ch-sub">Sichot 28</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> Continua o 27 e responde a uma objeção implícita: se a retirada faz surgir o mal, ela não seria uma mudança em Deus? O texto nega isso e tira a conclusão moral do bloco.</p>
+<section class="block prose"><div class="lbl">O argumento, na ordem do autor</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Nenhuma mudança na essência.</span>  A tese vem logo na abertura:</p><figure class="quote"><p class="q-pt">não houve mudança na essência, mas iluminação ampla e iluminação restrita</p><p class="q-he" dir="rtl" lang="he">לא היה שינוי בעצם חלילה, אלא ... הארה מרווחת והארה מצומצמת</p></figure><p>A diferença está só no modo como a luz chega. Na luz ampla, o mal não se manifesta: as "borras" ficam no fundo do vinho e louvam a santidade porque isso lhes convém. O autor compara ao homem que domina animais mais fortes que ele sem se perguntar por quê.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Sem espaço para questionar.</span>  Na luz ampla, "nem um cão moverá a língua" contra Israel, <em>lo yecheratz kelev leshono</em> (לֹא יֶחֱרַץ כֶּלֶב לְשֹׁנוֹ) (Ex 11:7). As nações investigaram e louvaram a Deus, mas a escolha recaiu sobre Israel pela raiz revelada no Tzimtzum.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">O defeito da escolha inicial.</span>  Essa escolha ainda era "em geral" e veio sob coerção, a montanha sobre o povo como uma tina (Shabat 88a). A causa apontada é a vergonha: a herança parecia algo que não lhes cabia.</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">A demora como pedagogia.</span>  Por isso foram necessárias muitas reencarnações, e Moisés não levou o povo à Terra. Era preciso que cada detalhe do mal aparecesse em ato e fosse corrigido aos poucos, para que Israel se orgulhasse da herança em vez de se envergonhar. A frase que resume o bloco é esta:</p><figure class="quote"><p class="q-pt">a própria falta é a virtude</p><p class="q-he" dir="rtl" lang="he">החסרון עצמו הוא המעלה</p></figure></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">O que o Tzimtzum acrescenta.</span>  A novidade é o par "trono do juízo e trono da misericórdia": o pecador sofre e se afasta do mal; o íntegro recebe o bem e se apoia só em Deus, <em>ki mimchá ha-kol</em> (כִּי מִמְּךָ הַכֹּל), "tudo vem de Ti" (1Cr 29:14). E Deus não retira o fluxo nem por um instante: <em>harchev pícha va-amal'ehu</em> (הַרְחֶב פִּיךָ וַאֲמַלְאֵהוּ), "abre a boca e Eu a encherei" (Sl 81:11).</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Vergonha como motor.</strong> É a primeira vez no bloco que aparece o tema da vergonha, central em Baal HaSulam (o "pão da vergonha" da Introdução ao Zohar e Sichot 115). Aqui ela explica por que a revelação no Sinai, apesar de real, ainda não era a correção.</li>
+<li><strong>Uma leitura da não-entrada de Moisés.</strong> O texto lê a morte de Moisés fora da Terra como necessidade pedagógica, não como castigo. A Terra só se torna "herança" quando o povo a recebe sem vergonha, depois de atravessar o mal em detalhe.</li>
+<li><strong>"A falta é a virtude"</strong> não é consolo moral. É uma tese sobre o recipiente: só a falta sentida dá espaço para o prazer da correção (cf. Sichot 88).</li>
+</ul></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li>O autor não explica por que o "cão" (o acusador) é calado justamente na luz ampla. A leitura mais provável é que, sem restrição, não há base para acusação, porque nada se vê em detalhe.</li>
+<li>A palavra aramaica <em>tzulma</em> ("imagem", "forma"), usada para a vergonha diante da herança, aparece sem explicação e parece remeter ao Zohar.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s29"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">שלש מראות בצמצום</span><h2>Três visões no Tzimtzum</h2><p class="ch-sub">Sichot 29</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> O texto mais sistemático dos dez. Depois das imagens do 27 e 28, o autor organiza o conceito em três "visões", como quem descreve o mesmo objeto de três ângulos.</p>
+<section class="block prose"><div class="lbl">O argumento, na ordem do autor</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">As três visões, enunciadas.</span>  O Tzimtzum aparece num só lugar, cercado pelo Infinito; o Infinito "deixa" esse lugar de si mesmo; e ali se revela a raiz do julgamento. O resto do texto desdobra cada uma.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Primeira visão: um detalhe só.</span>  Os poderes infinitos não são tocados. A restrição atinge um único ponto, que é a criação de seres a serem conduzidos e que dependam Dele. Antes da criação, "Ele e Seu Nome eram um"; agora Ele estende uma ação para fora de Si. É o "ponto em seu palácio".</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Segunda visão: o limite estava no ilimitado.</span>  Como o limite pode surgir do Infinito? O autor responde com a "via da negação": o limitado já estava contido no ilimitado, assim como "vida" contém a negação de "morte". Deus o concebeu sem limite e só depois o produziu como limite. Por isso o lugar é "deixado" por Ele, e não arrancado Dele.</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">Terceira visão: ausência e sustentação.</span>  A frase decisiva:</p><figure class="quote"><p class="q-pt">o Tzimtzum não é só ausência, mas também sustentação</p><p class="q-he" dir="rtl" lang="he">אין הצמצום העדר בלבד, אלא גם קיום</p></figure><p>Poderia haver um mundo regido só pela luz que sobra após a restrição. Não é assim: do ilimitado ao limitado passa uma luz que age sem parar nas criaturas. Daí duas vias novas: o juízo, porque sobra o limite, e uma luz nova.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">A parábola do sol.</span>  Quem está diante do sol sente seu calor mesmo sem olhar para ele. A luz que chega dentro do limite é a mesma do sol, e só é "nova" em relação ao limite. Antes, iluminar desse modo era impossível; agora se mostra que Ele tudo pode.</p></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">Duas mudanças na luz.</span>  Em quantidade, ela vira uma pequena marca, e por isso se chama <em>reshimu</em>. Em qualidade, deixa de ser natural e necessária e passa a ser voluntária:</p><figure class="quote"><p class="q-pt">como argila na mão do oleiro</p><p class="q-he" dir="rtl" lang="he">כחומר ביד היוצר</p></figure><p>Resultam três frutos: o limite, a luz emanada e a luz voluntária, que depende só do Senhor.</p></div></div><div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">Leitura bíblica e fecho.</span>  As "últimas palavras de Davi" (2Sm 23:1) são lidas como o encontro do geral e do particular, dois versos que se contradizem. No geral, antes do Tzimtzum, a unidade se eleva igualmente sobre justo e ímpio; no particular, o ímpio acaba "coroando" o justo. Vem então o jogo de Avot 6:2, <em>charut</em>/<em>cherut</em>: gravado nas tábuas, lido como "liberdade". Quanto mais funda a gravação, mais misericórdia aparece. A criatura, que por si não perceberia nada, é como cal seca que absorve até uma gota. O texto termina interrompido.</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Resposta ao problema clássico.</strong> A segunda visão enfrenta a pergunta que a Introdução ao Zohar formula como "algo novo a partir do Infinito". A solução pela negação permite dizer que o limite é novo sem ser estranho a Deus.</li>
+<li><strong>Necessidade e vontade.</strong> A mudança de qualidade é o ponto filosófico mais forte do bloco. Antes, a luz era como a do sol, que ilumina por natureza; depois, depende da vontade. Isso funda a relação pessoal com Deus (oração, recompensa) dentro de um sistema cabalístico que poderia parecer mecânico.</li>
+<li><strong>O vestígio.</strong> <em>Reshimu</em> aqui é a luz em escala mínima. O texto 31 vai usar a mesma palavra para as letras de um livro.</li>
+</ul></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li>O que o autor chama de "nucba" (furo, cavidade) que "se eleva como montanha" no item 7 é obscuro. Parece aludir a Malchut, que será o tema do 35.</li>
+<li>O texto para no meio de uma frase sobre a memória da criatura. É possível que a continuação esteja em outro manuscrito.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s30"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">עניין שני הקצים</span><h2>Os dois fins</h2><p class="ch-sub">Sichot 30</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> O texto mais longo e mais denso. Fecha a explicação da causa do Tzimtzum com um argumento quase existencial: a plenitude inicial não bastava porque não deixava razão para viver nem para pedir.</p>
+<section class="block prose"><div class="lbl">O argumento, na ordem do autor</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Os dois "fins".</span>  O texto joga com duas expressões quase iguais. <em>Ketz ha-yamim</em>, o fim dos dias, é o estado anterior ao juízo e à misericórdia: plenitude total, que esgota o sentido da vida, porque</p><figure class="quote"><p class="q-pt">não há perfeição depois da perfeição</p><p class="q-he" dir="rtl" lang="he">אין שלימות אחר שלימות</p></figure><p><em>Ketz ha-yamin</em>, o fim da direita, é a plenitude de um só lado. Ela abre o trabalho da esquerda, chamada "mão fraca" porque sua luz escureceu antes de ser compreendida. O tefilin da mão, com a grafia <em>yadchá</em> (Ex 13:16), é o sinal disso. A queixa de Rivka, <em>katzti be-chayai</em> (קַצְתִּי בְחַיַּי), "enfastiei-me da vida" (Gn 27:46), é lida como a voz do primeiro fim.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">O fruto da correção.</span>  Quando a esquerda é corrigida, os pecados "semeados" dão fruto, e puro e impuro comem juntos. A ordem à lua, "vai e diminui-te" (Chulin 60b), é lida como diminuição que acontece "no caminho", isto é, como trabalho.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">O intelecto ativo.</span>  O autor descreve um tipo de entendimento que, ao contrário dos outros, não se esgota quando deixa de ser novidade: pode dar prazer mil vezes por dia e abre os segredos a quem o traz à mente. É a luz do primeiro dia, que Deus guardou para os justos porque o mundo ainda não era digno dela.</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">O terceiro verso.</span>  Entre os dois fins, um terceiro texto decide: os reis de Edom (Gn 36:31), lidos pela Idra de Nasso. Ali a luz veio perfeita às três sefirot superiores, mas as sete inferiores não a receberam e "morreram". O princípio por trás é que todo efeito precisa ser sustentado continuamente pela sua causa.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">A geração do Dilúvio.</span>  Misturados aos anjos, recebiam direto da raiz e não precisavam de nada; por isso não tinham o que pedir. Daí <em>ma Shadai ki na'avdenu</em> (מַה שַּׁדַּי כִּי נַעַבְדֶנּוּ), "que é o Todo-Poderoso para que O sirvamos?" (Jó 21:15). Conheciam o Nome da criação e se julgavam donos do fluxo. A lição dos reis de Edom é o oposto:</p><figure class="quote"><p class="q-pt">o intelecto ativo, sem Sua ajuda e fluxo, nada faz</p><p class="q-he" dir="rtl" lang="he">השכל הפועל זולת עזרתו ושפעו, לא יפעול כלום</p></figure></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">O ganho duplo.</span>  Quem passa por este mundo, com recompensa e punição, sai com a raiz no Infinito e com o saber de receber para sempre. Mesmo podendo contemplar o Infinito, esses justos mantêm <em>os olhos para baixo e o coração para cima</em>, e herdam "o dobro" (Is 61:7).</p></div></div><div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">Antes e depois da triagem.</span>  Antes, bem e mal estavam misturados, e não se distinguia quem serve a Deus (Ml 3:18). O autor diz, surpreendentemente, que isso era a "unidade verdadeira". Depois do Tzimtzum, os dois se separam. No Mar Vermelho Israel ainda confundia os lados. No fim, mesmo os ímpios corrigidos guardarão a memória do castigo e não voltarão a dizer "eu reinarei": <em>levilti yidach mimenu nidach</em> (לְבִלְתִּי יִדַּח מִמֶּנּוּ נִדָּח), "para que o afastado não fique afastado" (2Sm 14:14).</p></div></div><div class="step"><div class="sn">8</div><div class="sb"><p><span class="st">Fecho: o deus possuído.</span>  O idólatra, por ter pago pelo seu deus, o mantém em seu poder por mais que se suje. O Deus de Israel "anda no meio do teu acampamento" (Dt 23:15): ilumina o rosto quando se anda em Seus caminhos e o oculta quando o coração se desvia. O mesmo vale para memória e esquecimento: <em>pen tishkach</em> (פֶּן תִּשְׁכַּח), "para que não esqueças" (Dt 4:9). E a conclusão:</p><figure class="quote"><p class="q-pt">nenhuma força no mundo pode agarrá-Lo para sempre</p><p class="q-he" dir="rtl" lang="he">שאין שום כח שבעולם להאחז בו לצמיתות</p></figure></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Plenitude sem necessidade.</strong> O argumento central é que receber tudo sem sentir falta não é relação. A geração do Dilúvio é o modelo do receptor saciado que não pede e, por isso, se acha dono. O Tzimtzum cria a necessidade que torna possível pedir, e com ela a relação.</li>
+<li><strong>Posse contra presença.</strong> No item 8, o ídolo é o deus "possuído", fixado num objeto pago; o Deus de Israel não pode ser retido por nada. A oposição que o texto traça não é entre matéria e espírito, mas entre posse e presença condicionada.</li>
+<li><strong>Uma ideia ousada.</strong> Chamar de "unidade verdadeira" o estado em que justo e ímpio se confundem mostra que, para o autor, a unidade inicial era real mas indiferenciada. A unidade final é a mesma, só que conhecida.</li>
+</ul></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li>O "intelecto ativo" (שכל הפועל) já apareceu em Sichot 2. Aqui parece ser um estado de percepção, não a noção aristotélica. A distinção merece um estudo à parte.</li>
+<li>O manuscrito tem várias lacunas, inclusive no trecho sobre as esposas de Esaú, que deveria explicar a queixa de Rivka.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s31-33"><header class="ch-head"><h2>O segredo, o propósito e o tzitz</h2><p class="ch-sub">Sichot 31–33</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> Com a causa explicada, o autor passa às consequências para quem vive no espaço restrito. Os três textos formam uma sequência: o 31 aplica o Tzimtzum ao estudo, o 32 diz para que ele serve e o 33 (que começa com "e com isto entenderemos") dá um exemplo concreto.</p>
+<div class="subhead"><h3>31 · O segredo do Tzimtzum</h3><span class="he" lang="he" dir="rtl">סוד הצמצום</span></div>
+<div class="prose"><p>O texto é uma nota de poucas linhas que transporta o vocabulário do 29 para a experiência de quem lê. O livro do mestre funciona como <em>reshimu</em>: nele a sabedoria do mestre está muito comprimida. Como esse vestígio ainda guarda a ligação com a "linha" do mestre, ele a desperta no leitor, e no leitor se refaz a união entre linha e vestígio. A frase final dá o sentido de todo o bloco:</p></div>
+<figure class="quote"><p class="q-pt">e desta restrição ele chega a uma grande luz</p><p class="q-he" dir="rtl" lang="he">ומצמצום הזה הוא בא לאור גדול</p></figure>
+<section class="block prose"><div class="lbl">Comentário</div><p> É a justificativa teórica do valor que a escola de Ashlag dá à leitura dos textos do mestre, mesmo sem entendê-los. O estudo não transmite informação; ele reativa uma conexão. Liga-se ao item 4 do texto 26: o ponto já está cheio, falta despertá-lo.</p></section>
+<div class="subhead"><h3>32 · O propósito do Tzimtzum</h3><span class="he" lang="he" dir="rtl">דבר הצמצום</span></div>
+<div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Revelar os Nomes.</span>  O Tzimtzum existe para que a criatura conheça os Nomes de Deus, que a ajudam a voltar à raiz. Sob o Infinito, só cabia um Nome, porque em toda parte se via a unidade (Ez 37:17, <em>ve-hayu la-achadim be-yadecha</em>, "serão um só na tua mão"). Ali nada faltava, e o autor acrescenta:</p><figure class="quote"><p class="q-pt">todas as faltas são só preparação para esta luz</p><p class="q-he" dir="rtl" lang="he">כל החסרונות הם רק הכנה לאור הזה</p></figure></div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Compor as letras.</span>  Ao estender a ação para fora de Si, Deus deu um espaço vazio onde as "letras" ficam espalhadas. A criatura as reúne pelo trabalho, de letras a palavras e de palavras a frases inteiras, e sobre o que compôs a luz do Infinito volta a brilhar.</p></div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Agente limitado, ação sem limite.</span>  Depois da restrição, todo agente é limitado, mas a ação em si não tem limite, porque não há outra luz senão a do Infinito. O que se pede é ficar ligado ao agente limitado, sem especular sobre como a ação passa: <em>hagbel et ha-har ve-kidashto</em> (הַגְבֵּל אֶת הָהָר וְקִדַּשְׁתּוֹ), "põe limites ao monte e santifica-o" (Ex 19:23). A tarefa do de baixo é receber o agente limitado e, por meio dele, atrair o ilimitado.</p></div></div>
+<section class="block prose"><div class="lbl">Comentário</div><p> A imagem das letras espalhadas lembra a combinação de letras do <em>Sefer Yetzirá</em>, mas aplicada ao serviço comum: cada ato é uma letra. O limite no Sinai vira princípio geral, pois a santidade passa pelo limite, não apesar dele.</p></section>
+<div class="subhead"><h3>33 · O segredo do tzitz</h3><span class="he" lang="he" dir="rtl">סוד הציץ</span></div>
+<div class="prose"><p>O exemplo do agente limitado é a placa de ouro na testa de Aarão, gravada com "Santo para o Senhor". Sem essa gravação não haveria serviço possível. O autor lê <em>pituchei chotam</em>, "gravações de selo" (Ex 28:36), nos dois sentidos de <em>chotam</em>: o selo fecha, para que nada estranho entre na casa de Deus, e também precisa ser aberto:</p></div>
+<figure class="quote"><p class="q-pt">é preciso abrir o selo para a casa de Israel, os fiéis</p><p class="q-he" dir="rtl" lang="he">צריך לפתוח חותם בעד בית ישראל הנאמנים</p></figure>
+<section class="block prose"><div class="lbl">Comentário</div><p> O selo que fecha e abre resume a ambivalência do Tzimtzum: o mesmo limite que protege da falsificação é o que dá acesso. A mesma lógica da ocultação que revela aparece em Sichot 14.</p></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li>No 32, o "agente limitado" é uma pessoa (o mestre, o sacerdote), um ato (a mitzvá) ou ambos? O 31 sugere o mestre; o 33, um objeto ritual. O autor não decide.</li>
+<li>Como conciliar a proibição de "especular sobre a ação" com o elogio do estudo e da compreensão em outros textos? Talvez a fronteira seja entre investigar o caminho da luz e preparar o recipiente.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s34-35"><header class="ch-head"><h2>A causa do Tzimtzum e o espaço vazio</h2><p class="ch-sub">Sichot 34–35</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> Os dois textos fecham o ciclo. O 34 resume em poucas linhas a causa que o 30 desenvolveu longamente. O 35 volta ao "ponto" do 26 e diz o que ele é: o lugar onde todas as coisas estão enraizadas.</p>
+<div class="subhead"><h3>34 · A causa do Tzimtzum</h3><span class="he" lang="he" dir="rtl">סבת הצמצום</span></div>
+<div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Criação gradual.</span>  O Emanador agiu aos poucos, como agem os pensamentos humanos. A prova é a Mishná: o mundo foi criado com dez falas, e não com uma (Avot 5:1).</p></div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Nascimento e permanência.</span>  Para se fixar na criatura, toda luz precisa de duas coisas: nascer e ser mantida. Enquanto as sefirot agiam pela via da negação, faltava a segunda. O efeito precisa ser sustentado continuamente pela causa, e a criatura ainda não sabia atrair esse sustento. O Tzimtzum resolve isso:</p><figure class="quote"><p class="q-pt">um recipiente permanente para atrair o fluxo</p><p class="q-he" dir="rtl" lang="he">בית קבול תמידי להמשכת שפע</p></figure></div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Dilúvio e Israel.</span>  A geração do Dilúvio não era digna desse recipiente, e de novo surge Jó 21:15. Israel, pela Torá, recebe a raiz "dentro do limite" e tem fluxo contínuo. O autor lê <em>be-artzam mishneh yirashu</em> (בְּאַרְצָם מִשְׁנֶה יִירָשׁוּ), "na sua terra herdarão o dobro" (Is 61:7), como novidade "na terrenidade": Deus renova a cada dia a obra da criação.</p></div></div>
+<section class="block prose"><div class="lbl">Comentário</div><p> É a versão concentrada do item 5 do texto 30. A leitura de "na sua terra" como "na dimensão terrena" faz da dupla herança uma renovação contínua dentro do mundo, e não uma fuga dele.</p></section>
+<div class="subhead"><h3>35 · O espaço vazio</h3><span class="he" lang="he" dir="rtl">חלל פנוי</span></div>
+<div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Por que "vazio".</span>  O autor dá vários motivos para o nome, como quem examina uma palavra. O primeiro é a memória: o espaço vazio é o que ficou do Infinito ali, como quem grava com estilete de ferro algo que viu, para nunca esquecer. Ao olhar as letras, tudo volta.</p></div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">O espaço vazio é Malchut.</span>  Os outros motivos identificam esse lugar com Malchut:</p><ul>
+<li>ela dá lugar às criaturas, o que não cabia no Infinito, e sustenta as luzes que lhes cabem;</li>
+<li>foi esvaziada de propósito da luz ilimitada, para ser "porta de entrada" das criaturas;</li>
+<li>no início parecia vazia de tudo e depois se mostrou capaz de suportar todos os mundos;</li>
+<li>os mundos se revelam nela aos poucos, e até a correção final ainda há lugares vazios.</li>
+</ul></div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Raiz e ramos.</span>  A conclusão vai além do nome. Tudo o que vai existir está enraizado ali, e o que não foi enraizado não pode surgir depois:</p><figure class="quote"><p class="q-pt">tudo o que existe são ramos dela</p><p class="q-he" dir="rtl" lang="he">כל שבמציאות, המה ענפים שלה</p></figure></div></div>
+<div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">A árvore incompleta.</span>  A última frase inverte a relação comum entre raiz e ramo. Enquanto todos os ramos que a árvore deve ter não se revelarem,</p><figure class="quote"><p class="q-pt">a própria árvore está incompleta</p><p class="q-he" dir="rtl" lang="he">נמצא האילן בעצמו חסר</p></figure></div></div>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>O círculo se fecha.</strong> O 26 começou dizendo que o ponto já está cheio; o 35 termina dizendo que a árvore está incompleta. As duas teses não se contradizem: o ponto contém tudo como raiz, mas a raiz só se completa quando os ramos aparecem. A dimensão do tempo e do trabalho humano está aí.</li>
+<li><strong>Raiz e ramo.</strong> É a formulação mais clara, no <em>Pri Chacham</em>, da lógica raiz–ramo. O ramo não é cópia descartável da raiz: sem ele, a raiz fica em falta.</li>
+<li><strong>Malchut como receptora.</strong> Identificar o espaço vazio com Malchut liga o Tzimtzum à figura da Shechiná e da comunidade de Israel, tema de vários textos posteriores (Sichot 104, 139).</li>
+</ul></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li>O trecho sobre Malchut como "reunião das coroas de Israel de Zeir" tem lacunas no manuscrito e não pode ser lido com segurança.</li>
+<li>Se nada pode surgir que não esteja enraizado, como entender a "novidade" da luz no 29? A resposta do bloco parece ser que o novo é sempre novo em relação ao limite, nunca em relação à raiz.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s36-37"><header class="ch-head"><h2>Aderir a Ele e a correção das letras finais</h2><p class="ch-sub">Sichot 36–37</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> Fechada a teoria do Tzimtzum, o autor passa ao que a criatura faz com ela. O 36 é teórico: explica por que conhecer as sefirot é aderir a Deus. O 37 abre uma sequência muito diferente (37 a 39), em tom pessoal, sobre a queda e a correção de quem já alcançou um grau alto.</p>
+<div class="subhead"><h3>36 · E apegar-se a Ele</h3><span class="he" lang="he" dir="rtl">ולדבקה בו</span></div>
+<div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">A pergunta.</span>  Diz-se que cada pessoa deve alcançar a raiz da própria alma, porque o fim da criação é a adesão: <em>u-ledovká vo</em> (וּלְדָבְקָה בוֹ), "e apegar-se a Ele" (Dt 11:22). Os sábios leem isso como aderir aos Seus atributos (Sifrei), e os atributos são as sefirot. Mas por que estudar as sefirot seria "aderir"? Parece mero estudo.</p></div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">A mesa e o carpinteiro.</span>  Toda obra guarda a inteligência de quem a fez, na medida dessa inteligência. Quem contempla a mesa e pensa na habilidade que ela contém está, naquele momento, unido à mente do carpinteiro.</p></div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">O espiritual não se corta.</span>  A razão é que entre realidades espirituais não há distância nem separação:</p><figure class="quote"><p class="q-pt">com que faca cortaremos o espiritual?</p><p class="q-he" dir="rtl" lang="he">באיזה סכין נחתוך הרוחני</p></figure><p>O que distingue duas mentes não é o lugar, mas a qualidade e a composição: quem pensa astronomia não se une a quem pensa física, e mesmo dentro de uma ciência um supera o outro. Quando dois sábios pensam a mesma sabedoria na mesma medida, não há o que os separe.</p></div></div>
+<div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">O abraço.</span>  Quem alcança o pensamento contido na obra de outro fica medido pela mesma força que ele. O autor usa a imagem de dois amigos que se encontram na rua e se abraçam, impossíveis de separar.</p></div></div>
+<div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">Aplicação.</span>  A inteligência humana é o ponto médio entre Criador e criaturas, uma centelha pela qual tudo volta a Ele: <em>kulam be-chochmá asita</em> (כֻּלָּם בְּחָכְמָה עָשִׂיתָ), "todas as fizeste com sabedoria" (Sl 104:24). Quem alcança como o mundo foi feito adere à inteligência que o fez, e portanto ao Criador. A Torá é o conjunto dos Nomes que dizem respeito às criaturas, e foi nela que Deus "olhou" para criar.</p></div></div>
+<div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">Por que Ele nos mostrou Seus instrumentos.</span>  Não precisamos criar mundos. O motivo é outro:</p><figure class="quote"><p class="q-pt">mostrou-nos Suas ordens para sabermos como aderir a Ele</p><p class="q-he" dir="rtl" lang="he">הראה לנו הקב"ה סדריו שנדע איך להתדבק בו</p></figure></div></div>
+<section class="block prose"><div class="lbl">Comentário</div><p> É a versão mais clara, no volume, da tese de Sichot 2 e 26: adesão é identidade de pensamento, não proximidade espacial nem sentimento. Isso explica por que, para Baal HaSulam, o estudo da Cabalá não é informação sobre Deus, mas forma de união. A ideia de "equivalência de forma" da Introdução ao Zohar aparece aqui em versão intelectual: une-se quem pensa como o outro pensa.</p></section>
+<div class="subhead"><h3>37 · A correção das letras finais</h3><span class="he" lang="he" dir="rtl">תיקון המנצפ&quot;ך</span></div>
+<div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Um conselho não entendido.</span>  O texto abre com <em>ve-orach tzadikim ke-or nogah</em> (וְאֹרַח צַדִּיקִים כְּאוֹר נֹגַהּ), "o caminho dos justos é como a luz da aurora" (Pr 4:18). Em seguida, uma lembrança pessoal: o autor foi advertido pelo seu mestre a não repreender ninguém, com base na passagem talmúdica do cisco e da trave (Arachin 16b). Ele confessa que, na época, não estava preparado para entender.</p></div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">O que estava em jogo.</span>  O conselho tocava no segredo da correção das letras finais (MaNTzePaCh, as cinco <em>gevurot</em>) e da queda da "estrela da manhã" (Is 14:12). Quem completa as 613 "orientações" da Torá recebe santidade até no corpo e se torna como a escada de Jacó (Gn 28:12). Esse é o escolhido da geração para corrigir a Árvore do Conhecimento, isto é, a <em>Nogá</em>, a casca intermediária, metade boa. A <em>Nogá</em> que seduziu Eva lhe é enviada para ser corrigida.</p></div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">A cautela necessária.</span>  Quem repreende o ímpio é como quem limpa lugares imundos: não escapa do mau cheiro. O caminho certo seria corrigir à distância, rodeando sem tocar, até que a <em>Nogá</em> fosse elevada e simplesmente desaparecesse do seu lugar. Não havia nenhuma necessidade de se aproximar das três cascas impuras (o vento, a nuvem e o fogo de Ez 1:4), das quais nada se aprende: "achaste mel, come o que te basta" (Pr 25:16).</p></div></div>
+<div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">Judá e Tamar.</span>  O texto passa à história de Gn 38, lida como alegoria da <em>Nogá</em> e da Shechiná oculta. Tamar não era "prostituta"; estava no mesmo nível que ele. Judá temeu a vergonha e adiou; quando a gravidez apareceu, os três sinais deixados em penhor (selo, cordão, cajado, lidos como as letras do Nome) só puderam ser recuperados por meio dela, e ele a tomou para sempre.</p></div></div>
+<div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">O fio escarlate.</span>  A partir de <em>ke-chut ha-shani siftotayich</em> (כְּחוּט הַשָּׁנִי שִׂפְתֹתַיִךְ), "teus lábios são como fio escarlate" (Ct 4:3), o autor descreve a união de dois "lábios", duas línguas que se tornam uma só, a língua sagrada. Daí o "fio triplo", Ester e o fio de graça (Meguilá 13a), e o midrash da filha do rei que ninguém conhecia e foi dada ao amigo amado. O texto termina em lacunas.</p></div></div>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Tom autobiográfico.</strong> "Fui advertido", "não estava preparado para entender": é o texto mais pessoal do bloco. A sequência 37–39 parece narrar uma queda espiritual do próprio autor (ou de alguém próximo), lida pelas categorias do Ari.</li>
+<li><strong>Repreender como forma de contato.</strong> A tese moral é forte: corrigir o mal de perto contamina. O justo corrige pela própria luz, à distância. Isso prepara o 38.</li>
+<li><strong>A abreviação</strong> בק"מ provavelmente indica o mestre do autor, mas a leitura exata não é segura.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s38-39"><header class="ch-head"><h2>&quot;Nogá será como a luz&quot; e as sete muralhas</h2><p class="ch-sub">Sichot 38–39</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> O 38 começa no meio de uma frase e continua diretamente o 37: explica onde o erro aconteceu e como se corrige. O 39 descreve o caminho de volta depois da queda. Os dois são longos, cheios de citações encadeadas, e alternam análise e lamento.</p>
+<div class="subhead"><h3>38 · &quot;E Nogá será como a luz&quot;</h3><span class="he" lang="he" dir="rtl">סוד &quot;ונוגה כאור תהיה&quot;</span></div>
+<div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">O que teria acontecido.</span>  Se o justo tivesse permanecido "dentro" da santidade, teria visto o bem de Jerusalém todos os dias, inclusive à noite (Sl 128:5). O caminho teria sido curto: corrigir apenas a <em>Nogá</em>, a casca próxima, como o sacerdote que só pode se contaminar por um parente próximo (Lv 21:1–2).</p></div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Onde falhou.</span>  Por não ter cuidado de que o serviço fosse "só para Deus", saiu ao "cemitério" das três cascas, que já estavam mortas e quase esquecidas. Sua santidade diminuiu, o corpo tornou-se ele mesmo <em>Nogá</em>, e as cascas se agarraram a ele, a ponto de lhe devolverem com insolência a frase da trave e do cisco. O autor projeta isso sobre Adão: vestes de luz (<em>or</em> com álef) que se tornam vestes de pele (<em>or</em> com áyin).</p></div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">A voz de Deus.</span>  O texto passa a um longo discurso em primeira pessoa, atribuído a Deus, que responde à queixa do justo com <em>mi hikdimani va-ashalem</em> (מִי הִקְדִּימַנִי וַאֲשַׁלֵּם), "quem Me antecipou para que Eu retribua?" (Jó 41:3). Foi ele quem saiu da casa do Rei. A crítica central:</p><figure class="quote"><p class="q-pt">todas as tuas ações eram como corpo sem alma</p><p class="q-he" dir="rtl" lang="he">כל מעשיך כגוף בלא נשמה</p></figure><p>As ações eram aceitas; a intenção, não. Por bondade, Deus enviou ao justo uma porção Sua, restringindo a própria luz por três telas (os mundos BYA), para que pudesse se ligar ao corpo.</p></div></div>
+<div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">"Não está nos céus."</span>  Daí a leitura de <em>lo va-shamayim hi</em> (לֹא בַשָּׁמַיִם הִוא), "não está nos céus" (Dt 30:12). A Torá estava oculta, mas no Sinai desceu à terra; agora é preciso fazê-la. Cada mitzvá repousa sobre um membro do corpo, e quem cumpre a Torá em sentido simples:</p><figure class="quote"><p class="q-pt">se encontrará diante do monte Sinai</p><p class="q-he" dir="rtl" lang="he">ימצא את עצמו עומד לפני הר סיני</p></figure><p>Para Deus e para a Torá eterna, passado, presente e futuro são iguais.</p></div></div>
+<div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">A correção depois do pecado.</span>  Ela foi entregue aos justos, e aqui volta Pr 4:18. Eles se mantêm na santidade, e de longe sua luz age sobre a <em>Nogá</em>, que sobe aos poucos, "cada vez mais clara até o dia pleno". No fim, a <em>Nogá</em> volta a ser luz e engole as três cascas. Onde antes brilhava luz de dia comum, brilha luz de Shabat.</p></div></div>
+<div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">Lea e Raquel.</span>  Uma leitura de Gn 29:17: dos "olhos fracos" de Lea nasce a beleza de Raquel. Jacó amava Raquel antes da criação e trabalhou por ela sem saber; recebeu Lea, o "mundo oculto", e só então Raquel.</p></div></div>
+<div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">A parábola do servo.</span>  Um servo trabalha para o rei sem reverência, porque não entende a grandeza dele. O rei o educa, leva-o ao palácio e lhe mostra os tesouros e quanto o reino depende do trabalho de todos. Depois faz uma pergunta pequena, que o servo deveria responder sozinho, e ele precisa sair por respeito. É a leitura de <em>ma HaShem Elohecha sho'el me'imach ki im le-yir'á</em> (מָה ה' אֱלֹהֶיךָ שֹׁאֵל מֵעִמָּךְ כִּי אִם לְיִרְאָה), "que pede o Senhor teu Deus de ti, senão que temas?" (Dt 10:12). O fecho:</p><figure class="quote"><p class="q-pt">com teus atos atas coroas ao teu Criador</p><p class="q-he" dir="rtl" lang="he">כתרים אתה קושר לקונך במעשיך</p></figure></div></div>
+<div class="subhead"><h3>39 · Sete muralhas</h3><span class="he" lang="he" dir="rtl">שבע חומות</span></div>
+<div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">O ponto de partida.</span>  A saudade de Jó, <em>mi yitneni ke-yarchei kedem</em> (מִי יִתְּנֵנִי כְיַרְחֵי קֶדֶם), "quem me dera como nos meses de outrora" (Jó 29:2), e <em>sheva yipol tzadik va-kam</em> (שֶׁבַע יִפּוֹל צַדִּיק וָקָם), "sete vezes cai o justo e se levanta" (Pr 24:16). Quem morava no palácio e via a filha do Rei foi expulso por uma pergunta pequena sobre o anel do Rei: tinha a resposta na mão, mas não entendeu a pergunta.</p></div></div>
+<div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">As muralhas.</span>  Depois do retorno, precisa atravessar sete muralhas e afastar as cascas que se prenderam por causa dele. As seis primeiras caem fácil. A sétima, onde está a filha do Rei, exige armas de verdade. Em volta há um vale de pranto do qual quem cai não se levanta, e sobre ele uma ponte com dois guardas: um não deixa passar quem leva o anel do Rei, o outro não deixa passar quem leva armas.</p></div></div>
+<div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Uma guerra contra Deus.</span>  O justo sabe que é mais forte que os dois guardas, mas não tem para onde fugir: <em>ana mi-panecha evrach</em> (אָנָה מִפָּנֶיךָ אֶבְרָח), "para onde fugirei da tua face?" (Sl 139:7). A guerra é, de fato, contra o próprio Deus.</p></div></div>
+<div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">Muro e porta.</span>  A partir de Ct 8:9, o justo vive entre dois extremos: sobre o muro, em saudade sem medida; e diante da porta, que ele mesmo escora com uma tábua de cedro para que não se abra, por respeito à realeza. O que ele quer é que</p><figure class="quote"><p class="q-pt">o próprio Santo abra a porta</p><p class="q-he" dir="rtl" lang="he">הקב"ה בעצמו, יפתח הדלת</p></figure></div></div>
+<div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">O espelho.</span>  Um filho pede ao pai para ver a própria forma e recebe um espelho. Quando outra criança se aproxima e ele vê o rosto dela, sente-se roubado. Mas o espelho é "geral", feito para todos; o erro foi querer uma imagem só sua. O autor liga isso ao bezerro de ouro: a mistura de povos fez para si uma imagem, e o deslize de Aarão foi dizer "festa ao Senhor amanhã", em vez de imediatamente. Por isso as primeiras tábuas se quebraram.</p></div></div>
+<div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">Agora, não amanhã.</span>  R. Yehoshua ben Levi pulou para o Éden e jurou não sair (Ketubot 77b): é a "festa ao Senhor agora". O fim da correção é manter o juramento que toda alma faz antes de nascer (Nidá 30b), sem adiá-lo por inveja. <em>Nafla lo tosif kum</em> (נָפְלָה לֹא תוֹסִיף קוּם), "caiu e não voltará a levantar" (Am 5:2), é lido com o Zohar: não se levanta sozinha, Deus a levantará.</p></div></div>
+<div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">Acaz e de novo Tamar.</span>  O pecado de Acaz foi recusar o sinal oferecido por Isaías (Is 7:11) e aceitar que o mundo estava entregue aos astros. O texto termina relendo o penhor de Tamar: ela pediu os três sinais para que Judá não os usasse fora do lugar antes de corrigir o que havia acontecido.</p></div></div>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Uma teologia da queda do justo.</strong> Os textos 37 a 39 formam o núcleo pessoal do volume. A queda não vem de pecado grosseiro, mas de serviço sem intenção pura e de um zelo de corrigir os outros de perto. A volta não é por esforço heroico: o justo segura a porta e espera que Deus a abra.</li>
+<li><strong>O espelho e a imagem.</strong> Na parábola do espelho, o ídolo nasce quando alguém transforma o que é geral (o espelho, a revelação para todos) em imagem particular, "só minha". É a mesma lógica do deus possuído do texto 30.</li>
+<li><strong>O Sinai acessível.</strong> O item 4 do 38 dá peso enorme à mitzvá simples: cumprida no corpo, ela leva "de repente" ao Sinai. É um contraponto à leitura que separa interior e prática.</li>
+<li><strong>Lacunas e repetições.</strong> Os dois textos retomam Tamar, Jó e a trave e o cisco do 37. Parecem notas de um mesmo período, montadas pelo editor.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="s40"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">סדר התיקון</span><h2>A ordem da correção</h2><p class="ch-sub">Sichot 40</p></header>
+<p class="lead-p"><strong>Lugar no bloco.</strong> Uma nota curta que funciona como fecho teórico para 26 a 39: descreve, em três tempos, o ciclo completo da criação à correção, e explica por que o ocultamento era necessário.</p>
+<section class="block prose"><div class="lbl">O argumento, na ordem do autor</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Primeiro tempo: pensamentos que agem em potência.</span>  No início, os pensamentos divinos produziam ações apenas em potência, e essas ações ficaram impressas na criação como as forças da natureza: fogo, água, terra e tudo o que nelas há.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Segundo tempo: ocultamento.</span>  Depois os pensamentos se ocultaram, e as forças da criação passaram da potência ao ato. É o domínio pleno dos mundos inferiores (BYA), em que a natureza parece agir sozinha.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Terceiro tempo: revelação sobre as ações.</span>  Na correção, os mesmos pensamentos voltam a se revelar, agora sobre as ações já realizadas: <em>u-re'u mi vara ele</em> (וּרְאוּ מִי בָרָא אֵלֶּה), "e vede quem criou estas coisas" (Is 40:26). É o "mundo invertido" do Talmud (Pesachim 50a) e a justiça que se mostra inteira, <em>mishpetei HaShem emet tzadku yachdav</em> (מִשְׁפְּטֵי ה' אֱמֶת צָדְקוּ יַחְדָּו), "os juízos do Senhor são verdade, justos todos juntos" (Sl 19:10).</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">Por que ocultar.</span>  O ocultamento por um tempo determinado serve para que as forças nascidas dos pensamentos façam o que lhes cabe fazer. Quando por fim se revela também quem as criou, toda a criação aparece com esplendor. A frase que fecha o texto:</p><figure class="quote"><p class="q-pt">se as sefirot não se ocultassem no início, a criação não passaria ao ato</p><p class="q-he" dir="rtl" lang="he">אם לא נתעלמו הספירות מתחילה, לא היתה יוצאת כל הבריאה אל הפועל</p></figure></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>O Tzimtzum em escala histórica.</strong> O texto aplica ao mundo natural a lógica que o 27 e o 29 aplicaram à luz: retirar-se para que algo exista de fato, e voltar a se revelar sobre o que existiu. Natureza autônoma não é negação de Deus, é etapa do plano.</li>
+<li><strong>Paralelos.</strong> Sichot 12 (inversão das formas) e 44 ("vi um mundo invertido") desenvolvem o mesmo motivo.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="sintese"><header class="ch-head"><h2>Síntese e questões abertas</h2></header>
+<div class="prose"><p>O bloco defende uma tese única: o Tzimtzum não é afastamento de Deus, mas o modo pelo qual a criatura passa de receber tudo sem saber para receber sabendo e pedindo. Cada texto acrescenta uma peça a essa tese:</p></div>
+<div class="prose"><ol>
+<li><strong>Conhecer</strong> (26). Deus é conhecido pelas ações, e o ponto já está cheio; falta esclarecê-lo aos sentidos.</li>
+<li><strong>Revelar</strong> (27). A retirada revela uma raiz anterior e, com ela, o mal em detalhe.</li>
+<li><strong>Educar</strong> (28). Nada mudou na essência; o juízo e a misericórdia educam, e a falta vira mérito.</li>
+<li><strong>Precisar</strong> (29). A luz que chega é a mesma, mas agora medida e voluntária: vem da vontade, não da natureza.</li>
+<li><strong>Pedir</strong> (30). A plenitude sem necessidade não sustenta nem cria relação; o deus que se pode possuir é ídolo.</li>
+<li><strong>Compor</strong> (31–33). No espaço restrito, o estudo, os Nomes e o agente limitado são os meios de atrair o ilimitado.</li>
+<li><strong>Enraizar</strong> (34–35). A restrição cria o recipiente permanente, e o espaço vazio guarda as raízes de tudo; a árvore só se completa com os ramos.</li>
+</ol></div>
+<div class="prose"><p>Os textos 36 a 40 levam a tese para a vida de quem serve: aderir é pensar como Deus pensou a obra (36); corrigir o mal não se faz por contato, mas pela própria luz (37–38); quem cai volta segurando a porta e esperando que Deus a abra (39); e todo ocultamento, inclusive o da natureza, é etapa para que a revelação venha sobre algo que de fato existiu (40).</p></div>
+<section class="block prose"><div class="lbl">Questões para continuar</div><ul>
+<li>Como o "intelecto ativo" de Sichot 2 e 30 se relaciona com a fé "como lugar" do 26?</li>
+<li>O "agente limitado" (32–33) é o mestre, a mitzvá ou ambos? A resposta muda o peso que se dá ao estudo e à prática.</li>
+<li>Os textos 27 e 30 têm lacunas importantes. Vale confrontar com outra edição do <em>Pri Chacham</em>, se houver acesso.</li>
+<li>Paralelos para ler em seguida: Sichot 2 (intelecto do agente), 36 (aderir aos atributos), 63 (uma só alma) e 88 (falta e perfeição).</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="excurso"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">שכל הפועל</span><h2>Excurso: o &quot;intelecto ativo&quot;</h2></header>
+<div class="prose"><p>Nas Sichot, <em>sechel ha-po'el</em> quase nunca significa o "Intelecto Agente" da filosofia medieval. Significa, antes, <strong>o intelecto de quem age</strong>: a inteligência do Criador tal como está contida nas Suas obras, e, por extensão, o estado de quem a alcança. A expressão hebraica permite as duas leituras ("intelecto ativo" ou "intelecto do agente"), e Baal HaSulam joga com essa ambiguidade.</p></div>
+<section class="block prose"><div class="lbl">Onde o termo aparece e o que faz em cada texto</div><div class="tw"><table>
+<thead>
+<tr>
+<th>Texto</th>
+<th>Sentido</th>
+<th>Ideia central</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sichot 2 (שכל הפועל)</td>
+<td>O intelecto de alguém, conhecido pelas suas ações</td>
+<td>Conhecemos um amigo primeiro pelo corpo, depois pela mente; quando ele some dos olhos físicos, nada se perde para quem aderiu à sua mente. Assim se conhece Deus pelas obras</td>
+</tr>
+<tr>
+<td>Sichot 26 (Sefirot)</td>
+<td><em>Ko'ach ha-po'el ba-nif'al</em>, a força do agente no feito</td>
+<td>O mundo é corpo, Deus é alma; olhando as ações, vê-se quem age</td>
+</tr>
+<tr>
+<td>Sichot 36 (Aderir a Ele)</td>
+<td>As sefirot como "intelecto do agente e conduta do Seu mundo"</td>
+<td>Quem alcança a inteligência contida na obra se une ao autor, como quem compreende a mesa se une à mente do carpinteiro</td>
+</tr>
+<tr>
+<td>Sichot 30 (Os dois fins)</td>
+<td>Um estado de percepção que não se esgota</td>
+<td>Ao contrário dos outros saberes, dá prazer "mesmo mil vezes ao dia" e abre os segredos; mas sem o fluxo divino nada faz</td>
+</tr>
+<tr>
+<td>Sichot 3 (A adesão verdadeira)</td>
+<td>Crítica da adesão "intelectual"</td>
+<td>A adesão perfeita é simples e não depende de raciocínio: <em>lo machshevotai machshevoteichem</em> (לֹא מַחְשְׁבוֹתַי מַחְשְׁבוֹתֵיכֶם), "Meus pensamentos não são os vossos" (Is 55:8)</td>
+</tr>
+<tr>
+<td>Sichot 41 (O prazer permanente)</td>
+<td>O intelecto como o que permanece</td>
+<td>Só o intelectual tem eternidade; por isso o prazer final também é de natureza intelectual</td>
+</tr>
+</tbody>
+</table></div><p>O estudo completo do texto 2 está no Prólogo, no início deste documento.</p></section>
+<div class="subhead"><h3>1 · Uma teoria da união pelo pensamento</h3></div>
+<div class="prose"><p>O núcleo está no 36. Entre realidades espirituais não há distância; o que as separa é a qualidade e a composição. Duas mentes que pensam a mesma coisa, na mesma medida, não têm o que as distinga. Logo, quem pensa o pensamento que está na obra de Deus não apenas sabe algo sobre Deus: une-se a Ele naquele ponto.</p></div>
+<div class="prose"><p>Isso dá ao estudo da Cabalá um estatuto muito alto. As sefirot são exatamente essa inteligência "posta à vista". Daí a pergunta retórica do 36: por que Deus nos mostrou Seus instrumentos, se não vamos criar mundos? Para que saibamos aderir.</p></div>
+<div class="subhead"><h3>2 · Do conhecimento ao estado</h3></div>
+<div class="prose"><p>O 30 desloca o termo. Ali o intelecto ativo já não é só o conteúdo alcançado, mas uma condição de quem o alcança. Três traços o distinguem dos saberes comuns:</p></div>
+<div class="prose"><ul>
+<li><strong>não sacia:</strong> o prazer de entender algo novo acaba quando a dúvida se resolve; este se renova sempre;</li>
+<li><strong>é fecundo:</strong> basta trazê-lo à mente para que outros temas ocultos se abram;</li>
+<li><strong>é antigo:</strong> é a luz do primeiro dia, guardada para os justos.</li>
+</ul></div>
+<div class="prose"><p>Essa descrição aproxima o intelecto ativo do que o autor chama, em outros textos, de "primeiro inteligível" (מושכל ראשון): aquilo que se sabe sem esforço e sem dúvida, como sabemos que estamos vivos (Sichot 28, 83 e 87).</p></div>
+<div class="subhead"><h3>3 · A tensão com o texto 3</h3></div>
+<div class="prose"><p>O 3 parece dizer o contrário do 36. Critica quem fala em "adesão intelectual", porque a adesão perfeita é simples e não precisa de raciocínio. A tensão se resolve com o 30: o intelecto ativo, como estado, não é raciocínio discursivo. É compreensão que virou natureza. O caminho passa pelo estudo (36), mas o ponto de chegada é simples (3).</p></div>
+<div class="subhead"><h3>4 · O limite: o intelecto sem o fluxo</h3></div>
+<div class="prose"><p>O mesmo 30 coloca a advertência mais importante:</p></div>
+<figure class="quote"><p class="q-pt">o intelecto ativo, sem Sua ajuda e fluxo, nada faz</p><p class="q-he" dir="rtl" lang="he">השכל הפועל זולת עזרתו ושפעו, לא יפעול כלום</p></figure>
+<div class="prose"><p>O exemplo é a geração do Dilúvio: conheciam "o Nome com que céu e terra foram criados" e, por isso, julgavam-se donos do fluxo. Conhecer a estrutura da criação sem sentir necessidade de receber vira posse. É a forma intelectual da idolatria descrita no fecho do 30 e na parábola do espelho do 39: transformar em propriedade o que só existe como relação. A correção é o "ganho duplo": raiz no Infinito e consciência permanente de que se precisa receber, "olhos para baixo, coração para cima".</p></div>
+<div class="subhead"><h3>5 · Comparação com o Intelecto Agente medieval</h3></div>
+<div class="prose"><div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Filosofia medieval (Maimônides e outros)</th>
+<th>Pri Chacham</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O que é</td>
+<td>A última das inteligências separadas, que atualiza o intelecto humano</td>
+<td>A sabedoria do próprio Criador contida nas obras (sefirot, Torá, natureza)</td>
+</tr>
+<tr>
+<td>Como se chega</td>
+<td>Estudo das ciências e aperfeiçoamento moral</td>
+<td>Estudo das sefirot e dos Nomes, cumprimento da Torá e suas "condições"</td>
+</tr>
+<tr>
+<td>O que se obtém</td>
+<td>União (conjunção) do intelecto humano com o Intelecto Agente; base da profecia</td>
+<td>Adesão a Deus por identidade de pensamento; prazer que não se esgota</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Pouco tematizado</td>
+<td>Central: o saber sem dependência torna-se posse (Dilúvio)</td>
+</tr>
+</tbody>
+</table></div></div>
+<div class="prose"><p>Baal HaSulam herda o vocabulário medieval, inclusive a ideia de união do intelecto humano com o divino. Mas o desloca em três pontos: tira-o de uma inteligência intermediária e o põe nas sefirot; acrescenta a dimensão do prazer; e torna a dependência do fluxo condição de validade, não detalhe.</p></div>
+<div class="subhead"><h3>6 · Questões para continuar</h3></div>
+<div class="prose"><ul>
+<li><strong>Uma camada anterior?</strong> Nas obras maduras, a "equivalência de forma" é sobretudo de desejo (receber ou doar), como na Introdução ao Zohar. Aqui ela é formulada em termos de intelecto. Pode ser uma etapa mais antiga do pensamento do autor, mas isso exigiria datar os manuscritos.</li>
+<li><strong>Fé e intelecto.</strong> O 26 põe o encontro com a luz no "lugar da fé"; o 36 o põe no pensamento. A escola de Rabash enfatizou depois a "fé acima da razão". Como as duas linhas se articulam no próprio Baal HaSulam?</li>
+<li><strong>Textos a ler em seguida:</strong> Sichot 15 (o evidente e o inteligível), 81 (intelecto e inteligível), 83 (amor superior "como primeiro inteligível") e 87 (a forma espiritual percebida sem imaginação e sem dúvida).</li>
+</ul></div>
+</section></div>
+</main>
+</body>
+</html>

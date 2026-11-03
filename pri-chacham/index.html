@@ -1,0 +1,1677 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pri Chacham · análise e sumário</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral+SC:wght@500;600&display=swap">
+<style>/* Layout: folhas A4 empilhadas; cada item = coluna de número | texto | margem de notas (como a folha de estudo com glosas laterais) */
+:root{
+  --paper:#fbfaf6; --desk:#e9e7e0; --ink:#1f2130; --muted:#5c5f70; --rule:#d6d3c8;
+  --techelet:#284a86; --gold:#8a6a22; --panel:#f1efe7; --v-in:#dfe6f3; --v-out:#f3eadb;
+  --f-body:"Spectral", Georgia, "Times New Roman", serif;
+  --f-sc:"Spectral SC", "Spectral", Georgia, serif;
+  --f-he:"Frank Ruhl Libre", "David", "Times New Roman", serif;
+  --s-0:.82rem; --s-1:.95rem; --s-2:1.06rem; --s-3:1.3rem; --s-4:1.9rem; --s-5:2.8rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}
+
+body{background:var(--desk); color:var(--ink); font-family:var(--f-body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); padding-block:24px}
+.book{display:flex; flex-direction:column; gap:28px; align-items:center}
+.sheet{background:var(--paper); width:100%; max-width:210mm; padding:18mm 16mm; box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06); min-width:0}
+p{margin:0 0 .75em}
+i,em{font-style:italic}
+a{color:var(--techelet)}
+a:focus-visible{outline:2px solid var(--techelet); outline-offset:2px}
+h1,h2,h3{text-wrap:balance; font-weight:500; margin:0}
+
+/* Capa */
+.cover{display:flex; flex-direction:column; gap:18px; padding-block:26mm}
+.eyebrow{font-family:var(--f-sc); letter-spacing:.06em; color:var(--muted); font-size:var(--s-1); margin:0}
+h1{display:flex; flex-direction:column; gap:6px}
+.h1he{font-family:var(--f-he); font-size:var(--s-5); color:var(--techelet); line-height:1.15; font-weight:500}
+.h1pt{font-size:var(--s-4); font-style:italic; font-weight:400}
+.lead{font-size:var(--s-2); color:var(--muted); margin:0}
+.toc{display:flex; flex-wrap:wrap; gap:8px 22px; border-block:1px solid var(--rule); padding-block:12px; font-family:var(--f-sc); letter-spacing:.04em}
+.toc a{text-decoration:none}
+.howto{font-size:var(--s-1); max-width:62ch; margin:0}
+
+h2.plain{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.05em; color:var(--techelet); margin-bottom:14px}
+#apres p, #apres li{max-width:68ch; font-size:var(--s-1)}
+
+/* Cabeçalho de capítulo */
+.ch-head{display:grid; grid-template-columns:1fr auto; align-items:end; gap:4px 16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:26px}
+.ch-head h2{font-family:var(--f-sc); font-size:var(--s-4); letter-spacing:.04em; grid-column:1; grid-row:1}
+.ch-sub{grid-column:1; margin:0; font-style:italic; color:var(--muted)}
+.ch-he{grid-column:2; grid-row:1 / span 2; font-family:var(--f-he); font-size:var(--s-5); color:var(--gold); line-height:1}
+
+/* Item */
+.item{display:grid; grid-template-columns:4.2rem minmax(0,1fr) 13.5rem; gap:0 18px; padding-block:18px; border-top:1px solid var(--rule)}
+.item:first-of-type{border-top:0}
+.num{display:flex; flex-direction:column; align-items:flex-start; gap:2px; position:sticky; top:12px; align-self:start}
+.num .he{font-family:var(--f-he); font-size:var(--s-3); color:var(--gold); direction:rtl}
+.num .pt{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.08em; color:var(--muted)}
+.src-new{color:var(--techelet); font-size:var(--s-1)}
+.main{min-width:0; display:flex; flex-direction:column; gap:14px}
+.lbl{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.12em; color:var(--techelet); margin-bottom:6px}
+
+.ari{background:var(--panel); padding:14px 16px 10px; border-radius:2px}
+.pair{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:18px}
+.pt-text p{font-size:var(--s-2); line-height:1.58; font-weight:500}
+.pt-text em{font-weight:500}
+.he-text{font-family:var(--f-he); font-size:1.04rem; line-height:1.75; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:14px}
+.he-text p{margin:0 0 .6em}
+.srcref{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.05em; color:var(--muted); margin:6px 0 0}
+
+.op p{font-size:var(--s-1); line-height:1.66; text-align:justify; hyphens:auto; max-width:70ch}
+.op p + p{text-indent:1.4em}
+.dibur{font-family:var(--f-sc); font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.dibur::after{content:" —"; color:var(--muted)}
+.op em{font-style:italic}
+
+sup.nref{font-size:.68em; line-height:0}
+sup.nref a{text-decoration:none; font-family:var(--f-sc); color:var(--gold); padding:0 1px}
+
+/* Notas laterais */
+.notes{min-width:0; display:flex; flex-direction:column; gap:10px; font-size:var(--s-0); line-height:1.5; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:12px; align-self:start}
+.notes:empty{border:0}
+.note b{font-family:var(--f-sc); color:var(--gold); margin-inline-end:4px}
+.note:target{background:var(--panel); outline:1px solid var(--gold); outline-offset:3px}
+.note strong{color:var(--ink); font-weight:600}
+
+/* Tabelas */
+.tw{overflow-x:auto; max-width:100%}
+table{border-collapse:collapse; width:100%; font-size:var(--s-0); font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:6px 8px; border-bottom:1px solid var(--rule); vertical-align:top}
+th{font-family:var(--f-sc); font-weight:600; letter-spacing:.05em; color:var(--techelet); border-bottom:1.5px solid var(--ink)}
+table.lv td,table.lv th{text-align:center}
+table.lv td:first-child,table.lv th:first-child{text-align:left}
+table.lv td em{display:inline-block; background:var(--v-in); padding:1px 6px; border-radius:2px}
+
+/* Figuras */
+.fig{margin:6px 0 0; border:1px solid var(--rule); padding:12px 14px}
+.fig figcaption{font-size:var(--s-1); margin-bottom:8px}
+.fig figcaption .lbl{display:inline; margin-inline-end:8px}
+.figcap{font-size:var(--s-0); color:var(--muted); font-style:italic; margin:8px 0 0}
+.grid5 td{white-space:nowrap}
+.bar{display:inline-block; height:8px; width:calc(var(--w) * .7); max-width:70px; background:var(--techelet); margin-inline-end:8px; vertical-align:middle; opacity:.75}
+.fig svg{width:100%; min-width:520px; height:auto; display:block}
+.fig svg .v-in{fill:var(--v-in); stroke:var(--techelet); stroke-width:1}
+.fig svg .v-out{fill:var(--v-out); stroke:var(--gold); stroke-width:1; stroke-dasharray:4 3}
+.fig svg .t-h{fill:var(--ink); font:600 14px var(--f-sc); letter-spacing:.04em}
+.fig svg .t-v{fill:var(--ink); font:600 13px var(--f-body)}
+.fig svg .t-l{fill:var(--muted); font:italic 12px var(--f-body)}
+.fig svg .t-s{fill:var(--muted); font:12px var(--f-body)}
+.fig svg.yod{min-width:0; max-width:620px}
+.fig svg .yod-body{fill:var(--techelet)}
+.fig svg .yod-kotz{fill:var(--gold)}
+.fig svg .ring{fill:none; stroke:var(--gold); stroke-width:1; stroke-dasharray:3 3}
+.fig svg .lead{stroke:var(--gold); stroke-width:1}
+.fig svg .lead2{stroke:var(--muted); stroke-width:1}
+.fig svg .t-k{fill:var(--gold); font:600 14px var(--f-sc); letter-spacing:.03em}
+.fig svg .t-he{fill:var(--techelet); font:500 40px var(--f-he)}
+.fig svg .cut{stroke:var(--techelet); stroke-width:2}
+
+/* Tela estreita */
+@media (max-width:760px){
+  .sheet{padding:22px 18px}
+  .item{grid-template-columns:minmax(0,1fr); gap:10px}
+  .num{position:static; flex-direction:row; align-items:baseline; gap:10px}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .he-text{border-inline-start:0; padding-inline-start:0; border-top:1px solid var(--rule); padding-top:10px}
+  .notes{border-inline-start:2px solid var(--rule)}
+  .ch-he{font-size:var(--s-4)}
+  .h1he{font-size:2.2rem}
+}
+
+/* Impressão / PDF */
+@page{size:A4; margin:16mm 14mm 18mm}
+@media print{
+  :root{--paper:#fff; --desk:#fff; --ink:#111; --muted:#444; --panel:#f3f2ee}
+  body{padding:0; background:#fff; font-size:10.5pt}
+  .book{gap:0}
+  .sheet{box-shadow:none; padding:0; max-width:none; break-before:page}
+  .sheet:first-child{break-before:auto}
+  .num{position:static; flex-direction:column; align-items:flex-start; gap:2px}
+  .item{grid-template-columns:3.6rem minmax(0,1fr) 11.5rem; break-inside:auto}
+  .ari,.fig,.note,tr{break-inside:avoid}
+  .toc{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+.subt{display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 16px; margin:0; font-style:italic; color:var(--muted); font-size:var(--s-1)}
+.he-s{font-family:var(--f-he); font-style:normal; color:var(--gold)}
+.srcline{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.05em; color:var(--muted); margin:-12px 0 8px}
+sup.op-m{font-family:var(--f-he); font-size:.72em; line-height:0; color:var(--gold); font-weight:700; padding:0 1px}
+sup.op-m a{color:inherit; text-decoration:none}
+.opl{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+.opl li{display:grid; grid-template-columns:1.8rem minmax(0,1fr); gap:10px; align-items:start}
+.op-b{font-family:var(--f-he); font-weight:700; font-size:1.05rem; color:var(--gold); text-decoration:none; text-align:center; border:1px solid var(--rule); border-radius:2px; line-height:1.6}
+.opl li:target .op-c{background:var(--panel); outline:1px solid var(--gold); outline-offset:4px}
+.op-c p{margin:0 0 .55em}
+.op-c p + p{text-indent:1.4em}
+.op .dibur{display:inline}
+.cont{font-style:italic; color:var(--muted)}
+.key{margin:4px 0 0; border:1px solid var(--rule); padding:12px 14px}
+.key figcaption{font-size:var(--s-1); margin-bottom:8px}
+.key figcaption .lbl{display:inline; margin-inline-end:8px}
+.keyt td.c{font-family:var(--f-he); color:var(--gold); text-align:center; white-space:nowrap}
+.fig svg{min-width:0}
+.colophon{font-size:var(--s-0); color:var(--muted); border-top:1px solid var(--rule); padding-top:10px; margin-top:18px}
+
+.hp p{font-size:var(--s-1); line-height:1.68; text-align:justify; hyphens:auto; max-width:70ch; margin:0 0 .7em}
+.hp p + p{text-indent:1.4em}
+.hp-t{font-style:normal; color:var(--techelet); font-family:var(--f-sc); letter-spacing:.02em; margin-bottom:8px}
+.hp-ch{font-family:var(--f-sc); font-size:var(--s-3); color:var(--ink); margin:26px 0 4px; display:flex; gap:12px; align-items:baseline; border-bottom:1px solid var(--rule); padding-bottom:6px}
+.hp-lead{max-width:70ch; margin:8px 0 6px 5.6rem}
+.hp-lead p{font-size:var(--s-1); line-height:1.66}
+.hp-quote{font-style:italic; color:var(--muted)}
+.dh{font-family:var(--f-sc); font-weight:600; color:var(--techelet)}
+.qa-list{display:flex; flex-direction:column}
+.qa-row{display:grid; grid-template-columns:2.4rem minmax(0,15rem) minmax(0,1fr); gap:4px 16px; padding:9px 0; border-bottom:1px solid var(--rule); font-size:var(--s-1); line-height:1.55}
+.qa-n{font-family:var(--f-sc); color:var(--gold); font-variant-numeric:tabular-nums}
+.qa-t b{font-weight:600}
+.qa-t i{color:var(--muted)}
+.qa-t .he-s{display:block}
+.qa-q{font-style:italic}
+.qa-ref{font-family:var(--f-sc); font-size:var(--s-0); color:var(--techelet); white-space:nowrap; margin-inline-start:4px}
+.qa-ref::before{content:"→ "}
+.qa-note{font-size:var(--s-0); color:var(--muted); margin:10px 0 0; max-width:70ch}
+.qa-notes{margin-top:22px; border-top:1px solid var(--rule); padding-top:10px; display:flex; flex-direction:column; gap:8px; font-size:var(--s-0); color:var(--muted)}
+.qa-notes .note b{font-family:var(--f-sc); color:var(--gold); margin-inline-end:4px}
+.qa-end{text-align:center; font-family:var(--f-sc); color:var(--muted); margin-top:20px}
+@media (max-width:760px){ .qa-row{grid-template-columns:2rem minmax(0,1fr)} .qa-a{grid-column:2} .hp-lead{margin-left:0} }
+@media print{ .qa-row{break-inside:avoid} .hp-ch{break-after:avoid} }
+
+
+/* Estudo comentado: passos do argumento, citações e blocos de comentário */
+.lead-p{font-size:var(--s-2); color:var(--muted); max-width:68ch; margin:0 0 18px}
+.lead-p b{font-family:var(--f-sc); font-weight:600; color:var(--techelet); letter-spacing:.03em}
+.block{margin:22px 0 0}
+.prose + .tw, .tw + .prose{margin-top:14px}
+.tw + .prose p{margin-top:14px}
+.block > .lbl{border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:12px}
+.prose p, .prose li{font-size:var(--s-1); line-height:1.66; max-width:72ch}
+.prose ul,.prose ol{padding-inline-start:1.3em; margin:0 0 .8em}
+.prose li{margin-bottom:.45em}
+.prose li strong, .prose p strong{font-weight:600}
+.step{display:grid; grid-template-columns:3.2rem minmax(0,1fr); gap:0 16px; padding-block:12px; border-top:1px solid var(--rule)}
+.step:first-of-type{border-top:0}
+.step .sn{font-family:var(--f-sc); font-size:var(--s-3); color:var(--gold); line-height:1.2; font-variant-numeric:tabular-nums}
+.step .sb{min-width:0; display:flex; flex-direction:column; gap:10px}
+.step .sb p{font-size:var(--s-1); line-height:1.66; text-align:justify; hyphens:auto; max-width:72ch; margin:0}
+.step .st{font-family:var(--f-sc); font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.step ul{margin:0; padding-inline-start:1.2em; font-size:var(--s-1)}
+.quote{background:var(--panel); padding:12px 16px; border-radius:2px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:center; margin:0}
+.quote .q-pt{font-size:var(--s-2); font-style:italic; line-height:1.5; margin:0}
+.quote .q-he{font-family:var(--f-he); font-size:1.12rem; line-height:1.7; color:var(--techelet); margin:0; border-left:1px solid var(--rule); padding-left:14px}
+.subhead{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:4px 16px; margin:30px 0 12px; border-bottom:1.5px solid var(--ink); padding-bottom:6px}
+.subhead h3{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.03em; margin:0}
+.subhead .he{font-family:var(--f-he); font-size:var(--s-3); color:var(--gold)}
+td.he,th.he{font-family:var(--f-he); font-size:1.02rem; color:var(--techelet); white-space:nowrap}
+td.num{font-family:var(--f-sc); color:var(--gold); white-space:nowrap}
+.sheet h3.blockh{font-family:var(--f-sc); font-size:var(--s-2); letter-spacing:.04em; color:var(--techelet); margin:26px 0 10px}
+.colophon{font-size:var(--s-0); color:var(--muted); border-top:1px solid var(--rule); padding-top:10px; margin-top:18px}
+@media (max-width:760px){
+  .quote{grid-template-columns:minmax(0,1fr)}
+  .quote .q-he{border-left:0; padding-left:0; border-top:1px solid var(--rule); padding-top:8px}
+  .step{grid-template-columns:2.2rem minmax(0,1fr); gap:0 10px}
+  td.he{white-space:normal}
+}
+@media print{.quote,.step{break-inside:avoid} .subhead{break-after:avoid}}
+</style>
+</head>
+<body>
+<nav class="site-nav" style="max-width:210mm;margin:0 auto 12px;font-family:'Spectral SC',Georgia,serif;letter-spacing:.05em"><a href="../" style="color:inherit;text-decoration:none">← Arquivo · início</a></nav>
+<main class="book">
+<div class="sheet cover">
+  <p class="eyebrow">Baal HaSulam · escritos breves</p>
+  <h1><span lang="he" dir="rtl" class="h1he">פרי חכם</span><span class="h1pt">Pri Chacham · Fruto do Sábio</span></h1>
+  <p class="lead">Sichot e <i>al HaTorah</i> — análise e sumário anotado dos dois volumes</p>
+  <nav class="toc"><a href="#visao">Visão geral</a><a href="#analise">Análise</a><a href="#sichot">Pri Chacham, Sichot (146 textos)</a><a href="#torah">Pri Chacham, al HaTorah (61 textos)</a><a href="#leitura">Sugestões de leitura</a></nav>
+  <p class="howto"><b>Como ler.</b> A análise apresenta os eixos que atravessam os dois volumes. Os sumários dão, para cada texto, o número, o título hebraico, a tradução do título e uma linha de conteúdo; entre colchetes, a extensão aproximada.</p>
+  <p class="howto"><b>Estudo comentado.</b> <a href="sichot-2-26-40/">Sichot 2 e 26 a 40</a> — o intelecto do agente e o bloco sobre o <i>Tzimtzum</i>. Versão para impressão deste sumário: <a href="pri-chacham-sumario.pdf">PDF</a>.</p>
+</div>
+<div class="sheet"><section class="chapter" id="visao"><header class="ch-head"><h2>Visão geral</h2></header>
+<div class="prose"><p><em>Pri Chacham</em> (פרי חכם, "Fruto do Sábio") reúne escritos breves de Baal HaSulam (R. Yehuda Leib HaLevi Ashlag, 1884–1954) que ficaram fora das grandes obras sistemáticas (<em>Talmud Eser Sefirot</em>, <em>Sulam</em> ao Zohar). São notas, rascunhos e pequenos ensaios, editados postumamente e numerados pelo editor. O Kabbalah Media disponibiliza dois dos volumes só em hebraico.</p></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Volume</th>
+<th>Textos</th>
+<th>Extensão aprox.</th>
+<th>Natureza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://kabbalahmedia.info/he/sources/TZywesWn">Pri Chacham – Sichot (Conversas)</a></td>
+<td class="num">146</td>
+<td>~370 mil caracteres</td>
+<td>Ensaios temáticos curtos: método do trabalho espiritual, Tzimtzum, oração, Shabat, alma e corpo</td>
+</tr>
+<tr>
+<td><a href="https://kabbalahmedia.info/he/sources/L7RTwFbP">Pri Chacham – al HaTorah (sobre a Torá)</a></td>
+<td class="num">61</td>
+<td>~240 mil caracteres</td>
+<td>Comentários seguindo a ordem da Torá, de Bereshit a Devarim</td>
+</tr>
+</tbody>
+</table></div>
+<div class="prose"><p>Como usar: os sumários abaixo dão, para cada texto, o número de ordem, o título hebraico e uma linha de conteúdo.</p></div>
+<div class="prose"><p>Observação de leitura: muitos textos são rascunhos sem acabamento, com abreviações densas e remissões ao <em>Etz Chaim</em> e ao Zohar. Alguns títulos não são do autor, mas do editor.</p></div>
+</section></div>
+<div class="sheet"><section class="chapter" id="analise"><header class="ch-head"><h2>Análise</h2></header>
+<div class="prose"><p>O fio comum dos dois volumes é que a criatura só se completa pelo próprio esforço, e que a falta, a ocultação e a queda são o instrumento dessa completude, não um acidente. Em torno disso giram sete eixos.</p></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Eixo</th>
+<th>Ideia central</th>
+<th>Onde ler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adesão como conhecimento</td>
+<td>Aderir a Deus é pensar o mesmo pensamento: conhece-se o autor pela obra, como se conhece um amigo pela mente e não pelo corpo</td>
+<td>Sichot 2, 3, 36, 87; Torá 57</td>
+</tr>
+<tr>
+<td>Tzimtzum como condição do serviço</td>
+<td>A restrição cria um recipiente permanente, abre espaço aos Nomes e evita a vergonha do presente gratuito; depois dela "o justo governa"</td>
+<td>Sichot 10–11, 26–35, 44, 115</td>
+</tr>
+<tr>
+<td>Falta e completude</td>
+<td>O prazer verdadeiro só existe depois da falta, medida por medida; por isso o esforço acrescenta algo à perfeição</td>
+<td>Sichot 41, 49, 74, 88, 99; Torá 41, 55</td>
+</tr>
+<tr>
+<td>Unidade das almas</td>
+<td>Há uma só alma, inteira em cada pessoa; as ações de um homem formam uma imagem, e todas as almas formarão uma</td>
+<td>Sichot 7, 52–57, 63</td>
+</tr>
+<tr>
+<td>Interior e exterior</td>
+<td>Corpo e alma, revelado e oculto da Torá, desejos próprios e desejos sociais (inveja, honra)</td>
+<td>Sichot 21, 77, 89, 98, 117</td>
+</tr>
+<tr>
+<td>Shabat como fim da história</td>
+<td>O Shabat semanal é imagem do sétimo milênio, o "dia todo Shabat"; a criação como dossel à espera da noiva</td>
+<td>Sichot 101–113; Torá 43</td>
+</tr>
+<tr>
+<td>Oração, ocultação e retorno</td>
+<td>As ocultações são o "corpo" que revela o Rei; a oração é recebida duas vezes; o retorno acrescenta prazer</td>
+<td>Sichot 14, 126–146; Torá 39</td>
+</tr>
+</tbody>
+</table></div>
+<div class="prose"><p>Três chaves de leitura ajudam a abrir os textos:</p></div>
+<div class="prose"><ul>
+<li><strong>Rascunho, não tratado.</strong> Muitos terminam em "והבן" ou "ודו"ק" ("e compreende"): o autor indica a ideia e deixa a dedução ao leitor. A leitura precisa de notas.</li>
+<li><strong>Linguagem do Ari.</strong> Termos como <em>reshimu</em>, <em>kav</em>, <em>chalal panui</em>, Nogá, MANTZEPACH e Yesod de Ima pressupõem o <em>Etz Chaim</em>. Os blocos C e H das Sichot são os mais técnicos.</li>
+<li><strong>Narrativa como estado interior.</strong> No volume sobre a Torá, personagens e lugares (Harã, Machanaim, Refidim, Korach) são lidos como etapas da alma, sem negar o plano histórico.</li>
+</ul></div>
+<div class="prose"><p>O <em>Pri Chacham</em> mostra ideias que depois se tornaram centrais na escola de Ashlag (vergonha, equivalência de forma, uma só alma) ainda em forma embrionária e misturadas a temas tradicionais como Shabat, circuncisão e oração.</p></div>
+</section></div>
+<div class="sheet"><section class="chapter" id="sichot"><header class="ch-head"><h2>Sumário</h2><p class="ch-sub">Pri Chacham, Sichot (146 textos)</p></header>
+<div class="prose"><p>Os 146 textos não seguem um plano rígido, mas formam blocos temáticos reconhecíveis. Entre colchetes, a extensão aproximada (curto &lt; 1 mil caracteres; longo &gt; 5 mil).</p></div>
+<h3 class="blockh">A. Abertura: conhecer e aderir (1–15)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">1</td>
+<td class="he" dir="rtl" lang="he">מאמר במקום הקדמה</td>
+<td>Ensaio em lugar de introdução</td>
+<td>Oração pessoal do autor: pede para não se perder nas vaidades do tempo e achar "lugar para Deus" [curto]</td>
+</tr>
+<tr>
+<td class="num">2</td>
+<td class="he" dir="rtl" lang="he">שכל הפועל</td>
+<td>O intelecto do agente</td>
+<td>Conhecer alguém é aderir à sua mente, não ao corpo; assim se adere ao Criador pelas Suas obras</td>
+</tr>
+<tr>
+<td class="num">3</td>
+<td class="he" dir="rtl" lang="he">הדבקות האמיתית היא בחינת ידיעה</td>
+<td>A adesão verdadeira é conhecimento</td>
+<td>Critica a ideia de adesão "intelectual": a adesão perfeita é simples, sem esforço de raciocínio</td>
+</tr>
+<tr>
+<td class="num">4</td>
+<td class="he" dir="rtl" lang="he">לא כצורנו צורם</td>
+<td>Não é como a nossa Rocha a rocha deles</td>
+<td>O ídolo fica "em posse" de quem o fez; Deus só está presente enquanto se cumpre Sua vontade [curto]</td>
+</tr>
+<tr>
+<td class="num">5</td>
+<td class="he" dir="rtl" lang="he">אהי' שלחני אליכם</td>
+<td>Ehyeh enviou-me a vós</td>
+<td>A profecia de Moisés e o Nome que une passado, presente e futuro; a parte e o todo [longo]</td>
+</tr>
+<tr>
+<td class="num">6</td>
+<td class="he" dir="rtl" lang="he">תנועה גשמית ותנועה רוחנית</td>
+<td>Movimento corporal e espiritual</td>
+<td>"Não vistes figura alguma": como a mente percebe o espiritual e por que o desejo acompanha a visão [longo]</td>
+</tr>
+<tr>
+<td class="num">7</td>
+<td class="he" dir="rtl" lang="he">תיקון כלל ופרט</td>
+<td>Correção do geral e do particular</td>
+<td>A Torá superior não se completa numa só alma nem num só tempo; cada um tem épocas de queda e de correção</td>
+</tr>
+<tr>
+<td class="num">8</td>
+<td class="he" dir="rtl" lang="he">חטא אדה"ר - חטא שאול המלך</td>
+<td>O pecado de Adão e o do rei Saul</td>
+<td>A partir da discussão Hillel–Shamai sobre "a noiva", lê os dois pecados como falha na ordem da correção [longo]</td>
+</tr>
+<tr>
+<td class="num">9</td>
+<td class="he" dir="rtl" lang="he">אמונה אומן</td>
+<td>Fé, artesão</td>
+<td>Parábola do depositante que confia no pobre e reencontra-o rico: a fé como depósito que rende [curto]</td>
+</tr>
+<tr>
+<td class="num">10</td>
+<td class="he" dir="rtl" lang="he">צדיק מושל יראת אלקים</td>
+<td>O justo governa pelo temor de Deus</td>
+<td>Últimas palavras de Davi: o justo que "governa" o fluxo divino, raiz em Malchut [curto]</td>
+</tr>
+<tr>
+<td class="num">11</td>
+<td class="he" dir="rtl" lang="he">וכאור בוקר יזרח שמש</td>
+<td>Como a luz da manhã nasce o sol</td>
+<td>Continuação: após o Tzimtzum o justo pode "governar" sem ser anulado pela grandeza do Emanador</td>
+</tr>
+<tr>
+<td class="num">12</td>
+<td class="he" dir="rtl" lang="he">התהפכות הצורות</td>
+<td>Inversão das formas</td>
+<td>A honra divina se revela primeiro em formas materiais e depois é invertida em formas da alma</td>
+</tr>
+<tr>
+<td class="num">13</td>
+<td class="he" dir="rtl" lang="he">נעימות השירים והנגינה</td>
+<td>Doçura dos cantos e melodias</td>
+<td>A melodia faz a ponte entre corpo e espírito; até sentimentos tristes ficam doces quando cantados [curto]</td>
+</tr>
+<tr>
+<td class="num">14</td>
+<td class="he" dir="rtl" lang="he">סיתומים</td>
+<td>Ocultações</td>
+<td>As dúvidas e ocultações das almas são o "corpo" que revela o Rei; quem não as viveu não recebe a sabedoria inteira [curto]</td>
+</tr>
+<tr>
+<td class="num">15</td>
+<td class="he" dir="rtl" lang="he">המפורסם והמושכל</td>
+<td>O evidente e o inteligível</td>
+<td>Contrasta verdades óbvias (sem esforço, sem crescimento) com as inteligíveis (exigem esforço e se ampliam)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">B. Educação, alimento e mundo vindouro (16–25)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">16</td>
+<td class="he" dir="rtl" lang="he">נחמה העתידה</td>
+<td>A consolação futura</td>
+<td>Nada se perde: todos os caminhos e sofrimentos retornam a Israel como sabedoria</td>
+</tr>
+<tr>
+<td class="num">17</td>
+<td class="he" dir="rtl" lang="he">חינוך הבנים</td>
+<td>Educação dos filhos</td>
+<td>Contra o justo que negligencia os filhos: os completos criam os filhos com alegria e atenção</td>
+</tr>
+<tr>
+<td class="num">18</td>
+<td class="he" dir="rtl" lang="he">מזון גשמי ומזון רוחני</td>
+<td>Alimento corporal e espiritual</td>
+<td>Analogia fisiológica: a digestão consome a vitalidade; vale também para o alimento da alma</td>
+</tr>
+<tr>
+<td class="num">19</td>
+<td class="he" dir="rtl" lang="he">סוד מצוה דמגני</td>
+<td>A mitzvá que protege</td>
+<td>Nota mínima (Sotá 21a) sobre a mitzvá que protege mas não salva [mínimo]</td>
+</tr>
+<tr>
+<td class="num">20</td>
+<td class="he" dir="rtl" lang="he">חילוק מעוה"ז לעולם שלאחר התחיה</td>
+<td>Este mundo e o mundo após a ressurreição</td>
+<td>Os mortos ressuscitam com seus defeitos; diferença entre o mundo do caos (Tohu) e o da correção</td>
+</tr>
+<tr>
+<td class="num">21</td>
+<td class="he" dir="rtl" lang="he">קנאה</td>
+<td>Inveja</td>
+<td>A inveja nasce da sensação de falta própria, não do bem do outro; por isso se elogia facilmente os mortos [curto]</td>
+</tr>
+<tr>
+<td class="num">22</td>
+<td class="he" dir="rtl" lang="he">דומם דקדושה</td>
+<td>O "inanimado" da santidade</td>
+<td>Ninguém ensina a sabedoria viva; o mestre só aproxima o aluno no nível "inanimado" [curto]</td>
+</tr>
+<tr>
+<td class="num">23</td>
+<td class="he" dir="rtl" lang="he">אך בצלם יתהלך איש</td>
+<td>Só em imagem anda o homem</td>
+<td>Ser criado à imagem é potencial a completar por boas ações [mínimo]</td>
+</tr>
+<tr>
+<td class="num">24</td>
+<td class="he" dir="rtl" lang="he">אך טוב וחסד</td>
+<td>Só bem e graça</td>
+<td>Os mundos como camadas de cebola, com este mundo no centro: aqui o fluxo se bloqueia ou se abre</td>
+</tr>
+<tr>
+<td class="num">25</td>
+<td class="he" dir="rtl" lang="he">מפלת הגאים - ירושת השפלים</td>
+<td>Queda dos soberbos, herança dos humildes</td>
+<td>As forças que se pretendem soberanas caem; os humildes herdam o domínio [curto]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">C. Sefirot e Tzimtzum (26–40)</h3>
+<div class="prose"><p>O bloco técnico do volume. Lê-se melhor em sequência.</p></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">26</td>
+<td class="he" dir="rtl" lang="he">ספירות</td>
+<td>Sefirot</td>
+<td>As sefirot não estão "acima do céu": são divindade dada para ser percebida, presente no coração</td>
+</tr>
+<tr>
+<td class="num">27</td>
+<td class="he" dir="rtl" lang="he">צמצום א' - 1</td>
+<td>Primeira restrição – 1</td>
+<td>O ponto do Tzimtzum no meio do Infinito; raiz e revelação gradual das sefirot</td>
+</tr>
+<tr>
+<td class="num">28</td>
+<td class="he" dir="rtl" lang="he">צמצום א' - 2</td>
+<td>Primeira restrição – 2</td>
+<td>No tempo da luz ampla, as "borras" ficam quietas; a vergonha exige restrição e muitas encarnações</td>
+</tr>
+<tr>
+<td class="num">29</td>
+<td class="he" dir="rtl" lang="he">שלש מראות בצמצום</td>
+<td>Três visões no Tzimtzum</td>
+<td>O Tzimtzum visto de três lados: um ponto só; o lugar deixado vazio; a raiz do julgamento</td>
+</tr>
+<tr>
+<td class="num">30</td>
+<td class="he" dir="rtl" lang="he">עניין שני הקצים</td>
+<td>Os dois fins</td>
+<td>"Fim dos dias" e "fim da direita": plenitude que não deixa espaço para oração; geração do Dilúvio [longo]</td>
+</tr>
+<tr>
+<td class="num">31</td>
+<td class="he" dir="rtl" lang="he">סוד הצמצום</td>
+<td>O segredo do Tzimtzum</td>
+<td>Ler o livro do mestre: o vestígio (reshimu) desperta no leitor a linha (kav) do mestre [mínimo]</td>
+</tr>
+<tr>
+<td class="num">32</td>
+<td class="he" dir="rtl" lang="he">דבר הצמצום</td>
+<td>O propósito do Tzimtzum</td>
+<td>A restrição existe para revelar os Nomes, que ajudam a criatura a voltar à raiz</td>
+</tr>
+<tr>
+<td class="num">33</td>
+<td class="he" dir="rtl" lang="he">סוד הציץ</td>
+<td>O segredo do tzitz</td>
+<td>A placa do Sumo Sacerdote como "agente limitado" que torna possível o serviço [curto]</td>
+</tr>
+<tr>
+<td class="num">34</td>
+<td class="he" dir="rtl" lang="he">סבת הצמצום</td>
+<td>A causa do Tzimtzum</td>
+<td>Toda luz precisa de nascimento e de permanência; o Tzimtzum cria o recipiente permanente [curto]</td>
+</tr>
+<tr>
+<td class="num">35</td>
+<td class="he" dir="rtl" lang="he">חלל פנוי</td>
+<td>O espaço vazio</td>
+<td>Várias razões para o nome: o que ficou gravado, o lugar dado às criaturas, o vazio que depois sustenta mundos</td>
+</tr>
+<tr>
+<td class="num">36</td>
+<td class="he" dir="rtl" lang="he">ולדבקה בו</td>
+<td>E apegar-se a Ele</td>
+<td>Aderir aos atributos divinos = pensar o mesmo pensamento; quem compreende a obra se une ao autor</td>
+</tr>
+<tr>
+<td class="num">37</td>
+<td class="he" dir="rtl" lang="he">תיקון המנצפ"ך</td>
+<td>Correção das letras finais</td>
+<td>Conselho do mestre de não repreender ninguém, ligado à queda da "estrela da manhã" (Is 14:12)</td>
+</tr>
+<tr>
+<td class="num">38</td>
+<td class="he" dir="rtl" lang="he">סוד "ונוגה כאור תהיה"</td>
+<td>"E Nogá será como a luz"</td>
+<td>A correção da casca intermediária (Nogá); cumprir os mandamentos até "estar no Sinai" [longo]</td>
+</tr>
+<tr>
+<td class="num">39</td>
+<td class="he" dir="rtl" lang="he">שבע חומות</td>
+<td>Sete muralhas</td>
+<td>"Sete vezes cai o justo e se levanta": as sete muralhas como quedas e subidas do caminho [longo]</td>
+</tr>
+<tr>
+<td class="num">40</td>
+<td class="he" dir="rtl" lang="he">סדר התיקון</td>
+<td>A ordem da correção</td>
+<td>Os pensamentos criam forças, se ocultam e depois reaparecem sobre as ações: "vi um mundo invertido" [curto]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">D. Prazer, serviço e unidade das ações (41–63)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">41</td>
+<td class="he" dir="rtl" lang="he">תענוג הקבוע, ועבדות המעולה</td>
+<td>O prazer permanente e o serviço excelente</td>
+<td>O prazer faz parte da unidade final; só o intelectual permanece</td>
+</tr>
+<tr>
+<td class="num">42</td>
+<td class="he" dir="rtl" lang="he">ממשלה</td>
+<td>Governo</td>
+<td>Por que Deus não revelou a recompensa das mitzvot; governo forte gera obediência sem dúvidas</td>
+</tr>
+<tr>
+<td class="num">43</td>
+<td class="he" dir="rtl" lang="he">והחוט המשולש</td>
+<td>O cordão triplo</td>
+<td>Exterior e mal, depois interior e bem, depois a síntese: os três mundos BYA</td>
+</tr>
+<tr>
+<td class="num">44</td>
+<td class="he" dir="rtl" lang="he">עליונים למעלה ותחתונים למטה</td>
+<td>Superiores em cima, inferiores embaixo</td>
+<td>"Vi um mundo invertido": a condução passa às mãos dos de baixo, "o justo governa" [curto]</td>
+</tr>
+<tr>
+<td class="num">45–46</td>
+<td class="he" dir="rtl" lang="he">ענין בת צור / תיקון השמאל</td>
+<td>A filha de Tiro / Correção da esquerda</td>
+<td>Par sobre a "filha de Tiro" e a filha do rei: correção do fim e do dia [curtos]</td>
+</tr>
+<tr>
+<td class="num">47</td>
+<td class="he" dir="rtl" lang="he">אצילות נשמה</td>
+<td>Emanação da alma</td>
+<td>O homem recebe primeiro a raiz da alma e depois os detalhes, luz após luz [curto]</td>
+</tr>
+<tr>
+<td class="num">48</td>
+<td class="he" dir="rtl" lang="he">גבהות הלב</td>
+<td>Soberba do coração</td>
+<td>A Shechiná deseja todos, mas não suporta o soberbo, que vira o rosto para si mesmo</td>
+</tr>
+<tr>
+<td class="num">49</td>
+<td class="he" dir="rtl" lang="he">גדול הנהנה מיגיעו</td>
+<td>Maior quem goza do próprio esforço</td>
+<td>O esforço deve ser compaixão pelos oprimidos; aí se goza dele</td>
+</tr>
+<tr>
+<td class="num">50</td>
+<td class="he" dir="rtl" lang="he">השפעה ותענוג</td>
+<td>Doação e prazer</td>
+<td>Tranquilidade como fim deste mundo; Jacó e José; a doação que suporta o sofrimento [longo]</td>
+</tr>
+<tr>
+<td class="num">51</td>
+<td class="he" dir="rtl" lang="he">אני הוי' לא שניתי</td>
+<td>Eu, o Senhor, não mudei</td>
+<td>Deus não muda: basta pedir que Ele não olhe o pecado, e o pecado vira mérito</td>
+</tr>
+<tr>
+<td class="num">52–57</td>
+<td class="he" dir="rtl" lang="he">פעולות האדם ... / אחדות הפעולות / הדבר שהיה בכלל / ומבשרי אחזה / התאחדות המעשים / התאחדות הנבראים</td>
+<td>Série sobre a unidade</td>
+<td>Sequência: as ações de um homem formam uma só imagem (redenção individual); depois todas as almas se unem numa só, como Adão; o corpo como servos que formam um só homem [curtos]</td>
+</tr>
+<tr>
+<td class="num">58</td>
+<td class="he" dir="rtl" lang="he">ענין קטנות ב'</td>
+<td>A segunda pequenez</td>
+<td>Leitura cabalística de um Tossafot em Bava Kama sobre danos corporais e monetários</td>
+</tr>
+<tr>
+<td class="num">59</td>
+<td class="he" dir="rtl" lang="he">ברוך שם כבוד</td>
+<td>Bendito seja o Nome</td>
+<td>Por que "Baruch Shem" é dito em silêncio: parábola do rei afrontado por um vil [curto]</td>
+</tr>
+<tr>
+<td class="num">60</td>
+<td class="he" dir="rtl" lang="he">שמירת התורה תלויה בארץ</td>
+<td>Guardar a Torá depende da Terra</td>
+<td>Do pecado dos espiões: Moisés repete que a Torá depende da Terra, no plano coletivo e individual</td>
+</tr>
+<tr>
+<td class="num">61</td>
+<td class="he" dir="rtl" lang="he">קב"ה וישראל חד הוא</td>
+<td>O Santo e Israel são um</td>
+<td>O espírito santo pode pousar sobre qualquer pessoa; nenhuma baixeza impede o retorno</td>
+</tr>
+<tr>
+<td class="num">62</td>
+<td class="he" dir="rtl" lang="he">אם בארזים נפלה שלהבת</td>
+<td>Se o fogo pegou nos cedros</td>
+<td>Nota sobre a guerra de Gog e Magog e os "hissopos do muro" [curto]</td>
+</tr>
+<tr>
+<td class="num">63</td>
+<td class="he" dir="rtl" lang="he">ששים רבוא נשמות</td>
+<td>Seiscentas mil almas</td>
+<td>Na verdade há uma só alma, inteira em cada um; as gerações se distinguem pelo "juiz" de cada época [longo]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">E. Nomes, fim da correção, fé e saber (64–75)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">64</td>
+<td class="he" dir="rtl" lang="he">גמר התיקון</td>
+<td>O fim da correção</td>
+<td>"Guardai o juízo": a correção tem tempo fixo, mas a ação não é em vão</td>
+</tr>
+<tr>
+<td class="num">65</td>
+<td class="he" dir="rtl" lang="he">סוד שמותיו ית'</td>
+<td>O segredo dos Seus nomes</td>
+<td>O texto mais longo do volume: tempo, alma no corpo, "salvação e justiça" juntas, os dias da criação [muito longo]</td>
+</tr>
+<tr>
+<td class="num">66</td>
+<td class="he" dir="rtl" lang="he">גאוה, רצון בחירי ומחוייב</td>
+<td>Orgulho, vontade livre e necessária</td>
+<td>Por que o orgulho é louvor em Deus e defeito na criatura</td>
+</tr>
+<tr>
+<td class="num">67</td>
+<td class="he" dir="rtl" lang="he">אליהו ואלישע</td>
+<td>Elias e Eliseu</td>
+<td>"Porção dobrada": ver o mestre ser levado é guardar o mestre em si [curto]</td>
+</tr>
+<tr>
+<td class="num">68</td>
+<td class="he" dir="rtl" lang="he">מי הקדמני</td>
+<td>Quem me precedeu</td>
+<td>Tudo vem do céu, até a fé; o atrativo exterior e o interior</td>
+</tr>
+<tr>
+<td class="num">69</td>
+<td class="he" dir="rtl" lang="he">סוד הנבואה</td>
+<td>O segredo da profecia</td>
+<td>Fé e conhecimento são da mesma espécie; corpo e alma precisam de alimento próprio</td>
+</tr>
+<tr>
+<td class="num">70</td>
+<td class="he" dir="rtl" lang="he">סגולות התורה</td>
+<td>As virtudes da Torá</td>
+<td>Contra quem acha a Torá dispensável após a revelação: ela revela a unidade no ser e no governo</td>
+</tr>
+<tr>
+<td class="num">71</td>
+<td class="he" dir="rtl" lang="he">מה שנוהג בגשמיות נוהג ברוחניות</td>
+<td>O que vale no corpo vale no espírito</td>
+<td>Esforço e recompensa versus providência total: o Nome HaVaYaH como síntese [longo]</td>
+</tr>
+<tr>
+<td class="num">72</td>
+<td class="he" dir="rtl" lang="he">סגולת השינה</td>
+<td>A virtude do sono</td>
+<td>O sono renova o corpo; também a fé tem seu "sono" e descanso</td>
+</tr>
+<tr>
+<td class="num">73</td>
+<td class="he" dir="rtl" lang="he">חותמו של הקב"ה אמת</td>
+<td>O selo de Deus é verdade</td>
+<td>A verdade como selo real; parábola do general que manda tropas fugirem ou se renderem</td>
+</tr>
+<tr>
+<td class="num">74</td>
+<td class="he" dir="rtl" lang="he">שבח הנוסף על סוד השלימות</td>
+<td>O louvor acrescido à perfeição</td>
+<td>Torá e serviço como preparar e comer a refeição do Shabat; o esforço acrescenta louvor</td>
+</tr>
+<tr>
+<td class="num">75</td>
+<td class="he" dir="rtl" lang="he">ענין זקנה</td>
+<td>Velhice</td>
+<td>Zaken = "zeh kanah chochmá": o sábio que adquiriu sabedoria</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">F. Alma, corpo e conhecimento (76–100)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">76</td>
+<td class="he" dir="rtl" lang="he">כח הנשמה</td>
+<td>A força da alma</td>
+<td>A alma começa como serva dos anjos e termina governando-os</td>
+</tr>
+<tr>
+<td class="num">77</td>
+<td class="he" dir="rtl" lang="he">זכוך הגוף</td>
+<td>Purificação do corpo</td>
+<td>Por que a alma, recebida aos 13 anos, quase não se sente: o corpo ainda turvo [mínimo]</td>
+</tr>
+<tr>
+<td class="num">78</td>
+<td class="he" dir="rtl" lang="he">מערכות הטבע</td>
+<td>Os sistemas da natureza</td>
+<td>A natureza física se comporta como o movimento espiritual que a conduz</td>
+</tr>
+<tr>
+<td class="num">79</td>
+<td class="he" dir="rtl" lang="he">ענין פרס</td>
+<td>A recompensa</td>
+<td>"Não sejais como servos por recompensa": servir sem "pras", como após o fim da correção [curto]</td>
+</tr>
+<tr>
+<td class="num">80</td>
+<td class="he" dir="rtl" lang="he">תולדות גשמיים ותולדות רוחניים</td>
+<td>Descendência corporal e espiritual</td>
+<td>Gerar filhos como completude; quem morre sem descendência não completou a intenção [curto]</td>
+</tr>
+<tr>
+<td class="num">81</td>
+<td class="he" dir="rtl" lang="he">שכל ומושכל</td>
+<td>Intelecto e inteligível</td>
+<td>Mudança na força intelectual é "morte" parcial; doença só existe desde Jacó [curto]</td>
+</tr>
+<tr>
+<td class="num">82–83</td>
+<td class="he" dir="rtl" lang="he">דע את אלקי אביך / עבודה באהבה</td>
+<td>Conhece o Deus de teu pai / Serviço por amor</td>
+<td>"Fazer antes de ouvir"; amor inferior (por benefícios) e superior (pela compreensão)</td>
+</tr>
+<tr>
+<td class="num">84</td>
+<td class="he" dir="rtl" lang="he">צדיק אוכל לשובע נפשו</td>
+<td>O justo come até saciar</td>
+<td>O justo está acima do tempo e se sacia; o ímpio sempre sente falta</td>
+</tr>
+<tr>
+<td class="num">85</td>
+<td class="he" dir="rtl" lang="he">הרה וילדת יחדו</td>
+<td>A grávida e a parturiente juntas</td>
+<td>Só quando todo o ser entende que do bem não sai mal se "vê o rosto"</td>
+</tr>
+<tr>
+<td class="num">86</td>
+<td class="he" dir="rtl" lang="he">זמן ומקום</td>
+<td>Tempo e lugar</td>
+<td>Sentido, imaginação e intelecto: os três instrumentos que atravessam as restrições de tempo e lugar</td>
+</tr>
+<tr>
+<td class="num">87</td>
+<td class="he" dir="rtl" lang="he">ענין צורה רוחנית</td>
+<td>A forma espiritual</td>
+<td>Perceber o espiritual sem imaginação e sem dúvida, como o ar; a falta essencial é conhecer o Emanador</td>
+</tr>
+<tr>
+<td class="num">88</td>
+<td class="he" dir="rtl" lang="he">חסרון ושלימות</td>
+<td>Falta e perfeição</td>
+<td>A perfeição é o prazer que vem após a falta; Deus entregou a falta ao serviço das almas [curto]</td>
+</tr>
+<tr>
+<td class="num">89</td>
+<td class="he" dir="rtl" lang="he">חיצוניות ופנימיות-1</td>
+<td>Exterioridade e interioridade – 1</td>
+<td>Interior = o que o corpo quer sozinho; exterior = inveja e honra, que só existem diante dos outros</td>
+</tr>
+<tr>
+<td class="num">90</td>
+<td class="he" dir="rtl" lang="he">בן ועבד</td>
+<td>Filho e servo</td>
+<td>O servir do filho supera o do servo; dois sentidos opostos de "servo" nos textos</td>
+</tr>
+<tr>
+<td class="num">91</td>
+<td class="he" dir="rtl" lang="he">השלימות-1</td>
+<td>A perfeição – 1</td>
+<td>A perfeição prometida é a "força do conhecimento", como uma vida nova [curto]</td>
+</tr>
+<tr>
+<td class="num">92</td>
+<td class="he" dir="rtl" lang="he">לימוד התורה הק'</td>
+<td>Estudo da Torá</td>
+<td>R. Akiva diante do Templo destruído: "vamos estudar" [curto]</td>
+</tr>
+<tr>
+<td class="num">93</td>
+<td class="he" dir="rtl" lang="he">כל שזכה ... חב"ד</td>
+<td>Quem recebeu sabedoria</td>
+<td>Quem recebeu luz precisa saber continuar o serviço, para não se perder no prazer</td>
+</tr>
+<tr>
+<td class="num">94</td>
+<td class="he" dir="rtl" lang="he">אם הוי' לא יבנה בית</td>
+<td>Se o Senhor não edifica a casa</td>
+<td>Quem serve para adquirir sabedoria erra: o esforço sozinho não alcança</td>
+</tr>
+<tr>
+<td class="num">95</td>
+<td class="he" dir="rtl" lang="he">רם הוי' ושפל יראה</td>
+<td>Alto é o Senhor e vê o humilde</td>
+<td>Como um ser de carne pode dar satisfação a Deus: "da minha carne verei Deus"</td>
+</tr>
+<tr>
+<td class="num">96</td>
+<td class="he" dir="rtl" lang="he">רזא דכלים ריקים</td>
+<td>Os vasos vazios</td>
+<td>Multiplicar vasos vazios pelo estudo dos caminhos divinos; amor genérico não basta [curto]</td>
+</tr>
+<tr>
+<td class="num">97</td>
+<td class="he" dir="rtl" lang="he">ג' עלמין אית ליה לקב"ה</td>
+<td>Deus tem três mundos</td>
+<td>O Zohar sobre três mundos; fogo e água misturados e a paz entre eles</td>
+</tr>
+<tr>
+<td class="num">98</td>
+<td class="he" dir="rtl" lang="he">ענין חיצוניות ופנימיות - 2</td>
+<td>Exterioridade e interioridade – 2</td>
+<td>Revelado e oculto da Torá como corpo e alma, não como parte e todo</td>
+</tr>
+<tr>
+<td class="num">99</td>
+<td class="he" dir="rtl" lang="he">אין בין תענוג לשמחה</td>
+<td>Prazer e alegria</td>
+<td>Prazer = órgãos unidos; tristeza = órgãos separados [longo]</td>
+</tr>
+<tr>
+<td class="num">100</td>
+<td class="he" dir="rtl" lang="he">חכמת הרגש התענוג</td>
+<td>A sabedoria da sensação de prazer</td>
+<td>O prazer contém uma medida; a mente que quer abarcar Deus é como o glutão [curto]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">G. Shabat (101–113)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">101</td>
+<td class="he" dir="rtl" lang="he">מסירות נפש</td>
+<td>Entrega da vida</td>
+<td>Como "entregar a alma" no último instante se ela já não é sua: retorno a cada dia</td>
+</tr>
+<tr>
+<td class="num">102</td>
+<td class="he" dir="rtl" lang="he">באה שבת באה מנוחה</td>
+<td>Veio o Shabat, veio o descanso</td>
+<td>Raiz da revelação "em teu meio o santo"; masculino ilimitado e descanso</td>
+</tr>
+<tr>
+<td class="num">103</td>
+<td class="he" dir="rtl" lang="he">מעלת השבת</td>
+<td>A virtude do Shabat</td>
+<td>"Eu era Seu artífice": cada dia da criação brinca com o converso, todos descansam no sétimo</td>
+</tr>
+<tr>
+<td class="num">104</td>
+<td class="he" dir="rtl" lang="he">ענין אשת חיל</td>
+<td>A mulher valorosa</td>
+<td>Dez ditos, alfabeto e mundos; Assiá como o inanimado</td>
+</tr>
+<tr>
+<td class="num">105</td>
+<td class="he" dir="rtl" lang="he">ביאור המדרש ויכל אלקים</td>
+<td>O midrash "E Deus concluiu"</td>
+<td>O rei que fez o dossel e faltava a noiva: o Shabat como noiva da criação [longo]</td>
+</tr>
+<tr>
+<td class="num">106</td>
+<td class="he" dir="rtl" lang="he">מאמר השבת</td>
+<td>Ensaio sobre o Shabat</td>
+<td>Seis mil anos e um de ruína; o sétimo milênio como Shabat do mundo [muito longo]</td>
+</tr>
+<tr>
+<td class="num">107</td>
+<td class="he" dir="rtl" lang="he">ושמרתם את השבת</td>
+<td>Guardareis o Shabat</td>
+<td>Quem guarda o Shabat é perdoado até de idolatria: a revelação do prazer final [curto]</td>
+</tr>
+<tr>
+<td class="num">108</td>
+<td class="he" dir="rtl" lang="he">ב' שבתות</td>
+<td>Dois Shabatot</td>
+<td>"Shabat para Deus" (sétimo milênio) e "Shabat para vós"</td>
+</tr>
+<tr>
+<td class="num">109</td>
+<td class="he" dir="rtl" lang="he">לכולם נתת בן זוג</td>
+<td>A todos deste par</td>
+<td>O Shabat sem par: o mundo ainda não pode receber dele [curto]</td>
+</tr>
+<tr>
+<td class="num">110</td>
+<td class="he" dir="rtl" lang="he">שבת ושמיטה</td>
+<td>Shabat e ano sabático</td>
+<td>"Que comeremos no sétimo ano?": Deus guarda o Shabat [curto]</td>
+</tr>
+<tr>
+<td class="num">111</td>
+<td class="he" dir="rtl" lang="he">ערך התנועה - והמנוחה</td>
+<td>Movimento e descanso</td>
+<td>O movimento é defeito diante de Deus; o fim visado é repouso [curto]</td>
+</tr>
+<tr>
+<td class="num">112</td>
+<td class="he" dir="rtl" lang="he">ושמרו בני ישראל את השבת</td>
+<td>Os filhos de Israel guardarão</td>
+<td>Citação do Tikunei Zohar: morada no coração, vasos nos membros [mínimo]</td>
+</tr>
+<tr>
+<td class="num">113</td>
+<td class="he" dir="rtl" lang="he">השלימות - 2</td>
+<td>A perfeição – 2</td>
+<td>Duas percepções futuras: do Provedor e da providência</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">H. Trabalho, verdade e aliança (114–125)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">114</td>
+<td class="he" dir="rtl" lang="he">פלאי פלאות ג' בחינות</td>
+<td>Três aspectos</td>
+<td>Essência, vontade em potência e vontade revelada: só se pode pensar o terceiro [curto]</td>
+</tr>
+<tr>
+<td class="num">115</td>
+<td class="he" dir="rtl" lang="he">מציאות העבודה</td>
+<td>A realidade do serviço</td>
+<td>O esforço existe para evitar a vergonha do presente gratuito [curto]</td>
+</tr>
+<tr>
+<td class="num">116</td>
+<td class="he" dir="rtl" lang="he">כל שיש לו מציאות יש לו אמת</td>
+<td>O que existe tem verdade</td>
+<td>Verdade e mentira dependem do ponto de vista: a filha pequena e o filho grande [curto]</td>
+</tr>
+<tr>
+<td class="num">117</td>
+<td class="he" dir="rtl" lang="he">עקרת בית הנפש</td>
+<td>A alma, dona da casa</td>
+<td>"Dois reis não usam uma coroa": alma e corpo; a lua que se diminui</td>
+</tr>
+<tr>
+<td class="num">118</td>
+<td class="he" dir="rtl" lang="he">הבונה בית למלכו</td>
+<td>Quem constrói casa ao seu Rei</td>
+<td>O mundo foi criado para quem busca "lugar para Deus"; a pobreza como condição</td>
+</tr>
+<tr>
+<td class="num">119–125</td>
+<td class="he" dir="rtl" lang="he">יסוד אמא / מצה למצוה / ה' ספירות / הויות / אדם הראשון נולד מהול / קשת / מילה - פריעה</td>
+<td>Série sobre a aliança</td>
+<td>Sequência técnica: matzá, circuncisão e o Nome Shadai; Adão nasceu circuncidado; o arco-íris; a revelação interior é própria de Israel [quase todos curtos]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">I. Oração e temor (126–141)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">126</td>
+<td class="he" dir="rtl" lang="he">קבלת התפילה</td>
+<td>A aceitação da oração</td>
+<td>Deus ouve toda oração, salvo o pedido nocivo, até a pessoa aprender a pedir o bem [curto]</td>
+</tr>
+<tr>
+<td class="num">127</td>
+<td class="he" dir="rtl" lang="he">שינוי מקום ושינוי העתים</td>
+<td>Mudança de lugar e de tempo</td>
+<td>Toda oração é recebida duas vezes: "resposta" e "escuta"</td>
+</tr>
+<tr>
+<td class="num">128</td>
+<td class="he" dir="rtl" lang="he">הוי' שפתי תפתח</td>
+<td>Senhor, abre meus lábios</td>
+<td>A Shechiná fala pela boca de quem reza; o fogo do orgulho</td>
+</tr>
+<tr>
+<td class="num">129</td>
+<td class="he" dir="rtl" lang="he">בדחילו ורחימו</td>
+<td>Com temor e amor</td>
+<td>Uma frase: ter compaixão do próprio temor [mínimo]</td>
+</tr>
+<tr>
+<td class="num">130</td>
+<td class="he" dir="rtl" lang="he">עיון תפילה</td>
+<td>Aprofundar a oração</td>
+<td>Ninguém se move sem um "juízo" interior; imitar os outros é "ato de macaco"</td>
+</tr>
+<tr>
+<td class="num">131</td>
+<td class="he" dir="rtl" lang="he">תקון הבושה "מאין באת"</td>
+<td>Correção da vergonha</td>
+<td>Resta corrigir a vergonha da origem: cada um se queima no dossel do outro [curto]</td>
+</tr>
+<tr>
+<td class="num">132</td>
+<td class="he" dir="rtl" lang="he">רחמים</td>
+<td>Misericórdia</td>
+<td>A misericórdia se atribui ao intelecto; dois estados, corpo e intelecto [curto]</td>
+</tr>
+<tr>
+<td class="num">133</td>
+<td class="he" dir="rtl" lang="he">מזמור לאסף</td>
+<td>Salmo de Asaf</td>
+<td>Deus derramou a ira sobre madeira e pedras; a luz do Messias ainda sem vaso [longo]</td>
+</tr>
+<tr>
+<td class="num">134</td>
+<td class="he" dir="rtl" lang="he">ארבעה אין הדעת סובלתן</td>
+<td>Quatro que a mente não tolera</td>
+<td>Leitura dos quatro tipos como ciclos que se anulam [curto]</td>
+</tr>
+<tr>
+<td class="num">135</td>
+<td class="he" dir="rtl" lang="he">רחמנא ליבא בעי</td>
+<td>Deus quer o coração</td>
+<td>Inverter a ordem: primeiro o coração deseja, depois os olhos veem [curto]</td>
+</tr>
+<tr>
+<td class="num">136</td>
+<td class="he" dir="rtl" lang="he">פגימת עינים</td>
+<td>Defeito dos olhos</td>
+<td>Deus vê sem ser visto; Israel deve alcançar o "vidente" [curto]</td>
+</tr>
+<tr>
+<td class="num">137</td>
+<td class="he" dir="rtl" lang="he">ב' יראות</td>
+<td>Dois temores</td>
+<td>"Com as nuvens" ou "pobre montado num jumento" [curto]</td>
+</tr>
+<tr>
+<td class="num">138</td>
+<td class="he" dir="rtl" lang="he">הללו בוכין והללו בוכין</td>
+<td>Estes choram e aqueles choram</td>
+<td>Após vencer o mau instinto começa outro serviço: vê-lo como montanha [mínimo]</td>
+</tr>
+<tr>
+<td class="num">139</td>
+<td class="he" dir="rtl" lang="he">כל המצטער עם הצבור</td>
+<td>Quem sofre com o público</td>
+<td>Quem sofre com a comunidade vê sua consolação; Shechiná como mulher valorosa</td>
+</tr>
+<tr>
+<td class="num">140</td>
+<td class="he" dir="rtl" lang="he">הויכוח שבין כ"י להשי"ת</td>
+<td>A disputa entre Israel e Deus</td>
+<td>"Voltai a Mim" versus "faze-nos voltar": quem começa o retorno</td>
+</tr>
+<tr>
+<td class="num">141</td>
+<td class="he" dir="rtl" lang="he">הכל בידי שמים</td>
+<td>Tudo nas mãos do céu</td>
+<td>Exceto o temor do céu: reconhecer a própria baixeza [curto]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">J. Fecho: unidade e revelação (142–146)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">142</td>
+<td class="he" dir="rtl" lang="he">תיקון הנשמות</td>
+<td>Correção das almas</td>
+<td>Três vias: justiça, retorno ou sofrimento, dentro de seis mil anos [mínimo]</td>
+</tr>
+<tr>
+<td class="num">143</td>
+<td class="he" dir="rtl" lang="he">גילוי היחוד</td>
+<td>Revelação da unidade</td>
+<td>Sem o pecado, a unidade se revelaria pelo intelecto, não por provas e quedas [curto]</td>
+</tr>
+<tr>
+<td class="num">144</td>
+<td class="he" dir="rtl" lang="he">היתרון שבהשבה</td>
+<td>A vantagem do retorno</td>
+<td>O retorno dá prazer adicional: perceber a unidade acima do mal [curto]</td>
+</tr>
+<tr>
+<td class="num">145</td>
+<td class="he" dir="rtl" lang="he">שני הדרכים שבהם העולם מתנהג</td>
+<td>Os dois modos de condução</td>
+<td>Recompensa e punição, visível; e "tudo para Seu fim", sem esse cálculo [curto]</td>
+</tr>
+<tr>
+<td class="num">146</td>
+<td class="he" dir="rtl" lang="he">גילוי פנים</td>
+<td>Revelação do rosto</td>
+<td>O tempo do Templo como máxima revelação: o pecador oferecia e era perdoado</td>
+</tr>
+</tbody>
+</table></div>
+</section></div>
+<div class="sheet"><section class="chapter" id="torah"><header class="ch-head"><h2>Sumário</h2><p class="ch-sub">Pri Chacham, al HaTorah (61 textos)</p></header>
+<div class="prose"><p>O volume segue a ordem da Torá, mas com peso muito desigual: Bereshit ocupa quase metade, e só dois textos (Toldot e Vayetze) somam cerca de 50 mil caracteres. Devarim quase não aparece.</p></div>
+<h3 class="blockh">Introdução e Bereshit (1–28)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">1</td>
+<td class="he" dir="rtl" lang="he">הקדמה</td>
+<td>Introdução</td>
+<td>Escrita pelo filho e editor: o pai revisou os manuscritos e pretendia introduzir o livro com o ensaio dos "três sócios", mas faleceu antes</td>
+</tr>
+<tr>
+<td class="num">2</td>
+<td class="he" dir="rtl" lang="he">בריאת העולם במדת הרחמים</td>
+<td>A criação com o atributo da misericórdia</td>
+<td>Deus pensou criar pelo juízo e associou a misericórdia; "longânimo" com justos e ímpios</td>
+</tr>
+<tr>
+<td class="num">3</td>
+<td class="he" dir="rtl" lang="he">צדיא וריקניא - 1</td>
+<td>Vazio e vacuidade – 1</td>
+<td>"O espírito pairava sobre as águas": a escuridão fixada antes do "haja luz"; quebra dos vasos [curto]</td>
+</tr>
+<tr>
+<td class="num">4</td>
+<td class="he" dir="rtl" lang="he">מעשה בראשית</td>
+<td>A obra da criação</td>
+<td>Leitura dos dias da criação: o primeiro dia, céus e terra, as luminárias</td>
+</tr>
+<tr>
+<td class="num">5</td>
+<td class="he" dir="rtl" lang="he">צדיא וריקניא - 2</td>
+<td>Vazio e vacuidade – 2</td>
+<td>"Produza a terra relva": a luz que brota por si, sem semeadura [longo]</td>
+</tr>
+<tr>
+<td class="num">6</td>
+<td class="he" dir="rtl" lang="he">נעשה אדם</td>
+<td>Façamos o homem</td>
+<td>Os anjos divididos (Bondade, Verdade, Justiça, Paz) sobre criar o homem [longo]</td>
+</tr>
+<tr>
+<td class="num">7</td>
+<td class="he" dir="rtl" lang="he">בנין האדם ויצירתו</td>
+<td>A construção do homem</td>
+<td>Matéria do pó inerte; o toque divino a faz "farinha" e une opostos [curto]</td>
+</tr>
+<tr>
+<td class="num">8</td>
+<td class="he" dir="rtl" lang="he">תולדות השמים והארץ</td>
+<td>As gerações do céu e da terra</td>
+<td>O fim da criação humana: gerar descendência feita de superiores e inferiores juntos [longo]</td>
+</tr>
+<tr>
+<td class="num">9</td>
+<td class="he" dir="rtl" lang="he">מלך לשדה נעבד</td>
+<td>O rei serve ao campo</td>
+<td>A costela feita mulher: todo o serviço de Israel é corrigir Malchut para unir-se ao Rei [mínimo]</td>
+</tr>
+<tr>
+<td class="num">10</td>
+<td class="he" dir="rtl" lang="he">בריאת אדם הראשון</td>
+<td>Criação do primeiro homem</td>
+<td>Adão foi criado num nível acima do serviço; bastava não impedir a santidade [curto]</td>
+</tr>
+<tr>
+<td class="num">11</td>
+<td class="he" dir="rtl" lang="he">חטא עץ הדעת</td>
+<td>O pecado da árvore do conhecimento</td>
+<td>A Torá "no ventre" (611 = Torá) separa a impureza da serpente, como a digestão [longo]</td>
+</tr>
+<tr>
+<td class="num">12</td>
+<td class="he" dir="rtl" lang="he">ויחל נח - ויטע כרם</td>
+<td>Noé começou e plantou a vinha</td>
+<td>Noé quis limpar a vinha recomeçando da terra, sem entender o segredo do "ouro fino"</td>
+</tr>
+<tr>
+<td class="num">13</td>
+<td class="he" dir="rtl" lang="he">ענין חטא דור המבול</td>
+<td>O pecado da geração do Dilúvio</td>
+<td>"Não digais 'água, água'" (R. Akiva): o erro de tomar a percepção pela sabedoria [curto]</td>
+</tr>
+<tr>
+<td class="num">14</td>
+<td class="he" dir="rtl" lang="he">עניין הסתלקות הקדושים</td>
+<td>A partida dos santos</td>
+<td>Akedá e morte de Sara: a morte do justo como subida de grau</td>
+</tr>
+<tr>
+<td class="num">15</td>
+<td class="he" dir="rtl" lang="he">זכו אחישנה לא זכו בעתה</td>
+<td>Se merecerem, apressarei</td>
+<td>A redenção virá de qualquer modo; o mérito só muda o tempo</td>
+</tr>
+<tr>
+<td class="num">16</td>
+<td class="he" dir="rtl" lang="he">וירא</td>
+<td>Vayera</td>
+<td>Sara com Faraó e Abimelech como sinal da redenção futura [longo]</td>
+</tr>
+<tr>
+<td class="num">17</td>
+<td class="he" dir="rtl" lang="he">דבר אמת</td>
+<td>Uma coisa verdadeira</td>
+<td>Abraão "abençoado em tudo": o justo atrai o fluxo para o coletivo, não para si [curto]</td>
+</tr>
+<tr>
+<td class="num">18</td>
+<td class="he" dir="rtl" lang="he">וגם לגמליך אשאב</td>
+<td>Também tirarei água para teus camelos</td>
+<td>O servo de Abraão e Rivka: o sinal de quem sacia o homem e os camelos</td>
+</tr>
+<tr>
+<td class="num">19</td>
+<td class="he" dir="rtl" lang="he">תולדות</td>
+<td>Toldot</td>
+<td>O maior texto do livro: as gerações de Isaac diferem das de Abraão; Esaú, Jacó e a bênção [muito longo]</td>
+</tr>
+<tr>
+<td class="num">20</td>
+<td class="he" dir="rtl" lang="he">שמש ולבנה - עשו ויעקב</td>
+<td>Sol e lua – Esaú e Jacó</td>
+<td>O sol queimaria o mundo; a lua é sua bainha [mínimo]</td>
+</tr>
+<tr>
+<td class="num">21</td>
+<td class="he" dir="rtl" lang="he">נמרוד החל ועשו כלה</td>
+<td>Nimrod começou, Esaú terminou</td>
+<td>O "forno" de Ur Kasdim; a luta de Esaú com Nimrod</td>
+</tr>
+<tr>
+<td class="num">22</td>
+<td class="he" dir="rtl" lang="he">ויאהב יצחק את עשו</td>
+<td>Isaac amava Esaú</td>
+<td>"A caça em sua boca"; o que Jacó corrigiu ao comprar a primogenitura</td>
+</tr>
+<tr>
+<td class="num">23</td>
+<td class="he" dir="rtl" lang="he">ויצא</td>
+<td>Vayetze</td>
+<td>Comentário versículo a versículo da saída de Jacó: Harã, "o lugar", o espaço vazio, o sonho [muito longo]</td>
+</tr>
+<tr>
+<td class="num">24</td>
+<td class="he" dir="rtl" lang="he">לא עת האסף המקנה</td>
+<td>Não é tempo de recolher o gado</td>
+<td>A pedra sobre o poço só sai quando todos os rebanhos se reúnem [longo]</td>
+</tr>
+<tr>
+<td class="num">25</td>
+<td class="he" dir="rtl" lang="he">שם המקום מחנים</td>
+<td>O nome do lugar, Machanaim</td>
+<td>Os dois acampamentos; Esaú e seus 400 homens</td>
+</tr>
+<tr>
+<td class="num">26</td>
+<td class="he" dir="rtl" lang="he">וישלח</td>
+<td>Vayishlach</td>
+<td>Leitura palavra a palavra da mensagem de Jacó a Esaú [longo]</td>
+</tr>
+<tr>
+<td class="num">27</td>
+<td class="he" dir="rtl" lang="he">יעקב שהתקין עצמו לדורון לתפילה ולמלחמה</td>
+<td>Jacó preparou-se com presente, oração e guerra</td>
+<td>A luta com o anjo e o medo de matar ou ser morto [longo]</td>
+</tr>
+<tr>
+<td class="num">28</td>
+<td class="he" dir="rtl" lang="he">ענין בקש יעקב לגלות את הקץ</td>
+<td>Jacó quis revelar o fim</td>
+<td>Por que os 17 melhores anos de Jacó contam na servidão do Egito</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">Shemot (29–45)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">29</td>
+<td class="he" dir="rtl" lang="he">תבת משה</td>
+<td>O cesto de Moisés</td>
+<td>Os três meses de ocultação de Moisés como luz que se firma</td>
+</tr>
+<tr>
+<td class="num">30</td>
+<td class="he" dir="rtl" lang="he">סוד שובבי"ם ת"ת</td>
+<td>O segredo de Shovavim</td>
+<td>Exílio e redenção valem em toda geração, no coletivo e no indivíduo [curto]</td>
+</tr>
+<tr>
+<td class="num">31</td>
+<td class="he" dir="rtl" lang="he">ומשה היה רועה את צאן יתרו</td>
+<td>Moisés pastoreava</td>
+<td>Moisés se entrega pelo povo ("apaga-me"); Noé não chegou a esse grau</td>
+</tr>
+<tr>
+<td class="num">32</td>
+<td class="he" dir="rtl" lang="he">שאלות משה במראה הסנה</td>
+<td>As perguntas de Moisés na sarça</td>
+<td>"Quem sou eu?" e a resposta "servireis a Deus neste monte"</td>
+</tr>
+<tr>
+<td class="num">33</td>
+<td class="he" dir="rtl" lang="he">ארץ מתגלגלת, ומזלות קבועים</td>
+<td>Terra que gira, astros fixos</td>
+<td>O fluxo divino é constante; a criatura é que nem sempre o recebe [curto]</td>
+</tr>
+<tr>
+<td class="num">34</td>
+<td class="he" dir="rtl" lang="he">אהי' שלחני אליכם</td>
+<td>Ehyeh enviou-me a vós</td>
+<td>O "rosto" não se vê, só as costas; matéria e forma na criatura (cf. Sichot 5)</td>
+</tr>
+<tr>
+<td class="num">35</td>
+<td class="he" dir="rtl" lang="he">שלשת האותות</td>
+<td>Os três sinais</td>
+<td>A serpente que "só crê no que vê"; a raiz da casca</td>
+</tr>
+<tr>
+<td class="num">36</td>
+<td class="he" dir="rtl" lang="he">גשמיות ורוחניות</td>
+<td>Corpo e espírito</td>
+<td>Moisés e Aarão falando juntos a Faraó; o maná que enfraquece o desejo material</td>
+</tr>
+<tr>
+<td class="num">37</td>
+<td class="he" dir="rtl" lang="he">לחם מן השמים</td>
+<td>Pão do céu</td>
+<td>No deserto, todo pão vinha do céu; após o Jordão, da terra [mínimo]</td>
+</tr>
+<tr>
+<td class="num">38</td>
+<td class="he" dir="rtl" lang="he">וידי משה כבדים</td>
+<td>As mãos de Moisés pesadas</td>
+<td>A guerra contra Amalek em Refidim: as mãos como "fé" nos tempos de ocultação</td>
+</tr>
+<tr>
+<td class="num">39</td>
+<td class="he" dir="rtl" lang="he">ויסעו מרפידים</td>
+<td>Partiram de Refidim</td>
+<td>Na queda, a salvação parece sobrenatural; depois de salvo, tudo parece natural</td>
+</tr>
+<tr>
+<td class="num">40</td>
+<td class="he" dir="rtl" lang="he">מצות עשה, אנכי הוי' אלקיך</td>
+<td>"Eu sou o Senhor teu Deus"</td>
+<td>"Queremos ver nosso Rei": reino de sacerdotes como os que veem o rosto do Rei</td>
+</tr>
+<tr>
+<td class="num">41</td>
+<td class="he" dir="rtl" lang="he">לחפשי חנם</td>
+<td>Livre, de graça</td>
+<td>O servo hebreu que sai "de graça": descanso em cada instante do trabalho [longo]</td>
+</tr>
+<tr>
+<td class="num">42</td>
+<td class="he" dir="rtl" lang="he">שכינתא בתחתונים</td>
+<td>A Shechiná nos de baixo</td>
+<td>"Façam-me um santuário e habitarei no meio deles": a morada é quem se dispõe a amar</td>
+</tr>
+<tr>
+<td class="num">43</td>
+<td class="he" dir="rtl" lang="he">ביום השביעי שבת וינפש</td>
+<td>No sétimo dia descansou</td>
+<td>"Vayinafash" como forma passiva: o que o Shabat revela</td>
+</tr>
+<tr>
+<td class="num">44</td>
+<td class="he" dir="rtl" lang="he">ושמרו בני ישראל את השבת</td>
+<td>Guardarão o Shabat</td>
+<td>Mesma citação do Tikunei Zohar de Sichot 112 [mínimo]</td>
+</tr>
+<tr>
+<td class="num">45</td>
+<td class="he" dir="rtl" lang="he">כבוד המלך</td>
+<td>A honra do Rei</td>
+<td>Não se apresenta ao Rei sem vestes de honra; onde achá-las [curto]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="blockh">Bamidbar e Devarim (46–61)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Título</th>
+<th>Tradução</th>
+<th>Resumo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="num">46</td>
+<td class="he" dir="rtl" lang="he">אור המנורה</td>
+<td>A luz da menorá</td>
+<td>Por que "como Deus ordenou" é repetido: o louvor de Aarão [longo]</td>
+</tr>
+<tr>
+<td class="num">47</td>
+<td class="he" dir="rtl" lang="he">אלדד ומידד</td>
+<td>Eldad e Medad</td>
+<td>A profecia deles vinha do Nome e estava acima da de Moisés [curto]</td>
+</tr>
+<tr>
+<td class="num">48</td>
+<td class="he" dir="rtl" lang="he">האיש משה ענו</td>
+<td>O homem Moisés era humilde</td>
+<td>Como o humilde escreve que é humilde: a letra que caiu de "anav" [curto]</td>
+</tr>
+<tr>
+<td class="num">49</td>
+<td class="he" dir="rtl" lang="he">תיקון המרגלים</td>
+<td>A correção dos espiões</td>
+<td>Todo o exílio se prolonga pelo pecado dos espiões; explicá-lo na raiz</td>
+</tr>
+<tr>
+<td class="num">50</td>
+<td class="he" dir="rtl" lang="he">ענין ציצית</td>
+<td>Tzitzit</td>
+<td>Em toda geração o justo encontra traição; o tzitzit como resposta</td>
+</tr>
+<tr>
+<td class="num">51</td>
+<td class="he" dir="rtl" lang="he">סוד ציץ ופרח ושקדים</td>
+<td>Brotos, flores e amêndoas</td>
+<td>O cajado de Aarão como síntese da criação, do serviço e do fim</td>
+</tr>
+<tr>
+<td class="num">52</td>
+<td class="he" dir="rtl" lang="he">קרח</td>
+<td>Korach</td>
+<td>Korach "separou-se" mas dizia que todos são santos: a contradição da revolta [longo]</td>
+</tr>
+<tr>
+<td class="num">53</td>
+<td class="he" dir="rtl" lang="he">קרח ועדתו</td>
+<td>Korach e sua congregação</td>
+<td>Chassidim reencarnados de Korach, fiéis a um falso rebe [curto]</td>
+</tr>
+<tr>
+<td class="num">54</td>
+<td class="he" dir="rtl" lang="he">יום הביכורים</td>
+<td>O dia das primícias</td>
+<td>Bikurim e bechorim: o reino de sacerdotes antes e depois das primeiras tábuas</td>
+</tr>
+<tr>
+<td class="num">55</td>
+<td class="he" dir="rtl" lang="he">היום נמשך אחר הלילה</td>
+<td>O dia segue a noite</td>
+<td>A escuridão vem antes como óleo e pavio para a luz [mínimo]</td>
+</tr>
+<tr>
+<td class="num">56</td>
+<td class="he" dir="rtl" lang="he">בכור ופשוט - הלילה אחר היום</td>
+<td>Primogênito e simples</td>
+<td>O "dia" como parte simples de todo Israel; a noite como trabalho extra</td>
+</tr>
+<tr>
+<td class="num">57</td>
+<td class="he" dir="rtl" lang="he">תכלית הידיעה</td>
+<td>O fim do conhecimento</td>
+<td>Saber é "retornar ao coração": certeza como a de quem fala face a face [curto]</td>
+</tr>
+<tr>
+<td class="num">58</td>
+<td class="he" dir="rtl" lang="he">את ה' אלקיך תירא</td>
+<td>Temerás o Senhor teu Deus</td>
+<td>Shimon HaAmsoni que parou no "temer" e R. Akiva que incluiu os sábios</td>
+</tr>
+<tr>
+<td class="num">59</td>
+<td class="he" dir="rtl" lang="he">ענין בשר תאוה</td>
+<td>Carne de desejo</td>
+<td>Parábola da serpente criada que mata e do bezerro criado que alimenta</td>
+</tr>
+<tr>
+<td class="num">60</td>
+<td class="he" dir="rtl" lang="he">בנים אתם להוי' אלקיכם</td>
+<td>Sois filhos do Senhor</td>
+<td>No tempo de Salomão, cada falta era suprida no Templo, como filho que pede ao pai [curto]</td>
+</tr>
+<tr>
+<td class="num">61</td>
+<td class="he" dir="rtl" lang="he">סוד זווג קוב"ה ושכינתיה</td>
+<td>A união de Deus e Sua Shechiná</td>
+<td>Citando o Maguid de Kozhnitz: todo auxílio vem só de Deus; assim se retorna à raiz</td>
+</tr>
+</tbody>
+</table></div>
+</section></div>
+<div class="sheet"><section class="chapter" id="leitura"><header class="ch-head"><h2>Sugestões de leitura</h2></header>
+<div class="prose"><p>Duas trilhas para começar:</p></div>
+<div class="prose"><ol>
+<li><strong>Núcleo filosófico.</strong> Sichot 2, 36, 88, 115 e 63: adesão como conhecimento, falta e completude, a vergonha como razão do esforço e a alma única. É a base conceitual do resto do volume.</li>
+<li><strong>Tzimtzum em sequência.</strong> Sichot 26 a 35, todos curtos, lidos de uma vez. Exige mais notas, mas é onde o volume é mais original. O estudo comentado desses textos, com 2 e 36 a 40, está em página própria: <a href="sichot-2-26-40/">Sichot 2 e 26 a 40 – estudo comentado</a>.</li>
+</ol></div>
+<div class="prose"><p>Os dois textos muito longos do volume sobre a Torá (Toldot e Vayetze) e os longos das Sichot (65 e 106) ficam melhor para depois, por partes.</p></div>
+</section></div>
+</main>
+</body>
+</html>
