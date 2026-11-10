@@ -1,0 +1,26 @@
+name: Baixar MIDIs dos nigunim
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/midi.yml']
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download
+        run: |
+          mkdir -p nigunim/midi
+          for f in ki-chilatzta-nafshi kel-mistater-1 kel-mistater-2 lehagid-ba-boker-hasdecha iaale-tachnuneinu krivu-li nigun misod-chachamim-1 misod-chachamim-2 mizmor-le-david bnei-heichala; do
+            curl -fsSL --retry 3 -o "nigunim/midi/$f.mid" "https://files.kab.co.il/files/$f.mid"
+          done
+          ls -la nigunim/midi
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add nigunim/midi
+          git diff --cached --quiet || git commit -m "Nigunim: cópias locais dos MIDIs (kabbalah.info)"
+          git push
