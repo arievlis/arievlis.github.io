@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cronologia da Torá Oral · infográfico</title>
+<meta name="description" content="De Moisés ao Shulchan Aruch, e a linha do Ari até hoje: datas tradicionais e acadêmicas lado a lado, a lacuna persa e os marcos da Torá Oral.">
+<meta name="theme-color" content="#0b1220">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#0e1626}
+a{color:#f0d48a}a:hover{color:#fff3cf}
+.scroller{scrollbar-color:#3a4a6e #0b1220}
+.track{display:flex;width:max-content;height:860px;margin:auto 0}
+.era,.panel-sec{position:relative;height:860px;padding:0 30px;box-sizing:border-box}
+.e1{--c:#e6c06a;color:#e6c06a}.e2{--c:#9fb7e8;color:#9fb7e8}.e3{--c:#8fd3b0;color:#8fd3b0}.e4{--c:#c6a6ec;color:#c6a6ec}.e5{--c:#ec9cc4;color:#ec9cc4}
+.axis{position:absolute;left:0;right:0;top:409px;height:3px;background:var(--c);opacity:.85}
+.axis-d{position:absolute;left:0;right:0;top:410px;border-top:2px dashed #3a4a6e}
+.era-head{position:absolute;top:14px;left:30px;right:30px;display:flex;align-items:baseline;gap:14px;padding-bottom:8px;border-bottom:2px solid var(--c);white-space:nowrap}
+.era-name{font-family:"Frank Ruhl Libre",serif;font-size:22px;font-weight:700;color:var(--c)}
+.era-heb{font-family:"Frank Ruhl Libre",serif;font-size:18px;color:#efe6d2;direction:rtl}
+.era-tr{font-size:12px;font-style:italic;color:#a9b3c7}
+.era-range{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;color:#a9b3c7}
+.cols{display:flex}
+.col{width:320px;display:grid;grid-template-rows:64px 316px 60px 316px 104px;flex:none}
+.col+.col{margin-left:-140px}
+.zone{display:flex;flex-direction:column;align-items:center}
+.up .zone{justify-content:flex-end}
+.down .zone{justify-content:flex-start}
+.card{width:300px;background:#16213a;border:1px solid #2a3857;border-radius:12px;overflow:hidden;color:#efe6d2;box-sizing:border-box}
+.ill{height:92px;background:#121b30;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #2a3857}
+.ill svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.f{fill:currentColor;stroke:none}
+.fs{fill:currentColor;fill-opacity:.16;stroke:none}
+.bg{fill:#121b30}
+.th{stroke-width:1.3}
+.cy{stroke:#7cc6d6}
+.rd{stroke:#e8826b}
+.rdf{fill:#e8826b;fill-opacity:.35;stroke:#e8826b}
+.cb{padding:11px 14px 13px;display:flex;flex-direction:column;gap:6px}
+.card h3{margin:0;font-family:"Frank Ruhl Libre",serif;font-size:19px;font-weight:700;line-height:1.15;color:#f6eedc}
+.card h3 i{font-weight:400;font-size:15px;color:#a9b3c7}
+.dates{display:flex;flex-wrap:wrap;gap:4px 6px}
+.dates span{font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:2px 7px;border-radius:999px;border:1px solid;white-space:nowrap}
+.dates b{font-weight:500;font-size:9.5px;letter-spacing:.08em;margin-right:5px;opacity:.85}
+.dates .t{color:#f0d48a;border-color:#6b5a2e}
+.dates .a{color:#7cc6d6;border-color:#2f5f6b}
+.who{margin:0;font-size:12.5px;line-height:1.35;font-weight:500;color:#ddd5c2}
+.nt{margin:0;font-size:12px;line-height:1.4;color:#a9b3c7}
+.nt i,.who i{color:#c9c2b0}
+.tag{display:inline-block;font-family:"Alegreya Sans",sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#ec9cc4;border:1px solid #ec9cc4;border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:3px}
+.hot .card{border-color:#e8826b}
+.pin{position:relative}
+.dot{position:absolute;left:50%;top:30px;width:12px;height:12px;margin:-8px 0 0 -8px;border-radius:50%;background:#0e1626;border:2px solid var(--c)}
+.up .pin::before,.down .pin::before{content:"";position:absolute;left:50%;margin-left:-1px;width:2px;height:24px;background:var(--c)}
+.up .pin::before{top:0}
+.down .pin::before{top:36px}
+.am{position:absolute;left:0;right:0;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--c)}
+.up .am{top:40px}
+.down .am{top:4px}
+.diff{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:12px;gap:4px}
+.bar{width:26px;background:#e8826b;border-radius:3px 3px 0 0;display:block}
+.bar.q{height:22px;background:none;border:1.5px dashed #e8826b;border-bottom:none;box-sizing:border-box}
+.base{width:46px;height:1px;background:#3a4a6e;display:block}
+.dl{font-family:"IBM Plex Mono",monospace;font-size:11px;color:#e8a594;white-space:nowrap}
+.dl.z{color:#7d879b}
+.chip{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;border:1px solid #2a3857;font-size:12.5px;font-weight:500;color:#d9d2c0;text-decoration:none;white-space:nowrap}
+.chip:hover{border-color:#e6c06a;color:#fff3cf}
+.navbtn{width:44px;height:36px;border-radius:8px;border:1px solid #2a3857;background:#16213a;color:#efe6d2;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.navbtn:hover{border-color:#e6c06a}
+.kl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.kl li{display:grid;grid-template-columns:124px 1fr;gap:10px;padding:3px 0;border-bottom:1px dashed #2a3857;font-size:12.5px;color:#ddd5c2}
+.kl .y{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#a9b3c7}
+.lg{display:flex;align-items:center;gap:10px;font-size:13px;color:#ddd5c2}
+.heb{font-family:"Frank Ruhl Libre",serif;direction:rtl}
+
+.back{font-size:13.5px;font-weight:500;color:#a9b3c7;text-decoration:none;white-space:nowrap}.back:hover{color:#f0d48a}
+@media (max-width:700px){header strong{display:none}}
+</style>
+</head>
+<body>
+<div class="root" style="height: 100vh; height: 100dvh; min-height: 908px; display: flex; flex-direction: column; background: #0e1626; color: #efe6d2; font-family: 'Alegreya Sans', 'Segoe UI', system-ui, sans-serif">
+
+<header style="flex: none; height: 48px; display: flex; align-items: center; gap: 18px; padding: 0 20px; background: #0b1220; border-bottom: 1px solid #22304d">
+<a href="/" class="back" aria-label="Voltar ao Arquivo de estudos">← Arquivo</a>
+<span class="heb" style="font-size: 16px; color: #a9b3c7">ב״ה</span>
+<strong style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; font-weight: 700; color: #f6eedc; white-space: nowrap">Cronologia da Torá Oral</strong>
+<nav aria-label="Eras" style="display: flex; gap: 8px; overflow-x: auto; flex: 1; min-width: 0">
+<a class="chip" href="#inicio">Início</a>
+<a class="chip" href="#era-biblico">Bíblico</a>
+<a class="chip" href="#persa">Lacuna persa</a>
+<a class="chip" href="#era-templo">2º Templo</a>
+<a class="chip" href="#era-talmud">Mishná e Talmud</a>
+<a class="chip" href="#era-pos">Pós-talmúdico</a>
+<a class="chip" href="#era-ari">Linha do Ari</a>
+<a class="chip" href="#hoje">Hoje</a>
+</nav>
+<div style="display: flex; gap: 8px; flex: none">
+<button class="navbtn" type="button" aria-label="Voltar" id="btn-prev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button class="navbtn" type="button" aria-label="Avançar" id="btn-next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+</header>
+
+<div class="scroller" id="scroller" style="flex: 1; min-height: 0; overflow: auto; display: flex">
+<div class="track">
+
+<!-- ABERTURA -->
+<section id="inicio" class="panel-sec e1" style="width: 820px; padding: 52px 56px 36px; display: flex; flex-direction: column; gap: 22px; border-right: 1px solid #22304d">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<span style="font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #a9b3c7">Talmud para Iniciantes · Aula 1 · a partir do quadro do Chabad.org</span>
+<span class="heb" style="font-size: 20px; color: #a9b3c7">ב״ה</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="heb" style="font-size: 54px; line-height: 1.1; color: #e6c06a">תּוֹרָה שֶׁבְּעַל פֶּה</span>
+<span style="font-size: 14px; color: #a9b3c7"><i>Torá she-be‘al pé</i> · “a Torá que está na boca”, a Torá Oral</span>
+</div>
+<h1 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 64px; line-height: 1.02; color: #f6eedc">Cronologia da Torá Oral</h1>
+<p style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 22px; color: #e6c06a">De Moisés ao Shulchan Aruch, e a linha do Ari até hoje</p>
+<p style="margin: 0; max-width: 62ch; font-size: 15px; line-height: 1.6; color: #c9c2b0">Cada marco traz a data tradicional, contada desde a Criação (<i>anno mundi</i>), ao lado da datação acadêmica. As duas réguas divergem até cerca de 165 anos no período bíblico, sobretudo pela compressão do período persa na contagem rabínica (<i>Seder Olam</i>), e se encontram a partir da era helenista.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; margin-top: 4px">
+<div class="lg"><span class="dates"><span class="t"><b>TRAD</b>1313 a.C.</span></span>Cronologia tradicional</div>
+<div class="lg"><span class="dates"><span class="a"><b>ACAD</b>c. 1200 a.C.</span></span>Consenso acadêmico aproximado</div>
+<div class="lg"><span style="position: relative; width: 26px; height: 16px; display: inline-block"><span style="position: absolute; left: 0; right: 0; top: 7px; height: 3px; background: #e6c06a"></span><span style="position: absolute; left: 7px; top: 2px; width: 8px; height: 8px; border-radius: 50%; border: 2px solid #e6c06a; background: #0e1626"></span></span>Eixo: ano judaico (desde a Criação)</div>
+<div class="lg"><span style="width: 14px; height: 24px; background: #e8826b; border-radius: 3px 3px 0 0; display: inline-block"></span>Faixa inferior: diferença em anos</div>
+<div class="lg"><span style="width: 26px; height: 3px; background: #e8826b; display: inline-block"></span>Período persa: a “lacuna”</div>
+<div class="lg"><span class="tag" style="margin: 0">acréscimo</span>Não consta do quadro original</div>
+</div>
+<div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #e8a594">↓ diferença tradição × academia, em anos</span>
+<span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: #e6c06a">Role para o lado<svg width="40" height="14" viewBox="0 0 40 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h34M30 2l6 5-6 5"></path></svg></span>
+</div>
+</section>
+
+<!-- ERA 1: BÍBLICO -->
+<section id="era-biblico" class="era e1">
+<div class="axis"></div>
+<div class="era-head"><span class="era-name">Período bíblico</span><span class="era-heb">תְּקוּפַת הַמִּקְרָא</span><span class="era-tr">Tekufat ha-Mikra</span><span class="era-range">2448–3338 · 1313–423 a.C. (trad.)</span></div>
+<div class="cols">
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M8 84 L52 34 L66 48 L84 26 L152 84Z"></path><path d="M8 84 L52 34 L66 48 L84 26 L152 84"></path><path class="bg" d="M62 76V42a9 9 0 0 1 18 0v34Z"></path><path class="bg" d="M80 76V42a9 9 0 0 1 18 0v34Z"></path><path d="M62 76V42a9 9 0 0 1 18 0v34Z M80 76V42a9 9 0 0 1 18 0v34Z"></path><path class="th" d="M67 48h8M67 54h8M67 60h8M67 66h8M85 48h8M85 54h8M85 60h8M85 66h8"></path><path class="th" d="M80 6v10M62 10l5 7M98 10l-5 7M50 20l7 4M110 20l-7 4"></path></svg></div>
+<div class="cb">
+<h3>Outorga da Torá</h3>
+<div class="dates"><span class="t"><b>TRAD</b>1313 a.C.</span><span class="a"><b>ACAD</b>sem consenso · séc. XIII?</span></div>
+<p class="who">Moisés</p>
+<p class="nt">Dez Mandamentos e 613 preceitos. Moisés começa a ensinar a Torá Oral.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">2448</span></div>
+<div></div>
+<div class="diff"><span class="bar q"></span><span class="base"></span><span class="dl">indatável</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">2488</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><circle class="fs" cx="124" cy="22" r="10"></circle><circle cx="124" cy="22" r="10"></circle><path d="M4 56 Q40 30 76 52 T156 46"></path><path class="cy" d="M4 70 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"></path><path class="cy" d="M4 80 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"></path><path class="th" d="M58 88 C68 72 84 64 96 52" stroke-dasharray="3 5"></path></svg></div>
+<div class="cb">
+<h3>Entrada na Terra de Israel</h3>
+<div class="dates"><span class="t"><b>TRAD</b>1273 a.C.</span><span class="a"><b>ACAD</b>c. 1200 a.C.</span></div>
+<p class="who">Josué</p>
+<p class="nt">A travessia do Jordão. A estela de Merneptá (c. 1208 a.C.) é a 1ª menção extrabíblica a “Israel”.</p>
+</div></article></div>
+<div class="diff"><span class="bar" style="height: 24px"></span><span class="base"></span><span class="dl">≈ 70</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M30 86h100"></path><path d="M80 86 C78 66 82 48 80 32"></path><path class="th" d="M77 74h6M77 62h6M78 50h5M78 40h4"></path><path d="M80 32 C66 22 52 26 44 38 M80 32 C94 22 108 26 116 38 M80 32 C70 18 60 12 50 12 M80 32 C90 18 100 12 110 12 M80 32 C80 20 82 10 86 4"></path><circle class="f" cx="76" cy="34" r="2.5"></circle><circle class="f" cx="84" cy="35" r="2.5"></circle><circle class="f" cx="80" cy="38" r="2.5"></circle></svg></div>
+<div class="cb">
+<h3>Juízes <i>· Shoftim</i></h3>
+<div class="dates"><span class="t"><b>TRAD</b>1245–890 a.C.</span><span class="a"><b>ACAD</b>c. 1200–1025</span></div>
+<p class="who">Otniel, Débora, Gideão, Sansão, Eli</p>
+<p class="nt">Débora julgava Israel sentada sob uma palmeira (Jz 4:5).</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">2516–2871</span></div>
+<div></div>
+<div class="diff"><span class="bar" style="height: 31px"></span><span class="base"></span><span class="dl">45–135</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">2882–3338</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M48 66 L42 30 L62 46 L80 22 L98 46 L118 30 L112 66Z"></path><path d="M48 66 L42 30 L62 46 L80 22 L98 46 L118 30 L112 66Z"></path><path d="M46 76h68"></path><circle class="f" cx="80" cy="54" r="4"></circle><circle class="f" cx="62" cy="57" r="2.5"></circle><circle class="f" cx="98" cy="57" r="2.5"></circle><circle class="f" cx="42" cy="27" r="3"></circle><circle class="f" cx="80" cy="18" r="3"></circle><circle class="f" cx="118" cy="27" r="3"></circle></svg></div>
+<div class="cb">
+<h3>Reis <i>· Melachim</i></h3>
+<div class="dates"><span class="t"><b>TRAD</b>879–423 a.C.</span><span class="a"><b>ACAD</b>c. 1025–586</span></div>
+<p class="who">Saul, Davi, Salomão</p>
+<p class="nt">O reino se divide em Judá e Israel (cisma c. 930 a.C.); a Assíria destrói Samaria em 722 a.C.</p>
+</div></article></div>
+<div class="diff"><span class="bar" style="height: 53px"></span><span class="base"></span><span class="dl">≈ 145–165</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M46 30 L80 12 L114 30Z"></path><path d="M46 30 L80 12 L114 30Z"></path><path d="M50 30h60v44H50Z"></path><path d="M70 74V54a10 10 0 0 1 20 0v20"></path><path d="M30 36h8v38h-8Z M122 36h8v38h-8Z"></path><circle cx="34" cy="31" r="5"></circle><circle cx="126" cy="31" r="5"></circle><path d="M22 78h116M16 84h128"></path></svg></div>
+<div class="cb">
+<h3>Construção do 1º Templo</h3>
+<div class="dates"><span class="t"><b>TRAD</b>833–827 a.C.</span><span class="a"><b>ACAD</b>c. 966–959</span></div>
+<p class="who">Rei Salomão</p>
+<p class="nt">À entrada, as colunas Jachin e Boaz (1Rs 7:21).</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">2928</span></div>
+<div></div>
+<div class="diff"><span class="bar" style="height: 45px"></span><span class="base"></span><span class="dl">≈ 133</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">até 3461</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="th" d="M44 34 C30 26 20 30 10 42 M44 42 C32 38 22 42 14 52 M116 34 C130 26 140 30 150 42 M116 42 C128 38 138 42 146 52"></path><circle cx="80" cy="46" r="32"></circle><ellipse cx="80" cy="46" rx="13" ry="32"></ellipse><ellipse cx="80" cy="46" rx="32" ry="13"></ellipse><circle class="f" cx="80" cy="46" r="5"></circle><circle class="f" cx="80" cy="14" r="2.5"></circle><circle class="f" cx="112" cy="46" r="2.5"></circle><circle class="f" cx="80" cy="78" r="2.5"></circle><circle class="f" cx="48" cy="46" r="2.5"></circle><circle class="f" cx="103" cy="23" r="2"></circle><circle class="f" cx="57" cy="69" r="2"></circle><circle class="f" cx="103" cy="69" r="2"></circle><circle class="f" cx="57" cy="23" r="2"></circle></svg></div>
+<div class="cb">
+<h3>Profetas <i>· Neviim</i></h3>
+<div class="dates"><span class="t"><b>TRAD</b>até c. 300 a.C.</span><span class="a"><b>ACAD</b>c. 760–450 a.C.</span></div>
+<p class="who">Samuel, Elias, Isaías, Jeremias, Ezequiel, Ageu, Zacarias</p>
+<p class="nt">A visão do carro (Ez 1) funda o <i>Maassé Merkavá</i>. A profecia cessa no início do 2º Templo.</p>
+</div></article></div>
+<div class="diff"><span class="bar" style="height: 51px"></span><span class="base"></span><span class="dl">≈ 150</span></div>
+</div>
+
+<div class="col up hot">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M14 84h132"></path><path d="M34 84V40l5-5 3 6 4-8 4 7V84"></path><path d="M108 84V58l4-4 4 5 5-6 3 5V84"></path><path d="M54 84l2-12 24-4 2 12"></path><path class="rdf" d="M72 66 C62 54 70 44 76 32 C78 44 88 48 84 58 C90 54 92 46 90 40 C98 50 98 64 88 70Z"></path><path class="rd th" d="M60 30v-6M96 26l3-5M66 18l-2-5"></path></svg></div>
+<div class="cb">
+<h3>Destruição do 1º Templo</h3>
+<div class="dates"><span class="t"><b>TRAD</b>423 a.C.</span><span class="a"><b>ACAD</b>587/586 a.C.</span></div>
+<p class="who">Babilônios, sob Nabucodonosor</p>
+<p class="nt">Exílio dos judeus na Babilônia.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">3338</span></div>
+<div></div>
+<div class="diff"><span class="bar" style="height: 56px"></span><span class="base"></span><span class="dl">≈ 164</span></div>
+</div>
+
+</div>
+</section>
+
+<!-- LACUNA PERSA -->
+<section id="persa" class="panel-sec" style="width: 880px">
+<div class="axis-d"></div>
+<div style="position: relative; margin-top: 64px; height: 692px; box-sizing: border-box; background: #16213a; border: 1px solid #e8826b; border-radius: 16px; padding: 28px 32px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; gap: 22px; align-items: center">
+<svg viewBox="0 0 160 90" width="128" height="72" fill="none" stroke="#e8826b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M40 30 Q80 22 120 30 V64 Q80 72 40 64Z" fill="#e8826b" fill-opacity=".14" stroke="none"></path><path d="M40 30 Q80 22 120 30 V64 Q80 72 40 64Z"></path><ellipse cx="40" cy="47" rx="6" ry="17"></ellipse><path d="M120 30 a6 17 0 0 1 0 34"></path><path stroke-width="1.2" stroke-dasharray="2 3" d="M52 37 Q80 32 110 37 M52 45 Q80 40 110 45 M52 53 Q80 48 110 53 M52 61 Q80 56 110 61"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #e8a594">Interlúdio · a lacuna da cronologia judaica</span>
+<h2 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 34px; font-weight: 700; line-height: 1.1; color: #f6eedc">O período persa: 34 contra 207 anos</h2>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: grid; grid-template-columns: 170px 1fr; align-items: center; gap: 14px">
+<span style="font-size: 13px; color: #f0d48a">Tradição (<i>Seder Olam</i>)</span>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 72px; height: 18px; background: #e6c06a; border-radius: 3px; display: block"></span><span style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 700; color: #f0d48a">≈ 34 anos</span></div>
+<span style="font-size: 13px; color: #7cc6d6">Historiografia (aquemênidas)</span>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 440px; height: 18px; background: #7cc6d6; border-radius: 3px; display: block"></span><span style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 700; color: #7cc6d6; white-space: nowrap">≈ 207 anos</span></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #f0d48a">Reis persas na tradição</span>
+<ul class="kl">
+<li><span class="y">3389 · 372 a.C.</span><span>Dario, o Medo (Dn 6)</span></li>
+<li><span class="y">3390 · 371 a.C.</span><span>Ciro: decreto do retorno</span></li>
+<li><span class="y">3392 · 369 a.C.</span><span>Assuero, o rei de Ester</span></li>
+<li><span class="y">3406 · 355 a.C.</span><span>Dario, “o Persa”, filho de Ester; 2º Templo concluído em 3412</span></li>
+<li><span class="y">c. 3442–3448</span><span>Alexandre põe fim ao domínio persa</span></li>
+</ul>
+<p class="nt" style="margin-top: 6px">Seder Olam Rabá 30: cerca de 34 anos de domínio persa com o Templo de pé; uns 52 contando de Ciro.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #7cc6d6">Dinastia aquemênida, 539–332 a.C.</span>
+<ul class="kl">
+<li><span class="y">559–530</span><span>Ciro II (toma a Babilônia em 539)</span></li>
+<li><span class="y">530–522</span><span>Cambises II</span></li>
+<li><span class="y">522–486</span><span>Dario I (2º Templo dedicado em 515)</span></li>
+<li><span class="y">486–465</span><span>Xerxes I, em geral identificado com Assuero</span></li>
+<li><span class="y">465–424</span><span>Artaxerxes I (Esdras 458?, Neemias 445)</span></li>
+<li><span class="y">424–404</span><span>Dario II</span></li>
+<li><span class="y">404–358</span><span>Artaxerxes II</span></li>
+<li><span class="y">358–338</span><span>Artaxerxes III</span></li>
+<li><span class="y">338–336</span><span>Artaxerxes IV (Arses)</span></li>
+<li><span class="y">336–330</span><span>Dario III, derrotado por Alexandre</span></li>
+</ul>
+</div>
+</div>
+<p style="margin: auto 0 0; font-size: 13.5px; line-height: 1.55; color: #c9c2b0">Como o fim do período é fixo nas duas contagens (a era selêucida, <i>minian shetarot</i>, “contagem dos contratos”, iniciada em 312/311 a.C.), os cerca de 170 anos a menos atribuídos aos persas empurram tudo o que vem antes para mais tarde na cronologia tradicional. Daí as barras altas à esquerda, e a convergência à direita.</p>
+</div>
+</section>
+
+<!-- ERA 2: SEGUNDO TEMPLO -->
+<section id="era-templo" class="era e2">
+<div class="axis"></div>
+<div class="era-head"><span class="era-name">Segundo Templo</span><span class="era-heb">בַּיִת שֵׁנִי</span><span class="era-tr">Bayit Sheni</span><span class="era-range">3408–3829 · 353 a.C.–70 d.C.</span></div>
+<div class="cols">
+
+<div class="col up hot">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M52 36 L76 22 L100 36Z"></path><path d="M52 36 L76 22 L100 36Z"></path><path d="M56 36h40v38H56Z"></path><path d="M69 74V58a7 7 0 0 1 14 0v16"></path><path class="th" d="M112 84V18 M134 84V18 M112 34h22 M112 52h22 M112 70h22 M112 34l22 18 M112 52l22 18"></path><path d="M26 74h16v10H26Z M34 64h16v10H34Z"></path><path d="M16 84h132"></path></svg></div>
+<div class="cb">
+<h3>Reconstrução do 2º Templo</h3>
+<div class="dates"><span class="t"><b>TRAD</b>353–349 a.C.</span><span class="a"><b>ACAD</b>520–515 a.C.</span></div>
+<p class="who">Esdras, Neemias <i>(atuam c. 458–430 a.C.)</i></p>
+<p class="nt">Poucos judeus voltam; o 2º Templo é menos grandioso que o 1º.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">3408–3412</span></div>
+<div></div>
+<div class="diff"><span class="bar" style="height: 56px"></span><span class="base"></span><span class="dl">≈ 165</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">3412–3581</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M30 18h12v60H30Z M118 18h12v60h-12Z"></path><rect x="30" y="18" width="12" height="60" rx="6"></rect><rect x="118" y="18" width="12" height="60" rx="6"></rect><path d="M42 24h76 M42 72h76"></path><path class="th" d="M50 32h28M50 38h28M50 44h28M50 50h28M50 56h28M50 62h20 M84 32h26M84 38h26M84 44h26M84 50h26M84 56h26M84 62h18"></path><path d="M36 10v8M36 78v8M124 10v8M124 78v8"></path></svg></div>
+<div class="cb">
+<h3>Grande Assembleia</h3>
+<div class="dates"><span class="t"><b>TRAD</b>349–180 a.C.</span><span class="a"><b>ACAD</b>historicidade debatida</span></div>
+<p class="who">Shimon HaTsadik <i>(talvez Simão II, c. 200 a.C.)</i></p>
+<p class="nt"><i>Anshei Knesset HaGuedolá</i>: canoniza a Bíblia, formaliza a liturgia e redige a Amidá.</p>
+</div></article></div>
+<div class="diff"><span class="bar q"></span><span class="base"></span><span class="dl">incerta</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M14 78h132"></path><path class="fs" d="M18 64 C18 52 42 50 54 58 L64 54 L60 64 C48 74 22 74 18 64Z"></path><path d="M18 64 C18 52 42 50 54 58 L64 54 L60 64 C48 74 22 74 18 64Z"></path><circle cx="36" cy="58" r="3"></circle><path class="f" d="M64 52 C60 44 64 36 66 28 C71 36 73 44 64 52Z"></path><path class="fs" d="M88 64 C88 52 112 50 124 58 L134 54 L130 64 C118 74 92 74 88 64Z"></path><path d="M88 64 C88 52 112 50 124 58 L134 54 L130 64 C118 74 92 74 88 64Z"></path><circle cx="106" cy="58" r="3"></circle><path class="f" d="M134 52 C130 44 134 36 136 28 C141 36 143 44 134 52Z"></path></svg></div>
+<div class="cb">
+<h3>Os Pares <i>· Zugot</i></h3>
+<div class="dates"><span class="t"><b>TRAD</b>180 a.C.–40 d.C.</span><span class="a"><b>ACAD</b>c. 160 a.C.–10 d.C.</span></div>
+<p class="who">Shemaiá e Avtalion, Hilel e Shamai</p>
+<p class="nt">A cada geração, um Presidente (<i>Nassi</i>) e um chefe do tribunal (<i>Av Beit Din</i>).</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">3581–3801</span></div>
+<div></div>
+<div class="diff"><span class="bar" style="height: 5px"></span><span class="base"></span><span class="dl">pequena</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">3621–3623</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M58 84h44 M80 84V64"></path><path d="M24 42 Q24 64 80 64 Q136 64 136 42 M38 42 Q38 58 80 58 Q122 58 122 42 M52 42 Q52 52 80 52 Q108 52 108 42 M66 42 Q66 46 80 46 Q94 46 94 42 M80 64V28"></path><path class="th" d="M20 42h8M34 42h8M48 42h8M62 42h8M90 42h8M104 42h8M118 42h8M132 42h8M76 28h8"></path><g class="f"><ellipse cx="24" cy="35" rx="3" ry="6"></ellipse><ellipse cx="38" cy="35" rx="3" ry="6"></ellipse><ellipse cx="52" cy="35" rx="3" ry="6"></ellipse><ellipse cx="66" cy="35" rx="3" ry="6"></ellipse><ellipse cx="94" cy="35" rx="3" ry="6"></ellipse><ellipse cx="108" cy="35" rx="3" ry="6"></ellipse><ellipse cx="122" cy="35" rx="3" ry="6"></ellipse><ellipse cx="136" cy="35" rx="3" ry="6"></ellipse><ellipse cx="80" cy="21" rx="3" ry="6"></ellipse></g></svg></div>
+<div class="cb">
+<h3>Revolta hasmoneia e Chanucá</h3>
+<div class="dates"><span class="t"><b>TRAD</b>140–138 a.C.</span><span class="a"><b>ACAD</b>167–164 a.C.</span></div>
+<p class="who">Matitiahu, Judá Macabeu</p>
+<p class="nt">Contra Antíoco IV, que proíbe o culto judaico; o Templo é rededicado: a história de Chanucá.</p>
+</div></article></div>
+<div class="diff"><span class="bar" style="height: 9px"></span><span class="base"></span><span class="dl">≈ 27</span></div>
+</div>
+
+<div class="col up hot">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M20 20h120v64H20Z"></path><path class="th" d="M20 20h120v64H20Z M20 36h120 M20 52h120 M20 68h120 M50 20v16 M80 20v16 M110 20v16 M35 36v16 M65 36v16 M95 36v16 M125 36v16 M50 52v16 M80 52v16 M110 52v16 M35 68v16 M65 68v16 M95 68v16 M125 68v16"></path><path class="cy" d="M80 52 C76 46 72 44 64 44 M80 52 C84 44 90 42 98 42 M80 52 C80 44 82 38 80 30"></path></svg></div>
+<div class="cb">
+<h3>Destruição do 2º Templo</h3>
+<div class="dates"><span class="t"><b>TRAD</b>70 d.C.</span><span class="a"><b>ACAD</b>70 d.C.</span></div>
+<p class="who">Romanos, sob Tito</p>
+<p class="nt">As réguas já coincidem: as duas se ancoram na era selêucida (312/311 a.C.).</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">3829</span></div>
+<div></div>
+<div class="diff"><span class="base"></span><span class="dl z">0</span></div>
+</div>
+
+</div>
+</section>
+
+<!-- ERA 3: MISHNÁ E TALMUD -->
+<section id="era-talmud" class="era e3">
+<div class="axis"></div>
+<div class="era-head"><span class="era-name">Mishná e Talmud</span><span class="era-heb">מִשְׁנָה וְתַלְמוּד</span><span class="era-tr">Mishná ve-Talmud</span><span class="era-range">3801–4261 · 40–500 d.C.</span></div>
+<div class="cols">
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">3801–3961</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M8 84 C18 40 66 30 92 50 C110 36 148 48 152 84Z"></path><path d="M8 84 C18 40 66 30 92 50 C110 36 148 48 152 84"></path><path class="bg" d="M36 84 C36 62 70 58 74 84Z"></path><path d="M36 84 C36 62 70 58 74 84"></path><path d="M120 84V62"></path><circle class="fs" cx="120" cy="52" r="14"></circle><circle cx="120" cy="52" r="14"></circle><circle class="f" cx="114" cy="50" r="2"></circle><circle class="f" cx="124" cy="56" r="2"></circle><path class="cy" d="M78 84 q6 -4 12 0 t12 0"></path></svg></div>
+<div class="cb">
+<h3>Era dos Tanaítas</h3>
+<div class="dates"><span class="t"><b>TRAD</b>40–200 d.C.</span><span class="a"><b>ACAD</b>c. 10–220 d.C.</span></div>
+<p class="who">R. Iochanan ben Zakai, R. Akiva, R. Shimon bar Iochai</p>
+<p class="nt">Rashbi passa 13 anos numa caverna, junto a uma alfarrobeira e uma fonte. A tradição lhe atribui o <i>Zohar</i>.</p>
+</div></article></div>
+<div class="diff"><span class="bar" style="height: 5px"></span><span class="base"></span><span class="dl">pequena</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M20 82h120"></path><path class="fs" d="M32 28h14v54H32Z M48 20h14v62H48Z M64 26h14v56H64Z M80 18h14v64H80Z M96 24h14v58H96Z M112 30h14v52h-14Z"></path><path d="M32 28h14v54H32Z M48 20h14v62H48Z M64 26h14v56H64Z M80 18h14v64H80Z M96 24h14v58H96Z M112 30h14v52h-14Z"></path><path class="th" d="M32 36h14M32 72h14M48 28h14M48 72h14M64 34h14M64 72h14M80 26h14M80 72h14M96 32h14M96 72h14M112 38h14M112 72h14"></path></svg></div>
+<div class="cb">
+<h3>A Mishná</h3>
+<div class="dates"><span class="t"><b>TRAD</b>189 d.C.</span><span class="a"><b>ACAD</b>c. 200–220 d.C.</span></div>
+<p class="who">R. Iehudá HaNassi</p>
+<p class="nt">As seis ordens (<i>Shishá Sidrei Mishná</i>) encerram a era tanaítica.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">3949</span></div>
+<div></div>
+<div class="diff"><span class="bar" style="height: 7px"></span><span class="base"></span><span class="dl">≈ 10–30</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">4140</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M26 80 C56 64 92 42 136 16"></path><g class="fs"><ellipse cx="48" cy="62" rx="12" ry="4.5" transform="rotate(-50 48 62)"></ellipse><ellipse cx="62" cy="64" rx="12" ry="4.5" transform="rotate(20 62 64)"></ellipse><ellipse cx="78" cy="46" rx="12" ry="4.5" transform="rotate(-55 78 46)"></ellipse><ellipse cx="94" cy="48" rx="12" ry="4.5" transform="rotate(15 94 48)"></ellipse><ellipse cx="108" cy="28" rx="12" ry="4.5" transform="rotate(-60 108 28)"></ellipse><ellipse cx="124" cy="32" rx="12" ry="4.5" transform="rotate(10 124 32)"></ellipse></g><g class="th"><ellipse cx="48" cy="62" rx="12" ry="4.5" transform="rotate(-50 48 62)"></ellipse><ellipse cx="62" cy="64" rx="12" ry="4.5" transform="rotate(20 62 64)"></ellipse><ellipse cx="78" cy="46" rx="12" ry="4.5" transform="rotate(-55 78 46)"></ellipse><ellipse cx="94" cy="48" rx="12" ry="4.5" transform="rotate(15 94 48)"></ellipse><ellipse cx="108" cy="28" rx="12" ry="4.5" transform="rotate(-60 108 28)"></ellipse><ellipse cx="124" cy="32" rx="12" ry="4.5" transform="rotate(10 124 32)"></ellipse></g><circle class="f" cx="70" cy="58" r="4"></circle><circle class="f" cx="100" cy="40" r="4"></circle></svg></div>
+<div class="cb">
+<h3>Talmud de Jerusalém</h3>
+<div class="dates"><span class="t"><b>TRAD</b>380 d.C.</span><span class="a"><b>ACAD</b>c. 350–400 d.C.</span></div>
+<p class="who">R. Iochanan, R. Ami, R. Assi, R. Zeira</p>
+<p class="nt">Os amoraítas da Terra de Israel interpretam e elucidam a Mishná.</p>
+</div></article></div>
+<div class="diff"><span class="bar" style="height: 5px"></span><span class="base"></span><span class="dl">pequena</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M40 8h80v78H40Z"></path><path d="M40 8h80v78H40Z"></path><path class="f" d="M62 24h36v32H62Z" fill-opacity=".55"></path><path class="th" d="M46 16h10M46 22h10M46 28h10M46 34h10M46 40h10M46 46h10M46 52h10M46 58h10M104 16h10M104 22h10M104 28h10M104 34h10M104 40h10M104 46h10M104 52h10M104 58h10M62 16h36M46 66h68M46 72h68M46 78h68"></path></svg></div>
+<div class="cb">
+<h3>Talmud Babilônico</h3>
+<div class="dates"><span class="t"><b>TRAD</b>500 d.C.</span><span class="a"><b>ACAD</b>c. 500; edição até séc. VI–VII</span></div>
+<p class="who">R. Ashi, Ravina <i>· antes: Rav, Shmuel, Abaie, Ravá</i></p>
+<p class="nt">Encerra o período amoraico.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">4261</span></div>
+<div></div>
+<div class="diff"><span class="base"></span><span class="dl z">0</span></div>
+</div>
+
+</div>
+</section>
+
+<!-- ERA 4: PÓS-TALMÚDICO -->
+<section id="era-pos" class="era e4">
+<div class="axis"></div>
+<div class="era-head"><span class="era-name">Pós-talmúdico</span><span class="era-heb">גְּאוֹנִים · רִאשׁוֹנִים · אַחֲרוֹנִים</span><span class="era-range">4461–5330 · 700–1570 d.C.</span></div>
+<div class="cols">
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">4461–4791</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="th" d="M22 70 C50 18 110 18 138 70" stroke-dasharray="3 5"></path><circle class="f" cx="22" cy="74" r="6"></circle><circle cx="138" cy="74" r="6"></circle><path class="bg" d="M62 20h36v24H62Z"></path><path d="M62 20h36v24H62Z M62 20l18 13 18-13"></path><circle class="rdf" cx="80" cy="44" r="4.5"></circle><path class="th" d="M130 62l8 8 6-10"></path></svg></div>
+<div class="cb">
+<h3>Era dos Gaonim</h3>
+<div class="dates"><span class="t"><b>TRAD</b>700–1030 d.C.</span><span class="a"><b>ACAD</b>c. 589–1038</span></div>
+<p class="who">R. Saadia, R. Sherira, R. Hai</p>
+<p class="nt">As academias da Babilônia respondem por carta às comunidades distantes; encerram-se em 1038.</p>
+</div></article></div>
+<div class="diff"><span class="bar" style="height: 5px"></span><span class="base"></span><span class="dl">pequena</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M44 84V66a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18Z"></path><path d="M44 84V66a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18Z M54 62v-6h16v6"></path><path class="fs" d="M62 56 L118 6 C132 10 128 30 106 36 L70 54Z"></path><path d="M62 56 L118 6 C132 10 128 30 106 36 L70 54Z"></path><path class="th" d="M64 54 L116 12 M100 22l6 8 M90 30l6 7"></path><path class="th" d="M94 84 q8 -6 14 0 t14 0 t14 0"></path></svg></div>
+<div class="cb">
+<h3>Rishonim <i>· os “primeiros”</i></h3>
+<div class="dates"><span class="t"><b>TRAD</b>1030–1500 d.C.</span><span class="a"><b>ACAD</b>periodização convencional</span></div>
+<p class="who">Rashi, Tossafistas, Maimônides, Nachmânides, Rashbá, Tur</p>
+<p class="nt">Escolas sefaradita e ashkenazita; primeiros códigos. O <i>Zohar</i> vem à luz em Castela, c. 1280–1300.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">4791–5261</span></div>
+<div></div>
+<div class="diff"><span class="base"></span><span class="dl z">0</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">5261</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M40 84V12h80v72 M32 84h96"></path><path d="M80 12v28 M60 24h40"></path><circle class="f" cx="60" cy="24" r="3"></circle><circle class="f" cx="100" cy="24" r="3"></circle><path class="fs" d="M54 40h52v8H54Z"></path><path d="M54 40h52v8H54Z"></path><path d="M46 64h68v6H46Z"></path><path class="bg" d="M58 54h44v10H58Z"></path><path class="th" d="M58 54h44v10H58Z M62 58h36M62 61h28"></path></svg></div>
+<div class="cb">
+<h3>Acharonim <i>· os “posteriores”</i></h3>
+<div class="dates"><span class="t"><b>TRAD</b>desde 1500 d.C.</span><span class="a"><b>ACAD</b>periodização convencional</span></div>
+<p class="who">Maharshá, Maharam de Lublin, Maharshal</p>
+<p class="nt">A imprensa difunde o Talmud: 1ª edição completa em Veneza, 1520–23.</p>
+</div></article></div>
+<div class="diff"><span class="base"></span><span class="dl z">0</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="fs" d="M22 52h116l-6 18H28Z"></path><path d="M22 52h116l-6 18H28Z"></path><path d="M34 70v14M126 70v14"></path><path d="M52 52V36 M47 52h10 M108 52V36 M103 52h10"></path><g class="f"><ellipse cx="52" cy="29" rx="3" ry="6"></ellipse><ellipse cx="108" cy="29" rx="3" ry="6"></ellipse></g><ellipse cx="80" cy="49" rx="14" ry="3.5"></ellipse><path class="fs" d="M68 48 C68 36 92 36 92 48Z"></path><path d="M68 48 C68 36 92 36 92 48"></path><path class="th" d="M74 40l3 7M80 38v9M86 40l-3 7"></path></svg></div>
+<div class="cb">
+<h3>Shulchan Aruch e Ramá</h3>
+<div class="dates"><span class="t"><b>TRAD</b>1563 / 1570</span><span class="a"><b>ACAD</b>Veneza 1565 · Mapá c. 1570</span></div>
+<p class="who">R. Iossef Caro, R. Moshe Isserles (Ramá)</p>
+<p class="nt">“Mesa posta”: o código de maior autoridade. A <i>Mapá</i> (“toalha”) do Ramá a cobre para os ashkenazim.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">5323 / 5330</span></div>
+<div></div>
+<div class="diff"><span class="bar" style="height: 3px"></span><span class="base"></span><span class="dl">≈ 2</span></div>
+</div>
+
+</div>
+</section>
+
+<!-- ERA 5: LINHA DO ARI -->
+<section id="era-ari" class="era e5">
+<div class="axis"></div>
+<div class="era-head"><span class="era-name">A linha do Ari</span><span class="era-heb">קַבָּלַת הָאֲרִ״י</span><span class="era-tr">Kabbalat ha-Ari</span><span class="tag">acréscimo</span><span class="era-range">5330 → 5787 · 1570 → hoje</span></div>
+<div class="cols">
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">5330–5332</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="th" d="M80 8L106 20L106 40L80 48L54 40L54 20Z M80 8V84 M54 20H106 M54 40H106 M54 62H106 M80 48L106 62L80 70L54 62Z M54 20L106 40 M106 20L54 40 M54 62L80 84 M106 62L80 84 M54 40V62 M106 40V62"></path><g class="bg"><circle cx="80" cy="8" r="5"></circle><circle cx="106" cy="20" r="5"></circle><circle cx="54" cy="20" r="5"></circle><circle cx="106" cy="40" r="5"></circle><circle cx="54" cy="40" r="5"></circle><circle cx="106" cy="62" r="5"></circle><circle cx="54" cy="62" r="5"></circle><circle cx="80" cy="70" r="5"></circle><circle cx="80" cy="84" r="5"></circle></g><circle cx="80" cy="8" r="5"></circle><circle cx="106" cy="20" r="5"></circle><circle cx="54" cy="20" r="5"></circle><circle cx="106" cy="40" r="5"></circle><circle cx="54" cy="40" r="5"></circle><circle class="f" cx="80" cy="48" r="6"></circle><circle cx="106" cy="62" r="5"></circle><circle cx="54" cy="62" r="5"></circle><circle cx="80" cy="70" r="5"></circle><circle cx="80" cy="84" r="5"></circle></svg></div>
+<div class="cb">
+<h3>O Ari em Safed</h3>
+<div class="dates"><span class="t"><b>DATA</b>1570–1572</span></div>
+<p class="who">R. Itschak Luria (Ari), R. Chaim Vital</p>
+<p class="nt"><i>Tsimtsum</i>, quebra dos vasos, <i>partsufim</i>, <i>tikun</i>. Vital registra o ensino no <i>Ets Chaim</i>.</p>
+</div></article></div>
+<div class="diff"><span class="base"></span><span class="dl z">=</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><circle class="th" cx="80" cy="34" r="22" stroke-dasharray="2 5"></circle><circle class="th" cx="80" cy="34" r="34" stroke-dasharray="2 7"></circle><path class="fs" d="M70 44h20v42H70Z"></path><path d="M70 44h20v42H70Z M80 44v-6"></path><path class="f" d="M80 38 C72 30 76 20 80 10 C84 20 90 30 80 38Z"></path><path d="M58 86h44"></path></svg></div>
+<div class="cb">
+<h3>Chassidismo e Gaon de Vilna</h3>
+<div class="dates"><span class="t"><b>DATA</b>1698–1815</span></div>
+<p class="who">Baal Shem Tov, Maguid de Mezritch, Alter Rebe, Gaon de Vilna</p>
+<p class="nt">O chassidismo populariza conceitos luriânicos (<i>Tania</i>, 1796); o <i>Ets Chaim</i> é impresso em Korets, 1782.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">5458–5575</span></div>
+<div></div>
+<div class="diff"><span class="base"></span><span class="dl z">=</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">5467–5537</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M24 86 C70 82 34 66 76 60 S 96 42 112 36 S 122 22 128 16"></path><g class="f"><circle cx="40" cy="80" r="2.5"></circle><circle cx="58" cy="68" r="2.5"></circle><circle cx="84" cy="56" r="2.5"></circle><circle cx="106" cy="40" r="2.5"></circle><circle cx="122" cy="26" r="2.5"></circle></g><circle class="fs" cx="134" cy="12" r="8"></circle><circle cx="134" cy="12" r="8"></circle><path class="th" d="M20 86h120"></path></svg></div>
+<div class="cb">
+<h3>Ramchal e Rashash</h3>
+<div class="dates"><span class="t"><b>DATA</b>1707–1777</span></div>
+<p class="who">R. Moshe Chaim Luzzatto, R. Shalom Sharabi</p>
+<p class="nt"><i>Mesilat Iesharim</i> e <i>Klach Pitchei Chochmá</i>; o <i>Sidur HaRashash</i> aplica as <i>kavanot</i> do Ari à reza.</p>
+</div></article></div>
+<div class="diff"><span class="base"></span><span class="dl z">=</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path d="M56 86 L68 14 M104 86 L92 14"></path><path d="M57.3 78h45.4 M59.2 66h41.6 M61.2 54h37.6 M63.1 42h33.8 M65.1 30h29.8 M67 18h26"></path><circle class="f" cx="80" cy="7" r="5"></circle><path class="th" d="M66 6h-8 M94 6h8 M70 0l-4-4 M90 0l4-4"></path></svg></div>
+<div class="cb">
+<h3>Baal HaSulam</h3>
+<div class="dates"><span class="t"><b>DATA</b>1884–1954</span></div>
+<p class="who">R. Iehudá Leib Ashlag</p>
+<p class="nt">“O Dono da Escada”: <i>Talmud Eser HaSefirot</i> (1937) e o comentário <i>HaSulam</i> ao <i>Zohar</i> (1945–53).</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">5645–5714</span></div>
+<div></div>
+<div class="diff"><span class="base"></span><span class="dl z">=</span></div>
+</div>
+
+<div class="col down">
+<div></div>
+<div></div>
+<div class="pin"><b class="dot"></b><span class="am">5667–5751</span></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><path class="th" d="M112 46 L102.6 68.6 L80 78 L57.4 68.6 L48 46 L57.4 23.4 L80 14 L102.6 23.4Z M112 46L48 46 M80 14L80 78 M57.4 23.4L102.6 68.6 M102.6 23.4L57.4 68.6"></path><circle class="f" cx="80" cy="46" r="7"></circle><g class="bg"><circle cx="112" cy="46" r="6"></circle><circle cx="102.6" cy="68.6" r="6"></circle><circle cx="80" cy="78" r="6"></circle><circle cx="57.4" cy="68.6" r="6"></circle><circle cx="48" cy="46" r="6"></circle><circle cx="57.4" cy="23.4" r="6"></circle><circle cx="80" cy="14" r="6"></circle><circle cx="102.6" cy="23.4" r="6"></circle></g><circle cx="112" cy="46" r="6"></circle><circle cx="102.6" cy="68.6" r="6"></circle><circle cx="80" cy="78" r="6"></circle><circle cx="57.4" cy="68.6" r="6"></circle><circle cx="48" cy="46" r="6"></circle><circle cx="57.4" cy="23.4" r="6"></circle><circle cx="80" cy="14" r="6"></circle><circle cx="102.6" cy="23.4" r="6"></circle></svg></div>
+<div class="cb">
+<h3>Rabash</h3>
+<div class="dates"><span class="t"><b>DATA</b>1907–1991</span></div>
+<p class="who">R. Baruch Shalom HaLevi Ashlag, filho de Baal HaSulam</p>
+<p class="nt"><i>Shamati</i> e <i>Shlavei HaSulam</i>: o método como trabalho interior em grupo, pelo “amor aos amigos”.</p>
+</div></article></div>
+<div class="diff"><span class="base"></span><span class="dl z">=</span></div>
+</div>
+
+<div class="col up">
+<div></div>
+<div class="zone"><article class="card">
+<div class="ill"><svg viewBox="0 0 160 90" width="160" height="90" aria-hidden="true"><circle class="fs" cx="80" cy="46" r="34"></circle><circle cx="80" cy="46" r="34"></circle><ellipse class="th" cx="80" cy="46" rx="14" ry="34"></ellipse><path class="th" d="M46 46h68 M52 28h56 M52 64h56"></path><path class="th" d="M30 20 C50 4 110 4 130 20" stroke-dasharray="3 4"></path><g class="f"><circle cx="30" cy="20" r="3.5"></circle><circle cx="130" cy="20" r="3.5"></circle><circle cx="66" cy="34" r="3"></circle><circle cx="96" cy="56" r="3"></circle><circle cx="104" cy="32" r="3"></circle><circle cx="60" cy="60" r="3"></circle></g></svg></div>
+<div class="cb">
+<h3>Laitman e a Bnei Baruch</h3>
+<div class="dates"><span class="t"><b>DATA</b>1991 → hoje</span></div>
+<p class="who">Michael Laitman (n. 1946), discípulo de Rabash, 1979–91</p>
+<p class="nt">Aulas diárias de TES e <i>Zohar</i>, transmitidas em dezenas de idiomas; sede em Petach Tikva.</p>
+</div></article></div>
+<div class="pin"><b class="dot"></b><span class="am">5751 →</span></div>
+<div></div>
+<div class="diff"><span class="base"></span><span class="dl z">=</span></div>
+</div>
+
+</div>
+</section>
+
+<!-- HOJE -->
+<section id="hoje" class="panel-sec e5" style="width: 820px">
+<div class="axis-d"></div>
+<div style="position: relative; margin-top: 64px; height: 692px; box-sizing: border-box; background: #16213a; border: 1px solid #2a3857; border-radius: 16px; padding: 32px 36px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 24px">
+<svg viewBox="0 0 160 90" width="176" height="99" fill="none" stroke="#e6c06a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M54 20h22v58H54Z M84 20h22v58H84Z" fill="#e6c06a" fill-opacity=".16" stroke="none"></path><rect x="54" y="20" width="22" height="58" rx="10"></rect><rect x="84" y="20" width="22" height="58" rx="10"></rect><path d="M65 8v12 M95 8v12 M65 78v10 M95 78v10"></path><circle cx="65" cy="6" r="3" fill="#e6c06a" stroke="none"></circle><circle cx="95" cy="6" r="3" fill="#e6c06a" stroke="none"></circle><path stroke-width="1.3" d="M58 40h14 M88 40h14 M58 58h14 M88 58h14"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #a9b3c7">5787 · 2026</span>
+<h2 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 52px; font-weight: 700; line-height: 1; color: #f6eedc">Você e eu</h2>
+<span style="font-size: 14px; color: #a9b3c7">O último elo da corrente</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid #2a3857; border-bottom: 1px solid #2a3857">
+<span class="heb" style="font-size: 32px; line-height: 1.35; color: #e6c06a">תּוֹרָה צִוָּה לָנוּ מֹשֶׁה מוֹרָשָׁה קְהִלַּת יַעֲקֹב</span>
+<span style="font-size: 15px; color: #ddd5c2"><i>Torá tsivá lánu Moshé, morashá kehilát Iaakóv</i></span>
+<span style="font-size: 15px; color: #a9b3c7">“Moisés nos ordenou a Torá, herança da congregação de Jacó” (Dt 33:4)</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #ec9cc4">Do quadro original até hoje</span>
+<ul class="kl">
+<li><span class="y">2010</span><span>R. Adin Steinsaltz conclui a tradução do Talmud para o hebraico</span></li>
+<li><span class="y">2012–2022</span><span>Falecem R. Elyashiv, R. Ovadia Iossef e R. Chaim Kanievsky</span></li>
+<li><span class="y">2020</span><span>13º <i>Siyum HaShas</i> do Daf Iomi; o 14º ciclo se encerra em 2027</span></li>
+<li><span class="y">hoje</span><span>Bnei Baruch: aulas diárias de TES, <i>Zohar</i> e Rabash, e congressos mundiais anuais</span></li>
+</ul>
+</div>
+<p style="margin: auto 0 0; font-size: 12.5px; line-height: 1.5; color: #a9b3c7">Fonte original: Chabad.org, <i>Talmud For Beginners</i>, Class One (<a href="https://www.chabad.org/1101363" target="_blank" rel="noopener">chabad.org/1101363</a>). Datação acadêmica, quadro persa e linha do Ari acrescentados. As datas acadêmicas são aproximações do consenso atual; para os Juízes e a Monarquia Unida há correntes que contestam a própria escala do reino.</p>
+</div>
+</section>
+
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('scroller');
+  el.addEventListener('wheel',function(e){
+    if(e.shiftKey||e.ctrlKey) return;
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX) && el.scrollWidth>el.clientWidth){
+      var max=el.scrollWidth-el.clientWidth;
+      if((e.deltaY<0&&el.scrollLeft<=0)||(e.deltaY>0&&el.scrollLeft>=max)) return;
+      el.scrollLeft+=e.deltaY; e.preventDefault();
+    }
+  },{passive:false});
+  function go(d){el.scrollBy({left:d*Math.round(el.clientWidth*0.8),behavior:'smooth'});}
+  document.getElementById('btn-prev').addEventListener('click',function(){go(-1);});
+  document.getElementById('btn-next').addEventListener('click',function(){go(1);});
+  document.addEventListener('keydown',function(e){
+    if(e.target.closest&&e.target.closest('input,textarea'))return;
+    if(e.key==='ArrowRight'){go(1);e.preventDefault();}
+    if(e.key==='ArrowLeft'){go(-1);e.preventDefault();}
+  });
+  document.querySelectorAll('nav a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();el.scrollTo({left:t.offsetLeft,behavior:'smooth'});history.replaceState(null,'',a.getAttribute('href'));});
+  });
+  if(location.hash){var t=document.querySelector(location.hash);if(t)el.scrollLeft=t.offsetLeft;}
+})();
+</script>
+</body>
+</html>
