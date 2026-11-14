@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sefer Yetzirá · Mapa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Spectral+SC:wght@500;600&display=swap">
+<style>
+/* Mapa do Sefer Yetzirá: o cubo do espaço no centro (faces = duplas, arestas = simples, centro = palácio), cercado pela balança das mães, as dez sefirot, a roda dos 231 portões e a hierarquia 1-3-7-12 */
+:root{
+  --paper:#fbfaf6; --desk:#eceae3; --ink:#1f2130; --muted:#5c5f70; --rule:#d6d3c8;
+  --techelet:#284a86; --gold:#8a6a22; --fire:#a8452e; --water:#2f6f8f; --air:#7a7f8f;
+  --face:rgba(40,74,134,.06); --face-hi:rgba(138,106,34,.22);
+  --f-body:"Spectral",Georgia,serif; --f-sc:"Spectral SC","Spectral",Georgia,serif; --f-he:"Frank Ruhl Libre","David","Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --fire:#e08a6e; --water:#79b7d6; --air:#a9aebb;
+  --face:rgba(157,184,234,.07); --face-hi:rgba(209,178,106,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --fire:#e08a6e; --water:#79b7d6; --air:#a9aebb;
+  --face:rgba(157,184,234,.07); --face-hi:rgba(209,178,106,.25); color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+a{color:var(--techelet)}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.nav{font-family:var(--f-sc);letter-spacing:.05em;display:flex;gap:18px;flex-wrap:wrap}
+.nav a{color:var(--muted);text-decoration:none}
+.sheet{background:var(--paper);padding:26px clamp(16px,3vw,34px);box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.05);min-width:0}
+h1{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;font-weight:500}
+h1 .he{font-family:var(--f-he);color:var(--techelet);font-size:2.6rem;line-height:1}
+h1 .pt{font-size:1.7rem;font-style:italic}
+.lead{color:var(--muted);margin:8px 0 0;max-width:72ch}
+h2{font-family:var(--f-sc);font-weight:600;font-size:1.25rem;letter-spacing:.04em;margin:0 0 4px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+h2 .ref{font-size:.85rem;color:var(--muted);font-family:var(--f-body);letter-spacing:0}
+h2 .ref a{color:var(--muted)}
+.sub{color:var(--muted);margin:0 0 14px;max-width:75ch;font-size:.95rem}
+.he{font-family:var(--f-he)}
+.lbl{font-family:var(--f-sc);font-size:.78rem;letter-spacing:.12em;color:var(--techelet)}
+
+/* 32 caminhos */
+.paths{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-start}
+.grp{display:flex;flex-direction:column;gap:6px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-family:var(--f-he);font-size:1.25rem;min-width:2.1rem;height:2.1rem;display:inline-grid;place-items:center;border-radius:3px;border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;padding:0 6px}
+.chip.s{font-family:var(--f-body);font-size:.95rem}
+.chip:hover,.chip:focus-visible,.chip.on{border-color:var(--gold);background:var(--face-hi);outline:none}
+.grp .cap{font-size:.85rem;color:var(--muted)}
+.sum{font-family:var(--f-sc);color:var(--muted);align-self:center;font-size:1.05rem}
+
+/* cubo */
+.cube-wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px;align-items:start}
+.stage{position:relative;border:1px solid var(--rule);background:radial-gradient(circle at 50% 45%,var(--face),transparent 70%);touch-action:none;cursor:grab;user-select:none}
+.stage:active{cursor:grabbing}
+.stage svg{display:block;width:100%;height:auto}
+.hint{position:absolute;left:10px;bottom:8px;font-size:.78rem;color:var(--muted)}
+.planes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.planes button{font-family:var(--f-sc);letter-spacing:.04em;font-size:.88rem;padding:5px 12px;border:1px solid var(--rule);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer}
+.planes button[aria-pressed="true"]{background:var(--techelet);color:var(--paper);border-color:var(--techelet)}
+.planes button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.panel{border-top:2px solid var(--ink);padding-top:12px;min-height:220px}
+.panel .big{font-family:var(--f-he);font-size:3.4rem;line-height:1;color:var(--techelet)}
+.panel .kind{font-family:var(--f-sc);color:var(--gold);letter-spacing:.06em}
+.panel dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:12px 0 0}
+.panel dt{font-family:var(--f-sc);color:var(--muted);font-size:.85rem}
+.panel dd{margin:0}
+.panel .src{margin-top:10px;font-size:.85rem;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:5px}
+svg .edge{stroke:var(--muted);stroke-width:1.4}
+svg .edge.back{stroke-dasharray:3 4;opacity:.55}
+svg .face{fill:var(--face);stroke:none}
+svg .face.hi{fill:var(--face-hi)}
+svg .node{cursor:pointer}
+svg .node circle{fill:var(--paper);stroke:var(--techelet);stroke-width:1.3}
+svg .node.simple circle{stroke:var(--gold)}
+svg .node.center circle{stroke:var(--gold);stroke-width:2}
+svg .node text.l{fill:var(--ink);font:500 17px var(--f-he);text-anchor:middle;dominant-baseline:central}
+svg .node text.t{fill:var(--muted);font:12px var(--f-body);text-anchor:middle}
+svg .node text.seal{fill:var(--techelet);font:12px var(--f-he);text-anchor:middle}
+svg .node.on circle{fill:var(--face-hi);stroke-width:2.4}
+svg .node:focus{outline:none}
+svg .node:focus-visible circle{stroke-width:3}
+svg .axis{stroke:var(--rule);stroke-width:1}
+svg .dirlbl{fill:var(--muted);font:italic 12px var(--f-body);text-anchor:middle}
+
+/* balança */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+.scale{display:flex;flex-direction:column;gap:8px}
+.tier{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:12px;align-items:center;padding:10px 12px;border-left:4px solid var(--c)}
+.tier .he{font-size:2.2rem;color:var(--c);line-height:1}
+.tier b{font-family:var(--f-sc);font-weight:600}
+.tier small{display:block;color:var(--muted);font-size:.88rem}
+.fire{--c:var(--fire)} .air{--c:var(--air)} .water{--c:var(--water)}
+
+/* sefirot */
+.sef{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;counter-reset:s}
+.sef li{display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--rule)}
+.sef .n{font-family:var(--f-sc);color:var(--gold);font-size:1.1rem}
+.sef .what small{display:block;color:var(--muted);font-size:.85rem}
+.sef .x{font-family:var(--f-he);color:var(--techelet);font-size:1.1rem;white-space:nowrap}
+.sef li.dir{cursor:pointer}
+.sef li.dir:hover .what{color:var(--techelet)}
+
+/* roda */
+.wheel-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center}
+.wheel svg{width:100%;max-width:440px;display:block;margin:0 auto}
+.wheel .gate{stroke:var(--techelet);stroke-width:.35;opacity:.3}
+.wheel .gate.on{stroke:var(--gold);stroke-width:1.3;opacity:1}
+.wheel text{fill:var(--ink);font:500 17px var(--f-he);text-anchor:middle;dominant-baseline:central;cursor:pointer}
+.wheel text.on{fill:var(--gold);font-weight:700}
+.wheel .dot{fill:var(--gold)}
+.pairs{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.pairs span{font-family:var(--f-he);font-size:1.05rem;border:1px solid var(--rule);padding:2px 7px;border-radius:3px}
+.big2{font-family:var(--f-sc);font-size:2rem;color:var(--techelet)}
+
+/* hierarquia */
+.pyr{display:flex;flex-direction:column;align-items:center;gap:8px}
+.row{display:flex;flex-wrap:wrap;justify-content:center;gap:5px}
+.row .chip{cursor:default}
+.row .cap{width:100%;text-align:center;font-size:.85rem;color:var(--muted)}
+.king{font-family:var(--f-sc);color:var(--gold);border:1px solid var(--gold);padding:4px 14px;border-radius:999px}
+.foot{font-size:.85rem;color:var(--muted);max-width:80ch}
+@media (max-width:820px){.cube-wrap,.two,.wheel-wrap{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="nav"><a href="../../">← Arquivo · início</a><a href="../">Texto do Sefer Yetzirá</a></nav>
+
+<header class="sheet">
+  <h1><span class="he">ספר יצירה</span><span class="pt">Sefer Yetzirá · mapa visual</span></h1>
+  <p class="lead">O livro inteiro numa só figura: o espaço é um cubo. As seis faces e o centro são as sete letras duplas; as doze arestas, as doze simples; as três mães formam a balança; e cada letra se manifesta no mundo, no ano e na alma. Clique em qualquer letra para ver o que o texto diz dela.</p>
+</header>
+
+<section class="sheet" aria-labelledby="h32">
+  <h2 id="h32">Os 32 caminhos <span class="ref"><a href="../#m1-1">1:1–2</a></span></h2>
+  <p class="sub">"Com trinta e dois caminhos maravilhosos de sabedoria": dez <i>sefirot belimá</i> e vinte e duas letras de fundamento.</p>
+  <div class="paths">
+    <div class="grp"><span class="lbl">10 sefirot</span><div class="chips" id="c-sef"></div></div>
+    <span class="sum">+</span>
+    <div class="grp"><span class="lbl">3 mães</span><div class="chips" id="c-m"></div></div>
+    <div class="grp"><span class="lbl">7 duplas</span><div class="chips" id="c-d"></div></div>
+    <div class="grp"><span class="lbl">12 simples</span><div class="chips" id="c-s"></div></div>
+    <span class="sum">= 32 = <span class="he">לב</span>, coração</span>
+  </div>
+</section>
+
+<section class="sheet" aria-labelledby="hcube">
+  <h2 id="hcube">O cubo do espaço <span class="ref"><a href="../#m1-13">1:13</a> · <a href="../#m4-4">4:4</a> · <a href="../#m5-2">5:2</a></span></h2>
+  <p class="sub">Arraste para girar. Faces: as seis direções seladas com <span class="he">יהו</span> e as duplas; centro: o Santo Palácio, <span class="he">ת</span>, "que sustenta a todos"; arestas: as doze "fronteiras diagonais" das simples.</p>
+  <div class="planes" role="group" aria-label="Plano">
+    <button type="button" data-p="letra" aria-pressed="true">Letras</button>
+    <button type="button" data-p="world" aria-pressed="false">Mundo</button>
+    <button type="button" data-p="year" aria-pressed="false">Ano</button>
+    <button type="button" data-p="soul" aria-pressed="false">Alma</button>
+    <button type="button" data-p="q" aria-pressed="false">Qualidade</button>
+  </div>
+  <div class="cube-wrap">
+    <div class="stage" id="stage"><svg id="cube" viewBox="-260 -240 520 480" role="img" aria-label="Cubo do espaço com as letras duplas nas faces e as simples nas arestas"></svg><span class="hint">arraste para girar · clique numa letra</span></div>
+    <div class="panel" id="panel" aria-live="polite"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--face-hi)"></i>face em destaque</span><span><i style="border:2px solid var(--techelet)"></i>dupla (face)</span><span><i style="border:2px solid var(--gold)"></i>simples (aresta) e centro</span></div>
+</section>
+
+<section class="sheet two" aria-label="Mães e sefirot">
+  <div>
+    <h2>A balança das mães <span class="ref"><a href="../#m3-1">3:1–9</a> · <a href="../#m6-2">6:2</a></span></h2>
+    <p class="sub">"O fogo em cima, a água embaixo, e o ar, espírito da lei, decide entre eles."</p>
+    <div class="scale" id="scale"></div>
+  </div>
+  <div>
+    <h2>As dez sefirot <span class="ref"><a href="../#m1-9">1:9–14</a></span></h2>
+    <p class="sub">Quatro emanações em cadeia e seis direções seladas. Clique numa direção para vê-la no cubo.</p>
+    <ol class="sef" id="sef"></ol>
+  </div>
+</section>
+
+<section class="sheet" aria-labelledby="hw">
+  <h2 id="hw">A roda dos 231 portões <span class="ref"><a href="../#m2-4">2:4–6</a></span></h2>
+  <div class="wheel-wrap">
+    <div class="wheel"><svg id="wheel" viewBox="0 0 400 400" role="img" aria-label="Roda das 22 letras com os 231 pares"></svg></div>
+    <div id="wpanel"></div>
+  </div>
+</section>
+
+<section class="sheet" aria-labelledby="hp">
+  <h2 id="hp">Um sobre três, três sobre sete, sete sobre doze <span class="ref"><a href="../#m6-5">6:5</a></span></h2>
+  <p class="sub">"E todos estão presos uns aos outros." O Um, "Deus, Rei fiel", domina sobre os três, os sete e os doze.</p>
+  <div class="pyr" id="pyr"></div>
+</section>
+
+<p class="foot">As correspondências seguem o texto da versão do Gra (Varsóvia, 1884). A posição de cada dupla numa face e de cada simples numa aresta segue a ordem paralela das listas do próprio livro (4:4 com 4:1; 5:2 com 5:1), leitura usual dos comentadores; o texto não a declara letra por letra. Tradução e notas completas na <a href="../">página do texto</a>.</p>
+</div>
+
+<script>
+(function(){
+const P = {letra:'Letras', world:'Mundo', year:'Ano', soul:'Alma', q:'Qualidade'};
+const MOTHERS = [
+ {l:'ש', el:'fogo', cls:'fire', world:'céus', year:'calor', soul:'cabeça', snd:'sibila', m:'3:9'},
+ {l:'א', el:'ar · espírito', cls:'air', world:'ar', year:'umidade', soul:'tronco', snd:'o fiel, o sopro', m:'3:7'},
+ {l:'מ', el:'água', cls:'water', world:'terra', year:'frio', soul:'ventre', snd:'silenciosa', m:'3:8'}];
+const DOUBLES = [
+ {l:'ב', dir:'alto', v:[0,0,1], seal:'יהו', sef:5, q:'sabedoria', opp:'insensatez', world:'Lua', year:'1º dia', soul:'olho direito', m:'4:8'},
+ {l:'ג', dir:'baixo', v:[0,0,-1], seal:'היו', sef:6, q:'riqueza', opp:'pobreza', world:'Marte', year:'2º dia', soul:'ouvido direito', m:'4:9'},
+ {l:'ד', dir:'oriente', v:[1,0,0], seal:'ויה', sef:7, q:'semente', opp:'desolação', world:'Sol', year:'3º dia', soul:'narina direita', m:'4:10'},
+ {l:'כ', dir:'ocidente', v:[-1,0,0], seal:'והי', sef:8, q:'vida', opp:'morte', world:'Vênus', year:'4º dia', soul:'olho esquerdo', m:'4:11'},
+ {l:'פ', dir:'norte', v:[0,1,0], seal:'הוי', sef:10, q:'domínio', opp:'servidão', world:'Mercúrio', year:'5º dia', soul:'ouvido esquerdo', m:'4:12'},
+ {l:'ר', dir:'sul', v:[0,-1,0], seal:'יוה', sef:9, q:'paz', opp:'guerra', world:'Saturno', year:'6º dia', soul:'narina esquerda', m:'4:13'},
+ {l:'ת', dir:'centro · Santo Palácio', v:[0,0,0], q:'graça', opp:'feiura', world:'Júpiter', year:'Shabat', soul:'boca', m:'4:14'}];
+const SIMPLES = [
+ {l:'ה', e:'leste-alto', v:[1,0,1], q:'fala', world:'Áries', year:'Nissan', soul:'pé direito', m:'5:7'},
+ {l:'ו', e:'leste-norte', v:[1,1,0], q:'pensamento', world:'Touro', year:'Iyar', soul:'rim direito', m:'5:7'},
+ {l:'ז', e:'leste-baixo', v:[1,0,-1], q:'andar', world:'Gêmeos', year:'Sivan', soul:'pé esquerdo', m:'5:7'},
+ {l:'ח', e:'sul-alto', v:[0,-1,1], q:'visão', world:'Câncer', year:'Tamuz', soul:'mão direita', m:'5:8'},
+ {l:'ט', e:'sul-leste', v:[1,-1,0], q:'audição', world:'Leão', year:'Av', soul:'rim esquerdo', m:'5:8'},
+ {l:'י', e:'sul-baixo', v:[0,-1,-1], q:'ação', world:'Virgem', year:'Elul', soul:'mão esquerda', m:'5:8'},
+ {l:'ל', e:'oeste-alto', v:[-1,0,1], q:'relação conjugal', world:'Libra', year:'Tishrei', soul:'vesícula', m:'5:9'},
+ {l:'נ', e:'oeste-sul', v:[-1,-1,0], q:'olfato', world:'Escorpião', year:'Cheshvan', soul:'intestinos', m:'5:9'},
+ {l:'ס', e:'oeste-baixo', v:[-1,0,-1], q:'sono', world:'Sagitário', year:'Kislev', soul:'estômago', m:'5:9'},
+ {l:'ע', e:'norte-alto', v:[0,1,1], q:'ira', world:'Capricórnio', year:'Tevet', soul:'fígado', m:'5:10'},
+ {l:'צ', e:'norte-oeste', v:[-1,1,0], q:'deglutição', world:'Aquário', year:'Shevat', soul:'moela', m:'5:10'},
+ {l:'ק', e:'norte-baixo', v:[0,1,-1], q:'riso', world:'Peixes', year:'Adar', soul:'baço', m:'5:10'}];
+const SEF = [
+ {n:1, t:'Espírito do Deus vivo', s:'voz, espírito e palavra: o Espírito Santo', x:''},
+ {n:2, t:'Espírito a partir do Espírito', s:'nele gravou as 22 letras', x:''},
+ {n:3, t:'Água a partir do espírito', s:'caos, lama e barro; a neve torna-se terra', x:''},
+ {n:4, t:'Fogo a partir da água', s:'o Trono da Glória, serafins, ofanim, chayot', x:''},
+ {n:5, t:'Alto', s:'voltou-se para cima', x:'יהו', d:'ב'},
+ {n:6, t:'Baixo', s:'voltou-se para baixo', x:'היו', d:'ג'},
+ {n:7, t:'Oriente', s:'voltou-se para a frente', x:'ויה', d:'ד'},
+ {n:8, t:'Ocidente', s:'voltou-se para trás', x:'והי', d:'כ'},
+ {n:9, t:'Sul', s:'voltou-se para a direita', x:'יוה', d:'ר'},
+ {n:10, t:'Norte', s:'voltou-se para a esquerda', x:'הוי', d:'פ'}];
+const ALEF = 'אבגדהוזחטיכלמנסעפצקרשת';
+const byL = {};
+MOTHERS.forEach(o=>byL[o.l]={...o,kind:'mãe'});
+DOUBLES.forEach(o=>byL[o.l]={...o,kind:'dupla'});
+SIMPLES.forEach(o=>byL[o.l]={...o,kind:'simples'});
+
+let plane='letra', sel=null, yaw=-0.62, pitch=0.42;
+const NS='http://www.w3.org/2000/svg';
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+const anchor=m=>'../#m'+m.replace(':','-');
+
+// --- 32 caminhos ---
+const cs=document.getElementById('c-sef');
+for(let i=1;i<=10;i++){const b=document.createElement('button');b.className='chip s';b.textContent=i;b.title='Sefirá '+i;b.onclick=()=>{document.getElementById('sef').children[i-1].scrollIntoView({behavior:'smooth',block:'center'});};cs.appendChild(b);}
+[['c-m',MOTHERS],['c-d',DOUBLES],['c-s',SIMPLES]].forEach(([id,arr])=>{const c=document.getElementById(id);arr.forEach(o=>{const b=document.createElement('button');b.className='chip';b.textContent=o.l;b.dataset.l=o.l;b.onclick=()=>{select(o.l);document.getElementById('hcube').scrollIntoView({behavior:'smooth'});};c.appendChild(b);});});
+
+// --- cubo ---
+const svg=document.getElementById('cube'); const S=150;
+function rot(v){const [x,y,z]=v;const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+  const x1=x*cy-y*sy, y1=x*sy+y*cy; const y2=y1*cp - z*sp, z2=y1*sp + z*cp; return [x1*S, -z2*S, y2];}
+const V=[];for(const x of[-1,1])for(const y of[-1,1])for(const z of[-1,1])V.push([x,y,z]);
+const EDGES=[];for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){let d=0;for(let k=0;k<3;k++)if(V[i][k]!==V[j][k])d++;if(d===1)EDGES.push([i,j]);}
+const FACES=DOUBLES.slice(0,6).map(d=>{const ax=d.v.findIndex(c=>c!==0),s=d.v[ax];const pts=V.filter(p=>p[ax]===s);
+  const o=[0,1,2].filter(k=>k!==ax);const ang=p=>Math.atan2(p[o[1]],p[o[0]]);pts.sort((a,b)=>ang(a)-ang(b));return {d,pts};});
+function lbl(o){if(plane==='letra')return '';if(plane==='q')return o.q;return o[plane]||'';}
+function draw(){
+  svg.textContent='';
+  const g=el('g',{},svg);
+  // faces (back to front)
+  const fs=FACES.map(f=>({f,depth:f.pts.reduce((a,p)=>a+rot(p)[2],0)/4})).sort((a,b)=>b.depth-a.depth);
+  fs.forEach(({f})=>{el('polygon',{points:f.pts.map(p=>{const r=rot(p);return r[0].toFixed(1)+','+r[1].toFixed(1);}).join(' '),class:'face'+(sel===f.d.l?' hi':'')},g);});
+  // direction axis labels
+  [[[0,0,1.5],'alto'],[[0,0,-1.5],'baixo'],[[1.55,0,0],'oriente'],[[-1.55,0,0],'ocidente'],[[0,1.55,0],'norte'],[[0,-1.55,0],'sul']].forEach(([v,t])=>{const r=rot(v);el('text',{x:r[0],y:r[1],class:'dirlbl'},g).textContent=t;});
+  // edges
+  EDGES.forEach(([i,j])=>{const a=rot(V[i]),b=rot(V[j]);const back=(a[2]+b[2])/2>0.15*S;el('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],class:'edge'+(back?' back':'')},g);});
+  // nodes sorted by depth
+  const nodes=[];
+  DOUBLES.forEach(d=>nodes.push({o:d,v:d.v.map(c=>c*1.0),type:d.l==='ת'?'center':'double'}));
+  SIMPLES.forEach(s=>nodes.push({o:s,v:s.v,type:'simple'}));
+  nodes.map(n=>({...n,r:rot(n.v)})).sort((a,b)=>b.r[2]-a.r[2]).forEach(n=>{
+    const gg=el('g',{class:'node '+n.type+(sel===n.o.l?' on':''),tabindex:0,role:'button','aria-label':n.o.l+' '+(n.o.dir||n.o.e)},g);
+    const back=n.r[2]>0.2*S; gg.style.opacity=back?0.55:1;
+    el('circle',{cx:n.r[0],cy:n.r[1],r:n.type==='simple'?14:17},gg);
+    el('text',{x:n.r[0],y:n.r[1],class:'l'},gg).textContent=n.o.l;
+    const t=lbl(n.o); if(t) el('text',{x:n.r[0],y:n.r[1]+(n.type==='simple'?28:31),class:'t'},gg).textContent=t;
+    if(plane==='letra'&&n.o.seal) el('text',{x:n.r[0],y:n.r[1]+31,class:'seal'},gg).textContent=n.o.seal;
+    gg.addEventListener('click',e=>{e.stopPropagation();select(n.o.l);});
+    gg.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(n.o.l);}});
+  });
+}
+// drag
+const st=document.getElementById('stage');let drag=null;
+st.addEventListener('pointerdown',e=>{if(e.target.closest('.node'))return;drag={x:e.clientX,y:e.clientY,yaw,pitch};st.setPointerCapture(e.pointerId);});
+st.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*0.01;pitch=Math.max(-1.3,Math.min(1.3,drag.pitch+(e.clientY-drag.y)*0.01));draw();});
+st.addEventListener('pointerup',()=>drag=null);st.addEventListener('pointercancel',()=>drag=null);
+document.querySelectorAll('.planes button').forEach(b=>b.onclick=()=>{plane=b.dataset.p;document.querySelectorAll('.planes button').forEach(x=>x.setAttribute('aria-pressed',x===b));draw();});
+
+// painel
+const panel=document.getElementById('panel');
+function row(k,v){return v?`<dt>${k}</dt><dd>${v}</dd>`:'';}
+function select(l){sel=l;const o=byL[l];let h='';
+  if(o.kind==='mãe') h=`<div class="kind">mãe · ${o.el}</div><div class="big">${o.l}</div><dl>${row('Som',o.snd)}${row('Mundo',o.world)}${row('Ano',o.year)}${row('Alma',o.soul)}</dl>`;
+  else if(o.kind==='dupla') h=`<div class="kind">dupla · ${o.dir}${o.sef?' · sefirá '+o.sef:''}</div><div class="big">${o.l}</div><dl>${row('Selo',o.seal?'<span class="he">'+o.seal+'</span>':'')}${row('Qualidade',o.q+' ↔ '+o.opp)}${row('Mundo',o.world)}${row('Ano',o.year)}${row('Alma',o.soul)}</dl>`;
+  else h=`<div class="kind">simples · aresta ${o.e}</div><div class="big">${o.l}</div><dl>${row('Sentido',o.q)}${row('Mundo',o.world)}${row('Ano',o.year)}${row('Alma',o.soul)}</dl>`;
+  h+=`<p class="src">Texto: <a href="${anchor(o.m)}">${o.m}</a></p>`;
+  panel.innerHTML=h;
+  document.querySelectorAll('.chip[data-l]').forEach(c=>c.classList.toggle('on',c.dataset.l===l));
+  draw(); markScale(l);
+}
+
+// --- balança ---
+const sc=document.getElementById('scale');
+MOTHERS.forEach(o=>{const d=document.createElement('div');d.className='tier '+o.cls;d.dataset.l=o.l;d.style.cursor='pointer';
+  d.innerHTML=`<span class="he">${o.l}</span><div><b>${o.el}</b> <small>mundo: ${o.world} · ano: ${o.year} · alma: ${o.soul}</small><small>${o.l==='א'?'"o ar, espírito da lei, decide entre eles"':(o.l==='ש'?'"o fogo em cima"':'"a água embaixo"')}</small></div>`;
+  d.onclick=()=>select(o.l); sc.appendChild(d);});
+function markScale(l){sc.querySelectorAll('.tier').forEach(t=>t.style.background=t.dataset.l===l?'var(--face-hi)':'');}
+
+// --- sefirot ---
+const so=document.getElementById('sef');
+SEF.forEach(s=>{const li=document.createElement('li');if(s.d)li.className='dir';
+  li.innerHTML=`<span class="n">${s.n}</span><span class="what">${s.t}<small>${s.s}${s.d?' · face da dupla <span class="he">'+s.d+'</span>':''}</small></span><span class="x">${s.x}</span>`;
+  if(s.d){li.tabIndex=0;li.onclick=()=>{select(s.d);document.getElementById('hcube').scrollIntoView({behavior:'smooth'});};li.onkeydown=e=>{if(e.key==='Enter')li.onclick();};}
+  so.appendChild(li);});
+
+// --- roda ---
+const w=document.getElementById('wheel'), wp=document.getElementById('wpanel');
+const C=200,R=160,pts=[...ALEF].map((ch,i)=>{const a=-Math.PI/2+2*Math.PI*i/22;return {ch,x:C+R*Math.cos(a),y:C+R*Math.sin(a),lx:C+(R+22)*Math.cos(a),ly:C+(R+22)*Math.sin(a)};});
+const lines=[];for(let i=0;i<22;i++)for(let j=i+1;j<22;j++)lines.push({i,j,e:el('line',{x1:pts[i].x,y1:pts[i].y,x2:pts[j].x,y2:pts[j].y,class:'gate'},w)});
+const lt=pts.map((p,i)=>{el('circle',{cx:p.x,cy:p.y,r:2.8,class:'dot'},w);const t=el('text',{x:p.lx,y:p.ly,tabindex:0},w);t.textContent=p.ch;t.addEventListener('click',()=>wsel(i));t.addEventListener('keydown',e=>{if(e.key==='Enter')wsel(i);});return t;});
+function wsel(i){lines.forEach(l=>l.e.classList.toggle('on',l.i===i||l.j===i));lt.forEach((t,k)=>t.classList.toggle('on',k===i));
+  const c=ALEF[i];const others=[...ALEF].filter(x=>x!==c);
+  wp.innerHTML=`<div class="lbl">Portões de <span class="he" style="font-size:1.3rem">${c}</span></div><p class="sub">"O <bdi class="he">${c}</bdi> com todas e todas com o <bdi class="he">${c}</bdi>": 21 pares, cada um lido nos dois sentidos, como a roda que gira "para a frente e para trás".</p><div class="pairs">${others.map(o=>`<span>${c}${o} · ${o}${c}</span>`).join('')}</div>`;}
+wp.innerHTML=`<div class="big2">22 × 21 ÷ 2 = 231</div><p class="sub">Cada linha é um "portão": o par de duas letras. Clique numa letra para ver os seus 21 portões. O sinal do texto: <span class="he">ענג</span> (deleite) e <span class="he">נגע</span> (praga) são o mesmo portão, lido em sentidos opostos.</p>`;
+
+// --- hierarquia ---
+const py=document.getElementById('pyr');
+py.innerHTML=`<span class="king">Um · Deus, Rei fiel</span>`+
+ [['3','três: um absolve, um condena, um decide',MOTHERS.map(o=>o.l)],['7','sete: três diante de três, e um decide',DOUBLES.map(o=>o.l)],['12','doze: em guerra, três amigos, três inimigos, três que dão vida, três que matam',SIMPLES.map(o=>o.l)]]
+ .map(([n,c,ls])=>`<div class="row">${ls.map(l=>`<span class="chip">${l}</span>`).join('')}<span class="cap">${c}</span></div>`).join('');
+
+draw(); select('ת');
+})();
+</script>
+</body>
+</html>
