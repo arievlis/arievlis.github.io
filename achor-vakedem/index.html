@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Achor va-Kedem Tzartani · Por trás e pela frente me formaste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral+SC:wght@500;600&display=swap">
+<style>/* Layout: folhas A4 empilhadas; cada item = coluna de número | texto | margem de notas (como a folha de estudo com glosas laterais) */
+:root{
+  --paper:#fbfaf6; --desk:#e9e7e0; --ink:#1f2130; --muted:#5c5f70; --rule:#d6d3c8;
+  --techelet:#284a86; --gold:#8a6a22; --panel:#f1efe7; --v-in:#dfe6f3; --v-out:#f3eadb;
+  --f-body:"Spectral", Georgia, "Times New Roman", serif;
+  --f-sc:"Spectral SC", "Spectral", Georgia, serif;
+  --f-he:"Frank Ruhl Libre", "David", "Times New Roman", serif;
+  --s-0:.82rem; --s-1:.95rem; --s-2:1.06rem; --s-3:1.3rem; --s-4:1.9rem; --s-5:2.8rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}
+
+body{background:var(--desk); color:var(--ink); font-family:var(--f-body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); padding-block:24px}
+.book{display:flex; flex-direction:column; gap:28px; align-items:center}
+.sheet{background:var(--paper); width:100%; max-width:210mm; padding:18mm 16mm; box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06); min-width:0}
+p{margin:0 0 .75em}
+i,em{font-style:italic}
+a{color:var(--techelet)}
+a:focus-visible{outline:2px solid var(--techelet); outline-offset:2px}
+h1,h2,h3{text-wrap:balance; font-weight:500; margin:0}
+
+/* Capa */
+.cover{display:flex; flex-direction:column; gap:18px; padding-block:26mm}
+.eyebrow{font-family:var(--f-sc); letter-spacing:.06em; color:var(--muted); font-size:var(--s-1); margin:0}
+h1{display:flex; flex-direction:column; gap:6px}
+.h1he{font-family:var(--f-he); font-size:var(--s-5); color:var(--techelet); line-height:1.15; font-weight:500}
+.h1pt{font-size:var(--s-4); font-style:italic; font-weight:400}
+.lead{font-size:var(--s-2); color:var(--muted); margin:0}
+.toc{display:flex; flex-wrap:wrap; gap:8px 22px; border-block:1px solid var(--rule); padding-block:12px; font-family:var(--f-sc); letter-spacing:.04em}
+.toc a{text-decoration:none}
+.howto{font-size:var(--s-1); max-width:62ch; margin:0}
+
+h2.plain{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.05em; color:var(--techelet); margin-bottom:14px}
+#apres p, #apres li{max-width:68ch; font-size:var(--s-1)}
+
+/* Cabeçalho de capítulo */
+.ch-head{display:grid; grid-template-columns:1fr auto; align-items:end; gap:4px 16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:26px}
+.ch-head h2{font-family:var(--f-sc); font-size:var(--s-4); letter-spacing:.04em; grid-column:1; grid-row:1}
+.ch-sub{grid-column:1; margin:0; font-style:italic; color:var(--muted)}
+.ch-he{grid-column:2; grid-row:1 / span 2; font-family:var(--f-he); font-size:var(--s-5); color:var(--gold); line-height:1}
+
+/* Item */
+.item{display:grid; grid-template-columns:4.2rem minmax(0,1fr) 13.5rem; gap:0 18px; padding-block:18px; border-top:1px solid var(--rule)}
+.item:first-of-type{border-top:0}
+.num{display:flex; flex-direction:column; align-items:flex-start; gap:2px; position:sticky; top:12px; align-self:start}
+.num .he{font-family:var(--f-he); font-size:var(--s-3); color:var(--gold); direction:rtl}
+.num .pt{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.08em; color:var(--muted)}
+.src-new{color:var(--techelet); font-size:var(--s-1)}
+.main{min-width:0; display:flex; flex-direction:column; gap:14px}
+.lbl{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.12em; color:var(--techelet); margin-bottom:6px}
+
+.ari{background:var(--panel); padding:14px 16px 10px; border-radius:2px}
+.pair{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:18px}
+.pt-text p{font-size:var(--s-2); line-height:1.58; font-weight:500}
+.pt-text em{font-weight:500}
+.he-text{font-family:var(--f-he); font-size:1.04rem; line-height:1.75; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:14px}
+.he-text p{margin:0 0 .6em}
+.srcref{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.05em; color:var(--muted); margin:6px 0 0}
+
+.op p{font-size:var(--s-1); line-height:1.66; text-align:justify; hyphens:auto; max-width:70ch}
+.op p + p{text-indent:1.4em}
+.dibur{font-family:var(--f-sc); font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.dibur::after{content:" —"; color:var(--muted)}
+.op em{font-style:italic}
+
+sup.nref{font-size:.68em; line-height:0}
+sup.nref a{text-decoration:none; font-family:var(--f-sc); color:var(--gold); padding:0 1px}
+
+/* Notas laterais */
+.notes{min-width:0; display:flex; flex-direction:column; gap:10px; font-size:var(--s-0); line-height:1.5; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:12px; align-self:start}
+.notes:empty{border:0}
+.note b{font-family:var(--f-sc); color:var(--gold); margin-inline-end:4px}
+.note:target{background:var(--panel); outline:1px solid var(--gold); outline-offset:3px}
+.note strong{color:var(--ink); font-weight:600}
+
+/* Tabelas */
+.tw{overflow-x:auto; max-width:100%}
+table{border-collapse:collapse; width:100%; font-size:var(--s-0); font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:6px 8px; border-bottom:1px solid var(--rule); vertical-align:top}
+th{font-family:var(--f-sc); font-weight:600; letter-spacing:.05em; color:var(--techelet); border-bottom:1.5px solid var(--ink)}
+table.lv td,table.lv th{text-align:center}
+table.lv td:first-child,table.lv th:first-child{text-align:left}
+table.lv td em{display:inline-block; background:var(--v-in); padding:1px 6px; border-radius:2px}
+
+/* Figuras */
+.fig{margin:6px 0 0; border:1px solid var(--rule); padding:12px 14px}
+.fig figcaption{font-size:var(--s-1); margin-bottom:8px}
+.fig figcaption .lbl{display:inline; margin-inline-end:8px}
+.figcap{font-size:var(--s-0); color:var(--muted); font-style:italic; margin:8px 0 0}
+.grid5 td{white-space:nowrap}
+.bar{display:inline-block; height:8px; width:calc(var(--w) * .7); max-width:70px; background:var(--techelet); margin-inline-end:8px; vertical-align:middle; opacity:.75}
+.fig svg{width:100%; min-width:520px; height:auto; display:block}
+.fig svg .v-in{fill:var(--v-in); stroke:var(--techelet); stroke-width:1}
+.fig svg .v-out{fill:var(--v-out); stroke:var(--gold); stroke-width:1; stroke-dasharray:4 3}
+.fig svg .t-h{fill:var(--ink); font:600 14px var(--f-sc); letter-spacing:.04em}
+.fig svg .t-v{fill:var(--ink); font:600 13px var(--f-body)}
+.fig svg .t-l{fill:var(--muted); font:italic 12px var(--f-body)}
+.fig svg .t-s{fill:var(--muted); font:12px var(--f-body)}
+.fig svg.yod{min-width:0; max-width:620px}
+.fig svg .yod-body{fill:var(--techelet)}
+.fig svg .yod-kotz{fill:var(--gold)}
+.fig svg .ring{fill:none; stroke:var(--gold); stroke-width:1; stroke-dasharray:3 3}
+.fig svg .lead{stroke:var(--gold); stroke-width:1}
+.fig svg .lead2{stroke:var(--muted); stroke-width:1}
+.fig svg .t-k{fill:var(--gold); font:600 14px var(--f-sc); letter-spacing:.03em}
+.fig svg .t-he{fill:var(--techelet); font:500 40px var(--f-he)}
+.fig svg .cut{stroke:var(--techelet); stroke-width:2}
+
+/* Tela estreita */
+@media (max-width:760px){
+  .sheet{padding:22px 18px}
+  .item{grid-template-columns:minmax(0,1fr); gap:10px}
+  .num{position:static; flex-direction:row; align-items:baseline; gap:10px}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .he-text{border-inline-start:0; padding-inline-start:0; border-top:1px solid var(--rule); padding-top:10px}
+  .notes{border-inline-start:2px solid var(--rule)}
+  .ch-he{font-size:var(--s-4)}
+  .h1he{font-size:2.2rem}
+}
+
+/* Impressão / PDF */
+@page{size:A4; margin:16mm 14mm 18mm}
+@media print{
+  :root{--paper:#fff; --desk:#fff; --ink:#111; --muted:#444; --panel:#f3f2ee}
+  body{padding:0; background:#fff; font-size:10.5pt}
+  .book{gap:0}
+  .sheet{box-shadow:none; padding:0; max-width:none; break-before:page}
+  .sheet:first-child{break-before:auto}
+  .num{position:static; flex-direction:column; align-items:flex-start; gap:2px}
+  .item{grid-template-columns:3.6rem minmax(0,1fr) 11.5rem; break-inside:auto}
+  .ari,.fig,.note,tr{break-inside:avoid}
+  .toc{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+/* Acréscimos desta página: comentário da aula, perguntas e oficina */
+.aula{border-inline-start:3px solid var(--gold); padding-inline-start:14px}
+.aula .lbl{color:var(--gold)}
+.op .lbl{margin-bottom:8px}
+.he-inline{font-family:var(--f-he); color:var(--techelet)}
+.aula-intro{font-size:var(--s-1); color:var(--muted); max-width:70ch}
+h3.qa-h{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.05em; color:var(--techelet); margin:26px 0 10px}
+dl.qa{margin:0}
+dl.qa dt{font-weight:600; margin-top:16px; max-width:70ch}
+dl.qa dt .t{font-family:var(--f-sc); font-weight:500; font-size:var(--s-0); color:var(--gold); margin-inline-end:8px}
+dl.qa dd{margin:6px 0 0; padding-inline-start:14px; border-inline-start:2px solid var(--rule); font-size:var(--s-1); max-width:70ch; text-align:justify; hyphens:auto}
+ol.sadna{padding-inline-start:1.4em}
+ol.sadna li{margin-bottom:14px; max-width:70ch}
+ol.sadna .q{font-weight:600; margin-bottom:6px}
+ol.sadna .s{font-size:var(--s-1); padding-inline-start:12px; border-inline-start:3px solid var(--gold)}
+.notes-end{border-top:1px solid var(--rule); border-inline-start:0; padding:10px 0 0; margin-top:18px}
+#apres p,#apres li{max-width:68ch; font-size:var(--s-1)}
+@media print{dl.qa dd, ol.sadna li{break-inside:avoid} .ari{break-inside:auto} .ch-head{break-after:avoid}}
+</style>
+<style>body{margin:0}@media print{.site-nav{display:none}}</style>
+</head>
+<body>
+<nav class="site-nav" style="max-width:210mm;margin:0 auto 12px;font-family:'Spectral SC',Georgia,serif;letter-spacing:.05em"><a href="../" style="color:inherit;text-decoration:none">← Arquivo · início</a></nav>
+<main class="book">
+<div class="sheet cover">
+  <p class="eyebrow">Baal HaSulam · <i>Kitvei Baal HaSulam</i>, p. 63</p>
+  <h1><span lang="he" dir="rtl" class="h1he">אָחוֹר וָקֶדֶם צַרְתָּנִי</span><span class="h1pt">Por trás e pela frente me formaste</span></h1>
+  <p class="lead">Tradução integral do hebraico, com comentários a partir da aula da manhã de 15/11/2026 (retransmissão da aula de Michael Laitman de 14/05/2014)</p>
+  <nav class="toc"><a href="#apres">Apresentação</a><a href="#p1">I · Face e costas</a><a href="#p2">II · O ponto oculto</a><a href="#p3">III · A força da fala</a><a href="#p4">IV · Homem e animal</a><a href="#p5">V · Os pequenos jarros</a><a href="#aula">Da aula</a><a href="#gloss">Glossário</a></nav>
+  <p class="howto"><b>Como ler.</b> O artigo foi dividido em 36 parágrafos. Cada um traz a tradução em português, com o hebraico ao lado. Nos parágrafos 1 a 5, os únicos lidos na aula, vem abaixo o que foi dito em aula, sob o rótulo <i>Na aula</i>. Nos demais, as <i>Notas de estudo</i> são minhas. As fontes e as escolhas de tradução ficam na margem. No fim estão as perguntas da aula, a oficina e um glossário.</p>
+</div>
+
+<div class="sheet" id="apres"><h2 class="plain">Apresentação e convenções</h2>
+<p><strong>O texto.</strong> <em>Achor va-Kedem Tzartani</em> é um artigo breve de Baal HaSulam (Rav Yehuda Ashlag, †1954), publicado nos <em>Kitvei Baal HaSulam</em> [Escritos de Baal HaSulam], p. 63. O título vem do Salmo 139:5: <span lang="he" dir="rtl" class="he-inline">אָחוֹר וָקֶדֶם צַרְתָּנִי וַתָּשֶׁת עָלַי כַּפֶּכָה</span>, <em>achor va-kedem tzartani, va-táshet alai kapécha</em>, "por trás e pela frente me formaste, e puseste sobre mim a Tua mão". O artigo tem três movimentos: <em>panim</em> e <em>achor</em> (§§1–8), "dois opostos num só sujeito" (§§9–25) e, como exemplo, a conduta de Jacó (§§26–36). A tradução foi feita diretamente do hebraico do Kabbalah Media (<a href="https://kabbalahmedia.info/he/lessons/cu/9wf0AgYA?activeTab=sources">fonte</a>). O texto está em domínio público.</p>
+<p><strong>A aula.</strong> Os comentários vêm da parte 2 da aula da manhã de 15/11/2026 no Kabbalah Media (<a href="https://kabbalahmedia.info/pt/lessons/cu/9wf0AgYA">aula</a>). Ela retransmite a aula de Michael Laitman de 14/05/2014. Naquela aula leu-se apenas o começo do artigo (§§1–5), seguido de perguntas e de uma oficina (<em>sadná</em>). A única transcrição publicada até agora é uma versão alemã traduzida por IA do hebraico original, sem revisão. Por isso os comentários são <em>paráfrases</em> minhas dessa transcrição, com poucas citações curtas, e não uma tradução da fala de Laitman.</p>
+<p><strong>Termos.</strong> Sigo as convenções do <a href="../portao-das-intencoes/">Portão das Intenções</a>. Os termos técnicos ficam em hebraico transliterado e em itálico (<em>Shechiná</em>, <em>klipá</em>), com glosa na primeira ocorrência. <em>Ch</em> vale por ח/כ e <em>tz</em> por צ. O acento marca a tônica oxítona.</p>
+<p><strong>Três escolhas de tradução.</strong></p>
+<ul>
+<li><em>Hové</em> / <em>yihyé</em> (הוה / יהיה): "presente" e "futuro". Literalmente "é/está sendo" e "será".</li>
+<li><em>Ha-lovesh</em> / <em>ha-malbish</em> (הלובש / המלביש): "quem se veste" e "quem veste". O primeiro é o Criador, que se veste no mundo. O segundo é o que Lhe fornece a veste: o mundo e, nele, o homem.</li>
+<li><em>Ve-havén</em> (והבן) e <em>ve-dúk</em> (ודו"ק): "e entende" e "examina e entende". Baal HaSulam usa a fórmula para indicar um sentido mais profundo do que o dito. Mantive-a sempre.</li>
+</ul>
+<p><strong>Lacunas.</strong> Em dois lugares (§2 e §11) o original tem reticências: o manuscrito está incompleto. Marquei-as com [...].</p>
+</div>
+
+<div class="sheet"><section class="chapter" id="p1"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">פנים ואחור</span><h2>I · Face e costas</h2><p class="ch-sub">§§1–5 · o cavaleiro e o cavalo; os dois caminhos</p></header>
+
+<article class="item" id="s1">
+<div class="num"><span class="he">א</span><span class="pt">§ 1</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>"Por trás e pela frente me formaste"<sup class="nref"><a href="#n1" id="r1">1</a></sup> significa: no revelar e no ocultar do Rosto do Criador. Pois, na verdade, "o Seu reino domina sobre tudo"<sup class="nref"><a href="#n2" id="r2">2</a></sup>, e tudo retornará à sua raiz, pois "não há lugar vazio d'Ele"<sup class="nref"><a href="#n3" id="r3">3</a></sup>. A diferença está apenas no "presente" e no "futuro". Quem é digno de unir os dois mundos revela no "presente" a Sua veste, bendito seja: que tudo o que acontece é uma veste para a revelação da <em>Shechiná</em> [Presença Divina]. Esse é o aspecto do "presente". Também agora Ele sai em veste real e mostra claramente, aos olhos de todos, que "o cavaleiro não é acessório do cavalo", Deus nos livre<sup class="nref"><a href="#n4" id="r4">4</a></sup>. Embora à primeira vista pareça que o cavalo conduz quem o monta, a verdade é que o cavalo não se move em movimento algum senão ao sentir o freio e as rédeas<sup class="nref"><a href="#n5" id="r5">5</a></sup> do seu cavaleiro. Isso se chama a construção da estatura [<em>komá</em>] da <em>Shechiná</em> etc. E se chama o aspecto de "face a face" [<em>panim be-panim</em>].</p></div><div class="he-text" lang="he" dir="rtl"><p>"אחור וקדם צרתני", פירושו בגילוי והסתר פנים של השי"ת, כי באמת "מלכותו בכל משלה" והכל ישוב לשורשו, כי "לית אתר פנוי מיניה [אין מקום פנוי ממנו]", אלא ההבדל הוא, ב"הוה" ו"יהיה", כי הזוכה לחבר ב' העולמות, הוא מגלה ב"הוה" מלבושו ב"ה, שכל הנעשה הוא לבוש לגילוי שכינה. וזה בחינת "הוה", דהיינו, גם עתה יוצא בלבוש מלכות ומראה בעליל לעין כל, ש"אין הרוכב טפל לסוס" ח"ו, אלא אף שלמראית עין נראה שהסוס מוביל את רכבו, אבל האמת היא, שאין הסוס מתעורר כלל בשום תנועה, זולת להרגש מתג ורסן של רוכבו, זה נקרא בנין קומת השכינה, וכו'. וזה נקרא בחינת "פנים בפנים".</p></div></div>
+</section>
+<section class="op aula"><div class="lbl">Na aula</div>
+<p>As "vestes" do Criador são toda a realidade, o mundo inteiro. Ele não desapareceu dentro delas. Nós é que nos confundimos: as formas do que acontece O encobrem tanto que parece que o cavaleiro está a serviço do cavalo. Cada vez que revelamos a causa, a força que age, o pensamento da criação voltado a cada um e a todos juntos, esclarecemos passo a passo "o cavaleiro": <em>ein od milvadó</em>, não há nada além d'Ele.</p>
+<p>A partir daí começamos a entender que as vestes em que Ele se esconde existem justamente para que O revelemos. Por meio delas aprendemos a "Sua língua", o Seu caráter em relação a nós. E isso se aprende pela oposição de forma: as vestes medem o quanto somos contrários a Ele. Quando pedimos força para ver corretamente e aceitamos mudar para nos tornarmos adequados, o próprio ocultamento se torna revelação. Sem ele não poderíamos provar, distinguir nem sentir o Criador. Como nossa natureza é oposta à d'Ele, é preciso um intermediário entre Ele e nós. Esse intermediário é a <em>klipá</em> [casca] que se torna <em>kedushá</em> [santidade].</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n1"><b>1</b> <strong>Salmo 139:5.</strong> O verbo <em>tzartani</em> pode ser lido como "me formaste" (de <em>yatzar</em>) ou como "me cercaste" (de <em>tzur</em>). Baal HaSulam lê <em>achor</em> e <em>kedem</em> como "costas" e "face" da relação com o Criador.</div><div class="note" id="n2"><b>2</b> <strong>Salmo 103:19.</strong> <em>U-malchutó ba-kol mashalá.</em></div><div class="note" id="n3"><b>3</b> <strong><em>Leit atar panui minei.</em></strong> Aramaico, dos <em>Tikunei Zohar</em> (Tikun 57). O original traz a glosa hebraica entre colchetes.</div><div class="note" id="n4"><b>4</b> <strong>O cavaleiro e o cavalo.</strong> A imagem é midráshica: os patriarcas são a "carruagem" (<em>merkavá</em>) do Criador, e quem monta não depende da montaria. O freio e as rédeas são a Providência. O cavalo é o mundo e o homem.</div><div class="note" id="n5"><b>5</b> <strong><em>Meteg va-resen.</em></strong> "Freio e rédea", do Salmo 32:9.</div></aside>
+</article>
+
+<article class="item" id="s2">
+<div class="num"><span class="he">ב</span><span class="pt">§ 2</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Mas há o homem que ainda não foi digno de consagrar todos os seus movimentos somente ao Senhor. Nele o cavalo não se iguala, em seus movimentos, ao freio e às rédeas do cavaleiro, mas, por assim dizer, faz o contrário [...] e "faz a serva dominar sobre a sua senhora" etc.<sup class="nref"><a href="#n6" id="r6">6</a></sup> Isso se chama o aspecto de "costas" [<em>achor</em>]. Quer dizer: não imagines que estás te afastando da santidade, Deus nos livre e guarde. Pois "o que vos sobe ao espírito de modo nenhum será"; assim disse o Senhor: "Se não com mão forte" etc.<sup class="nref"><a href="#n7" id="r7">7</a></sup> Porque "não será banido d'Ele o banido"<sup class="nref"><a href="#n8" id="r8">8</a></sup>, e toda a roda gira para chegar à santidade, à sua raiz. Se é assim, embora pareça que o cavalo conduz o cavaleiro segundo o seu desejo vil, por assim dizer, a verdade não é essa: é o cavaleiro que conduz o cavalo segundo o desejo dele. Só que isso não se revela agora, no "presente", mas apenas no "futuro", e entende. Resulta que também nesse aspecto há união, mas "costas com costas" [<em>achor be-achor</em>], isto é, nem pela vontade de quem se veste, nem pela vontade de quem veste, e entende.</p></div><div class="he-text" lang="he" dir="rtl"><p>אבל האדם שלא זכה עדיין להקדיש כל תנועותיו בלתי לה' לבדו, ואין הסוס משתוה בתנועותיו למתג ורסן של רוכבו, אלא בהיפך כביכול.. .. ומשליט השפחה על גבירתה וכו', זה נקרא בחינת "אחור", פירוש, שאל תדמה בדעתך שאתה מתרחק מהקדושה חלילה וחס, כי "והעולה על רוחכם היו לא תהיה", כה אמר ה': "אם לא ביד חזקה" וכו'. כי לא ידח ממנו נדח, וכל הגלגל מתגלגל לבא אל הקדושה לשורשו, ואם כן אף על פי שנראה שהסוס מוביל את הרוכב כחפצו הנבזה כביכול, אבל האמת אינו כן, אלא הרוכב מוביל את הסוס לחפצו. אך אינו מתגלה עתה ב"הוה", זולת ב"יהיה" והבן. נמצא, כי בבחינה זו הוא ג"כ חיבור, אלא "אחור באחור", ז"א שלא ברצון הלובש ושלא ברצון המלביש והבן.</p></div></div>
+</section>
+<section class="op aula"><div class="lbl">Na aula</div>
+<p>"Não imagines que estás te afastando" não quer dizer apenas que você ainda é santo. Quer dizer que o Criador não parou de agir em você, não o esqueceu. Pode parecer que agimos por conta própria, que esquecemos, que erramos. Não pense assim: não existe algo que você faça e o Criador não. A "mão forte" chega porque antes não houve esforço pela revelação. Então, no passo seguinte, Ele precisa acrescentar o meio que leva à revelação.</p>
+<p>E por que "nem pela vontade de quem se veste"? O Criador quer ser revelado e, por isso, age o tempo todo em função da reação do homem. Ora acrescenta ocultamento, porque isso ajuda a revelá-Lo. Ora retira um pouco de ocultamento, pelo mesmo motivo. Tudo depende do quanto o homem já está pronto para "ler", entender e sentir. A união "costas com costas" é real, mas nenhum dos dois lados a deseja assim.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n6"><b>6</b> <strong>Provérbios 30:23.</strong> "A serva que herda a sua senhora" é uma das coisas sob as quais "a terra treme". Na Cabalá, a serva é a <em>klipá</em> e a senhora é a <em>Shechiná</em>. As reticências marcam uma lacuna do manuscrito.</div><div class="note" id="n7"><b>7</b> <strong>Ezequiel 20:32–33.</strong> "O que vos sobe ao espírito de modo nenhum será, quando dizeis: seremos como as nações… Vivo Eu, diz o Senhor Deus, que com mão forte, braço estendido e furor derramado reinarei sobre vós."</div><div class="note" id="n8"><b>8</b> <strong>2 Samuel 14:14.</strong> <em>Le-viltí yidach mimenu nidach.</em></div></aside>
+</article>
+
+<article class="item" id="s3">
+<div class="num"><span class="he">ג</span><span class="pt">§ 3</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Os que fazem a Sua vontade, isto é, os que revelam em si mesmos as vestes do Reino [<em>levushei Malchut</em>] no "presente", estão unidos no aspecto de "face a face". É pela boa vontade de quem se veste e pela boa vontade de quem veste, e entende. Pois justamente esse aspecto é a Sua vontade, bendito seja.</p></div><div class="he-text" lang="he" dir="rtl"><p>והעושים רצונו, דהיינו, המגלים בעצמם לבושי מלכות ב"הוה", מחוברים בבחינת "פנים בפנים", ברצון טוב של הלובש וברצון טוב של המלביש והבן, כי דוקא בחינה זו היא רצונו ית'.</p></div></div>
+</section>
+<section class="op aula"><div class="lbl">Na aula</div>
+<p>Laitman aplica o parágrafo à relação com o passado. Quem diz "eu fiz isso, eu causei, eu errei" engana-se ao pensar que fez algo por si mesmo. Sobre o passado, é preciso dizer que tudo foi feito pelo Criador. Só sobre o futuro vale "se eu não for por mim, quem será por mim?"<sup class="nref"><a href="#n9" id="r9">9</a></sup>. Por isso não se lamenta o que eu fiz. Lamenta-se que o Criador me tenha trazido àquele ponto sem que eu conseguisse fazer <em>dvekut</em> [adesão] ali. Ele remete a uma carta estudada naqueles dias, a de n.º 16, e diz que a segunda metade deste artigo volta ao tema.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n9"><b>9</b> <strong><em>Pirkei Avot</em> 1:14.</strong> Dito de Hilel. Na escola de Baal HaSulam, ele forma par com <em>ein od milvadó</em>: antes do ato, tudo depende de mim; depois do ato, tudo foi d'Ele.</div></aside>
+</article>
+
+<article class="item" id="s4">
+<div class="num"><span class="he">ד</span><span class="pt">§ 4</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Esse é o sentido de "Porque não serviste ao Senhor teu Deus com alegria" etc.<sup class="nref"><a href="#n10" id="r10">10</a></sup> De um jeito ou de outro servirás. A diferença é que um é "no cerco e na angústia", isto é, sem vontade, e o outro é "pela abundância de tudo", isto é, de bom grado.</p></div><div class="he-text" lang="he" dir="rtl"><p>וזה פירוש "תחת אשר לא עבדת את ה' אלקיך בשמחה" וכו'. כי בין כך ובין כך תעבוד, אלא החילוק הוא כי זה "במצור ובמצוק", דהיינו שלא ברצון, וזה "מרב כל" דהיינו ברצון.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n10"><b>10</b> <strong>Deuteronômio 28:47–48, 53.</strong> "Porque não serviste ao Senhor teu Deus com alegria e bondade de coração, pela abundância de tudo, servirás aos teus inimigos… em fome, em sede, em nudez." "No cerco e na angústia" está no v. 53. Baal HaSulam lê a maldição como os dois modos de um mesmo serviço.</div></aside>
+</article>
+
+<article class="item" id="s5">
+<div class="num"><span class="he">ה</span><span class="pt">§ 5</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Assim consta no Midrash: "O Santo, bendito seja, observa os atos dos justos e os atos dos ímpios, e não se sabe em quais o Santo, bendito seja, se compraz, se nos atos destes etc. Quando diz 'E viu Deus a luz, que era boa, e separou', dize: nos atos dos justos."<sup class="nref"><a href="#n11" id="r11">11</a></sup> Explicação: em todas as ações e condutas o Santo, bendito seja, "observa", isto é, se liga, e tudo rola e chega à sua raiz. Sendo assim, pergunta-se: qual caminho é mais desejado? Para isso o Midrash se apoia no versículo "E viu Deus a luz, que era boa", isto é, o aspecto da revelação, que está nos atos dos justos. Essa é a intenção dos sábios: "longo e curto, curto e longo"<sup class="nref"><a href="#n12" id="r12">12</a></sup>. Veja lá, isto é, como dito acima.</p></div><div class="he-text" lang="he" dir="rtl"><p>כן איתא במדרש: "מסתכל הקב"ה במעשיהן של צדיקים ומעשיהם של רשעים ואינו יודע במה רוצה הקב"ה אם במעשיהם וכו', כשהוא אומר וירא אלקים את האור כי טוב ויבדל, הוי אומר במעשיהם של צדיקים", פירוש, שבכל העשיות והמנהגים, הקב"ה מסתכל, ז"א מתחבר, והכל מתגלגל ובא לשורשו, אם כן נשאלת השאלה איזה דרך יותר נרצה? לזה מסתייע המדרש מהכתוב "וירא אלקים את האור כי טוב", דהיינו, בחינת גילוי, שזה במעשיהם של צדיקים, וזו הכונה בחז"ל, "ארוכה וקצרה וקצרה וארוכה". ע"ש, דהיינו כנ"ל.</p></div></div>
+</section>
+<section class="op aula"><div class="lbl">Na aula</div>
+<p>Laitman apenas aponta que Rabash trata dos mesmos dois caminhos num artigo próprio. Em seguida abre as perguntas e a oficina (ver <a href="#aula">Da aula</a>). A leitura de 2014 para aqui. Os §§6–36 não foram comentados.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n11"><b>11</b> <strong><em>Bereshit Rabá</em> 2:5 (e 3:8).</strong> O versículo é Gênesis 1:4. A "luz" é a obra dos justos, e a "escuridão" separada é a dos ímpios. Para Baal HaSulam, ambas chegam à raiz. A pergunta é só qual caminho Deus prefere.</div><div class="note" id="n12"><b>12</b> <strong><em>Eruvin</em> 53b.</strong> R. Yehoshua ben Chananiá encontra um menino numa encruzilhada. Um caminho é "curto e longo": parece curto, mas termina num pomar cercado. O outro é "longo e curto": parece longo, mas chega à cidade. No artigo, o caminho da revelação ("de bom grado") é o "longo e curto". O do sofrimento parece curto, mas se alonga.</div></aside>
+</article>
+</section></div>
+
+<div class="sheet"><section class="chapter" id="p2"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">נקודה</span><h2>II · O ponto oculto</h2><p class="ch-sub">§§6–8 · <i>olam</i> e <i>he'elem</i>; submissão, separação, adoçamento</p></header>
+
+<article class="item" id="s6">
+<div class="num"><span class="he">ו</span><span class="pt">§ 6</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Esse é o segredo de "Todas fizeste com sabedoria; a terra está cheia das Tuas posses"<sup class="nref"><a href="#n13" id="r13">13</a></sup>: tudo está guardado nos 32 caminhos da sabedoria<sup class="nref"><a href="#n14" id="r14">14</a></sup>. Por isso "a terra está cheia das Tuas posses" e não há lugar vazio d'Ele, pois tudo vai à sua raiz. Porém agora está em ocultamento. Por isso se chama <em>olam</em> [mundo], de <em>he'elem</em> [ocultamento]. A luz que se oculta e se veste no mundo se chama "ponto". É o aspecto do <em>Yod</em>, que se divide em dois <em>Hei</em>: o mundo oculto e o mundo revelado [<em>alma de-itkassia ve-alma de-itgalia</em>]. Todo o trabalho do homem é revelar esse ponto e estendê-lo no aspecto do <em>Vav</em>, "de mundo a mundo", isto é, o <em>Vav</em> entre os dois <em>Hei</em>. Assim se revela aos olhos de todos a abundância da luz que se estende da luz envolvente ao envolvido, isto é, os dois <em>Hei</em>, no segredo de <em>Biná</em>, <em>Yessod</em> e <em>Malchut</em>, e entende.</p></div><div class="he-text" lang="he" dir="rtl"><p>וז"ס "כלם בחכמה עשית מלאה הארץ קנינך", שהכל משומר בל"ב נתיבות החכמה, ומחמת זה "מלאה הארץ קנינך" ולית אתר פנוי מיניה, כי הכל הולך לשורשו. אמנם עתה בהעלם, ולכן נקרא "עולם" לשון "העלם". ואור המתעלם ומתלבש בעולם, נקרא "נקודה" בחינת "יוד" מתחלק לב' "ההין": עלמא דאתכסיא ועלמא דאתגליא [עולם של הסתר ועולם של גילוי]. וכל עבודת האדם, לגלות נקודה זו, להמשיך אותה בבחינת "ואו" מעולם ועד עולם, דהיינו "ו" בין ב' "ההין", לגלות לעין כל, את שפע האור הנמשך מאור מקיף למוקף, דהיינו ב' "ההין", בסוד בינה יסוד מלכות והבן.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Nota de estudo</div>
+<p>O parágrafo põe o tema do §1 nas letras do Nome. O ponto (<em>Yod</em>) é a luz escondida no mundo. Os dois <em>Hei</em> são <em>Biná</em>, o "mundo oculto", e <em>Malchut</em>, o "mundo revelado". O <em>Vav</em> que os liga é o trabalho do homem. Em linguagem de aula, é o "<em>ein od milvadó</em>" estendido por todo o quadro do mundo. "De mundo a mundo" (<em>me-olam ve-ad olam</em>) passa então a significar "de ocultamento a ocultamento": cada veste revelada abre a seguinte.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n13"><b>13</b> <strong>Salmo 104:24.</strong> <em>Kinyanecha</em>: "Tuas posses" ou "Tuas criaturas".</div><div class="note" id="n14"><b>14</b> <strong>32 caminhos.</strong> <em>Sefer Yetzirá</em> 1:1: "Em 32 caminhos maravilhosos de sabedoria…" (ver o <a href="../sefer-yetzira/">Sefer Yetzirá</a> deste arquivo). As 10 <em>sefirot</em> mais as 22 letras. O número 32 é ל"ב, <em>lev</em>, "coração".</div></aside>
+</article>
+
+<article class="item" id="s7">
+<div class="num"><span class="he">ז</span><span class="pt">§ 7</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>O caminho que se deseja do homem tem três aspectos: submissão [<em>hachna'á</em>], separação [<em>havdalá</em>] e adoçamento [<em>hamtaká</em>]<sup class="nref"><a href="#n15" id="r15">15</a></sup>. Explicação: "<em>me'orot</em> está escrito sem a letra" [<em>me'orot chasser ketiv</em>]<sup class="nref"><a href="#n16" id="r16">16</a></sup>, pois a luz deste mundo foi criada de dentro da escuridão: "como a vantagem da luz que vem da escuridão"<sup class="nref"><a href="#n17" id="r17">17</a></sup>. E "uma vela ao meio-dia, de que serve?": de dia a sua luz não se eleva<sup class="nref"><a href="#n18" id="r18">18</a></sup>. Esse é o segredo de "a casca precede o fruto". Por isso, quem se torna sócio do Criador na obra da Criação extrai a luz de dentro da escuridão. Isto é, olha para si mesmo e vê quão escuro e desprezível é diante da santidade do alto, e como está "vestido de roupas sujas"<sup class="nref"><a href="#n19" id="r19">19</a></sup>. E com isso a luz fica envolvida, e entende.</p></div><div class="he-text" lang="he" dir="rtl"><p>הדרך הנרצה מהאדם הוא ג' בחינות: הכנעה, הבדלה, המתקה, פירוש, "מארת חסר כתיב", כי האור של עוה"ז מתוך החושך נברא, "כיתרון האור מתוך החושך" - ו"שרגא בטיהרא מאי אהני [נר בצהריים - מהו מועיל]", וביממא לא סליק נהוריה [וביום לא עולה אורו]. וז"ס הקליפה קדמה לפרי, ולכן, הנעשה שותף לבורא במעשה בראשית, הוא מוציא את האור מתוך החושך, דהיינו, שמסתכל בעצמו כמה חשוך ומבוזה הוא לפני הקדושה של מעלה, והאיך לבוש בבגדים צואים, ובזה האור מוקף והבן.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Nota de estudo</div>
+<p>É o mesmo princípio que Laitman formulou na aula: o ocultamento vira "letras" da revelação, como letras pretas sobre fundo branco. Por isso se abençoa pelo mal como pelo bem. Aqui a escuridão está no próprio homem. A primeira etapa, a "submissão", começa quando ele vê a distância entre si e a santidade. "A luz fica envolvida" retoma o fim do §6: a luz envolvente (<em>or makif</em>) encontra um "envolvido" (<em>mukaf</em>), um lugar onde pousar.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n15"><b>15</b> <strong><em>Hachna'á, havdalá, hamtaká.</em></strong> Tríade clássica da escola do Baal Shem Tov para o trabalho com o mal interior. É desenvolvida no §8.</div><div class="note" id="n16"><b>16</b> <strong>Gênesis 1:14.</strong> <em>Me'orot</em> ("luzeiros") está grafado sem o <em>Vav</em> (מארת), o que permite ler <em>me'erá</em>, "maldição" (Rashi; <em>Ta'anit</em> 27b). Baal HaSulam lê a grafia "deficiente" como sinal de que a luz deste mundo nasce da falta.</div><div class="note" id="n17"><b>17</b> <strong>Eclesiastes 2:13.</strong> O versículo diz <em>min ha-choshech</em>. Baal HaSulam cita <em>mi-toch ha-choshech</em>, "de dentro da escuridão".</div><div class="note" id="n18"><b>18</b> <strong><em>Chulin</em> 60b.</strong> Aramaico: <em>shraga be-tihara mai ahanei</em>. A glosa hebraica entre colchetes está no original.</div><div class="note" id="n19"><b>19</b> <strong>Zacarias 3:3.</strong> O sumo sacerdote Josué diante do anjo, "vestido de roupas sujas".</div></aside>
+</article>
+
+<article class="item" id="s8">
+<div class="num"><span class="he">ח</span><span class="pt">§ 8</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Ele presta atenção ao que o Criador pede, "temer o Nome glorioso e temível"<sup class="nref"><a href="#n20" id="r20">20</a></sup>. Com isso se fortalece com grande força para submeter o mal que há dentro dele: o "servo mau" e a "serva má", para que fiquem submetidos à sua senhora, "que habita com eles no meio da sua impureza"<sup class="nref"><a href="#n21" id="r21">21</a></sup>, e entende. Faz isso até sentir na alma que o despertar para a exterioridade passou, se anulou e se submeteu muito. Então será digno de chegar ao aspecto da "separação": separar entre a luz e a escuridão, e "não trocará nem substituirá o mau pelo bom, nem o bom pelo mau; e se de fato substituir"<sup class="nref"><a href="#n22" id="r22">22</a></sup>, isto é, o despertar do instinto que lhe é necessário, "será santo", somente para o Senhor. Esse é o aspecto do "adoçamento", o segredo do anseio pelo Senhor, no segredo do amor verdadeiro. Esse aspecto vem depois de separar entre o bem e o mal, entre a grandeza do Criador e a própria baixeza, e de cumprir em si "e extirparás o mal do teu meio"<sup class="nref"><a href="#n23" id="r23">23</a></sup>, pois se envergonhará muito diante do seu Feitor. Então será digno de adoçar também os restos do seu instinto, que não é possível extirpar, e os elevará à sua verdadeira raiz.</p></div><div class="he-text" lang="he" dir="rtl"><p>ובתשומת לב לשאלת השי"ת, "ליראה את השם הנכבד והנורא", הוא מתחזק בכח גדול להכניע את הרע שבקרבו, עבדא בישא ושפחה בישא שיהיו נכנעים תחת גבירתה השוכן אתם בתוך טומאתם והבן, - עד אשר ירגיש בנפשו שההתעוררות לחיצוניות עבר ובטל ונכנע מאד, ואז יזכה לבא לבחינת "הבדלה", להבדיל בין האור ובין החושך, ולא יחליף ולא ימיר רע בטוב ולא טוב ברע, ואם המיר ימיר, דהיינו, התעוררות היצר ההכרחי לו, יהיה קודש בלתי לה' לבדו, שזו בחינת "המתקה" סוד ההשתוקקות לה', בסוד אהבה האמיתית, שבחינה זו באה אחר שיבדיל בין טוב לרע, בין רוממות הבורא ית' ושפלות עצמו, ויקיים בעצמו ובערת הרע מקרבך, כי יבוש מאד מפני עושיה, אז יזכה להמתיק ג"כ את השירים דיצר שלו, שאי אפשר לבער אותם, ומעלה אותם לשורשם האמיתי.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Nota de estudo</div>
+<p>As três etapas aplicam ao indivíduo a passagem que a oficina formulou como <em>achor be-achor</em> → <em>panim be-achor</em> → <em>panim be-panim</em>. A vergonha (<em>yevosh</em>) é o motor da "separação". O texto não termina na extirpação do mal: termina em elevá-lo. O "resto" do instinto, que não sai, é justamente o material do amor.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n20"><b>20</b> <strong>Deuteronômio 28:58 e 10:12.</strong> "Temer este Nome glorioso e temível" (28:58). "Que pede [<em>sho'el</em>] o Senhor teu Deus de ti, senão temer…" (10:12). Daí a "pergunta" ou "pedido" (<em>she'elat</em>) do Criador.</div><div class="note" id="n21"><b>21</b> <strong>Levítico 16:16.</strong> <em>Ha-shochen itam be-toch tum'otam.</em> "Servo mau" e "serva má" (<em>avda bisha, shifcha bisha</em>) são expressões zoharícas para as forças da <em>klipá</em>.</div><div class="note" id="n22"><b>22</b> <strong>Levítico 27:10.</strong> A lei do animal consagrado: se for trocado, "ele e o seu substituto serão santos". Baal HaSulam aplica a lei ao instinto: o que não se pode trocar fica consagrado.</div><div class="note" id="n23"><b>23</b> <strong>Deuteronômio 13:6</strong> e paralelos.</div></aside>
+</article>
+</section></div>
+
+<div class="sheet"><section class="chapter" id="p3"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">ב׳ הפכים</span><h2>III · A força da fala</h2><p class="ch-sub">§§9–16 · dois opostos num só sujeito</p></header>
+
+<article class="item" id="s9">
+<div class="num"><span class="he">ט</span><span class="pt">§ 9</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>"'Lembra' [<em>zachor</em>] e 'guarda' [<em>shamor</em>] foram ditos numa só palavra. O que a boca não pode dizer, nem o ouvido ouvir, nem o coração pensar e cogitar" etc.<sup class="nref"><a href="#n24" id="r24">24</a></sup> É preciso entender por que se disse assim, e o que se quer disso em relação a nós.</p></div><div class="he-text" lang="he" dir="rtl"><p>"זכור ושמור בדיבור אחד נאמרו, מה שאין הפה יכול לדבר, ואין האזן יכול לשמוע והלב לחשוב ולהרהר" וכו'. צריך להבין למה נאמר כך, ומה הנרצה מזה כלפי דידן?</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n24"><b>24</b> <strong><em>Mechilta</em>, Yitro 7; <em>Shevuot</em> 20b; <em>Rosh HaShaná</em> 27a.</strong> No Êxodo (20:8) o mandamento do Shabat diz "lembra"; no Deuteronômio (5:12), "guarda". Os sábios dizem que Deus pronunciou as duas palavras num só som. A resposta de Baal HaSulam só vem no §34.</div></aside>
+</article>
+
+<article class="item" id="s10">
+<div class="num"><span class="he">י</span><span class="pt">§ 10</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Parece [que se explica assim]. Eis que está escrito: "Homem e animal salvas, ó Senhor", e os sábios interpretaram: "São as pessoas astutas no entendimento que se fazem como animal"<sup class="nref"><a href="#n25" id="r25">25</a></sup>. Explicação: todo o caminho da criação que o Senhor criou é o aspecto de dois opostos num só sujeito [<em>shnei hafachim be-nossé echad</em>]. Nesse aspecto foram impressas todas as espécies de uniões que há no mundo. Essa é a regra de toda a obra da Criação.</p></div><div class="he-text" lang="he" dir="rtl"><p>נראה, הנה כתוב "אדם ובהמה תושיע ה'", ודרשו חז"ל: "אלו בני אדם שהן ערומים בדעת ומשימין עצמן כבהמה". פירוש, כל דרך הבריאה שברא ה' היא בחינת ב' הפכים בנושא אחד, ובבחינה זו נטבעו כל מיני החיבורים שבעולם, וזה כלל כל מעשה בראשית.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n25"><b>25</b> <strong>Salmo 36:7; <em>Chulin</em> 5b.</strong> <em>Arumim be-da'at</em>: "astutos" ou "sagazes" no entendimento. Pode-se ouvir também <em>arumim</em> como "nus", isto é, despidos do próprio saber.</div></aside>
+</article>
+
+<article class="item" id="s11">
+<div class="num"><span class="he">יא</span><span class="pt">§ 11</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Só que o Santo, bendito seja, ao renovar a obra da Criação, revelou apenas uma parte desse aspecto. Como está escrito: "Pela palavra do Senhor os céus foram feitos": tomou fogo e água e os misturou um no outro num só sujeito<sup class="nref"><a href="#n26" id="r26">26</a></sup>. E o Santo, bendito seja, imprimiu a força da fala no ser humano, para que seja Seu sócio na obra da Criação. Assim também ele criará com a sua fala mundos desse aspecto, isto é, dois opostos num só sujeito, pois outra renovação [...] no mundo.</p></div><div class="he-text" lang="he" dir="rtl"><p>אלא שהקב"ה בחידושו את מעשה בראשית גילה רק חלק א' בבחינה זו, כמ"ש "בדבר ה' שמים נעשו", שנטל אש ומים וערבן זו בזו לנושא אחד, והטביע הקב"ה כח הדיבור בבן אדם, שיהיה שותף עמו במעשה בראשית, שיברא גם כן בדיבורו עולמות מהבחינה הזאת, דהיינו ב' הפכים בנושא אחד, כי חידוש אחר... בעולם.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n26"><b>26</b> <strong>Salmo 33:6; <em>Chaguigá</em> 12a.</strong> <em>Shamáyim</em> ("céus") é lido como <em>esh u-máyim</em>, "fogo e água". O fim da frase está truncado no manuscrito.</div></aside>
+</article>
+
+<article class="item" id="s12">
+<div class="num"><span class="he">יב</span><span class="pt">§ 12</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Esse é o caminho dos justos apegados ao Criador: de toda a sua fala foram criados mundos, como pela palavra do Senhor, pois "a força do agente está no paciente"<sup class="nref"><a href="#n27" id="r27">27</a></sup>, e entende. Ele já imprimiu na boca deles as 22 letras com que criou o mundo. Quero dizer: há nelas essa propriedade [<em>segulá</em>].</p></div><div class="he-text" lang="he" dir="rtl"><p>וזה אורח צדיקים הדבקים בבורא ית', שמכל דיבורם נבראו עולמות כדבר ה', וכח הפועל בנפעל, והבן, כי כבר הטביע בפיהם, אותם הכ"ב אותיות שברא בהם את העולם, רצוני לומר שיש בהם סגולה זו.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n27"><b>27</b> <strong><em>Ko'ach ha-po'el ba-nif'al.</em></strong> Princípio caro a Baal HaSulam (ver as <a href="../pri-chacham/sichot-2-26-40/">Sichot do Pri Chacham</a>): o que é feito carrega a força de quem o fez. Por isso a criatura pode repetir, em pequeno, o ato do Criador.</div></aside>
+</article>
+
+<article class="item" id="s13">
+<div class="num"><span class="he">יג</span><span class="pt">§ 13</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Neste mundo as ações não se completam por mera fala. Tudo isso se deve às descidas deste mundo na materialização. Por isso nada se revela pela fala, só por mãos e pés. Mas, na verdade, o Santo, bendito seja, imprimiu na fala força suficiente para que por ela se revele toda a ação, pois a força do agente está no paciente, e também nós pronunciamos com a boca aquelas 22 letras, e entende. Só que as cascas [<em>klipot</em>] cobrem e enfraquecem essa força. O Santo, bendito seja, quis dar mérito a Israel [e livrá-los] das cascas<sup class="nref"><a href="#n28" id="r28">28</a></sup>. Por isso deu-lhes Torá e mandamentos, pelos quais se aproximam da Sua santidade. Então a <em>Shechiná</em> fala de dentro da garganta deles em pureza, e pela fala realizarão ações.</p></div><div class="he-text" lang="he" dir="rtl"><p>וכל זה שאין העשיות נגמרות בעולם הזה על ידי דיבור בעלמא, היא מפני ירידות העולם הזה בהתגשמות, ולכן שום דבר לא נתגלה בדיבור, רק בידים ורגלים, אבל באמת, די כח הטביע הקב"ה בדיבור שעל ידו יותגלה כל המעשה, כי כח הפועל בנפעל, וגם אנו מבטאים בפינו, אותם הכ"ב אותיות והבן. אלא הקליפות מכסות ומחלישות אותו הכח, ורצה הקב"ה לזכות את ישראל מהקליפות, נתן להם תורה ומצוות שעל ידם מתקרבים לקדושתו ית', ושכינה מדברת מתוך גרונם בטהרה ואז בדיבורם יעבדו מעשים.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n28"><b>28</b> <strong><em>Makot</em> 23b.</strong> "Quis o Santo, bendito seja, dar mérito [<em>lezakot</em>] a Israel; por isso lhes multiplicou Torá e mandamentos." Baal HaSulam lê <em>lezakot</em> também como "purificar" (<em>zach</em>). "A <em>Shechiná</em> fala de dentro da garganta de Moisés" é dito do <em>Zohar</em>.</div></aside>
+</article>
+
+<article class="item" id="s14">
+<div class="num"><span class="he">יד</span><span class="pt">§ 14</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Esse é o tema das bênçãos dos justos: com as palavras da boca revelam de imediato mais do que um homem simples tem força de revelar com mãos e pés. Um homem simples que quer fazer bem a seu amigo dá-lhe muito dinheiro com as próprias mãos, de fato, e o enriquece. Mesmo assim, não sabe se isso se manterá nele por muito tempo.</p></div><div class="he-text" lang="he" dir="rtl"><p>וזה ענין הברכות של הצדיקים, שבדברי פיהם מיד מגלים יותר, ממה שיש כח לאדם פשוט לגלות בידים ורגלים, כי אדם פשוט הרוצה לגמול חסדים עם חברו, נותן לו כסף מרובה בידיו בפועל ומעשרו, מכל מקום אינו יודע אם יתקיים בו זמן מרובה.</p></div></div>
+</section>
+</div>
+<aside class="notes"></aside>
+</article>
+
+<article class="item" id="s15">
+<div class="num"><span class="he">טו</span><span class="pt">§ 15</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Mas o homem completo [<em>ha-shalem</em>] que quer fazer bem a seu amigo dá-lhe uma bênção com a boca, isto é, algumas palavras breves de riqueza. E imediatamente se revela sobre o amigo a ação da riqueza etc.</p></div><div class="he-text" lang="he" dir="rtl"><p>אבל השלם, הרוצה לגמול חסדים לחבירו, הוא נותן לו ברכה בפיו, דהיינו, איזה דיבורים קצרים של עשירות ומיד מתגלה מעשה העשירות על חבירו וכו'.</p></div></div>
+</section>
+</div>
+<aside class="notes"></aside>
+</article>
+
+<article class="item" id="s16">
+<div class="num"><span class="he">טז</span><span class="pt">§ 16</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Como se chega a esse aspecto? Pela Torá e pelos mandamentos. Quer dizer: ao fazer a Sua vontade, bendito seja, a forma se assemelha ao seu Formador. Mas, na verdade, tudo o que diz respeito à Torá e aos mandamentos que se unem ao homem é também da espécie acima, isto é, dois opostos num só sujeito. Esse é o essencial da vontade, pois "pela Torá o Santo, bendito seja, criou o mundo"<sup class="nref"><a href="#n29" id="r29">29</a></sup>, e a força do agente está no paciente. Esse é o segredo de "o fim do conhecimento é que não saibamos"<sup class="nref"><a href="#n30" id="r30">30</a></sup>. Isto é: quando esses dois opostos se unem num só corpo no entendimento do homem, ele é agradável ao seu Criador e é chamado homem completo.</p></div><div class="he-text" lang="he" dir="rtl"><p>במה זוכים לבחינה זו? הרי זה, על ידי תורה ומצוות, זאת אומרת בעשיית רצונו יתברך יותדמה הצורה ליוצרו, אבל באמת כל ענין התורה ומצוות המתחברים לאדם, הוא גם כן מהמין הנ"ל, דהיינו ב' הפכים בנושא אחד, וזה עיקר הרצון, כי באורייתא ברא הקב"ה עלמא, וכח הפועל בנפעל. וזה סוד תכלית הידיעה אשר לא נדע, דהיינו, כאשר ב' הפכים אלו מתחברים לגוף אחד בדעתו של אדם, אז הוא נרצה לקונו, ואיש שלם מקרי.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Nota de estudo</div>
+<p>Esta seção amplia o §1. A <em>Shechiná</em> se revela "face a face" quando o mundo inteiro, todas as vestes, vira a Sua fala. A criação é feita de opostos unidos, e o homem é chamado a uni-los "com a boca". Não se trata de magia verbal. A palavra do justo age porque está colada à intenção do Criador; a força do agente passa ao paciente. O "fim do conhecimento" é o ponto em que os dois opostos convivem no entendimento sem que um anule o outro.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n29"><b>29</b> <strong><em>Zohar</em>, Terumá 161a; <em>Bereshit Rabá</em> 1:1.</strong> "Olhou na Torá e criou o mundo."</div><div class="note" id="n30"><b>30</b> <strong><em>Tachlit ha-yedi'á she-lo neda.</em></strong> Dito filosófico medieval corrente, na forma "o fim do que sabemos é que não Te sabemos". É atribuído à <em>Bechinat Olam</em> de Yedaya HaPenini e às vezes ao <em>Kuzari</em>.</div></aside>
+</article>
+</section></div>
+
+<div class="sheet"><section class="chapter" id="p4"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">אדם ובהמה</span><h2>IV · Homem e animal</h2><p class="ch-sub">§§17–25 · o intelecto da Torá e o intelecto animal; farinha e Torá</p></header>
+
+<article class="item" id="s17">
+<div class="num"><span class="he">יז</span><span class="pt">§ 17</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>O essencial da entrega da Torá a este mundo baixo é algo paradoxal, pois os anjos se enganaram a respeito dela, como se sabe<sup class="nref"><a href="#n31" id="r31">31</a></sup>. Esse é o segredo de "Melhor é o fim de uma coisa que o seu começo"<sup class="nref"><a href="#n32" id="r32">32</a></sup>. Explicação: o "fim da coisa" [<em>acharit davar</em>] é o grau baixo, isto é, o que está na criação do mundo à vista de todos e não exige reflexão alguma. É o que os livros chamam "noções primeiras" [<em>muskalot rishoniot</em>]: se não comer, terá fome; se tocar no fogo, se queimará; se se jogar na água, se afogará etc. Essas coisas são compreendidas também por feras e animais, pois também o intelecto animal lhes diz isso. Por isso se chama "fim da coisa".</p></div><div class="he-text" lang="he" dir="rtl"><p>עיקר נתינת התורה בעולם השפל הזה, הוא דבר הפכי, כי טעו בו המלאכים כנודע, וז"ס: "טוב אחרית דבר מראשיתו", פירוש "אחרית דבר", הוא שפל המדרגה, דהיינו, בבריאת העולם לעין כל, שאין בזה צורך לשום התבוננות, - מהנקרא בספרים מושכלות ראשוניות, פירוש, אם לא יאכל, ירעב, אם יגע באש, יכוה, אם יפיל את עצמו למים, יטבע, וכדומה, שאותם הדברים מובנים גם כן לחיות ובהמות, כי גם השכל הבהמי יגיד להם דבר זה, ועל כן הוא נקרא "אחרית דבר".</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n31"><b>31</b> <strong><em>Shabat</em> 88b–89a.</strong> Os anjos pedem que a Torá fique no céu. Moisés responde: "Descestes ao Egito? Tendes instinto mau?". A Torá é para quem tem os dois lados.</div><div class="note" id="n32"><b>32</b> <strong>Eclesiastes 7:8.</strong> <em>Tov acharit davar me-reshitó.</em> Baal HaSulam lê "fim" e "começo" como os graus baixo e alto. Daí "bom é o fim, quando unido ao começo".</div></aside>
+</article>
+
+<article class="item" id="s18">
+<div class="num"><span class="he">יח</span><span class="pt">§ 18</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>O "começo da coisa" [<em>reshit davar</em>] é o intelecto da Torá. Ele não é alcançado nem pelos seres falantes, isto é, por todos os povos da terra, mas só pela semente de Jacó, os escolhidos do Senhor<sup class="nref"><a href="#n33" id="r33">33</a></sup>. Ora, há no mundo bem e mal misturados. Para separar e reconhecer entre o bem e o mal, o versículo nos ensina que o essencial do caminho do bem é o "fim da coisa". Isto é: conduzir-se pelo caminho que a gente simples trilha, caminho alcançado por todas as criaturas, mas ligando a ele, ao mesmo tempo, o intelecto da Torá, e entende. Pois esse é o extremo dos opostos que existem no mundo, e o homem completo é obrigado a ligá-los e uni-los numa unidade real no seu entendimento. Isso se chama "bom". É o que se diz: "Bom é o fim da coisa", se está bem ligado ao seu começo, isto é, se o intelecto da Torá e o intelecto animal se unem realmente num só. Examina e entende.</p></div><div class="he-text" lang="he" dir="rtl"><p>"ראשית דבר", זה שׂכל התורה, שאינה מושגת אפילו למדברים, דהיינו, לכל עמי הארץ, זולת לזרע יעקב בחירי ה', והנה נמצא בעולם טוב ורע בערבוביא, וכדי להבדיל ולהכיר בין הטוב לרע משמיענו הכתוב, שעיקר דרך הטוב הוא, ה"אחרית דבר", דהיינו, להתנהג בדרך שדשים בו שפלי עם, דרך המושג לכל הבריות, אך יחד עם זה יחבר שׂכל התורה, והבן. כי זה תכלית ההפכים הנמצאים בעולם, וזה מחויב האדם השלם לחבר וליחד באחדות ממש בדעתו, וזה "טוב" מקרי, וז"ש: "טוב אחרית דבר", - אם מחובר היטב מראשיתו, דהיינו, שׂכל התורה ושׂכל הבהמי מתחברים לאחד ממש ודו"ק.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n33"><b>33</b> <strong>"Falantes".</strong> <em>Medabrim</em> é o grau humano na escala inanimado–vegetal–animal–falante (<em>domem, tzome'ach, chai, medaber</em>). O intelecto da Torá está acima até do grau "falante". "Semente de Jacó" é, para Baal HaSulam, um grau de alma, e não apenas uma linhagem.</div></aside>
+</article>
+
+<article class="item" id="s19">
+<div class="num"><span class="he">יט</span><span class="pt">§ 19</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Esse é o sentido das palavras dos sábios: "'Homem e animal salvas, ó Senhor': são as pessoas astutas no entendimento que se fazem como animal". Segundo a explicação acima, nelas esses dois opostos se unem num só. Por exemplo, o que se diz: "Se não há farinha, não há Torá; se não há Torá, não há farinha"<sup class="nref"><a href="#n34" id="r34">34</a></sup>. A primeira parte é intelecto animal, quero dizer, intelecto alcançado por todos. A segunda parte é o intelecto da Torá: que relação e que propriedade tem a Torá de providenciar farinha? Isso se entende pela Torá: o Santo, bendito seja, não retira, Deus nos livre, a Sua Providência do mundo nem por um instante. Por isso faz o bem aos que fazem a Sua vontade e ouve a sua oração.</p></div><div class="he-text" lang="he" dir="rtl"><p>וזה פירוש דברי חז"ל "אדם ובהמה תושיע ה' אלו בני אדם שהן ערומים בדעת ומשימין עצמן כבהמה", כפירוש הנ"ל, שמתחבר בהם ב' הפכים אלו לאחד, למשל מה שאיתא: "אם אין קמח אין תורה, אם אין תורה אין קמח", הנה בבא ראשונה זה שׂכל בהמי, רצוני לומר שׂכל המושג לכל. ובבא שניה, זה שׂכל התורה, כי מה ענין וסגולת התורה להמציא לו קמח? אלא מובן על פי התורה, אשר הקב"ה אינו מסיר השגחתו חלילה מהעולם אפילו רגע אחד, ולכן מטיב הוא עם עושי רצונו ושומע תפילתם.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n34"><b>34</b> <strong><em>Pirkei Avot</em> 3:17.</strong> Dito de R. Elazar ben Azariá. "Farinha" é o sustento.</div></aside>
+</article>
+
+<article class="item" id="s20">
+<div class="num"><span class="he">כ</span><span class="pt">§ 20</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Segundo isso, quem foi digno de ter o seu labor na Torá certamente não precisa labutar no caminho do mundo [<em>derech eretz</em>]. Pedirá a Quem de fato tem, e Ele lhe dará, como está dito: "Por serem piedosos, a sua Torá é preservada e o seu trabalho é abençoado"<sup class="nref"><a href="#n35" id="r35">35</a></sup>. E é isso que o Tana nos ensina com "Se não há farinha" etc.: o caminho desejado é uni-los. Isto é, fazer-se como animal, saber que se não há farinha não há Torá e, por isso, esforçar-se em tudo o que o seu intelecto animal lhe ensina a fazer para obter farinha e alimento para o corpo.</p></div><div class="he-text" lang="he" dir="rtl"><p>לפי זה מי שזכה להיות עמלו בתורה, בודאי אינו צריך לעמול בדרך ארץ, כי יבקש ממי שיש לו באמת, - ויתן לו, וכמ"ש: "מתוך שחסידים הם, תורתם משתמרת ומלאכתם מתברכת". וזה שמשמיענו התנא, "אם אין קמח" וכו', דהיינו, שדרך הנרצה הוא לחברם יחד, דהיינו, לעשות עצמו כבהמה, לידע אם אין קמח אין תורה, ומחמת זה ישתדל בכל מה ששכלו הבהמי מלמדו לעשות, להשיג קמח ומזון לגופו.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n35"><b>35</b> <strong><em>Berachot</em> 32b.</strong> Dito dos antigos piedosos (<em>chassidim ha-rishonim</em>), que oravam nove horas por dia.</div></aside>
+</article>
+
+<article class="item" id="s21">
+<div class="num"><span class="he">כא</span><span class="pt">§ 21</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>E isso embora, segundo o intelecto da Torá, seja supérfluo, pois "não se compraz na força do cavalo, nem se agrada das pernas do homem; o Senhor se agrada dos que O temem, dos que esperam a Sua bondade"<sup class="nref"><a href="#n36" id="r36">36</a></sup>. Sendo assim, por que cansar-se e "esfolar carcaças na praça" para não precisar das pessoas<sup class="nref"><a href="#n37" id="r37">37</a></sup>? Melhor seria ocupar-se da Torá, temer o Senhor e esperar a Sua bondade, pois "não se agrada das pernas do homem".</p></div><div class="he-text" lang="he" dir="rtl"><p>ואף על פי שלפי שׂכל התורה הוא למותר, כי "לא בגבורת הסוס יחפץ ולא בשוקי האיש ירצה, רוצה ה' את יראיו את המיחלים לחסדו". ואם כן למה לו ליגע ולפשוט נבלתא בשוקא, כדי שלא יצטרך לבני אדם, מוטב לו לעסוק בתורה, ולירא את ה' ליחל לחסדו, כי לא בשוקי האיש ירצה.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n36"><b>36</b> <strong>Salmo 147:10–11.</strong> O "cavalo" reaparece: a força do cavalo não move o cavaleiro (cf. §1).</div><div class="note" id="n37"><b>37</b> <strong><em>Pessachim</em> 113a; <em>Bava Batra</em> 110a.</strong> "Esfola carcaças na praça e recebe pagamento, e não digas: sou um grande homem."</div></aside>
+</article>
+
+<article class="item" id="s22">
+<div class="num"><span class="he">כב</span><span class="pt">§ 22</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Mesmo assim, o Tana ensina a esforçar-se com toda a força atrás de farinha, pois sem ela não há Torá. Como "melhor que profane um Shabat para guardar muitos Shabatot"<sup class="nref"><a href="#n38" id="r38">38</a></sup>, e coisas semelhantes. Ainda assim, sabe bem que "se não há Torá não há farinha". Quer dizer: não são o esforço e o empenho que te trazem e providenciam a farinha, mas o cumprimento da Torá e o temor dos céus, pois "não se agrada das pernas do homem" etc. Esses são os dois opostos unidos realmente num só. Quem faz atos de animal e sabe que são considerados vaidade e vazio, e que tudo lhe vem só da mesa do Rei, esse homem é chamado completo.</p></div><div class="he-text" lang="he" dir="rtl"><p>עכ"ז מלמד התנא להשתדל בכל כחו אחר קמח, כי בלעדו אין תורה, ומוטב שיחלל שבת אחת, כדי לשמור שבתות הרבה, וכדומה, אעפ"כ תדע בטוב "אם אין תורה אין קמח", פירוש, שאין היגיעה וההשתדלות מביא וממציא לך הקמח, זולת קיום התורה ויראת שמים, כי "לא בשוקי האיש ירצה", וכו'. וזהו ב' הפכים בהתיחדם לאחד ממש, דהיינו, בעושי מעשה בהמה ויודע שלהבל וריק נחשב, ורק הכל בא לו משולחנא דמלכא, אדם כזה שלם מקרי.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Nota de estudo</div>
+<p>Esta é a aplicação prática de "<em>ein od milvadó</em>" que os alunos pediam na aula: agir como se tudo dependesse de mim e saber que tudo depende d'Ele. Laitman deu a mesma regra para o tempo: sobre o futuro, "se eu não for por mim"; sobre o passado, "tudo foi Ele". Aqui as duas coisas valem no mesmo ato, e não em momentos diferentes.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n38"><b>38</b> <strong><em>Yomá</em> 85b.</strong> Justificativa de salvar uma vida no Shabat: "profana por ele um Shabat, para que guarde muitos Shabatot".</div></aside>
+</article>
+
+<article class="item" id="s23">
+<div class="num"><span class="he">כג</span><span class="pt">§ 23</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Esse é o sentido do versículo "Feliz o homem que põe no Senhor a sua confiança e não se volta para os arrogantes nem para os que se desviam para a mentira"<sup class="nref"><a href="#n39" id="r39">39</a></sup>. Ele une as duas coisas: confia no Senhor e se empenha com toda a força em providenciar sustento e alimento para a sua casa. Com tudo isso, sabe que os seus atos e todo o seu empenho não são mais que "arrogância e desvios de mentira". E o essencial: põe no Senhor a sua confiança, e entende.</p></div><div class="he-text" lang="he" dir="rtl"><p>וזה פירוש הכתוב "אשרי הגבר אשר שם ה' מבטחו ולא פנה אל רהבים ושטי כזב", שמיחד ב' הדברים שבוטח בה', ומתעצם בכל כחו להמציא טרף ומזון לביתו, ועם כל זה יודע שמעשיו וכל השתדלותו אינם יותר מרהבים ושטי כזב, ועיקר משים ה' מבטחו והבן.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n39"><b>39</b> <strong>Salmo 40:5.</strong> No salmo, <em>rehavim ve-satei chazav</em> são pessoas: os arrogantes e os que se desviam para a mentira. Baal HaSulam aplica a expressão aos próprios esforços do homem: não "se volta" para eles como fonte do resultado.</div></aside>
+</article>
+
+<article class="item" id="s24">
+<div class="num"><span class="he">כד</span><span class="pt">§ 24</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Isso é o que está escrito: "Pois não repousará o cetro da impiedade sobre a sorte dos justos"<sup class="nref"><a href="#n40" id="r40">40</a></sup>. Explicação: embora os seus atos sejam semelhantes [aos dos ímpios], como dito acima, e entende, por que é assim? O versículo explica: "para que os justos não estendam as mãos à iniquidade". Pois aceitam sobre si o jugo completo do Reino dos Céus e sabem que "Ele é quem te dá força"<sup class="nref"><a href="#n41" id="r41">41</a></sup>.</p></div><div class="he-text" lang="he" dir="rtl"><p>וזה שכתוב "כי לא ינוח שבט הרשע על גורל הצדיקים", פירוש, אף על פי שמעשיהם דומים כנ"ל והבן, ואמאי? ומפרש הכתוב: "למען לא ישלחו הצדיקים בעולתה ידיהם", כי מקבלים עליהם עול מלכות שמים שלמה, ויודעים שהוא הנותן לך כח.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n40"><b>40</b> <strong>Salmo 125:3.</strong></div><div class="note" id="n41"><b>41</b> <strong>Deuteronômio 8:18.</strong> "Lembra-te do Senhor teu Deus, pois Ele é quem te dá força para fazer riqueza."</div></aside>
+</article>
+
+<article class="item" id="s25">
+<div class="num"><span class="he">כה</span><span class="pt">§ 25</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>A razão disso é esclarecer a fé do justo no Criador, até onde ela chega. O Santo, bendito seja, conhece os pensamentos. Ainda assim, o esclarecimento dos atos precisa ser revelado aos olhos do próprio justo. Pois a natureza da matéria não deixa o justo crer em si mesmo até ver no ato, claramente, com os olhos. E ele sempre teme "que o pecado possa causar"<sup class="nref"><a href="#n42" id="r42">42</a></sup> e que caia do seu grau na hora da ação, e entende.</p></div><div class="he-text" lang="he" dir="rtl"><p>וטעמו של הדבר הוא כדי לברר את אמונת הצדיק בהשי"ת, עד היכן מגעת, ואף על פי שהקב"ה יודע מחשבות מכל מקום צריך בירור המעשים להיות גלוי לעיני הצדיק עצמו, כי מטבע החומר שאינו מניח לצדיק להאמין בעצמו עד שרואה במעשה בעליל לעין, ותמיד מתירא שמא יגרום החטא, ויפול ממדרגתו בשעת מעשה והבן.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n42"><b>42</b> <strong><em>Shemá yigrom ha-chet.</em></strong> <em>Berachot</em> 4a, dito de Jacó (Gênesis 32:8): "talvez o pecado cause". É o tema da seção seguinte.</div></aside>
+</article>
+</section></div>
+
+<div class="sheet"><section class="chapter" id="p5"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">פכין קטנים</span><h2>V · Os pequenos jarros</h2><p class="ch-sub">§§26–36 · Jacó, amor e temor; "por que vos mostrais?"</p></header>
+
+<article class="item" id="s26">
+<div class="num"><span class="he">כו</span><span class="pt">§ 26</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Com isso entenderemos o que os sábios interpretaram: que Jacó, nosso pai, que descanse em paz, voltou por causa de pequenos jarros [<em>pachin ketanim</em>]<sup class="nref"><a href="#n43" id="r43">43</a></sup>. Na verdade é espantoso. Numa hora assim, em que viu Esaú vindo contra ele para matá-lo, destruir e saquear tudo o que tinha, houve espaço em sua mente para ficar sozinho num lugar de perigo a fim de salvar para si pequenos jarros. E ele nem tinha certeza da própria vida<sup class="nref"><a href="#n44" id="r44">44</a></sup>, como está escrito: "E Jacó temeu muito etc., e dividiu o povo etc. em dois acampamentos" etc.</p></div><div class="he-text" lang="he" dir="rtl"><p>ובזה נבין מה שדרשו חז"ל, שחזר יעקב אע"ה על פכין קטנים, שבאמת פלא הוא, בעת כזאת שראה את עשיו בא עליו להורגו, להאביד ולחמוס את כל אשר יש לו, היה לו מקום במוחו להשאר במקום סכנה לבדו, להציל לעצמו פכין קטנים, והוא לא האמין בחייו כמו שכתוב: "וירא יעקב מאד וכו' ויחץ את העם וכו' לשני מחנות". וכו'.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n43"><b>43</b> <strong><em>Chulin</em> 91a.</strong> Sobre Gênesis 32:25, "e Jacó ficou só": ficou para trás por causa de pequenos jarros que esquecera do outro lado do rio. Daí "os justos têm o seu dinheiro em mais estima que o seu corpo".</div><div class="note" id="n44"><b>44</b> <strong><em>Lo he'emin be-chayav.</em></strong> Eco de Deuteronômio 28:66, "não terás certeza da tua vida".</div></aside>
+</article>
+
+<article class="item" id="s27">
+<div class="num"><span class="he">כז</span><span class="pt">§ 27</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Mas pelo que foi dito acima isso fica bem explicado. O caminho acima, isto é, "homem e animal", era a qualidade [<em>midá</em>] de Jacó, nosso pai, que descanse em paz. Ele se tornou "carruagem" [<em>merkavá</em>] para esse aspecto, como está escrito nos livros. Abraão, nosso pai, tornou-se carruagem para a qualidade do amor, e Isaac, nosso pai, para a qualidade do temor [<em>pachad</em>]. Essas duas qualidades são dois opostos. Quem ama não teme: confia sempre no amado, e "o amor cobre todas as transgressões"<sup class="nref"><a href="#n45" id="r45">45</a></sup>. E quem teme não confia, pois, se confiasse, não temeria de modo algum. Mas Jacó, nosso pai, o escolhido dos patriarcas, tornou-se carruagem para a qualidade da misericórdia [<em>rachamim</em>]. Isto é, esses dois opostos num só sujeito, amor e temor juntos, que é a essência dessa qualidade, como se sabe.</p></div><div class="he-text" lang="he" dir="rtl"><p>אלא בהנ"ל מבואר היטב, כי דרך הנ"ל דהיינו, אדם ובהמה, זה היה מדתו של יעקב אבינו ע"ה, שהוא היה נעשה מרכבה לבחינה זו, כמ"ש בספרים: אברהם אע"ה נעשה מרכבה למדת אהבה, ויצחק אבינו ע"ה למדת הפחד, שב' מדות אלו הם ב' הפכים, כי האוהב אינו מתירא, ובוטח תמיד על אוהבו, ועל כל פשעים תכסה אהבה, והמתירא אינו בוטח, כי אם היה בוטח לא היה מתירא כל עיקר, אבל יעקב אבינו בחיר שבאבות נעשה מרכבה למדות הרחמים, דהיינו, אלו ב' הפכים בנושא אחד, אהבה ויראה ביחד, שזה עיקרו של מדה זו כנודע.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Nota de estudo</div>
+<p>Abraão, Isaac e Jacó correspondem a <em>Chessed</em>, <em>Guevurá</em> e <em>Tiferet</em>, as linhas direita, esquerda e média. <em>Tiferet</em> se chama também <em>Rachamim</em>, a qualidade que reúne as outras duas. Jacó é, portanto, o "<em>Vav</em> entre os dois <em>Hei</em>" do §6 levado à conduta: a linha média que une opostos sem anular nenhum.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n45"><b>45</b> <strong>Provérbios 10:12.</strong></div></aside>
+</article>
+
+<article class="item" id="s28">
+<div class="num"><span class="he">כח</span><span class="pt">§ 28</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>É isso que o versículo nos dá a ouvir: "E Jacó temeu muito etc., e dividiu o povo etc. em dois acampamentos"<sup class="nref"><a href="#n46" id="r46">46</a></sup>. Fez isso para garantir para si um resto que escapasse. E também enviou presentes, para que talvez [Esaú] se apaziguasse com ele.</p></div><div class="he-text" lang="he" dir="rtl"><p>וזה משמיענו הכתוב "וירא יעקב מאד וכו' ויחץ את העם וכו' לשני מחנות". כדי להמציא לו מעט לפליטה, וכן שלח דורנות אולי יתפייס אתו.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n46"><b>46</b> <strong>Gênesis 32:8–9, 14–22.</strong></div></aside>
+</article>
+
+<article class="item" id="s29">
+<div class="num"><span class="he">כט</span><span class="pt">§ 29</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Vês que a sua conduta nisso foi a de um homem simples, na mais completa simplicidade. Que diferença faz se um homem se preocupa em não morrer de fome e age e corre o dia e a noite inteiros com diversos expedientes para obter sustento e sobrevivência? Ou se se preocupa com o seu inimigo, para que não destrua os seus bens nem o mate, e faz todas as invenções que se pode inventar para isso?</p></div><div class="he-text" lang="he" dir="rtl"><p>והנך רואה שמנהגו בדבר זה היה כאיש פשוט בתכלית הפשיטות, כי מה לי אם אדם דואג שלא יגוע ברעב, ועושה ורודף כל היום וכל הלילה בתחבולות שונות להמציא לו מחיה ושארית, או שדואג מפני שונאו שלא יאביד את רכושו ולא יהרגנו, ועושה כל מיני המצאות שיש להמציא לדבר זה.</p></div></div>
+</section>
+</div>
+<aside class="notes"></aside>
+</article>
+
+<article class="item" id="s30">
+<div class="num"><span class="he">ל</span><span class="pt">§ 30</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Foi isso que Rashi, de abençoada memória, perguntou: por que Jacó, nosso pai, temia, se [Deus] lhe prometera "e te guardarei" etc.<sup class="nref"><a href="#n47" id="r47">47</a></sup>? E respondeu que temia "que o pecado possa causar". Há que observar: deveria ter dito "talvez [o pecado] tenha causado", e não "talvez cause". Com o que foi dito acima, fica claro. Na verdade Jacó, nosso pai, tinha a qualidade do amor em completude, isto é, confiança [<em>bitachon</em>], e não tinha dúvida alguma de que o Senhor o guardaria e nada lhe faltaria. Mesmo assim, conduziu-se como um homem simples e se fez de quem teme, como o intelecto animal obriga a inventar, na simplicidade, um expediente para isso. Temia muito os quatrocentos homens que estavam com [Esaú]. Com isso foi como quem desvia a mente da confiança para temer de verdade. Por isso fez atos de proteção, como fazem os que temem um inimigo: dividiu os acampamentos, deu presentes e coisas semelhantes.</p></div><div class="he-text" lang="he" dir="rtl"><p>וזאת הקשה רש"י ז"ל: ולמה מתירא יעקב אע"ה הלא הבטיחו ושמרתיך וכו' ותירץ שהיה מתירא שמא יגרום החטא. ויש לדקדק שהיה לו לומר, שמא גרם ולא שמא יגרום, ועם הנ"ל ניחא, שבאמת היה לו ליעקב אע"ה מדת האהבה בשלימות, דהיינו, בטחון, ולא היה לו ספק כלל וכלל כי ישמרנו ה', ולא יחסר לו דבר, עם כל זה התנהג מנהג אדם פשוט, ושם עצמו כמתירא כפי אשר יחייב שׂכל הבהמי להמציא המצאה לדבר זה בפשיטות, שהיה מתירא מאד מפני ארבע מאות איש שעמו, ובזה היה כמסיח דעת מבטחון, כדי להתירא באמת, ומתוך כך עשה מעשה שמירה כדרך המתיראים מפני שונא, חצה את המחנות, ונתן מתנות וכדומה.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n47"><b>47</b> <strong>Gênesis 28:15; Rashi a 32:11.</strong> A promessa em Betel: "e te guardarei aonde quer que fores". Rashi a "pequeno sou eu para todas as misericórdias" (32:11): "temo que, desde que me prometeste, eu me tenha manchado com pecado". Ver também <em>Berachot</em> 4a. A distinção entre "causou" e "cause" é de Baal HaSulam.</div></aside>
+</article>
+
+<article class="item" id="s31">
+<div class="num"><span class="he">לא</span><span class="pt">§ 31</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Por que fez isso, se na verdade não temia de modo algum, pois confiava no Senhor? Por causa de "que o pecado possa causar". O justo, na sua humildade, não confia em si mesmo que não cairá do seu grau na hora da ação. Por isso preparou-se com todas as coisas do mundo que bastam para se salvar do inimigo. Depois de tudo isso, avaliou em sua alma que tudo isso é "arrogância e desvios de mentira", pôs no Senhor a sua confiança e orou ao Senhor<sup class="nref"><a href="#n48" id="r48">48</a></sup>.</p></div><div class="he-text" lang="he" dir="rtl"><p>ולמה עשה דבר זה, הא באמת לא היה מתירא כלל וכלל, כי בטח בה', אלא מחמת שמא יגרום החטא, כי הצדיק בענותנותו אינו מאמין בעצמו שלא יפול ממדרגה בשעת המעשה, ולכן הכין את עצמו בכל מילי דעלמא שדי להצלה מפני האויב, ואחר כל אלה שיער בנפשו שכל זה רהבים ושטי כזב, ושם ה' מבטחו והתפלל אל ה'.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n48"><b>48</b> <strong>Gênesis 32:10–13.</strong> A oração de Jacó vem depois da divisão dos acampamentos. Rashi (a 32:9) diz que ele se preparou de três modos: com presentes, com oração e para a guerra.</div></aside>
+</article>
+
+<article class="item" id="s32">
+<div class="num"><span class="he">לב</span><span class="pt">§ 32</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Com isso se entende por que ficou [para trás] por causa de pequenos jarros. Foi para mostrar que, junto com o temor, tinha a qualidade do amor em completude, sem defeito algum, Deus nos livre. E deu importância em sua mente até a pequenos jarros, pois sabia bem que nem adversário nem inimigo tocariam de modo algum nos seus bens.</p></div><div class="he-text" lang="he" dir="rtl"><p>ובזה מובן מה שנשאר על פכין קטנים להודיע שיחד עם היראה היה לו מדת האהבה בשלימות, בלי פגם חלילה, והחשיב בדעתו אפילו פכין קטנים, כי ידע בטוב שלא יגע צר ואויב ברכושו כלל.</p></div></div>
+</section>
+</div>
+<aside class="notes"></aside>
+</article>
+
+<article class="item" id="s33">
+<div class="num"><span class="he">לג</span><span class="pt">§ 33</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Nisso se reconhece a diferença "entre quem serve a Deus e quem não O serviu"<sup class="nref"><a href="#n49" id="r49">49</a></sup>. Quem teme de verdade e não confia não daria atenção nem a jarros grandes numa hora assim, em que teme que venha o inimigo, fira "a mãe com os filhos"<sup class="nref"><a href="#n50" id="r50">50</a></sup> e destrua tudo. Mas quem serve ao Senhor, junto com o labor e o empenho que vêm do seu temor, sabe bem e confia na Sua bondade: tudo é d'Ele, e nenhum estranho dominará os seus bens. Por isso tem espaço, mesmo numa hora assim, para cuidar de pequenos jarros, como é o costume dos justos, que "têm o seu dinheiro em estima" etc.</p></div><div class="he-text" lang="he" dir="rtl"><p>ובזה ניכר החילוק בין עובד ה' ללא עבדו, כי המתירא באמת ואינו בוטח לא היה שם לבו אפילו לפכין גדולים, בעת כזאת שדואג שלא יבא אויב להכות אם על בנים ולהאביד הכל. אבל עובד ה' יחד עם היגיעה והשתדלות מחמת יראתו, יודע בטוב ובוטח בחסדו ית', שהכל שלו ושום זר לא ישלוט ברכושו, ויש לו מקום אפילו בעת כזאת, להשגיח על פכין קטנים, כדרך הצדיקים שחביבין עליהם ממונם וכו'.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Nota de estudo</div>
+<p>Os jarros pequenos são a prova visível de que o temor de Jacó era "posto", e não sentido. O medo verdadeiro estreita a atenção. A confiança deixa espaço para cuidar até do que é pequeno. É a resposta de Baal HaSulam à pergunta da aula sobre como agir "como cavalo" sem esquecer o cavaleiro: o temor vira ato, e o amor fica na mente.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n49"><b>49</b> <strong>Malaquias 3:18.</strong> <em>Bein oved Elohim la-asher lo avadó.</em></div><div class="note" id="n50"><b>50</b> <strong>Gênesis 32:12.</strong> Da oração de Jacó: "para que não venha e me fira, a mãe com os filhos".</div></aside>
+</article>
+
+<article class="item" id="s34">
+<div class="num"><span class="he">לד</span><span class="pt">§ 34</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Por isso, na entrega da Torá, veio-nos a força pelo fato de que "'lembra' e 'guarda' foram ditos numa só palavra, o que a boca não pode dizer, nem o ouvido ouvir, nem o coração pensar e cogitar". Explicação: consta que "lembra" é o segredo do amor e "guarda" é o segredo do temor<sup class="nref"><a href="#n51" id="r51">51</a></sup>. São dois opostos, como dito acima, e nos foram ditos e entregues como um só, isto é, para uni-los, como acima. São tão opostos que não se compreende de modo algum como isso pode existir na realidade, na boca, no ouvido e no coração materiais. Mas essa é a força da Torá: quem se apega a ela é digno disso, isto é, de que estejam ligados e unidos no seu coração, como a qualidade de Jacó, nosso pai, que descanse em paz, e entende.</p></div><div class="he-text" lang="he" dir="rtl"><p>ולכן בנתינת התורה בא לנו הכח, בזה ש"זכור ושמור בדבור אחד נאמרו, מה שאין הפה יכול לדבר והאזן לשמוע והלב לחשוב ולהרהר", פירוש, שאיתא, שזכור סוד האהבה, ושמור סוד היראה, שהם ב' הפכים כנ"ל, ונאמרו לנו ונמסרו לנו כאחד, דהיינו, ליחדם ביחד כנ"ל, ואף על פי שהם הפכים מאד, שאינו מובן כלל וכלל איך אפשר להיות דבר זה במציאות, בפה ואזן ולב הגשמי, אבל זה כח התורה שהמדבק בה זוכה לדבר זה, דהיינו, להיות מחוברים ומאוחדים בלבו, כמדתו של יעקב אע"ה והבן.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n51"><b>51</b> <strong><em>Zachor</em> e <em>shamor</em>.</strong> Na tradição cabalística, <em>zachor</em> corresponde aos mandamentos positivos, ao masculino e a <em>Chessed</em>. <em>Shamor</em> corresponde aos negativos, ao feminino e a <em>Guevurá</em> (Nachmânides a Êxodo 20:8; <em>Zohar</em>). Aqui fecha-se a pergunta aberta no §9.</div></aside>
+</article>
+
+<article class="item" id="s35">
+<div class="num"><span class="he">לה</span><span class="pt">§ 35</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Isso é o que Jacó disse aos filhos nos anos de fome: "Por que vos mostrais?"<sup class="nref"><a href="#n52" id="r52">52</a></sup>. Rashi explicou: por que vos mostrais diante de Ismael e dos filhos de Esaú como se estivésseis saciados? Mas é difícil. Os filhos de Esaú moravam em Seir, e os filhos de Ismael no deserto de Parã: o que tinham a ver com eles? Mais deveria preocupar-se com o cananeu e o hitita, habitantes da terra, seus vizinhos! Com o que foi dito acima, fica claro, pois Rashi deu dois sentidos:</p><p>primeiro, por que vos mostrais como saciados;</p><p>segundo, por que negais a fome.</p></div><div class="he-text" lang="he" dir="rtl"><p>וזה שאמר יעקב לבניו בשני הרעב, "למה תתראו"? ופירש"י למה תראו בפני ישמעאל ובני עשיו, כאילו אתם שׂבעים. וקשה, הלא בני עשיו בשעיר ישבו, ובני ישמעאל במדבר פארן, ומה להם ענין עמהם, יותר היה לו לדאוג מפני הכנעני והחתי יושבי הארץ שכניו? ובנ"ל ניחא, שרש"י פירש שני פשטים:</p><p>אחד למה תראו כשׂבעים,</p><p>ב' למה תכחשו ברעב.</p></div></div>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n52"><b>52</b> <strong>Gênesis 42:1; Rashi ad loc.</strong> <em>Lama titra'u</em>, literalmente "por que vos fazeis ver?". O segundo sentido, "por que vos fazeis magros", também está em Rashi, que lê o verbo como "emagrecer" (cf. <em>Ta'anit</em> 10b).</div></aside>
+</article>
+
+<article class="item" id="s36">
+<div class="num"><span class="he">לו</span><span class="pt">§ 36</span></div>
+<div class="main">
+<section class="ari"><div class="lbl">Baal HaSulam</div>
+<div class="pair"><div class="pt-text"><p>Com isso se entende que Jacó lhes disse assim: se comerdes até a saciedade, deveis temer os filhos de Ismael; e se negardes a fome, deveis temer os filhos de Esaú. Explicação: consta que Ismael é a escória da prata (amor) e Esaú, a escória do ouro (temor)<sup class="nref"><a href="#n53" id="r53">53</a></sup>. Isso é o que Jacó ensinou aos filhos. Se vos agarrardes à qualidade do amor e confiardes que a mão do Senhor não será curta, Deus nos livre, nem nos anos de fome, deveis temer a casca de Ismael. E se vos agarrardes só à qualidade do temor e restringirdes a vossa comida, deveis temer a casca de Esaú, que suga dessa qualidade. Por isso, é melhor comer até saciar-se e unir "a coisa a seu tempo"<sup class="nref"><a href="#n54" id="r54">54</a></sup> com a qualidade do temor: "descei e comprai-nos comida do Egito". Assim vos salvareis das duas cascas.</p></div><div class="he-text" lang="he" dir="rtl"><p>ובזה מובן שכך אמר להם יעקב: אם תאכלו לשובע, יש לכם לירא מפני בני ישמעאל, ואם תכחשו ברעב, יש לכם לירא מפני בני עשיו, פירוש, דאיתא שישמעאל סיגי דכספא (אהבה) ועשיו סיגי דדהבא (יראה), וזה שלימד יעקב לבניו, אם תאחזו במדת האהבה, להיות בוטח בה' שידו לא תקצר חלילה אפילו בשני הרעב, יש לכם לירא מפני קליפת ישמעאל. ואם תאחזו במדת היראה לבד, ותצמצמו אכילתכם, יש לכם לירא מפני קליפת עשיו, שיונק מזו המדה, לכן מוטב אכלו כדי שביעה וכדי ליחד דבר בעתו עם מדת הפחד, - רדו שברו לנו אכל ממצרים, שבזה תנצלו מב' הקליפות.</p></div></div>
+</section>
+<section class="op"><div class="lbl">Nota de estudo</div>
+<p>O artigo termina onde começou. Cada qualidade isolada gera a sua própria casca: o amor sem temor alimenta Ismael, e o temor sem amor alimenta Esaú. Só a união das duas, a linha de Jacó, fica "face a face". Na linguagem do §1, é o cavalo que obedece às rédeas sem deixar de ser cavalo.</p>
+</section>
+</div>
+<aside class="notes"><div class="note" id="n53"><b>53</b> <strong><em>Sigei de-chaspa / sigei de-dahava.</em></strong> Aramaico, "escória da prata" e "escória do ouro", imagem zoharíca. A prata (<em>kessef</em>, de <em>kissufin</em>, "anseio") é <em>Chessed</em>, o amor. O ouro é <em>Guevurá</em>, o temor. Ismael nasceu de Abraão, e Esaú de Isaac: cada um é o resíduo da qualidade do pai.</div><div class="note" id="n54"><b>54</b> <strong>Provérbios 15:23; Gênesis 42:2.</strong> <em>Davar be-itó</em>, "a palavra a seu tempo". Aqui é o ato prático, comprar comida no Egito, feito com temor e sem perder a confiança.</div></aside>
+</article>
+</section></div>
+
+<div class="sheet"><section class="chapter" id="aula"><header class="ch-head"><span class="ch-he" lang="he" dir="rtl">שיעור</span><h2>Da aula</h2><p class="ch-sub">Perguntas dos alunos e oficina · aula de 14/05/2014, retransmitida em 15/11/2026</p></header>
+<p class="aula-intro">Resumo das perguntas e respostas que seguiram a leitura dos §§1–5, na ordem da aula, com a marcação de tempo da transcrição. As respostas estão parafraseadas.</p>
+
+<h3 class="qa-h">Perguntas</h3>
+<dl class="qa">
+<dt><span class="t">13:12</span> O artigo foi escrito do ponto de vista da perfeição, de quem vê todo o sistema. Como lê-lo se ainda não nos incluímos no grupo nem temos sentidos para ver a unidade de <em>HaVaYaH</em>?</dt>
+<dd>Na medida do que se tem. Laitman lembra que nem quem passou o <em>machsom</em> [a barreira] fica o tempo todo em ligação: volta a cair em quebras, ódio e decepção, às vezes piores que as nossas. O estado atual é o mais fraco de todos, sem subidas nem descidas, "um milímetro para frente e para trás". É o estado de um bebê, sensível a tudo. Os exercícios sérios vêm depois.</dd>
+<dt>O que tirar do artigo agora?</dt>
+<dd>Que tudo vem d'Ele, "por trás e pela frente", mas que eu preciso revelar isso. Esse é todo o trabalho. O mundo é um quadro que o Criador pinta, e é preciso encontrá-Lo em cada nuance, em cada impressão e em todas juntas. Sem o ocultamento não haveria com que revelá-Lo. O ocultamento vira as letras da revelação, como letras pretas sobre fundo branco. Por isso se abençoa pelo mal como pelo bem: ambos são letras do trabalho.</dd>
+<dt>Não tenho os sentidos, a mente nem o sentimento para fazer essas contas.</dt>
+<dd>Tente, e algo virá aos poucos, desde que haja esforço. Chegar a isso depois de quinze anos não é atraso. Bebês atravessam enormes mudanças nos primeiros anos sem se lembrar delas nem entendê-las. Parece que nada acontece, mas da "gota de semente" já cresce um pequeno homem, que só ainda não sabe usar os próprios vasos. Isso vem, segundo Laitman, porque nos ocupamos dos "círculos externos", a difusão.</dd>
+<dt><span class="t">17:49</span> Qual a diferença entre este artigo e "Não há nada além d'Ele"<sup class="nref"><a href="#n55" id="r55">55</a></sup>?</dt>
+<dd>Há artigos que tratam diretamente da relação com o Criador como <em>ein od milvadó</em>: reconhecê-Lo por todo o quadro do mundo e, nesse quadro, ver os próprios vasos estragados que precisam passar de "receber" a "dar". Outros são auxiliares: tratam do ambiente, do estudo e das distinções interiores. Este é do primeiro tipo, como "Não há nada além d'Ele", que Laitman diz ter posto em primeiro lugar no <em>Shamati</em> por dar logo a direção.</dd>
+<dt><span class="t">19:44</span> Se Ele faz tudo, o bem e o mal, e não há lugar vazio d'Ele, quem sou eu nesse processo?</dt>
+<dd>Também o que você pensa d'Ele e o que você quer, Ele faz, cem por cento. A única exceção é o pensamento confuso de que existe outro poder além d'Ele, alheio ou seu. Só isso é objeto de correção. "Você não existe." Você será a soma dos esforços com que revela que não há nada além d'Ele. A cada momento Ele o confunde, fazendo parecer que há mais alguém. Você reúne tudo num ponto, remove as interferências e diz "não há nada além d'Ele". Desses pontos se constrói, momento a momento, a sua estrutura, a sua visão, a sua consciência. Isso será você.</dd>
+<dt>Se fico "pendurado no ar", como Ele me ajuda?</dt>
+<dd>Ele não o deixa no ar. Arranja a vida inteira de modo que a luz fique diante do vaso. A distância entre os dois se revela aos poucos e é sentida como confusão. Quem se esforça em dizer "não há nada além d'Ele" liga a luz ao vaso, mas a ligação ainda não é sentida como êxito. É como uma lâmpada que ainda não recebeu tensão suficiente para acender.</dd>
+<dt>Há Providência pessoal já no começo?</dt>
+<dd>Do lado do Criador, Providência pessoal e geral são uma só. Tudo o que existe vem d'Ele e existe por Ele. A questão é só quanto disso você revela.</dd>
+<dt><span class="t">24:08</span> O que há de novo em dizer "não há nada além d'Ele" a cada vez? Como não deixar que isso afunde no mar das sensações?</dt>
+<dd>"Não sei. Esforços."</dd>
+<dt><span class="t">24:37</span> De que vale atribuir tudo ao Criador se não consigo levar o amigo ao meu lado ao mesmo estado?</dt>
+<dd>Quem pensa no Criador em cada estado descobre que o mundo e os amigos estão no mesmo quadro e que é por meio deles que se revela a relação com Ele. Eles não somem; ganham formas importantes. Os amigos próximos aparecem como apoio para não esquecer e se orientar. Daí surge o quadro da <em>arvut</em> [garantia mútua]. Os amigos são vasos que Ele dá para a ligação. Não se revela "não há nada além d'Ele" sem anular a distância em relação a eles e, depois, em relação ao mundo inteiro.</dd>
+<dt><span class="t">27:11</span> Por que é tão difícil pensar que não há nada além d'Ele?</dt>
+<dd>No começo o <em>masach</em> [tela] é muito espesso, e é difícil atravessá-lo e segurar-se. Depois ele afina e fica mais fácil. Por fim a pessoa quer que ele permaneça, porque é por ele que tem letras e sentimentos com que se agarrar ao Criador. Sem o quadro do mundo, dizer "não há nada além d'Ele" não daria onde se segurar.</dd>
+</dl>
+
+<h3 class="qa-h">Oficina (<i>sadná</i>)</h3>
+<p class="aula-intro">Quatro perguntas, discutidas pelos grupos de dez. Depois de cada rodada, Laitman fecha com uma síntese, aqui parafraseada.</p>
+<ol class="sadna">
+<li><p class="q">Todo o nosso trabalho é revelar que "não há nada além d'Ele". Por que é preciso chegar a isso com trabalho duro? Qual é a essência desse trabalho?</p></li>
+<li><p class="q">Por que o Criador brinca conosco de frente e costas, de noite e dia, com estados que mudam?</p><p class="s"><b>Síntese.</b> Quando Ele está cortado de nós, é preciso revelar que é Ele. Quando se revela, também é preciso revelar que é Ele, e não nós. Nenhum ato vem dos meus esforços: tudo foi planejado de antemão. "Por trás e pela frente" é: em toda a profundidade do ocultamento e em toda revelação, o ato é só d'Ele. Sou como o cavalo conduzido. Só me é dado um ponto, o ponto de observação, de onde olho para o estado em que Ele me conduz. A pergunta é como mantê-lo sem me fundir no processo, como um especialista que constata "aqui a luz trabalha no vaso".</p></li>
+<li><p class="q">Não revelar o Criador no estado atual já é <em>achoraim</em>? O mundo inteiro está em <em>achoraim</em> por não revelá-Lo? Ou <em>achoraim</em> é uma espécie de revelação, só que indesejada?</p><p class="s"><b>Síntese.</b> <em>Achor</em> é a revelação do Criador numa forma que a criatura sente como inadequada e indesejada, mas que mesmo assim alcança. Na sabedoria da Cabalá a ordem é <em>achor be-achor</em>, depois <em>panim be-achor</em>, depois <em>panim be-panim</em>. Como, nos estados de <em>achoraim</em>, se constrói o vaso para a revelação?</p></li>
+<li><p class="q">Como os <em>achoraim</em> se tornam <em>panim</em>?</p><p class="s"><b>Síntese.</b> No estado em que o homem concorda com o ocultamento da condução e não exige nada além do próprio trabalho. Então os <em>achoraim</em> viram <em>panim</em>, e ele vê que estava em suas mãos trocar um pelo outro só pela sua atitude.</p></li>
+</ol>
+<p class="aula-intro">A transcrição de 2014 continua com outras partes daquela aula, que não se referem a este artigo: o <em>Zohar</em> sobre a contagem do Ômer (<em>Emor</em>, §§162–177), a <em>Introdução à Sabedoria da Cabalá</em> §39 e o artigo <em>Matan Torá</em>.</p>
+<aside class="notes notes-end"><div class="note" id="n55"><b>55</b> <strong><em>Ein od milvadó</em>.</strong> Artigo 1 do <em>Shamati</em>, as anotações de Rabash das palavras de Baal HaSulam. Título a partir de Deuteronômio 4:35.</div></aside>
+</section></div>
+
+<div class="sheet" id="gloss"><h2 class="plain">Glossário</h2>
+<div class="tw"><table>
+<thead><tr><th>Termo</th><th>Hebraico</th><th>Tradução</th><th>Observação</th></tr></thead>
+<tbody>
+<tr><td><em>Achor</em> / <em>achoraim</em></td><td>אחור / אחוריים</td><td>costas, parte de trás</td><td>revelação em forma indesejada</td></tr>
+<tr><td><em>Achor be-achor</em></td><td>אחור באחור</td><td>costas com costas</td><td>união sem vontade de nenhum dos lados (§2)</td></tr>
+<tr><td><em>Panim be-panim</em></td><td>פנים בפנים</td><td>face a face</td><td>união por boa vontade dos dois lados (§§1, 3)</td></tr>
+<tr><td><em>Hové</em> / <em>yihyé</em></td><td>הוה / יהיה</td><td>presente / futuro</td><td>agora revelado / revelado só no fim</td></tr>
+<tr><td><em>Lovesh</em> / <em>malbish</em></td><td>לובש / מלביש</td><td>quem se veste / quem veste</td><td>o Criador / o mundo e o homem</td></tr>
+<tr><td><em>Levush</em></td><td>לבוש</td><td>veste</td><td>tudo o que acontece</td></tr>
+<tr><td><em>Shechiná</em></td><td>שכינה</td><td>Presença Divina</td><td>o Criador revelado em <em>Malchut</em></td></tr>
+<tr><td><em>Komá</em></td><td>קומה</td><td>estatura</td><td>grau completo</td></tr>
+<tr><td><em>Klipá</em> (pl. <em>klipot</em>)</td><td>קליפה</td><td>casca</td><td>força que cobre a luz; "precede o fruto"</td></tr>
+<tr><td><em>Hachna'á, havdalá, hamtaká</em></td><td>הכנעה, הבדלה, המתקה</td><td>submissão, separação, adoçamento</td><td>as três etapas do §§7–8</td></tr>
+<tr><td><em>Or makif</em> / <em>mukaf</em></td><td>אור מקיף / מוקף</td><td>luz envolvente / envolvido</td><td>§§6–7</td></tr>
+<tr><td><em>Shnei hafachim be-nossé echad</em></td><td>ב׳ הפכים בנושא אחד</td><td>dois opostos num só sujeito</td><td>regra da Criação (§10)</td></tr>
+<tr><td><em>Ko'ach ha-po'el ba-nif'al</em></td><td>כח הפועל בנפעל</td><td>a força do agente está no paciente</td><td>§§12–13, 16</td></tr>
+<tr><td><em>Sechel ha-Torá / sechel behemí</em></td><td>שכל התורה / שכל בהמי</td><td>intelecto da Torá / intelecto animal</td><td>"começo" e "fim" da coisa (§§17–18)</td></tr>
+<tr><td><em>Bitachon</em></td><td>בטחון</td><td>confiança</td><td>a qualidade do amor (§30)</td></tr>
+<tr><td><em>Merkavá</em></td><td>מרכבה</td><td>carruagem</td><td>quem se torna veículo de uma qualidade (§27)</td></tr>
+<tr><td><em>Rachamim</em></td><td>רחמים</td><td>misericórdia</td><td>amor e temor unidos; Jacó, <em>Tiferet</em></td></tr>
+<tr><td><em>Dvekut</em></td><td>דבקות</td><td>adesão</td><td>termo da aula</td></tr>
+<tr><td><em>Machsom</em></td><td>מחסום</td><td>barreira</td><td>termo de Laitman para a entrada no mundo espiritual</td></tr>
+<tr><td><em>Arvut</em></td><td>ערבות</td><td>garantia mútua</td><td>termo da aula</td></tr>
+<tr><td><em>Sadná</em></td><td>סדנה</td><td>oficina</td><td>discussão em grupos de dez</td></tr>
+</tbody></table></div>
+</div>
+</main>
+</body>
+</html>
