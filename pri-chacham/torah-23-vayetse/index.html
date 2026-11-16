@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pri Chacham · Vayetze (Torá 23)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral+SC:wght@500;600&display=swap">
+<style>/* Layout: folhas A4 empilhadas; cada item = coluna de número | texto | margem de notas (como a folha de estudo com glosas laterais) */
+:root{
+  --paper:#fbfaf6; --desk:#e9e7e0; --ink:#1f2130; --muted:#5c5f70; --rule:#d6d3c8;
+  --techelet:#284a86; --gold:#8a6a22; --panel:#f1efe7; --v-in:#dfe6f3; --v-out:#f3eadb;
+  --f-body:"Spectral", Georgia, "Times New Roman", serif;
+  --f-sc:"Spectral SC", "Spectral", Georgia, serif;
+  --f-he:"Frank Ruhl Libre", "David", "Times New Roman", serif;
+  --s-0:.82rem; --s-1:.95rem; --s-2:1.06rem; --s-3:1.3rem; --s-4:1.9rem; --s-5:2.8rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#171a24; --desk:#0f1118; --ink:#e6e3da; --muted:#a3a5b2; --rule:#343849;
+  --techelet:#9db8ea; --gold:#d1b26a; --panel:#1f2330; --v-in:#26324b; --v-out:#3a3226; color-scheme:dark}
+
+body{background:var(--desk); color:var(--ink); font-family:var(--f-body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); padding-block:24px}
+.book{display:flex; flex-direction:column; gap:28px; align-items:center}
+.sheet{background:var(--paper); width:100%; max-width:210mm; padding:18mm 16mm; box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06); min-width:0}
+p{margin:0 0 .75em}
+i,em{font-style:italic}
+a{color:var(--techelet)}
+a:focus-visible{outline:2px solid var(--techelet); outline-offset:2px}
+h1,h2,h3{text-wrap:balance; font-weight:500; margin:0}
+
+/* Capa */
+.cover{display:flex; flex-direction:column; gap:18px; padding-block:26mm}
+.eyebrow{font-family:var(--f-sc); letter-spacing:.06em; color:var(--muted); font-size:var(--s-1); margin:0}
+h1{display:flex; flex-direction:column; gap:6px}
+.h1he{font-family:var(--f-he); font-size:var(--s-5); color:var(--techelet); line-height:1.15; font-weight:500}
+.h1pt{font-size:var(--s-4); font-style:italic; font-weight:400}
+.lead{font-size:var(--s-2); color:var(--muted); margin:0}
+.toc{display:flex; flex-wrap:wrap; gap:8px 22px; border-block:1px solid var(--rule); padding-block:12px; font-family:var(--f-sc); letter-spacing:.04em}
+.toc a{text-decoration:none}
+.howto{font-size:var(--s-1); max-width:62ch; margin:0}
+
+h2.plain{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.05em; color:var(--techelet); margin-bottom:14px}
+#apres p, #apres li{max-width:68ch; font-size:var(--s-1)}
+
+/* Cabeçalho de capítulo */
+.ch-head{display:grid; grid-template-columns:1fr auto; align-items:end; gap:4px 16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:26px}
+.ch-head h2{font-family:var(--f-sc); font-size:var(--s-4); letter-spacing:.04em; grid-column:1; grid-row:1}
+.ch-sub{grid-column:1; margin:0; font-style:italic; color:var(--muted)}
+.ch-he{grid-column:2; grid-row:1 / span 2; font-family:var(--f-he); font-size:var(--s-5); color:var(--gold); line-height:1}
+
+/* Item */
+.item{display:grid; grid-template-columns:4.2rem minmax(0,1fr) 13.5rem; gap:0 18px; padding-block:18px; border-top:1px solid var(--rule)}
+.item:first-of-type{border-top:0}
+.num{display:flex; flex-direction:column; align-items:flex-start; gap:2px; position:sticky; top:12px; align-self:start}
+.num .he{font-family:var(--f-he); font-size:var(--s-3); color:var(--gold); direction:rtl}
+.num .pt{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.08em; color:var(--muted)}
+.src-new{color:var(--techelet); font-size:var(--s-1)}
+.main{min-width:0; display:flex; flex-direction:column; gap:14px}
+.lbl{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.12em; color:var(--techelet); margin-bottom:6px}
+
+.ari{background:var(--panel); padding:14px 16px 10px; border-radius:2px}
+.pair{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:18px}
+.pt-text p{font-size:var(--s-2); line-height:1.58; font-weight:500}
+.pt-text em{font-weight:500}
+.he-text{font-family:var(--f-he); font-size:1.04rem; line-height:1.75; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:14px}
+.he-text p{margin:0 0 .6em}
+.srcref{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.05em; color:var(--muted); margin:6px 0 0}
+
+.op p{font-size:var(--s-1); line-height:1.66; text-align:justify; hyphens:auto; max-width:70ch}
+.op p + p{text-indent:1.4em}
+.dibur{font-family:var(--f-sc); font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.dibur::after{content:" —"; color:var(--muted)}
+.op em{font-style:italic}
+
+sup.nref{font-size:.68em; line-height:0}
+sup.nref a{text-decoration:none; font-family:var(--f-sc); color:var(--gold); padding:0 1px}
+
+/* Notas laterais */
+.notes{min-width:0; display:flex; flex-direction:column; gap:10px; font-size:var(--s-0); line-height:1.5; color:var(--muted); border-inline-start:1px solid var(--rule); padding-inline-start:12px; align-self:start}
+.notes:empty{border:0}
+.note b{font-family:var(--f-sc); color:var(--gold); margin-inline-end:4px}
+.note:target{background:var(--panel); outline:1px solid var(--gold); outline-offset:3px}
+.note strong{color:var(--ink); font-weight:600}
+
+/* Tabelas */
+.tw{overflow-x:auto; max-width:100%}
+table{border-collapse:collapse; width:100%; font-size:var(--s-0); font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:6px 8px; border-bottom:1px solid var(--rule); vertical-align:top}
+th{font-family:var(--f-sc); font-weight:600; letter-spacing:.05em; color:var(--techelet); border-bottom:1.5px solid var(--ink)}
+table.lv td,table.lv th{text-align:center}
+table.lv td:first-child,table.lv th:first-child{text-align:left}
+table.lv td em{display:inline-block; background:var(--v-in); padding:1px 6px; border-radius:2px}
+
+/* Figuras */
+.fig{margin:6px 0 0; border:1px solid var(--rule); padding:12px 14px}
+.fig figcaption{font-size:var(--s-1); margin-bottom:8px}
+.fig figcaption .lbl{display:inline; margin-inline-end:8px}
+.figcap{font-size:var(--s-0); color:var(--muted); font-style:italic; margin:8px 0 0}
+.grid5 td{white-space:nowrap}
+.bar{display:inline-block; height:8px; width:calc(var(--w) * .7); max-width:70px; background:var(--techelet); margin-inline-end:8px; vertical-align:middle; opacity:.75}
+.fig svg{width:100%; min-width:520px; height:auto; display:block}
+.fig svg .v-in{fill:var(--v-in); stroke:var(--techelet); stroke-width:1}
+.fig svg .v-out{fill:var(--v-out); stroke:var(--gold); stroke-width:1; stroke-dasharray:4 3}
+.fig svg .t-h{fill:var(--ink); font:600 14px var(--f-sc); letter-spacing:.04em}
+.fig svg .t-v{fill:var(--ink); font:600 13px var(--f-body)}
+.fig svg .t-l{fill:var(--muted); font:italic 12px var(--f-body)}
+.fig svg .t-s{fill:var(--muted); font:12px var(--f-body)}
+.fig svg.yod{min-width:0; max-width:620px}
+.fig svg .yod-body{fill:var(--techelet)}
+.fig svg .yod-kotz{fill:var(--gold)}
+.fig svg .ring{fill:none; stroke:var(--gold); stroke-width:1; stroke-dasharray:3 3}
+.fig svg .lead{stroke:var(--gold); stroke-width:1}
+.fig svg .lead2{stroke:var(--muted); stroke-width:1}
+.fig svg .t-k{fill:var(--gold); font:600 14px var(--f-sc); letter-spacing:.03em}
+.fig svg .t-he{fill:var(--techelet); font:500 40px var(--f-he)}
+.fig svg .cut{stroke:var(--techelet); stroke-width:2}
+
+/* Tela estreita */
+@media (max-width:760px){
+  .sheet{padding:22px 18px}
+  .item{grid-template-columns:minmax(0,1fr); gap:10px}
+  .num{position:static; flex-direction:row; align-items:baseline; gap:10px}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .he-text{border-inline-start:0; padding-inline-start:0; border-top:1px solid var(--rule); padding-top:10px}
+  .notes{border-inline-start:2px solid var(--rule)}
+  .ch-he{font-size:var(--s-4)}
+  .h1he{font-size:2.2rem}
+}
+
+/* Impressão / PDF */
+@page{size:A4; margin:16mm 14mm 18mm}
+@media print{
+  :root{--paper:#fff; --desk:#fff; --ink:#111; --muted:#444; --panel:#f3f2ee}
+  body{padding:0; background:#fff; font-size:10.5pt}
+  .book{gap:0}
+  .sheet{box-shadow:none; padding:0; max-width:none; break-before:page}
+  .sheet:first-child{break-before:auto}
+  .num{position:static; flex-direction:column; align-items:flex-start; gap:2px}
+  .item{grid-template-columns:3.6rem minmax(0,1fr) 11.5rem; break-inside:auto}
+  .ari,.fig,.note,tr{break-inside:avoid}
+  .toc{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+.subt{display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 16px; margin:0; font-style:italic; color:var(--muted); font-size:var(--s-1)}
+.he-s{font-family:var(--f-he); font-style:normal; color:var(--gold)}
+.srcline{font-family:var(--f-sc); font-size:var(--s-0); letter-spacing:.05em; color:var(--muted); margin:-12px 0 8px}
+sup.op-m{font-family:var(--f-he); font-size:.72em; line-height:0; color:var(--gold); font-weight:700; padding:0 1px}
+sup.op-m a{color:inherit; text-decoration:none}
+.opl{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+.opl li{display:grid; grid-template-columns:1.8rem minmax(0,1fr); gap:10px; align-items:start}
+.op-b{font-family:var(--f-he); font-weight:700; font-size:1.05rem; color:var(--gold); text-decoration:none; text-align:center; border:1px solid var(--rule); border-radius:2px; line-height:1.6}
+.opl li:target .op-c{background:var(--panel); outline:1px solid var(--gold); outline-offset:4px}
+.op-c p{margin:0 0 .55em}
+.op-c p + p{text-indent:1.4em}
+.op .dibur{display:inline}
+.cont{font-style:italic; color:var(--muted)}
+.key{margin:4px 0 0; border:1px solid var(--rule); padding:12px 14px}
+.key figcaption{font-size:var(--s-1); margin-bottom:8px}
+.key figcaption .lbl{display:inline; margin-inline-end:8px}
+.keyt td.c{font-family:var(--f-he); color:var(--gold); text-align:center; white-space:nowrap}
+.fig svg{min-width:0}
+.colophon{font-size:var(--s-0); color:var(--muted); border-top:1px solid var(--rule); padding-top:10px; margin-top:18px}
+
+.hp p{font-size:var(--s-1); line-height:1.68; text-align:justify; hyphens:auto; max-width:70ch; margin:0 0 .7em}
+.hp p + p{text-indent:1.4em}
+.hp-t{font-style:normal; color:var(--techelet); font-family:var(--f-sc); letter-spacing:.02em; margin-bottom:8px}
+.hp-ch{font-family:var(--f-sc); font-size:var(--s-3); color:var(--ink); margin:26px 0 4px; display:flex; gap:12px; align-items:baseline; border-bottom:1px solid var(--rule); padding-bottom:6px}
+.hp-lead{max-width:70ch; margin:8px 0 6px 5.6rem}
+.hp-lead p{font-size:var(--s-1); line-height:1.66}
+.hp-quote{font-style:italic; color:var(--muted)}
+.op-intro{border-left:2px solid var(--gold);padding-left:12px;margin:0 0 14px}
+.op-intro p{font-size:var(--s-1);line-height:1.66;margin:0 0 .6em;max-width:70ch}
+.dh{font-family:var(--f-sc); font-weight:600; color:var(--techelet)}
+.qa-list{display:flex; flex-direction:column}
+.qa-row{display:grid; grid-template-columns:2.4rem minmax(0,15rem) minmax(0,1fr); gap:4px 16px; padding:9px 0; border-bottom:1px solid var(--rule); font-size:var(--s-1); line-height:1.55}
+.qa-n{font-family:var(--f-sc); color:var(--gold); font-variant-numeric:tabular-nums}
+.qa-t b{font-weight:600}
+.qa-t i{color:var(--muted)}
+.qa-t .he-s{display:block}
+.qa-q{font-style:italic}
+.qa-ref{font-family:var(--f-sc); font-size:var(--s-0); color:var(--techelet); white-space:nowrap; margin-inline-start:4px}
+.qa-ref::before{content:"→ "}
+.qa-note{font-size:var(--s-0); color:var(--muted); margin:10px 0 0; max-width:70ch}
+.qa-notes{margin-top:22px; border-top:1px solid var(--rule); padding-top:10px; display:flex; flex-direction:column; gap:8px; font-size:var(--s-0); color:var(--muted)}
+.qa-notes .note b{font-family:var(--f-sc); color:var(--gold); margin-inline-end:4px}
+.qa-end{text-align:center; font-family:var(--f-sc); color:var(--muted); margin-top:20px}
+@media (max-width:760px){ .qa-row{grid-template-columns:2rem minmax(0,1fr)} .qa-a{grid-column:2} .hp-lead{margin-left:0} }
+@media print{ .qa-row{break-inside:avoid} .hp-ch{break-after:avoid} }
+
+
+/* Estudo comentado: passos do argumento, citações e blocos de comentário */
+.lead-p{font-size:var(--s-2); color:var(--muted); max-width:68ch; margin:0 0 18px}
+.lead-p b{font-family:var(--f-sc); font-weight:600; color:var(--techelet); letter-spacing:.03em}
+.block{margin:22px 0 0}
+.prose + .tw, .tw + .prose{margin-top:14px}
+.tw + .prose p{margin-top:14px}
+.block > .lbl{border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:12px}
+.prose p, .prose li{font-size:var(--s-1); line-height:1.66; max-width:72ch}
+.prose ul,.prose ol{padding-inline-start:1.3em; margin:0 0 .8em}
+.prose li{margin-bottom:.45em}
+.prose li strong, .prose p strong{font-weight:600}
+.step{display:grid; grid-template-columns:3.2rem minmax(0,1fr); gap:0 16px; padding-block:12px; border-top:1px solid var(--rule)}
+.step:first-of-type{border-top:0}
+.step .sn{font-family:var(--f-sc); font-size:var(--s-3); color:var(--gold); line-height:1.2; font-variant-numeric:tabular-nums}
+.step .sb{min-width:0; display:flex; flex-direction:column; gap:10px}
+.step .sb p{font-size:var(--s-1); line-height:1.66; text-align:justify; hyphens:auto; max-width:72ch; margin:0}
+.step .st{font-family:var(--f-sc); font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.step ul{margin:0; padding-inline-start:1.2em; font-size:var(--s-1)}
+.quote{background:var(--panel); padding:12px 16px; border-radius:2px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:center; margin:0}
+.quote .q-pt{font-size:var(--s-2); font-style:italic; line-height:1.5; margin:0}
+.quote .q-he{font-family:var(--f-he); font-size:1.12rem; line-height:1.7; color:var(--techelet); margin:0; border-left:1px solid var(--rule); padding-left:14px}
+.subhead{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:4px 16px; margin:30px 0 12px; border-bottom:1.5px solid var(--ink); padding-bottom:6px}
+.subhead h3{font-family:var(--f-sc); font-size:var(--s-3); letter-spacing:.03em; margin:0}
+.subhead .he{font-family:var(--f-he); font-size:var(--s-3); color:var(--gold)}
+td.he,th.he{font-family:var(--f-he); font-size:1.02rem; color:var(--techelet); white-space:nowrap}
+td.num{font-family:var(--f-sc); color:var(--gold); white-space:nowrap}
+.sheet h3.blockh{font-family:var(--f-sc); font-size:var(--s-2); letter-spacing:.04em; color:var(--techelet); margin:26px 0 10px}
+.colophon{font-size:var(--s-0); color:var(--muted); border-top:1px solid var(--rule); padding-top:10px; margin-top:18px}
+@media (max-width:760px){
+  .quote{grid-template-columns:minmax(0,1fr)}
+  .quote .q-he{border-left:0; padding-left:0; border-top:1px solid var(--rule); padding-top:8px}
+  .step{grid-template-columns:2.2rem minmax(0,1fr); gap:0 10px}
+  td.he{white-space:normal}
+}
+@media print{.quote,.step{break-inside:avoid} .subhead{break-after:avoid}}
+</style>
+</head>
+<body>
+<nav class="site-nav" style="max-width:210mm;margin:0 auto 12px;font-family:'Spectral SC',Georgia,serif;letter-spacing:.05em"><a href="../../" style="color:inherit;text-decoration:none">← Arquivo · início</a></nav>
+<main class="book">
+<div class="sheet cover">
+  <p class="eyebrow">Baal HaSulam · <i>Pri Chacham</i> · <i>al HaTorah</i> 23</p>
+  <h1><span lang="he" dir="rtl" class="h1he">פרי חכם · וַיֵּצֵא</span><span class="h1pt">Vayetze · a saída de Jacó</span></h1>
+  <p class="lead">Gn 28:10 a 32:3 — estudo comentado, na ordem do argumento do autor</p>
+  <nav class="toc"><a href="#como-ler">Como ler</a><a href="#p1">1 · O sonho da escada</a><a href="#p2">2 · Digressão: Ló, Esaú e Labão</a><a href="#p3">3 · O poço, a pedra e Raquel</a><a href="#p4">4 · Lea, Raquel e os catorze anos</a><a href="#p5">5 · O nascimento dos filhos</a><a href="#p6">6 · O salário e as varas descascadas</a><a href="#p7">7 · A fuga, os terafim e o pacto de Galaad</a><a href="#p8">8 · Machanaim e síntese</a></nav>
+  <p class="howto"><b>Como ler.</b> Cada parte abre com a tese. Segue o argumento em passos numerados, na ordem do comentário; as passagens-chave aparecem em painel, com a tradução à esquerda e o hebraico à direita. Fecham cada parte o comentário e, onde a leitura é incerta, a indicação disso.</p>
+  <p class="howto"><b>Escopo.</b> Não é tradução integral: o comentário vem em paráfrase, com citações breves do original. O texto-base é o da biblioteca digital Kabbalah Media (<a href="https://kabbalahmedia.info/he/sources/L7RTwFbP">fonte</a>). Para o conjunto do volume, veja o <a href="../">sumário do <i>Pri Chacham</i></a>. Versão para impressão: <a href="pri-chacham-torah-23-vayetse.pdf">PDF</a>.</p>
+</div>
+<div class="sheet"><section class="chapter" id="como-ler"><header class="ch-head"><h2>Como ler</h2></header>
+<div class="prose"><p>O comentário a Vayetze (<em>Pri Chacham – al HaTorah</em>, nº 23) é o mais longo do volume e cobre de Gn 28:10 a Gn 32:3, quase sempre frase por frase. Baal HaSulam lê a saída de Jacó como uma única operação espiritual: Jacó desce ao lugar mais baixo (Harã, "ira"), descobre que ali está o ponto de Sião, une-se a ele (Raquel) e volta com tudo o que conquistou. Este estudo segue a ordem do texto em oito partes; as passagens-chave vão em hebraico curto, com tradução, e o resto em paráfrase comentada.</p></div>
+<section class="block prose"><div class="lbl">Método do autor</div><ul>
+<li><strong>Glosa de duas ou três palavras.</strong> O versículo é citado em pedaços, e cada pedaço recebe uma palavra de explicação. Por exemplo, <em>va-yifga ba-makom</em> (וַיִּפְגַּע בַּמָּקוֹם), "deparou com o lugar" (Gn 28:11), vira "sentiu o espaço vazio" (<em>chalal panui</em>).</li>
+<li><strong>Personagens como graus.</strong> Ló, Labão e Esaú são formas sucessivas da mesma força oposta; Lea e Raquel, dois aspectos da Malchut; os filhos, etapas da construção do recipiente.</li>
+<li><strong>Jogos de letras.</strong> Nomes são lidos por som e por letra: <em>Lavan</em> ("branco") e "o branco superior"; <em>Zilpá</em> como <em>zol pé</em>, "boca barata"; <em>Bilhá</em> como <em>bal hé</em>, "sem as duas letras hê".</li>
+</ul></section>
+<section class="block prose"><div class="lbl">As siglas do manuscrito</div><p>O texto usa siglas próprias que não explica. As três principais aparecem sempre juntas, como três níveis de uma mesma estrutura, e o autor as associa às duas filhas de Ló, às duas filhas de Labão e aos "três dias de caminho" (Gn 30:36). A tabela registra o que se pode deduzir do contexto; a leitura exata das siglas fica em aberto.</p><div class="tw"><table>
+<thead>
+<tr>
+<th>Sigla</th>
+<th>Onde aparece</th>
+<th>O que o contexto sugere</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="he" dir="rtl" lang="he">כל"א</td>
+<td>O poço no campo; a luz de José; o monte Galaad</td>
+<td>O nível mais alto e mais luminoso, ligado ao poço e à "luz que não se oculta"</td>
+</tr>
+<tr>
+<td class="he" dir="rtl" lang="he">אומ"צ</td>
+<td>Judá; a "palma" (<em>kaf</em>); os seis extremos de Lea</td>
+<td>O nível intermediário, ligado à força de passagem entre o alto e o baixo</td>
+</tr>
+<tr>
+<td class="he" dir="rtl" lang="he">מקוה"נ</td>
+<td>Raquel; o "fim" da estrutura; Harã</td>
+<td>O nível mais baixo, onde o mal está "adoçado" e onde fica o ponto de Sião</td>
+</tr>
+<tr>
+<td class="he" dir="rtl" lang="he">ראש, תוך, סוף דמקוה</td>
+<td>Os três rebanhos do poço</td>
+<td>Cabeça, meio e fim da mesma estrutura</td>
+</tr>
+<tr>
+<td class="he" dir="rtl" lang="he">ו"ק / ג"ר / ז"ת</td>
+<td>Lea, Raquel, os sete anos</td>
+<td>Os seis extremos, as três superiores e as sete inferiores, no uso habitual</td>
+</tr>
+</tbody>
+</table></div><p><strong>Observação.</strong> Muitas frases terminam em <em>ve-havén</em> ("e compreende"): o autor deixa a dedução ao leitor. Onde a leitura é incerta, o estudo diz isso.</p></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="p1"><header class="ch-head"><h2>O sonho da escada</h2><p class="ch-sub">Parte 1 · Gn 28:10–22</p></header>
+<p class="lead-p"><strong>Tese.</strong> Jacó sai do grau de Isaac e desce ao ponto mais baixo. Lá descobre que o lugar que tomava por maldição é a "casa de Deus", e é o primeiro a entendê-lo assim.</p>
+<section class="block prose"><div class="lbl">O argumento</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">A descida.</span>  "Saiu Jacó de Berseba": saiu do grau de Isaac, que reúne todos os dias "como um só". "Foi a Harã": a parte menor e pior desses dias, onde há <em>charon af</em>, ira de verdade. O nome da cidade é lido pela raiz de <em>charon</em>.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">O lugar e a pedra.</span>  "Deparou com o lugar" = sentiu o espaço vazio. "Pernoitou" = quis adoçá-lo. "Porque o sol se pôs" = saiu "limpo" de tudo o que tinha. A pedra sob a cabeça foi seu último recurso:</p><figure class="quote"><p class="q-pt">e outra forma de adoçar ele não tinha</p><p class="q-he" dir="rtl" lang="he">והמתקה אחרת לא היתה לו</p></figure><p>"Deitou-se naquele lugar" indica que até ali ele não se deitara: vivia na luz que recebia junto ao pai.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Sonho, não visão.</span>  A profecia num estado de "pequenez" é imaginativa, sem intelecto: os sentidos formam as imagens sozinhos. Por isso se chama sonho.</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">A escada.</span>  Está "apoiada na terra", isto é, no espaço vazio que agora era dele, e chega ao céu. Os anjos sobem numa luz muito grande e descem até onde o mal se fortalecera.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">A promessa.</span>  <em>Ve-hiné HaShem nitzav alav</em> (וְהִנֵּה ה׳ נִצָּב עָלָיו), "e eis que o Senhor estava sobre ele" (Gn 28:13), é lido como "sobre a pedra". Abraão recebeu dali as bondades (<em>chassadim</em>) e Isaac os rigores (<em>gevurot</em>), mas a intenção desde o início era que fosse Jacó quem se deitasse ali. As quatro direções da promessa recebem uma glosa cada: "para o mar" = nas profundezas; "para o oriente" = o que é conhecido desde a antiguidade; "para o norte" = o que ficou escondido atrás; "para o sul" = o que deve ser cobrado. Todas as famílias serão abençoadas, "até os filhos de Ismael e de Esaú".</p></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">O despertar.</span>  <em>Achen yesh HaShem ba-makom ha-ze ve-anochi lo yadati</em> (אָכֵן יֵשׁ ה׳ בַּמָּקוֹם הַזֶּה וְאָנֹכִי לֹא יָדָעְתִּי), "certamente o Senhor está neste lugar, e eu não sabia" (Gn 28:16). O autor completa: "e eu o tomava por maldição". O lugar é o <em>nekudat Tzion</em>, o ponto de Sião. É "casa de Deus", não mais um ponto, e "porta do céu", início da bênção.</p></div></div><div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">Luz e Betel.</span>  O nome antigo da cidade, <em>Luz</em>, é lido como "noz pequena". Abraão e Isaac baixavam esse ponto como algo de pouco valor e o deixavam aos filisteus e cananeus. A frase central:</p><figure class="quote"><p class="q-pt">e Jacó foi o primeiro a entendê-lo justamente como Casa de Deus</p><p class="q-he" dir="rtl" lang="he">ויעקב היה הראשון שהבין אותה דוקא לבית א-ל</p></figure></div></div><div class="step"><div class="sn">8</div><div class="sb"><p><span class="st">O voto e a partida.</span>  Jacó se entusiasma tanto com "este caminho novo" que se compromete a mantê-lo mesmo ao voltar à casa do pai. "Ergueu os pés" = recebeu força nas pernas para a união. Vai "à terra dos filhos do oriente" para ouvir o entendimento dos antigos.</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>A tese de todo o comentário.</strong> O que os patriarcas anteriores desprezavam, o ponto mais baixo, é justamente onde está a ligação com o céu. A mesma lógica atravessa o bloco do Tzimtzum nas Sichot: o espaço vazio é o lugar das raízes.</li>
+<li><strong>Sonho como grau inferior.</strong> A definição de sonho (imagem sem intelecto) faz eco à epistemologia das Sichot: o grau alto é o do intelecto.</li>
+<li><strong>Detalhes obscuros.</strong> As referências a "84 anos" e "80 de luz" e ao acrôstico de <em>va-yishkav</em> são alusões a cálculos de gematria que o autor não desenvolve.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="p2"><header class="ch-head"><h2>Digressão: Ló, Esaú e Labão</h2><p class="ch-sub">Parte 2</p></header>
+<p class="lead-p"><strong>Tese.</strong> Antes de continuar a narrativa, o autor explica quem é Labão. Ló, Esaú e Labão são três formas sucessivas da mesma força, que cresce a cada geração dos patriarcas.</p>
+<section class="block prose"><div class="lbl">O argumento</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Nos dias de Abraão.</span>  Esaú ainda não tinha nome; era como "o estalar dos espinhos sob a panela" (Ec 7:6), um ruído atrás da parede. Quem tinha nome era Ló, e Ló era a própria "parede" (<em>kotel</em>).</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Nos dias de Isaac.</span>  Esses ruídos se juntaram como um manto de pelos e saíram "vermelhos" (<em>admoni</em>, Gn 25:25), que o autor lê com um jogo de letras como "testemunha". Sem o engano de Betuel, essa testemunha não existiria. A força de Esaú chega a "quatrocentos homens", lidos como cabeça, meio, fim e o nível intermediário, e para em Seir.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">Nos dias de Jacó.</span>  A mesma raiz agora se chama Labão, "irmão de Rebeca":</p><figure class="quote"><p class="q-pt">a brancura superior ... mas é branco e é enganador</p><p class="q-he" dir="rtl" lang="he">לובן העליון ... אך לבן הוא ורמאי הוא</p></figure></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">Parede e muro.</span>  Por isso Jacó, que da visão da escada trouxe o amor pela união justamente no ponto, procura de todas as formas servir a Labão. O autor compara ao rei Ezequias, que "virou o rosto para a parede" (<em>va-yassev Chizkiyahu panav el ha-kir</em>, וַיַּסֵּב חִזְקִיָּהוּ פָּנָיו אֶל הַקִּיר, Is 38:2): a parede (<em>kotel</em>) é Ló, o muro (<em>kir</em>) é Labão.</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Uma genealogia do oposto.</strong> O esquema lembra a ideia de Sichot 2: a unidade se revela vencendo o oposto, e por isso o oposto cresce à medida que a revelação cresce.</li>
+<li><strong>Servir ao oposto.</strong> Jacó não foge de Labão; vai trabalhar para ele. É o tema que dominará o resto do comentário: a correção se faz dentro da casa do enganador, com os recursos dela.</li>
+<li><strong>Leitura incerta.</strong> O jogo entre <em>admoni</em> e "testemunha" (<em>ed</em>) e a contagem dos quatrocentos homens estão muito abreviados no manuscrito; a reconstrução acima é provisória.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="p3"><header class="ch-head"><h2>O poço, a pedra e Raquel</h2><p class="ch-sub">Parte 3 · Gn 29:1–14</p></header>
+<p class="lead-p"><strong>Tese.</strong> Os pastores de Harã precisam de todos os rebanhos para rolar a pedra e a devolvem ao lugar depois de dar água. Jacó a rola sozinho, de uma vez, e o poço fica aberto. A pedra é a mesma que ele usou como travesseiro em Betel.</p>
+<section class="block prose"><div class="lbl">O argumento</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">O poço e os rebanhos.</span>  O poço no campo corresponde ao nível mais alto. Os três rebanhos deitados junto dele são cabeça, meio e fim da estrutura, e a palavra <em>edrei</em> (rebanhos) é lida também como <em>heder</em>, ausência. Deles depende a vida de todo o rebanho.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">A regra dos pastores.</span>  Juntam todos os rebanhos, rolam a pedra, dão de beber e a recolocam. O autor lê isso com a regra talmúdica <em>ha-pé she-assar hu ha-pé she-hitir</em> (Ketubot 16a), "a boca que proibiu é a boca que permitiu": a mesma pedra que fecha é a que abre, e por isso volta ao lugar.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">O medo de Harã.</span>  "De onde sois?" "De Harã": já se sabe que é o lugar da ira. Jacó se irrita com a preocupação deles em rolar a grande pedra. Eles respondem que não podem nem dar água sem rolá-la, "até que se juntem todos os rebanhos", isto é, até que se reúna a água de baixo (<em>mayin nukvin</em>) para formar um recipiente.</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">Irmão e irmã.</span>  O autor aponta um paralelo: Sara e Ló eram irmão e irmã, assim como Rebeca e Labão; Sara com as duas filhas de Ló, e Rebeca com as duas filhas de Labão, correspondem aos três níveis. Entre irmãos não há união, só entre homem e mulher. A união que faltava a Abraão e Isaac caberá a Jacó.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">Raquel.</span>  Ela chega com o rebanho "porque é pastora", e o autor associa <em>Rachel</em> (ovelha) ao verso de Is 53:7, <em>u-che-rachel lifnei gozezeha ne'elama</em> (וּכְרָחֵל לִפְנֵי גֹזְזֶיהָ נֶאֱלָמָה), "como ovelha muda diante dos tosquiadores". É humilde ao extremo. Jacó a reconhece pela visão da escada:</p><figure class="quote"><p class="q-pt">que ela é a própria pedra que ele erguera como coluna</p><p class="q-he" dir="rtl" lang="he">שהיא עצם האבן אשר שם מצבה</p></figure></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">O gesto de Jacó.</span>  Ele "removeu" a pedra uma única vez; o texto diz <em>va-yagel</em> e não <em>va-yigol</em>, como fazem os rebanhos repetidamente. Dá de beber ao rebanho "de Labão, irmão de sua mãe", com essa intenção expressa. Por isso não havia por que devolver a pedra: Jacó a beijou, e o poço ficou aberto ao orvalho do céu. Esta é "a primeira correção".</p></div></div><div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">O choro.</span>  "Ergueu a voz e chorou": a "voz de Jacó" ainda não foi restaurada nesta correção. A alegria e a falta vêm juntas.</p></div></div><div class="step"><div class="sn">8</div><div class="sb"><p><span class="st">Labão.</span>  Ouve tudo e entende que a pedra foi removida para sempre. "Tu és meu osso e minha carne": osso e carne de Labão chegaram até ele pela força de Jacó.</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Duas formas de abrir.</strong> Os pastores abrem e fecham porque temem estragar a boca do poço; Jacó abre de uma vez porque já transformou a pedra em coluna e a ungiu. O medo de Harã é corrigido não pela cautela, mas pela consagração prévia.</li>
+<li><strong>A pedra que fecha é Raquel.</strong> A identificação entre a pedra de Betel, a pedra do poço e Raquel é a chave de toda a seção seguinte.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="p4"><header class="ch-head"><h2>Lea, Raquel e os catorze anos</h2><p class="ch-sub">Parte 4 · Gn 29:15–30</p></header>
+<p class="lead-p"><strong>Tese.</strong> Jacó quer só Raquel, o ponto de Sião; Labão quer que ele corrija Lea primeiro. A troca na noite de núpcias não é só engano: a correção de Lea é condição para que Raquel não fique exposta.</p>
+<section class="block prose"><div class="lbl">O argumento</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">As duas filhas.</span>  Lea, a maior, corresponde ao nível intermediário; Raquel, a menor, "viu força e calou-se". Os "olhos fracos" de Lea significam que ela não via o futuro; Raquel era "bela de forma", feita do osso de Jacó, e "bela de aparência", da carne de Jacó.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Sete anos como poucos dias.</span>  <em>Va-yihyu ve-enav ke-yamim achadim</em> (וַיִּהְיוּ בְעֵינָיו כְּיָמִים אֲחָדִים), "foram aos seus olhos como alguns dias" (Gn 29:20). O autor lê <em>achadim</em> como "dois que são um": a cabeça-meio e o fim da estrutura, que Jacó suporta separados "por seu amor por ela".</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">O plano de Labão e o de Jacó.</span>  Labão quer que Jacó corrija Lea e sua serva Zilpá. Jacó quer Raquel, porque já transformou a pedra do poço em travesseiro. Os filhos do oriente precisavam juntar todos os rebanhos por medo de estragar a boca do poço; Jacó ungiu a pedra e se tornou escudo para eles.</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">O segredo de havá.</span>  Para Jacó, Abraão corrigiu o lado direito e Isaac o esquerdo, mas a luz da cabeça ainda não descera. Por isso Jacó se fortalece "nas pernas" para vir pelo meio. O pedido <em>havá et ishti</em> (הָבָה אֶת אִשְׁתִּי), "dá-me minha mulher" (Gn 29:21), é lido letra por letra: hê, bet, hê correspondem aos três níveis, e <em>ahavá</em> (amor) acrescenta o álef da cabeça. O mesmo <em>havá</em> volta na boca de Raquel: "dá-me filhos" (Gn 30:1).</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">A noite da troca.</span>  À noite, Labão traz Lea. Jacó não a reconhece porque, naquele momento, Lea tinha a forma completa do nível inferior, que era de Raquel. De manhã, os "olhos fracos" a revelam.</p></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">A justificativa de Labão.</span>  "Não se faz assim em nosso lugar": se Raquel ficasse sozinha, a ousadia dos filhos de Harã a prejudicaria. Raquel precisa de Lea. "Completa a semana desta" significa corrigir os olhos de Lea e sua serva.</p></div></div><div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">As servas.</span>  <em>Bilhá</em> é lida como <em>bal hé</em>, sem as duas letras hê, isto é, sem as duas "bocas" da sabedoria e da bondade. <em>Zilpá</em> tem só a falta da segunda.</p></div></div><div class="step"><div class="sn">8</div><div class="sb"><p><span class="st">O segundo casamento.</span>  Jacó "amou também Raquel, mais que Lea" (<em>mi-Le'á</em>). O autor lê <em>mi-Le'á</em> como "a partir de Lea": toda a virtude de Lea passou para Raquel. Os dois períodos de sete anos correspondem aos seis extremos dos dois níveis inferiores, ambos ainda em Harã.</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Engano que protege.</strong> O autor não absolve Labão, mas dá sentido ao engano: o grau mais alto (Raquel) não pode ser recebido sem o intermediário (Lea). É a mesma regra do Tzimtzum: a luz só se fixa onde há recipiente.</li>
+<li><strong>Jogo de letras como teologia.</strong> A leitura de <em>havá</em>/<em>ahavá</em> resume o projeto de Jacó: completar com o álef, a cabeça, o que os patriarcas anteriores deixaram em três níveis.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="p5"><header class="ch-head"><h2>O nascimento dos filhos</h2><p class="ch-sub">Parte 5 · Gn 29:31–30:24</p></header>
+<p class="lead-p"><strong>Tese.</strong> Cada filho é uma etapa na construção do recipiente. Os nomes são lidos como o que cada nascimento corrige: os olhos de Lea, a inveja de Raquel, as "bocas" das servas. O ciclo culmina em José, a luz completa.</p>
+<section class="block prose"><div class="lbl">O argumento</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">Lea "odiada".</span>  Ela não vinha da raiz de Jacó, mas da raiz de Esaú "adoçada" no meio da estrutura. O autor lembra a regra: o masculino inclui todos os graus, o feminino é um único ramo ao qual ele se une. Por isso Deus "abriu o seu ventre", enquanto Raquel "era estéril", isto é, permanecia na forma da raiz.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">Os filhos, um a um.</span> </p><div class="tw"><table>
+<thead>
+<tr>
+<th>Filho</th>
+<th>Mãe</th>
+<th>Leitura do autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ruben</td>
+<td>Lea</td>
+<td>Sem o vermelho de Lea, ninguém saberia que este filho é dádiva; "Deus viu" corrige um pouco os olhos dela</td>
+</tr>
+<tr>
+<td>Simeão</td>
+<td>Lea</td>
+<td>"Deus ouviu que sou odiada": ela adoça a culpa do ódio, e <em>Shim'on</em> é lido como <em>sham avon</em>, "ali a culpa", culpas que viram méritos</td>
+</tr>
+<tr>
+<td>Levi</td>
+<td>Lea</td>
+<td>"Desta vez meu marido se unirá a mim": com Levi ela se torna filha e esposa; três filhos = cabeça, meio e fim</td>
+</tr>
+<tr>
+<td>Judá</td>
+<td>Lea</td>
+<td>O quarto é para agradecer: completa o nível intermediário; então ela para de dar à luz</td>
+</tr>
+<tr>
+<td>Dã</td>
+<td>Bilhá (Raquel)</td>
+<td>Nascido da inveja de Raquel; "Deus me julgou": aqui o vazio se revela nela mesma</td>
+</tr>
+<tr>
+<td>Naftali</td>
+<td>Bilhá (Raquel)</td>
+<td>Traz união entre Raquel e Lea; adoça as duas letras hê que faltavam a Bilhá</td>
+</tr>
+<tr>
+<td>Gad</td>
+<td>Zilpá (Lea)</td>
+<td>"Veio a sorte": reata Ruben e Levi; é o "calcanhar", o fecho de todas as luzes</td>
+</tr>
+<tr>
+<td>Aser</td>
+<td>Zilpá (Lea)</td>
+<td>A glória máxima de Lea, "como a mulher que administra a casa"; até Raquel é feliz por meio dela</td>
+</tr>
+<tr>
+<td>Issacar</td>
+<td>Lea</td>
+<td>Nascido pelas mandrágoras; é a força que se levanta</td>
+</tr>
+<tr>
+<td>Zabulon</td>
+<td>Lea</td>
+<td>A morada permanente: <em>beit zevul</em>, "casa de morada" (1Rs 8:13)</td>
+</tr>
+<tr>
+<td>Diná</td>
+<td>Lea</td>
+<td>"Adquiriste conhecimento, o que te falta?"</td>
+</tr>
+<tr>
+<td>José</td>
+<td>Raquel</td>
+<td>A luz completa: "porque caí, levantei-me"</td>
+</tr>
+</tbody>
+</table></div></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">A inveja de Raquel.</span>  "Dá-me filhos, senão morro": os três níveis pertencem a ela, por que Lea os herdou? Jacó se irrita porque Levi e Judá, filhos de Lea, lhe são caros. O autor cita o midrash de que "cem mortes" são melhores que "uma inveja".</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">As mandrágoras.</span>  Ruben as encontra no campo; ninguém além dele as percebe. Raquel as deseja porque vêm da sua própria raiz, da cabeça. Lea entende que por meio delas Raquel poderá gerar José, e cita Mq 7:8, <em>ki nafalti kamti ki eshev ba-choshech HaShem or li</em> (כִּי נָפַלְתִּי קָמְתִּי כִּי אֵשֵׁב בַּחֹשֶׁךְ ה׳ אוֹר לִי), "se caí, levanto-me; se habito nas trevas, o Senhor é minha luz". A troca dá a Lea o lugar escuro que era de Raquel.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">A síntese.</span>  O autor fecha a seção com uma regra:</p><figure class="quote"><p class="q-pt">Issacar é o levantar, e Zabulon é a escuridão embaixo</p><p class="q-he" dir="rtl" lang="he">יששכר הוא התקומה, וזבולון הוא החושך שמתחת</p></figure><p>E José é a luz do nível mais alto, "a mais louvada".</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Os nomes como história interior.</strong> Cada nome bíblico já é uma frase da mãe; o autor lê essas frases como diagnósticos do grau alcançado. A sequência vai do vermelho de Lea à luz de José.</li>
+<li><strong>A inveja também constrói.</strong> Dã e Naftali nascem da inveja de Raquel, e mesmo assim têm função positiva: Naftali une as irmãs. É a lógica de Sichot 21, onde a inveja nasce do sentimento de falta própria.</li>
+<li><strong>Leitura provisória.</strong> As seções sobre Gad e as "bocas" de Bilhá e Zilpá estão muito comprimidas; a tabela fica no que é seguro.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="p6"><header class="ch-head"><h2>O salário e as varas descascadas</h2><p class="ch-sub">Parte 6 · Gn 30:25–43</p></header>
+<p class="lead-p"><strong>Tese.</strong> Depois de José, Jacó já não teme Esaú e pode partir. O salário que aceita de Labão é pago em "masculino", não em "feminino": Jacó passa a tirar a bênção da sua própria raiz, e não mais do que Labão controla.</p>
+<section class="block prose"><div class="lbl">O argumento</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">O momento de partir.</span>  José é o <em>Yesod</em> de Atzilut, o justo superior que inclui Efraim na luz e Manassés no levantar. Com ele, Jacó já não teme Esaú, por Ob 1:18: <em>u-veit Yosef leheva u-veit Essav le-kash</em> (וּבֵית יוֹסֵף לֶהָבָה וּבֵית עֵשָׂו לְקַשׁ), "a casa de José será chama, e a casa de Esaú, palha".</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">"Adivinhei".</span>  Labão diz <em>nichashti</em>, "adivinhei", e o autor o liga a <em>nechoshet</em>, cobre ou bronze: algo que parece ouro, mas é "bronze polido" (<em>nechoshet kalal</em>), feito das bênçãos de Jacó.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">A oferta de Labão e a recusa.</span>  Labão pensa que todas as bênçãos vieram por causa das suas filhas e oferece mais "feminino". Jacó responde que a bênção agora virá pelo masculino, "para a minha casa": <em>beit Ya'akov lechu ve-nelcha be-or HaShem</em> (Is 2:5), "casa de Jacó, vinde e andemos na luz do Senhor". "Não me dês nada": Jacó não tem mais nada em poder de Labão.</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">O salário.</span>  As ovelhas pintadas, malhadas e escuras são lidas por cores. "Pintado" vem da cor de Betuel, o enganador; "malhado" (<em>talu</em>) fica abaixo do orvalho do céu (<em>tal</em>); "escuro" (<em>chum</em>) é cor de desejo. O autor liga o acordo à parceria entre Issacar, que estuda, e Zabulon, que negocia.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">A distância de três dias.</span>  Labão separa os animais e põe três dias de caminho entre si e Jacó, que são lidos como os três níveis. Labão fica preso ao bronze polido; Jacó permanece em Harã, depois dos três campos.</p></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">As varas.</span>  Jacó toma varas de choupo branco (<em>livneh</em>), amendoeira (<em>luz</em>) e plátano (<em>armon</em>), tiradas "da sua raiz na cabeça". A <em>luz</em>, noz de casca dura, volta aqui: ela é a casca de onde tudo se quebra e se corrige. As "faixas brancas" descascadas são:</p><figure class="quote"><p class="q-pt">o fim último da brancura que se pode conceber no mundo</p><p class="q-he" dir="rtl" lang="he">גמר תכלית הלובן שמצוייר בעולם</p></figure><p>O autor liga essa brancura a <em>kivinu lo ve-yoshi'enu</em>, "esperamos por Ele e Ele nos salvou" (Is 25:9).</p></div></div><div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">Os bebedouros.</span>  Os <em>rehatim</em> são a sede intensa do rebanho de Labão; o bebedouro é o ventre que recebe o masculino. Diante das varas, o rebanho reconhece a brancura da salvação. Jacó encontra o masculino e o feminino na sua raiz alta, sem nada que pertencesse a Labão: o masculino é a brancura de "Ele nos salvou"; o feminino, a amendoeira e o plátano.</p></div></div><div class="step"><div class="sn">8</div><div class="sb"><p><span class="st">O resultado.</span>  Os filhotes listrados não saem para o meio da estrutura; os fortes ficam com Jacó, os fracos com Labão, e Jacó "se expandiu muitíssimo".</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Da dependência à raiz própria.</strong> Enquanto Jacó trabalhava pelas filhas, tudo passava por Labão. Depois de José, ele tira da própria raiz, e Labão só fica com o que é fraco. É a virada do comentário.</li>
+<li><strong>O ardil como técnica espiritual.</strong> O episódio das varas, que a leitura simples vê como esperteza, vira aqui a aplicação de um conhecimento da raiz: o que se vê no momento de receber determina o que nasce.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="p7"><header class="ch-head"><h2>A fuga, os terafim e o pacto de Galaad</h2><p class="ch-sub">Parte 7 · Gn 31</p></header>
+<p class="lead-p"><strong>Tese.</strong> Jacó parte "pela força de José" e leva tudo o que conquistou. Raquel rouba os terafim, os ídolos do pai, e com isso desmonta a fonte da riqueza de Labão. A queixa de Labão tem um fundo de verdade, mas Deus o impede de usá-la.</p>
+<section class="block prose"><div class="lbl">O argumento</div><div class="step"><div class="sn">1</div><div class="sb"><p><span class="st">O ressentimento dos filhos de Labão.</span>  Eles dizem que Jacó fez sua fortuna com o que era do pai. O rosto de Labão já não é o mesmo: enquanto Jacó trabalhava pelas filhas, Labão se alegrava, porque tudo ficava no seu nome; agora que Jacó trabalha da própria raiz, a pequenez de Labão aparece.</p></div></div><div class="step"><div class="sn">2</div><div class="sb"><p><span class="st">A concordância das mulheres.</span>  Raquel e Lea dizem que o pai as tratou como estrangeiras e "comeu o nosso dinheiro". O autor cita Pr 13:25, <em>u-veten resha'im techsar</em>, "o ventre dos ímpios passará falta": para "branquear os seus filhos", Labão tomou tudo delas.</p></div></div><div class="step"><div class="sn">3</div><div class="sb"><p><span class="st">A queixa justa de Labão.</span>  Labão se queixa de que Jacó fugiu sem avisar. O autor admite que há razão: se Jacó tivesse avisado antes, os filhos e os bens teriam crescido em dobro, e Labão o despediria com alegria. Mas Deus apareceu a Labão em sonho e o proibiu de falar "nem bem nem mal".</p></div></div><div class="step"><div class="sn">4</div><div class="sb"><p><span class="st">Os terafim.</span>  Raquel os roubou durante a tosquia, isto é, quando Labão enriquecia com a pureza dos pelos do rebanho. O autor descreve o gesto de forma intensa:</p><figure class="quote"><p class="q-pt">roubou o deus de Labão, o enganador, e o cortou em pedaços</p><p class="q-he" dir="rtl" lang="he">וגנבה אלוהי לבן רמאה וקצצה אותו חתיכות חתיכות</p></figure><p>Cada fio tosado foi destruindo os terafim. Labão não percebeu, e na fuga seu coração estava em poder de Jacó. O autor chama isso de "o maior sinal e maravilha" de tudo o que Jacó adquiriu em Padã-Arã.</p></div></div><div class="step"><div class="sn">5</div><div class="sb"><p><span class="st">A sela do camelo.</span>  Os terafim ficaram sob a sela do camelo em que Raquel estava sentada, lida como a gordura que sustenta. À esquerda de Labão, o coração; à direita, os terafim. Onze tribos vieram do coração de Labão; Benjamim, dos terafim.</p></div></div><div class="step"><div class="sn">6</div><div class="sb"><p><span class="st">A busca.</span>  Labão procura nas tendas de Jacó, de Lea e das servas, e deixa a de Raquel por último. A desculpa de Raquel, "o caminho das mulheres está comigo", é lida como a mesma desculpa que ela sempre usou na casa do pai.</p></div></div><div class="step"><div class="sn">7</div><div class="sb"><p><span class="st">O discurso de Jacó.</span>  Os vinte anos são lidos verso a verso: "tuas ovelhas não abortaram", "não comi os carneiros", ou seja, nem quis tocá-los; "de dia me consumia o calor e de noite o gelo". E a conclusão: Deus viu sua aflição e o repreendeu "por amor", para que alcançasse o que alcançou.</p></div></div><div class="step"><div class="sn">8</div><div class="sb"><p><span class="st">O último veneno e o pacto.</span>  "As filhas são minhas filhas, e tudo o que vês é meu": para Labão, o sucesso de Jacó vem de ter roubado seu coração, não do Deus dos pais. Mesmo assim propõe um pacto, para proteger o que restou dos terafim. Jacó ergue uma pedra, a raiz de Raquel, e os irmãos fazem um monte de pedras "brilhantes". Labão o chama em aramaico, <em>Yegar Sahaduta</em>, sinal da separação; Jacó o chama <em>Gal'ed</em>, "monte-testemunho". Jacó jura "pelo temor de seu pai Isaac", e por nenhum outro temor.</p></div></div></section>
+<section class="block prose"><div class="lbl">Comentário</div><ul>
+<li><strong>Os terafim e o deus possuído.</strong> Os terafim são o "deus de Labão", algo que se pode guardar e roubar. A destruição deles por Raquel, fio a fio, mostra que a riqueza de Labão dependia de um deus que se possui. É o mesmo motivo de Sichot 4 e 30.</li>
+<li><strong>A queixa de Labão.</strong> O autor dá a Labão um argumento sério e não o rebate diretamente; quem o cala é Deus. A fuga de Jacó é tratada como necessária, mas não como inocente.</li>
+<li><strong>Leitura incerta.</strong> As passagens sobre "Damasco" e "a gruta entre os níveis", onde Labão alcança Jacó, estão muito abreviadas.</li>
+</ul></section>
+</section></div>
+<div class="sheet"><section class="chapter" id="p8"><header class="ch-head"><h2>Machanaim e síntese</h2><p class="ch-sub">Parte 8 · Gn 32:1–3</p></header>
+<div class="prose"><p><strong>O fecho.</strong> Labão volta ao seu lugar e Jacó segue o caminho que jurou. Assim que vira as costas para Labão, "anjos de Deus o encontram": ele sente tanta segurança no que adquiriu que isso já basta para o serviço do céu. Ao vê-los, depois de muito tempo "apegado à boca do Senhor", diz <em>machané Elohim ze</em> (מַחֲנֵה אֱלֹהִים זֶה), "este é o acampamento de Deus" (Gn 32:3), e com isso caem os juramentos feitos a Labão. O nome <em>Machanaim</em>, "dois acampamentos", é lido como acampamento diante de acampamento: o próximo passo é a guerra com Esaú, tema do comentário seguinte (Torá 25).</p></div>
+<section class="block prose"><div class="lbl">Síntese</div><p>O comentário tem um arco claro, em cinco movimentos:</p><ol>
+<li><strong>Descer.</strong> Jacó deixa o grau de Isaac e vai a Harã, o lugar da ira (28:10–11).</li>
+<li><strong>Descobrir.</strong> No ponto mais baixo está a porta do céu; ele é o primeiro a ver ali a "Casa de Deus" (28:12–22).</li>
+<li><strong>Unir.</strong> Remove de uma vez a pedra do poço e se une a Raquel, mas só depois de corrigir Lea (29).</li>
+<li><strong>Construir.</strong> Os filhos completam o recipiente, até a luz de José (29:31–30:24).</li>
+<li><strong>Tomar e partir.</strong> Com José, Jacó passa a receber da própria raiz; Raquel desmonta os terafim; Jacó sai com tudo o que adquiriu (30:25–32:3).</li>
+</ol><p>O fio comum é que o lugar desprezado (Luz, a pedra, Harã, a casa de Labão) não é abandonado, mas atravessado e corrigido por dentro. É a mesma lógica do bloco sobre o Tzimtzum nas Sichot: o espaço vazio guarda as raízes, e a falta é a condição do recipiente.</p></section>
+<section class="block prose"><div class="lbl">Questões abertas</div><ul>
+<li><strong>As siglas.</strong> A leitura exata de כל"א, אומ"צ e מקוה"נ não está no texto. Vale procurar o mesmo vocabulário em outros textos do <em>Pri Chacham</em> ou nos primeiros escritos de Baal HaSulam.</li>
+<li><strong>A moral da fuga.</strong> O autor dá razão parcial a Labão. Como isso se concilia com a leitura de Jacó como o justo que corrige?</li>
+<li><strong>Benjamim e os terafim.</strong> A ideia de que Benjamim vem "dos terafim de Labão" é surpreendente e não é desenvolvida.</li>
+<li><strong>Paralelos.</strong> Ler junto com Torá 24 ("Não é tempo de recolher o gado"), sobre a mesma pedra do poço, e Torá 25 (Machanaim).</li>
+</ul></section>
+</section></div>
+</main>
+</body>
+</html>
