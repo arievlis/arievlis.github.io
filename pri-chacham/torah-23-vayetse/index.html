@@ -577,5 +577,6 @@ function set(o){all().forEach(function(d){d.open=o});document.getElementById('ne
 document.getElementById('ne-open').onclick=function(){set(true)};document.getElementById('ne-close').onclick=function(){set(false)};
 try{if(localStorage.getItem('ne-open')==='1')set(true)}catch(e){}
 window.addEventListener('beforeprint',function(){all().forEach(function(d){d.open=true})});})();
-</script></body>
+</script><script src="/assets/marcador.js" defer></script>
+</body>
 </html>
